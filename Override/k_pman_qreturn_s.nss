@@ -1,0 +1,18 @@
+//::///////////////////////////////////////////////
+//:: Conversation
+//:: k_pman_qreturn_s
+//:: Copyright (c) 2002 Bioware Corp.
+//:://////////////////////////////////////////////
+/*
+    Queedle now returns the player's money.
+*/
+//:://////////////////////////////////////////////
+//:: Created By: Lukas Kristjanson
+//:: Created On: October 15, 2002
+//:://////////////////////////////////////////////
+#include "k_inc_man"
+
+void main()
+{
+    SetQueedleGaveMoneyBackLocal(TRUE);
+}

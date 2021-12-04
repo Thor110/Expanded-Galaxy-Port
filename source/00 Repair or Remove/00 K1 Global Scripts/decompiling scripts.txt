@@ -1,0 +1,12 @@
+trick for decompiling scripts
+
+I can confirm that your appraisal was correct. At least with the two files I have tried so far.
+If I hex edit them and replace 03 00 00 7E 21 05 00 00 EF 01 with 05 00 0E 44 45 43 4F 4D 50 5F 52 45 50 4C 41 43 45
+(effectively replacing string RACE_DEFAULT = GetStringByStrRef(32289); with string TEST_REPLACE = "DECOMP_REPLACE";)
+then DeNCS decompiles them. Many thanks, this will open up a lot of previously closed doors.
+
+DarthParametric
+
+
+
+

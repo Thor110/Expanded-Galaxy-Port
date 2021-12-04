@@ -1,0 +1,2 @@
+blending additive
+bumpyshinytexture CM_LSF

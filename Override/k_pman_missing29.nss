@@ -1,0 +1,10 @@
+///////////////////////////////////////////////////////////////
+/*      k_pman_missing
+        returns trueif:
+        -Sasha is Alive */
+///////////////////////////////////////////////////////////////
+#include "k_inc_man"
+int StartingConditional()
+{
+    return GetIsSashaDead() == FALSE;
+}

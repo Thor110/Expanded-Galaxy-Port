@@ -1,0 +1,17 @@
+#MAXLAYOUT ASCII
+filedependancy M12ae.max
+beginlayout
+   roomcount 1
+	M12ae_01a 0.0 0.0 0.0
+   trackcount 7
+      M12ae_MGT01 0.0 0.0 0.0
+      M12ae_MGT02 0.0 0.0 0.0
+      M12ae_MGT03 0.0 0.0 0.0
+      M12ae_MGT04 0.0 0.0 0.0
+      M12ae_MGT05 0.0 0.0 0.0
+      M12ae_MGT06 0.0 0.0 0.0
+      M12ae_MGT07 0.0 0.0 0.0
+   obstaclecount 1
+      M12ae_MGO01 0.0 0.0 0.0
+   doorhookcount 0
+donelayout

@@ -1,0 +1,14 @@
+#MAXLAYOUT ASCII
+filedependancy M33ab.max
+beginlayout
+   roomcount 2
+      M33ab_01 48.3928 106.519 0.0
+      M33ab_02 66.5211 106.519 0.0
+   trackcount 0
+   obstaclecount 0
+   doorhookcount 4
+      M33ab_01 Door_04 0 83.4406 -3.63531 58.5084 -0.65276 0.0 0.0 0.757565
+      M33ab_01 Door_03 0 94.2048 -5.24404 58.5084 0.65276 0.0 0.0 -0.757565
+      M33ab_01 Door_02 0 -11.3663 3.21757 63.7154 0.707107 0.0 0.0 0.707107
+      M33ab_01 Door_01 0 6.21848 3.21757 63.7154 0.707107 0.0 0.0 0.707107
+donelayout

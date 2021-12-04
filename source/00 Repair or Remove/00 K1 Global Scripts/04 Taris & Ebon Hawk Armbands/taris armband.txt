@@ -1,0 +1,9 @@
+if ( tar_m02af && returndest )
+{
+  StartNewModule(returndest);
+}
+else
+{
+  SetGlobalString(returndest);
+  StartNewModule("tar_m02af");
+}

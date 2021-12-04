@@ -1,0 +1,17 @@
+//::///////////////////////////////////////////////
+//:: Conversation
+//:: k_pkas_enemyfac
+//:: Copyright (c) 2001 Bioware Corp.
+//:://////////////////////////////////////////////
+/*
+    The object changes to the hostile faction.
+*/
+//:://////////////////////////////////////////////
+//:: Created By: John Winski
+//:: Created On: July 30, 2002
+//:://////////////////////////////////////////////
+
+void main()
+{
+    ChangeToStandardFaction(OBJECT_SELF, STANDARD_FACTION_HOSTILE_1);
+}

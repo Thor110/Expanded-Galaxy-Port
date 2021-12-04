@@ -1,0 +1,12 @@
+#MAXLAYOUT ASCII
+filedependancy M02af.max
+beginlayout
+   roomcount 2
+      M02af_01a 75.0 150.0 0.0
+      M02af_02a 20.0 20.0 0.0
+   trackcount 0
+   obstaclecount 0
+   doorhookcount 2
+      M02af_01a door_06 0 90.7445 134.256 0.0 0.92388 0.0 0.0 0.382684
+      M02af_01a door_07 0 93.208 131.792 0.0 0.92388 0.0 0.0 0.382684
+donelayout

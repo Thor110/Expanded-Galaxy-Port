@@ -1,0 +1,9 @@
+#MAXLAYOUT ASCII
+filedependancy MQAtester.max
+beginlayout
+   roomcount 1
+      MQA_01A 5.0 5.0 0.0
+   trackcount 0
+   obstaclecount 0
+   doorhookcount 0
+donelayout

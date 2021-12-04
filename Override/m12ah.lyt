@@ -1,0 +1,17 @@
+#MAXLAYOUT ASCII
+filedependancy M12ah.max
+beginlayout
+   roomcount 1
+	M12ah_01a 0.0 0.0 0.0
+   trackcount 7
+      M12ah_MGT01 0.0 0.0 0.0
+      M12ah_MGT02 0.0 0.0 0.0
+      M12ah_MGT03 0.0 0.0 0.0
+      M12ah_MGT04 0.0 0.0 0.0
+      M12ah_MGT05 0.0 0.0 0.0
+      M12ah_MGT06 0.0 0.0 0.0
+      M12ah_MGT07 0.0 0.0 0.0
+   obstaclecount 1
+      M12ah_MGO01 0.0 0.0 0.0
+   doorhookcount 0
+donelayout

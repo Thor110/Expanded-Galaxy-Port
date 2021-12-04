@@ -1,0 +1,15 @@
+//::///////////////////////////////////////////////
+//:: k_ptar_sithpaper
+//:: Copyright (c) 2001 Bioware Corp.
+//:://////////////////////////////////////////////
+/*
+  checks if player has sith papers
+*/
+//:://////////////////////////////////////////////
+//:: Created By: Jason Booth
+//:: Created On: Oct. 8, 2002
+//:://////////////////////////////////////////////
+int StartingConditional()
+{
+  return(GetIsObjectValid(GetItemPossessedBy(GetFirstPC(),"ptar_sithpapers")));
+}
