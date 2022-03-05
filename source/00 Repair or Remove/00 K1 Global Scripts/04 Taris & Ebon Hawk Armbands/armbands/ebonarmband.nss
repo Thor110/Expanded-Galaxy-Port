@@ -15,7 +15,7 @@ void main() {
     }
     else
     {
-      ShowPartySelectionGUI("earmband", 0xFFFFFFFF, 0xFFFFFFFF);
+      ShowPartySelectionGUI("armband", 0xFFFFFFFF, 0xFFFFFFFF);
     }
   }
   else {
@@ -25,10 +25,16 @@ void main() {
     }
     else
     {
-      object oPC = GetFirstPC();
-      object object1 = GetNearestObject(OBJECT_TYPE_WAYPOINT, oPC, 1);
-      string string1 = GetTag(object1);
-      SetGlobalString("K_LAST_WAYPOINT", string1);
+      if(!GetIsObjectValid(GetObjectByTag("K_LAST_LOCATION")))
+      {
+        CreateObject(32,"g_lastlocal",GetLocation(GetFirstPC()),0);
+      }
+      else
+      {
+        DestroyObject(GetObjectByTag("K_LAST_LOCATION"),0.0,FALSE,0.0,0);
+        CreateObject(32,"g_lastlocal",GetLocation(GetFirstPC()),0);
+      }
+      SetGlobalString("K_LAST_WAYPOINT", "K_LAST_LOCATION");
       SetGlobalString("K_LAST_MODULE",GetModuleName()); 
       StartNewModule("ebo_m12aa");
     }

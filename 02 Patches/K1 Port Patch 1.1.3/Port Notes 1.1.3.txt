@@ -1,0 +1,1 @@
+ebon hawk and taris armbands now return you to the exact location from which you left.
