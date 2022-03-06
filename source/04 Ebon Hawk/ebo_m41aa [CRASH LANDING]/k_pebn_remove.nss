@@ -80,7 +80,7 @@ void sub1(string stringParam1, string stringParam2, object objectParam3) {
 }
 
 void main() {
-
+DestroyObject(GetObjectByTag("ebon_armband"));
 int nKOTOR = GetGlobalNumber("K_KOTOR_MASTER");
 if(nKOTOR == 60)
     {
