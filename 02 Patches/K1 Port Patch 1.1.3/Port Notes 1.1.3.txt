@@ -5,3 +5,6 @@ ebo_m41aa - Fixed an issue where the landing on the Starforge could loop forever
 stunt_44 - Fixed a cutscene that would break due to the original games model height differential scripts.
 
 sta_m45aa - some scripts cleaned up.
+
+stunt_55a - fixed a loop in the darkside ending cutscene of the game and spawned the player back on the Ebon Hawk.
+
