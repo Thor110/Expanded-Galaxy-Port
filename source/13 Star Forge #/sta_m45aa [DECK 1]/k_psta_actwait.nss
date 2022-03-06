@@ -1,32 +1,3 @@
-// Globals
-	int intGLOB_1 = 0;
-	int intGLOB_2 = 1;
-	int intGLOB_3 = 2;
-	int intGLOB_4 = 3;
-	int intGLOB_5 = 4;
-	int intGLOB_6 = 5;
-	int intGLOB_7 = 6;
-	int intGLOB_8 = 7;
-	int intGLOB_9 = 8;
-	int intGLOB_10 = 9;
-	int intGLOB_11 = 10;
-	int intGLOB_12 = 11;
-	int intGLOB_13 = 12;
-	int intGLOB_14 = 13;
-	int intGLOB_15 = 14;
-	int intGLOB_16 = 15;
-	int intGLOB_17 = 16;
-	int intGLOB_18 = 17;
-	int intGLOB_19 = 18;
-	int intGLOB_20 = 19;
-	int intGLOB_21 = 1100;
-	int intGLOB_22 = (-6);
-	int intGLOB_23 = (-5);
-	int intGLOB_24 = (-4);
-	int intGLOB_25 = (-2);
-	int intGLOB_26 = (-1);
-	int intGLOB_27 = 0;
-
 // Prototypes
 void sub5(location locationParam1, int intParam2);
 void sub4(object objectParam1, location locationParam2);
@@ -101,7 +72,7 @@ void main() {
 	location location3 = GetLocation(GetNearestObjectByTag("STA_MOVE1_WP", OBJECT_SELF, 1));
 	location location5 = GetLocation(GetNearestObjectByTag("STA_MOVE2_WP", OBJECT_SELF, 1));
 	sub1(5.6);
-	sub2(oNearestSTA_JUMP0_WP, oNearestSTA_JUMP1_WP, oNearestSTA_JUMP2_WP);
+	sub2(oNearestSTA_JUMP0_WP, oNearestSTA_JUMP1_WP, oNearestSTA_JUMP2_WP);// characters get stuck after cutscene from this?
 	DelayCommand(0.01, AssignCommand(oNPC, sub5(location1, 0)));
 	DelayCommand(0.02, AssignCommand(object3, sub5(location3, 0)));
 	DelayCommand(0.03, AssignCommand(object5, sub5(location5, 0)));

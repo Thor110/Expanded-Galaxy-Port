@@ -3,3 +3,5 @@ ebon hawk and taris armbands now return you to the exact location from which you
 ebo_m41aa - Fixed an issue where the landing on the Starforge could loop forever through the galaxy map.
 
 stunt_44 - Fixed a cutscene that would break due to the original games model height differential scripts.
+
+sta_m45aa - some scripts cleaned up.
