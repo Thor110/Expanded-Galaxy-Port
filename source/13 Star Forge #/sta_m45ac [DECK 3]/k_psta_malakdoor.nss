@@ -1,12 +1,3 @@
-// Prototypes
-void sub1(string stringParam1, int intParam2, int intParam3, float floatParam4);
-
-void sub1(string stringParam1, int intParam2, int intParam3, float floatParam4) {
-	if ((!ShipBuild())) {
-		AurPostString(stringParam1, intParam2, intParam3, floatParam4);
-	}
-}
-
 void main() {
 	location location1 = GetLocation(GetObjectByTag("STA_JUMP0_WP", 0));
 	location location3 = GetLocation(GetObjectByTag("sta_lastassoc_jump_wp", 0));
@@ -19,7 +10,6 @@ void main() {
 	ActionPauseConversation();
 	AssignCommand(oK45_door_malak, ActionOpenDoor(oK45_door_malak));
 	ActionWait(1.9);
-	sub1("First node.", 12, 12, 5.0);
 	ActionResumeConversation();
 	AssignCommand(oPC, ClearAllActions());
 	AssignCommand(oPC, JumpToLocation(location1));
