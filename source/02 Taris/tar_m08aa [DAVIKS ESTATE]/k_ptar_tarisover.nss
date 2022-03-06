@@ -63,7 +63,7 @@ void main() {
 
   //ActionTakeItem("taris_armband", GetFirstPC());
 
-DestroyObject(GetObjectByTag("taris_armband"));
+//DestroyObject(GetObjectByTag("taris_armband"));
 
   CreateItemOnObject("ebon_armband",GetFirstPC(),1,0);
 
