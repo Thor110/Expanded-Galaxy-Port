@@ -175,14 +175,19 @@ void sub1(string stringParam1, int intParam2, int intParam3, float floatParam4) 
 
 void main() {
 	int int1 = GetUserDefinedEventNumber();
+
+
 	if ((int1 == 1001)) {
 		if (((((GetObjectByTag("mission", 0) == OBJECT_INVALID) && (GetObjectByTag("zaalbar", 0) == OBJECT_INVALID)) && (GetGlobalNumber("G_FinalChoice") == 1)) && (IsAvailableCreature(6) == 0))) {
+
+if (GetGlobalNumber("GBL_GAME_COMPLETE")==0) {
 			sub1("both dead", 5, 5, 1.0);
 			SetPartyLeader((-1));
 			CancelCombat(GetFirstPC());
 			CancelCombat(GetObjectByTag("bastila", 0));
 			NoClicksFor(1.2);
 			DelayCommand(1.0, AssignCommand(GetObjectByTag("bastila", 0), ActionStartConversation(GetFirstPC(), "unk41_bastexit", 0, 0, 1, "", "", "", "", "", "")));
+}
 		}
 	}
 	else {
