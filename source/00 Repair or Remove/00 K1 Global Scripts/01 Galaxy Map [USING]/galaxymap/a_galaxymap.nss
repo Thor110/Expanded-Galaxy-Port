@@ -114,6 +114,9 @@ void main() {
             //SetPlanetSelectable(PLANET_NAR_SHADDAA, TRUE);
             SetPlanetAvailable(PLANET_TELOS, FALSE);//UNKNOWN WORLD
             SetPlanetSelectable(PLANET_TELOS, FALSE);
+            if (GetGlobalBoolean("MAN_EXILED")) {
+              SetPlanetSelectable(PLANET_LIVE_05, FALSE);
+            }
       if (nMaps >= 40 && kCapt >= 10)
       {
         //SetPlanetAvailable(PLANET_DANTOOINE, FALSE);
