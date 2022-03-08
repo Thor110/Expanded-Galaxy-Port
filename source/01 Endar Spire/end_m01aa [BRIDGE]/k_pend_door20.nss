@@ -358,7 +358,7 @@ void main() {
 					DelayCommand(12.0, sub10("wp_end_bridgeexp2", 0, 0));
           SetGlobalNumber("End_TraskTalk", 12);
           //object oPC = GetFirstPC();
-          AddMultiClass(CLASS_TYPE_JEDIMASTER, GetFirstPC());
+          //AddMultiClass(CLASS_TYPE_JEDIMASTER, GetFirstPC());
 					//SetLocked(OBJECT_SELF, 0);
 					//ActionOpenDoor(OBJECT_SELF);
 					sub8(intGLOB_175);
