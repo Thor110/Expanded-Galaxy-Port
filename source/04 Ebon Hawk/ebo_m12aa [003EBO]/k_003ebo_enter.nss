@@ -224,8 +224,8 @@ void DoCutscenes() {
 // ST: Determine which cutscene to trigger.
 // ---------------------------------------------------------------
 void TriggerCutscenes() {
-    SetGlobalFadeOut();
-    SetFadeUntilScript();
+    //SetGlobalFadeOut();//
+    //SetFadeUntilScript();
     
     int nScene;
     

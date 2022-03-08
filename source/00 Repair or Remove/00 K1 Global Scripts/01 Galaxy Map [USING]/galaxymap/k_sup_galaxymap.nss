@@ -229,8 +229,12 @@ void main()
             SetGlobalNumber("003EBO_RETURN_DEST",6);
             SetGlobalNumber("003EBO_BACKGROUND",6);
 
-            QueueMovie("05_7a");//K1 Movie? 05_7a?KorMov01
             SetGlobalNumber("K_CURRENT_PLANET",30);
+            if(GetGlobalBoolean("k_vis_korriban") == FALSE)
+            {
+                QueueMovie("0d");
+            }
+            QueueMovie("05_7a");//K1 Movie? 05_7a?KorMov01
         }break;
         case PLANET_M4_78://9//M478
         {
@@ -254,8 +258,12 @@ void main()
             SetGlobalNumber("003EBO_RETURN_DEST",11);
             SetGlobalNumber("003EBO_BACKGROUND",11);// background check fires different planet exit
 
-            QueueMovie("05_4a");
             SetGlobalNumber("K_CURRENT_PLANET",20);
+            if(GetGlobalBoolean("k_vis_korriban") == FALSE)
+            {
+                QueueMovie("0c");
+            }
+            QueueMovie("05_4a");
         }break;
         case PLANET_LIVE_02://12//Coruscant
         {
@@ -277,15 +285,23 @@ void main()
             SetGlobalNumber("003EBO_RETURN_DEST",14);
             SetGlobalNumber("003EBO_BACKGROUND",14);
 
-            QueueMovie("05_3a");
             SetGlobalNumber("K_CURRENT_PLANET",35);
+            if(GetGlobalBoolean("k_vis_tatooine") == FALSE)
+            {
+              QueueMovie("0a");
+            }
+            QueueMovie("05_3a");
         }break;
         case PLANET_LIVE_05://15//Manaan
         {
             SetGlobalNumber("003EBO_RETURN_DEST",15);
             SetGlobalNumber("003EBO_BACKGROUND",15);
-            QueueMovie("05_5a");
             SetGlobalNumber("K_CURRENT_PLANET",25);
+            if(GetGlobalBoolean("k_vis_korriban") == FALSE)
+            {
+                QueueMovie("0b");
+            }
+            QueueMovie("05_5a");
         }break;
         case PLANET_EBON_HAWK://16//Malachor V?.!
         {
