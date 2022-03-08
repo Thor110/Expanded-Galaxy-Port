@@ -166,7 +166,7 @@ void main()
 
             // need to check where we are landing
             QueueMovie("KorMov01");
-			SetGlobalNumber("K_CURRENT_PLANET",30);
+            SetGlobalNumber("K_CURRENT_PLANET",30);//peragus???korriban???
         }break;
         case 10://2//Telos : Citadel Station // extra case 0-16 exist and LIVE_PLANET_06 would be further extra
         {
@@ -183,7 +183,7 @@ void main()
 
             // need to check where we are landing
             QueueMovie("05_8a");
-			SetGlobalNumber("K_CURRENT_PLANET",45);
+            SetGlobalNumber("K_CURRENT_PLANET",45);
         }break;
         case PLANET_NAR_SHADDAA://4//Nar Shaddaa
         {
@@ -222,7 +222,7 @@ void main()
             SetGlobalNumber("003EBO_BACKGROUND",5);
 
             QueueMovie("05_2a");
-			SetGlobalNumber("K_CURRENT_PLANET",15);
+            SetGlobalNumber("K_CURRENT_PLANET",15);
         }break;
         case PLANET_KORRIBAN://8//Korriban
         {
@@ -230,6 +230,7 @@ void main()
             SetGlobalNumber("003EBO_BACKGROUND",6);
 
             QueueMovie("05_7a");//K1 Movie? 05_7a?KorMov01
+            SetGlobalNumber("K_CURRENT_PLANET",30);
         }break;
         case PLANET_M4_78://9//M478
         {
@@ -254,7 +255,7 @@ void main()
             SetGlobalNumber("003EBO_BACKGROUND",11);// background check fires different planet exit
 
             QueueMovie("05_4a");
-			SetGlobalNumber("K_CURRENT_PLANET",20);
+            SetGlobalNumber("K_CURRENT_PLANET",20);
         }break;
         case PLANET_LIVE_02://12//Coruscant
         {
@@ -277,14 +278,14 @@ void main()
             SetGlobalNumber("003EBO_BACKGROUND",14);
 
             QueueMovie("05_3a");
-			SetGlobalNumber("K_CURRENT_PLANET",35);
+            SetGlobalNumber("K_CURRENT_PLANET",35);
         }break;
         case PLANET_LIVE_05://15//Manaan
         {
             SetGlobalNumber("003EBO_RETURN_DEST",15);
             SetGlobalNumber("003EBO_BACKGROUND",15);
             QueueMovie("05_5a");
-			SetGlobalNumber("K_CURRENT_PLANET",25);
+            SetGlobalNumber("K_CURRENT_PLANET",25);
         }break;
         case PLANET_EBON_HAWK://16//Malachor V?.!
         {
