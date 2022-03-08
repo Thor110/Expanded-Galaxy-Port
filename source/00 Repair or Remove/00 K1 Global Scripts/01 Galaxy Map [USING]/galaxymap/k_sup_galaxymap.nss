@@ -124,7 +124,7 @@ void main()
         {
             QueueMovie("05_5c");
             QueueMovie("08");//HypMov01
-            //}
+            //Add Previous Planet K_PREVIOUS_PLANET here
         }break;
     }
 }
@@ -164,9 +164,9 @@ void main()
             SetGlobalNumber("003EBO_RETURN_DEST",0);//
             SetGlobalNumber("003EBO_BACKGROUND",0);//2
 
+            SetGlobalNumber("K_CURRENT_PLANET",10);// set accordingly
             // need to check where we are landing
             QueueMovie("KorMov01");
-            SetGlobalNumber("K_CURRENT_PLANET",30);//peragus???korriban???
         }break;
         case 10://2//Telos : Citadel Station // extra case 0-16 exist and LIVE_PLANET_06 would be further extra
         {
@@ -174,6 +174,7 @@ void main()
             SetGlobalNumber("003EBO_BACKGROUND",1);
 
             // need to check where we are landing
+            SetGlobalNumber("K_CURRENT_PLANET",60);// set accordingly
             QueueMovie("TelMov01");
         }break;
         case PLANET_TELOS://3//Unknown World : Lehon
@@ -190,6 +191,7 @@ void main()
             SetGlobalNumber("003EBO_RETURN_DEST",3);
             SetGlobalNumber("003EBO_BACKGROUND",3);
 
+            SetGlobalNumber("K_CURRENT_PLANET",65);// set accordingly
             //if(GetGlobalBoolean("301_FIRST_ENTER"))//only que this movie if we have been here before
             QueueMovie("NarMov01");
         }break;
@@ -199,6 +201,7 @@ void main()
             SetGlobalNumber("003EBO_RETURN_DEST",4);
             SetGlobalNumber("003EBO_BACKGROUND",4);
 
+            SetGlobalNumber("K_CURRENT_PLANET",70);// set accordingly
             QueueMovie("OndMov03");
         }break;
         case PLANET_ONDERON://6//Dxun ?.!
@@ -207,6 +210,7 @@ void main()
             SetGlobalNumber("003EBO_RETURN_DEST",4);
             SetGlobalNumber("003EBO_BACKGROUND",4);
 
+            SetGlobalNumber("K_CURRENT_PLANET",75);// set accordingly
             //first time going to onderon?
             /*if( (GetGlobalNumber("401DXN_Visited") == 0) && (GetGlobalNumber("401DXN_STARTED") == 0) )
             {
@@ -241,6 +245,7 @@ void main()
             SetGlobalNumber("003EBO_RETURN_DEST",7);
             SetGlobalNumber("003EBO_BACKGROUND",7);
 
+            SetGlobalNumber("K_CURRENT_PLANET",80);// set accordingly
             QueueMovie("DroMov02");
         }break;
         case PLANET_MALACHOR_V://10//Yavin Station or Malachor V?.!
@@ -251,6 +256,7 @@ void main()
             SetGlobalNumber("003EBO_RETURN_DEST",9);//8 originally - exit destination case
             SetGlobalNumber("003EBO_BACKGROUND",8);//4 is dxun - background and return planet icon case
                                                 // alternating 8 for space background and 9 for return destination
+            SetGlobalNumber("K_CURRENT_PLANET",55);// set accordingly
             QueueMovie("LIVE_1a");//
         }break;
         case PLANET_LIVE_01://11//Kashyyyk
@@ -270,6 +276,7 @@ void main()
             SetGlobalNumber("003EBO_RETURN_DEST",12);
             SetGlobalNumber("003EBO_BACKGROUND",12);
           
+            SetGlobalNumber("K_CURRENT_PLANET",85);// set accordingly
             //Coruscant No Movie
             QueueMovie("NarMov01");
         }break;
@@ -278,6 +285,7 @@ void main()
             SetGlobalNumber("003EBO_RETURN_DEST",13);
             SetGlobalNumber("003EBO_BACKGROUND",13);
 
+            SetGlobalNumber("K_CURRENT_PLANET",55);// set accordingly
             QueueMovie("LIVE_1a");
         }break;
         case PLANET_LIVE_04://14//Tatooine
@@ -307,12 +315,14 @@ void main()
         {
             SetGlobalNumber("003EBO_RETURN_DEST",8);
             SetGlobalNumber("003EBO_BACKGROUND",10);
+            SetGlobalNumber("K_CURRENT_PLANET",90);// set accordingly
         }break;
         case PLANET_HARBINGER://17//Harbinger?.!
         {
             //SetGlobalNumber("003EBO_RETURN_DEST",15);
             //SetGlobalNumber("003EBO_BACKGROUND",15);
 
+            //SetGlobalNumber("K_CURRENT_PLANET",95);// set accordingly
             //QueueMovie("KasMov01");//
             // case 15 is used for PLANET_LIVE_05
         }break;
