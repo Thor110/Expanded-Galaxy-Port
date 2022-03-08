@@ -33,7 +33,7 @@ int sub1() {
 			return 4;
 			break;
 		case 8: //
-			return 5;//5 = extra planet ///////
+			return 2;//5 = Taris ///////The returned value matches the 2DA Rows
 			break;
 		case 9: // malachor / onderon ?
 			return 7;//9

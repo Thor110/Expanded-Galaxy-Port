@@ -55,7 +55,7 @@ void main()
             QueueMovie("TelMov02");
             QueueMovie("08");
         }break;
-        case 2://New Yavin
+        case 2://Unknown World
         {
             QueueMovie("05_8c");
             QueueMovie("08");
@@ -87,7 +87,7 @@ void main()
         }break;
         case 8://
         {
-            QueueMovie("Live_1c");
+            //QueueMovie("Live_1c");
             QueueMovie("08");
         }break;
         case 9://901MAL // new planet 02?
