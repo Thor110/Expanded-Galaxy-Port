@@ -1,3 +1,4 @@
+/*
 struct structtype1 {
 	int int1;
 	int int3;
@@ -273,7 +274,9 @@ string sub6(object objectParam1);
 void sub5(string stringParam1);
 void sub4(object objectParam1);
 void sub3(int intParam1, int intParam2);
+*/
 void sub2(float floatParam1);
+/*
 object sub1();
 
 void sub80(string stringParam1, int intParam2, int intParam3, float floatParam4) {
@@ -3474,16 +3477,16 @@ void sub4(object objectParam1) {
 void sub3(int intParam1, int intParam2) {
 	SetLocalBoolean(OBJECT_SELF, intParam1, intParam2);
 }
-
+*/
 void sub2(float floatParam1) {
 	ActionPauseConversation();
 	DelayCommand(floatParam1, ActionResumeConversation());
 }
-
+/*
 object sub1() {
 	return GetObjectByTag(stringGLOB_1, 0);
 }
-
+*/
 void main() {
 	object oEnd_cut2_sith4 = GetObjectByTag("end_cut2_sith4", 0);
 	object oEnd_cut2_sith2 = GetObjectByTag("end_cut2_sith2", 0);
@@ -3496,7 +3499,7 @@ void main() {
 	object oEnd_invis_grenade = GetObjectByTag("end_invis_grenade", 0);
 	talent talSpell = TalentSpell(87);
 	location location1 = GetLocation(GetObjectByTag("end_grenade", 0));
-	object object20 = sub1();
+	//object object20 = sub1();
 	object oPC = GetFirstPC();
 	sub2(6.0);
 	DelayCommand(2.0, AssignCommand(oEnd_cut2_sith3, ClearAllActions()));
@@ -3521,11 +3524,11 @@ void main() {
 	DelayCommand(6.0, SetMinOneHP(oEnd_cut2_sith4, 0));
 	DelayCommand(6.0, SetMinOneHP(oEnd_cut2_sith1, 0));
 	DelayCommand(6.0, SetMinOneHP(object9, 0));
-	DelayCommand(6.0, AssignCommand(oEnd_cut2_sith1, sub3(intGLOB_130, 0)));
-	DelayCommand(6.0, AssignCommand(oEnd_cut2_sith4, sub3(intGLOB_130, 0)));
-	DelayCommand(6.0, AssignCommand(object9, sub3(intGLOB_130, 0)));
-	DelayCommand(6.1, AssignCommand(oEnd_cut2_sith4, sub4(oPC)));
-	DelayCommand(6.1, AssignCommand(oEnd_cut2_sith1, sub4(oPC)));
-	DelayCommand(6.1, AssignCommand(object9, sub4(object20)));
+	//DelayCommand(6.0, AssignCommand(oEnd_cut2_sith1, sub3(intGLOB_130, 0)));
+	//DelayCommand(6.0, AssignCommand(oEnd_cut2_sith4, sub3(intGLOB_130, 0)));
+	//DelayCommand(6.0, AssignCommand(object9, sub3(intGLOB_130, 0)));
+	//DelayCommand(6.1, AssignCommand(oEnd_cut2_sith4, sub4(oPC)));
+	//DelayCommand(6.1, AssignCommand(oEnd_cut2_sith1, sub4(oPC)));
+	//DelayCommand(6.1, AssignCommand(object9, sub4(object20)));
 }
 
