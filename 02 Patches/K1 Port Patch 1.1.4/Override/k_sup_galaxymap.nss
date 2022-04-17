@@ -287,6 +287,7 @@ void main()
             if(GetGlobalBoolean("k_vis_korriban") == FALSE)
             {
                 QueueMovie("0d");
+                //StartNewModule("stunt00");
             }
             QueueMovie("05_7a");//K1 Movie? 05_7a?KorMov01
         }break;
@@ -318,6 +319,7 @@ void main()
             if(GetGlobalBoolean("k_vis_korriban") == FALSE)
             {
                 QueueMovie("0c");
+                //StartNewModule("stunt00");
             }
             QueueMovie("05_4a");
         }break;
@@ -347,6 +349,7 @@ void main()
             if(GetGlobalBoolean("k_vis_tatooine") == FALSE)
             {
               QueueMovie("0a");
+              //StartNewModule("stunt00");
             }
             QueueMovie("05_3a");
         }break;
@@ -358,6 +361,7 @@ void main()
             if(GetGlobalBoolean("k_vis_korriban") == FALSE)
             {
                 QueueMovie("0b");
+                //StartNewModule("stunt00");
             }
             QueueMovie("05_5a");
         }break;
