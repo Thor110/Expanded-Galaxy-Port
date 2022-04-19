@@ -11,6 +11,6 @@
 void main()
 {
     //ST_PlayStarForgeLanding();
-    StartNewModule("ebo_m41aa", "", "43");
     SetGlobalNumber("K_CURRENT_PLANET", 50);
+    StartNewModule("ebo_m41aa", "", "43");
 }
