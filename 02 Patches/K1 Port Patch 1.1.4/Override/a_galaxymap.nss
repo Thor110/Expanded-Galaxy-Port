@@ -98,20 +98,20 @@ void main() {
             SetPlanetSelectable(PLANET_HARBINGER, FALSE);    
             //SetPlanetAvailable(PLANET_MALACHOR_V, TRUE);//TARIS IS DESTROYED
             SetPlanetSelectable(PLANET_MALACHOR_V, FALSE);//THEREFORE NOT SELECTABLE
-            SetPlanetAvailable(PLANET_M4_78, FALSE);//M4-78
-            SetPlanetSelectable(PLANET_M4_78, FALSE);
+            SetPlanetAvailable(PLANET_M4_78, TRUE);//M4-78
+            SetPlanetSelectable(PLANET_M4_78, TRUE);
             SetPlanetAvailable(PLANET_EBON_HAWK, FALSE);//MALACHOR V IS OFF FOR NOW
             SetPlanetSelectable(PLANET_EBON_HAWK, FALSE);
             //SetPlanetAvailable(PLANET_DANTOOINE, TRUE);//DANTOOINE
             //SetPlanetSelectable(PLANET_DANTOOINE, TRUE);
             SetPlanetAvailable(PLANET_ONDERON, FALSE);//ONDERON IS OFF FOR NOW
             SetPlanetSelectable(PLANET_ONDERON, FALSE);
-            SetPlanetAvailable(PLANET_DXUN, FALSE);//DXUN
-            SetPlanetSelectable(PLANET_DXUN, FALSE);
+            SetPlanetAvailable(PLANET_DXUN, TRUE);//DXUN
+            SetPlanetSelectable(PLANET_DXUN, TRUE);
             //SetPlanetAvailable(PLANET_KORRIBAN, TRUE);//KORRIBAN
             //SetPlanetSelectable(PLANET_KORRIBAN, TRUE);
-            SetPlanetAvailable(PLANET_NAR_SHADDAA, FALSE);//NAR SHADDAA
-            SetPlanetSelectable(PLANET_NAR_SHADDAA, FALSE);
+            SetPlanetAvailable(PLANET_NAR_SHADDAA, TRUE);//NAR SHADDAA
+            SetPlanetSelectable(PLANET_NAR_SHADDAA, TRUE);
             SetPlanetAvailable(PLANET_TELOS, FALSE);//UNKNOWN WORLD
             SetPlanetSelectable(PLANET_TELOS, FALSE);
             if (GetGlobalBoolean("MAN_EXILED")) {
