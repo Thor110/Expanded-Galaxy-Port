@@ -100,6 +100,7 @@ void main() {
 		DelayCommand(0.5, AssignCommand(oSta_bastila, JumpToLocation(GetLocation(GetObjectByTag("STA_BAST_JUMP", 0)))));
 		DelayCommand(0.8, AssignCommand(oSta_bastila, SignalEvent(OBJECT_SELF, EventUserDefined(8888))));
 		DelayCommand(1.0, sub4());
+    ActionUnlockObject(GetObjectByTag("k45_door_bast2"));
 	}
 }
 
