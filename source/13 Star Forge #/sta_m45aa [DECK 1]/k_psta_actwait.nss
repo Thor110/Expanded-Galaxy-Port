@@ -6,9 +6,10 @@ void sub2(object objectParam1, object objectParam2, object objectParam3);
 void sub1(float floatParam1);
 
 void sub5(location locationParam1, int intParam2) {
-	ActionForceMoveToLocation(locationParam1, intParam2, 30.0);
-	ActionDoCommand(SetCommandable(1, OBJECT_SELF));
-	SetCommandable(0, OBJECT_SELF);
+	//ActionForceMoveToLocation(locationParam1, intParam2, 30.0);
+  ActionMoveToLocation(locationParam1,0);
+	//ActionDoCommand(SetCommandable(1, OBJECT_SELF));
+	//SetCommandable(0, OBJECT_SELF);
 }
 
 void sub4(object objectParam1, location locationParam2) {
@@ -72,7 +73,7 @@ void main() {
 	location location3 = GetLocation(GetNearestObjectByTag("STA_MOVE1_WP", OBJECT_SELF, 1));
 	location location5 = GetLocation(GetNearestObjectByTag("STA_MOVE2_WP", OBJECT_SELF, 1));
 	sub1(5.6);
-	sub2(oNearestSTA_JUMP0_WP, oNearestSTA_JUMP1_WP, oNearestSTA_JUMP2_WP);// characters get stuck after cutscene from this?
+	//sub2(oNearestSTA_JUMP0_WP, oNearestSTA_JUMP1_WP, oNearestSTA_JUMP2_WP);// characters get stuck after cutscene from this?
 	DelayCommand(0.01, AssignCommand(oNPC, sub5(location1, 0)));
 	DelayCommand(0.02, AssignCommand(object3, sub5(location3, 0)));
 	DelayCommand(0.03, AssignCommand(object5, sub5(location5, 0)));

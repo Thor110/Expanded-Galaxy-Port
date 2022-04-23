@@ -1,3 +1,4 @@
+/*
 void sub2() {
 	object oNPC = GetPartyMemberByIndex(0);
 	object object3 = GetPartyMemberByIndex(1);
@@ -19,7 +20,7 @@ void sub2() {
 		//DelayCommand(0.3, AssignCommand(object5, SetFacing(GetFacing(objectParam3))));
 	}
 }
-
+*/
 void main() {
 	object object1 = OBJECT_SELF;
 	object oSta45a_sta45d = GetObjectByTag("sta45a_sta45d", 0);
