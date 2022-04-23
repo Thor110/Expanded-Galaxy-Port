@@ -68,6 +68,11 @@ void main() {
 		}
 		AurPostString("Spawning Mission", 12, 21, 1.0);
 		SpawnAvailableNPC(6, GetLocation(GetObjectByTag("WP09", 0)));
+		if ((IsAvailableCreature(9) == 0)) {
+			AddAvailableNPCByTemplate(9, "kor39_yuthura");
+		}
+		AurPostString("Spawning Yuthura", 12, 21, 1.0);
+		SpawnAvailableNPC(9, GetLocation(GetObjectByTag("WP10", 0)));
 		AssignCommand(GetFirstPC(), ClearAllEffects());
 		sub1("Bastila");
 		sub1("Carth");
@@ -78,6 +83,7 @@ void main() {
 		sub1("Mission");
 		sub1("Zaalbar");
 		sub1("Juhani");
+		sub1("kor39_yuthura");
 		AssignCommand(GetObjectByTag("CutStart", 0), ActionStartConversation(GetFirstPC(), "m41ad_c01", 0, 0, 1, string1, string2, string3, string4, "", "", 0));
 		SetGlobalBoolean("CREDITPLAY", 0);
 	}
