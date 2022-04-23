@@ -174,6 +174,7 @@ void main() {
 	object oKas23_chuunda_01 = GetObjectByTag("kas23_chuunda_01", 0);
 	if (((((sub1(oKas23_chuunda_01) == 0) || (sub2() == 1)) || (sub3() == 1)) && GetIsPC(oEntering))) {
 		AssignCommand(oKas23_chuunda_01, ActionStartConversation(oEntering, "", 0, 0, 1, "", "", "", "", "", ""));
+    DestroyObject(OBJECT_SELF);
 	}
 }
 
