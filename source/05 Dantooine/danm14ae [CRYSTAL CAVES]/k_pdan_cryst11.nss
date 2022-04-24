@@ -215,7 +215,7 @@ int sub1() {
 
 void main() {
 	if (sub1()) {
-		CreateItemOnObject("g_w_sbrcrstl11", GetFirstPC(), 1);
+		CreateItemOnObject("u_l_crys_08", GetFirstPC(), 1);
 		ActionStartConversation(GetFirstPC(), "", 0, 0, 0, "", "", "", "", "", "");
 		DestroyObject(OBJECT_SELF, 3.0, 0, 0.0);
 	}
