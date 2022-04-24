@@ -9,7 +9,7 @@ void sub1(object objectParam1, location locationParam2) {
 		ApplyEffectToObject(0, EffectResurrection(), objectParam1, 0.0);
 		ApplyEffectToObject(0, EffectHeal(1), objectParam1, 0.0);
 	}
-	SetCommandable(1, objectParam1);
+	//SetCommandable(1, objectParam1);
 	AssignCommand(objectParam1, ClearAllActions());
 	AssignCommand(objectParam1, ActionJumpToLocation(locationParam2));
 }
@@ -21,7 +21,7 @@ void main() {
 	SetGlobalFadeIn(1.0, 1.0, 0.0, 0.0, 0.0);
 	//SetLocked(OBJECT_SELF, 0);
 	ChangeToStandardFaction(oTar05_stampy, 5);
-	AssignCommand(oTar05_stampy, ClearAllActions());
+	//AssignCommand(oTar05_stampy, ClearAllActions());
   AssignCommand(oTar05_stampy, ActionMoveToObject(GetObjectByTag("tar05_wppile", 0), 0, 1.0));
 	int1 = 0;
 	while ((int1 < GetPartyMemberCount())) {
