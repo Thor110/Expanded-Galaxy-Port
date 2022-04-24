@@ -1,4 +1,4 @@
-/*
+
 void sub2() {
 	object oNPC = GetPartyMemberByIndex(0);
 	object object3 = GetPartyMemberByIndex(1);
@@ -20,7 +20,7 @@ void sub2() {
 		//DelayCommand(0.3, AssignCommand(object5, SetFacing(GetFacing(objectParam3))));
 	}
 }
-*/
+
 void main() {
 	object object1 = OBJECT_SELF;
 	object oSta45a_sta45d = GetObjectByTag("sta45a_sta45d", 0);
@@ -43,7 +43,7 @@ void main() {
 	ActionEquipMostDamagingMelee(OBJECT_INVALID, 0);
 	DelayCommand(0.5, ActionAttack(oSta45a_Sith01, 0));
 	DelayCommand(0.5, AssignCommand(oSta45a_Sith01, ActionAttack(object1, 0)));
-	//sub2();
+	sub2();
   //object oPC=GetFirstPC();
   //string cmMessage = IntToString(GetGlobalNumber("351NAR_G0T0_Ship"));
   //string combined = "Testing"/*+cmMessage*/;

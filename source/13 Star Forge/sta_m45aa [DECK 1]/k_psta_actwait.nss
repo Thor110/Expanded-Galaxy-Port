@@ -73,9 +73,12 @@ void main() {
 	location location3 = GetLocation(GetNearestObjectByTag("STA_MOVE1_WP", OBJECT_SELF, 1));
 	location location5 = GetLocation(GetNearestObjectByTag("STA_MOVE2_WP", OBJECT_SELF, 1));
 	sub1(5.6);
-	//sub2(oNearestSTA_JUMP0_WP, oNearestSTA_JUMP1_WP, oNearestSTA_JUMP2_WP);// characters get stuck after cutscene from this?
+	sub2(oNearestSTA_JUMP0_WP, oNearestSTA_JUMP1_WP, oNearestSTA_JUMP2_WP);// characters get stuck after cutscene from this?
 	DelayCommand(0.01, AssignCommand(oNPC, sub5(location1, 0)));
 	DelayCommand(0.02, AssignCommand(object3, sub5(location3, 0)));
 	DelayCommand(0.03, AssignCommand(object5, sub5(location5, 0)));
+  //DelayCommand(10.4, AssignCommand(oNPC, ClearAllActions()));
+  //DelayCommand(10.4, AssignCommand(object3, ClearAllActions()));
+  //DelayCommand(10.4, AssignCommand(object5, ClearAllActions()));
 }
 
