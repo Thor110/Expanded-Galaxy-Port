@@ -69,6 +69,101 @@ void DoPlanetChange()
   PlayMovieQueue();//BastilaConversation();
 }
 
+void LoadVision()
+{
+  if(GetGlobalNumber("K_FUTURE_PLANET") == 3)
+  {
+    if(GetGlobalBoolean("k_vis_korriban") == FALSE)
+    {
+      StartNewModule("stunt_00","","08");//,"","0d"
+    }
+    else
+    {
+      QueueMovie("08");//,"","0c"
+    }
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 11)
+  {
+    if(GetGlobalBoolean("k_vis_kashyyyk") == FALSE)
+    {
+      StartNewModule("stunt_00","","08");//,"","0c"
+    }
+    else
+    {
+      QueueMovie("08");//,"","0c"
+    }
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 14)
+  {
+    if(GetGlobalBoolean("k_vis_tatooine") == FALSE)
+    {
+      StartNewModule("stunt_00","","08");//,"","0a"
+    }
+    else
+    {
+      QueueMovie("08");//,"","0c"
+    }
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 15)
+  {
+    if(GetGlobalBoolean("k_vis_manaan") == FALSE)
+    {
+      StartNewModule("stunt_00","","08");
+    }
+    else
+    {
+      QueueMovie("08");//,"","0c"
+    }
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 1)
+  {
+    QueueMovie("08");
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 2)
+  {
+    QueueMovie("08");
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 4)
+  {
+    QueueMovie("08");
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 5)
+  {
+    QueueMovie("08");
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 6)
+  {
+    QueueMovie("08");
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 7)
+  {
+    QueueMovie("08");
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 8)
+  {
+    QueueMovie("08");
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 9)
+  {
+    QueueMovie("08");
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 10)
+  {
+    QueueMovie("08");
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 12)
+  {
+    QueueMovie("08");
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 13)
+  {
+    QueueMovie("08");
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 16)
+  {
+    QueueMovie("08");
+  }
+}
 void main()
 {
   int nSelected = GetSelectedPlanet();
@@ -96,54 +191,63 @@ void main()
     {
         case 0://106PER
         {
-            QueueMovie("KorMov02");
-            QueueMovie("08");
-			
+            PlayMovie("KorMov02");
+            //QueueMovie("08");
+            LoadVision();
         }break;
         case 1://201TEL
         {
-            QueueMovie("TelMov02");
-            QueueMovie("08");
+            PlayMovie("TelMov02");
+            //QueueMovie("08");
+            LoadVision();
         }break;
         case 2://Unknown World
         {
-            QueueMovie("05_8c");
-            QueueMovie("08");
+            PlayMovie("05_8c");
+            //QueueMovie("08");
+            LoadVision();
         }break;
         case 3://301NAR
         {
-            QueueMovie("NarMov02");
-            QueueMovie("08");
+            PlayMovie("NarMov02");
+            //QueueMovie("08");
+            LoadVision();
         }break;
         case 4://401DXN
         {
-            QueueMovie("OndMov04");
-            QueueMovie("08");
+            PlayMovie("OndMov04");
+            //QueueMovie("08");
+            LoadVision();
         }break;
         case 5://601DAN
         {
-            QueueMovie("05_2c");//
-            QueueMovie("08");
+            PlayMovie("05_2c");//
+            //QueueMovie("08");
+            LoadVision();
         }break;
         case 6://701KOR
         {
-            QueueMovie("05_7c");//K1 Movie?05_7c/KorMov02
-            QueueMovie("08");
+            PlayMovie("05_7c");//K1 Movie?05_7c/KorMov02
+            //QueueMovie("08");
+            LoadVision();
         }break;
         case 7://801DRO
         {
-            QueueMovie("DroMov04");
-            QueueMovie("08");
+            PlayMovie("DroMov04");
+            //QueueMovie("08");
+            LoadVision();
         }break;
         case 8://
         {
             //QueueMovie("Live_1c");
-            QueueMovie("08");
+            //QueueMovie("08");
+            LoadVision();
         }break;
         case 9://901MAL // new planet 02?
         {
-            QueueMovie("Live_1c");
-            QueueMovie("08");
+            PlayMovie("Live_1c");
+            //QueueMovie("08");
+            LoadVision();
         }break;
         case 10://Hyperspace // new planet 03?
         {
@@ -152,32 +256,37 @@ void main()
         }break;
         case 11: //KASHYYK
         {
-            QueueMovie("05_4c");
-            QueueMovie("08");
+            PlayMovie("05_4c");
+            //QueueMovie("08");
+            LoadVision();
         }break;
         case 12: //954COR
         {
-            QueueMovie("NarMov02");
-            QueueMovie("08");
+            PlayMovie("NarMov02");
+            //QueueMovie("08");
+            LoadVision();
         }break;
         case 13: //YAVIN
         {
-            QueueMovie("Live_1c");
-            QueueMovie("08");
+            PlayMovie("Live_1c");
+            //QueueMovie("08");
+            LoadVision();
         }break;
         case 14: //TATOOINE
         {
-            QueueMovie("05_3c");
-            QueueMovie("08");
+            PlayMovie("05_3c");
+            //QueueMovie("08");
+            LoadVision();
         }break;
         case 15: //MANAAN
         {
-            QueueMovie("05_5c");
-            QueueMovie("08");//HypMov01
+            PlayMovie("05_5c");
+            //QueueMovie("08");//HypMov01
+            LoadVision();
             //Add Previous Planet K_PREVIOUS_PLANET here
         }break;
+      }
     }
-}
 
     int nPlanet = nSelected;
     int nMain = GetGlobalNumber("K_KOTOR_MASTER");
@@ -286,10 +395,13 @@ void main()
             SetGlobalNumber("K_CURRENT_PLANET",30);
             if(GetGlobalBoolean("k_vis_korriban") == FALSE)
             {
-                QueueMovie("0d");
-                //StartNewModule("stunt00");
+                //QueueMovie("0d");
+                //StartNewModule("stunt_00");//,"","0d"
             }
-            QueueMovie("05_7a");//K1 Movie? 05_7a?KorMov01
+            else
+            {
+              QueueMovie("05_7a");//K1 Movie? 05_7a?KorMov01
+            }
         }break;
         case PLANET_M4_78://9//M478
         {
@@ -316,12 +428,15 @@ void main()
             SetGlobalNumber("003EBO_BACKGROUND",11);// background check fires different planet exit
 
             SetGlobalNumber("K_CURRENT_PLANET",20);
-            if(GetGlobalBoolean("k_vis_korriban") == FALSE)
+            if(GetGlobalBoolean("k_vis_kashyyyk") == FALSE)
             {
-                QueueMovie("0c");
-                //StartNewModule("stunt00");
+                //QueueMovie("0c");
+                //StartNewModule("stunt_00");//,"","0c"
             }
-            QueueMovie("05_4a");
+            else
+            {
+              QueueMovie("05_4a");
+            }
         }break;
         case PLANET_LIVE_02://12//Coruscant
         {
@@ -348,22 +463,28 @@ void main()
             SetGlobalNumber("K_CURRENT_PLANET",35);
             if(GetGlobalBoolean("k_vis_tatooine") == FALSE)
             {
-              QueueMovie("0a");
-              //StartNewModule("stunt00");
+              //QueueMovie("0a");
+              //StartNewModule("stunt_00");//,"","0a"
             }
-            QueueMovie("05_3a");
+            else
+            {
+              QueueMovie("05_3a");
+            }
         }break;
         case PLANET_LIVE_05://15//Manaan
         {
             SetGlobalNumber("003EBO_RETURN_DEST",15);
             SetGlobalNumber("003EBO_BACKGROUND",15);
             SetGlobalNumber("K_CURRENT_PLANET",25);
-            if(GetGlobalBoolean("k_vis_korriban") == FALSE)
+            if(GetGlobalBoolean("k_vis_manaan") == FALSE)
             {
-                QueueMovie("0b");
-                //StartNewModule("stunt00");
+                //QueueMovie("0b");
+                //StartNewModule("stunt_00");//,"","0b"
             }
-            QueueMovie("05_5a");
+            else
+            {
+              QueueMovie("05_5a");
+            }
         }break;
         case PLANET_EBON_HAWK://16//Malachor V?.!
         {
