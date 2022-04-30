@@ -165,5 +165,7 @@ void main() {
 	SetGlobalBoolean("tat_ZaalbarTaken", 0);
 	DelayCommand(1.0, ShowPartySelectionGUI("k_pkas_leavetown", 0xFFFFFFFF, 0xFFFFFFFF));
 	DelayCommand(1.0, DestroyObject(oZaalbar, 0.0, 0, 0.0));
+  //SetLocked(GetObjectByTag("KashyyykDoor2"),0);
+  //SetAreaUnescapable(FALSE);
 }
 

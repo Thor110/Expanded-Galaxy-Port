@@ -153,5 +153,7 @@ void main() {
 	SetNPCSelectability(8, 1);
 	ShowPartySelectionGUI("", 0xFFFFFFFF, 0xFFFFFFFF);
 	DestroyObject(oZaalbar, 0.0, 0, 0.0);
+  //SetLocked(GetObjectByTag("KashyyykDoor2"),0);
+  //SetAreaUnescapable(FALSE);
 }
 

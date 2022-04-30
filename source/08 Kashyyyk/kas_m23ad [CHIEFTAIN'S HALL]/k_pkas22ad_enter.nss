@@ -241,5 +241,11 @@ void main() {
 	if (((sub7() == 0) && (((sub8(oKas23_chuunda_01) == 0) || (sub1() == 1)) || (sub9() == 1)))) {
 		SetGlobalFadeOut(0.0, 0.0, 0.0, 0.0, 0.0);
 	}
+	if (((((sub8(oKas23_chuunda_01) == 0) || (sub1() == 1)) || (sub9() == 1)))) {
+    //SetAreaUnescapable(TRUE);
+		AssignCommand(oKas23_chuunda_01, ActionStartConversation(GetFirstPC(), "", 0, 0, 1, "", "", "", "", "", ""));
+    //SetLocked(GetObjectByTag("KashyyykDoor2"),1);
+    //SetAreaUnescapable(0);
+	}
 }
 

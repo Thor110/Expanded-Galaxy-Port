@@ -3510,5 +3510,6 @@ void main() {
 	AssignCommand(object13, DelayCommand(1.0, sub3(oNPC)));
 	AssignCommand(oKas23_freyyr_01, DelayCommand(1.0, sub3(OBJECT_INVALID)));
 	DelayCommand(1.0, sub3(OBJECT_INVALID));
+  //SetLocked(GetObjectByTag("KashyyykDoor2"),0);
 }
 

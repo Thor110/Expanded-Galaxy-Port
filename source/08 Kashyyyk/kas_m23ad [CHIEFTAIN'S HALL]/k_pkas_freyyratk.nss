@@ -3481,5 +3481,6 @@ void main() {
 	ChangeToStandardFaction(object13, 1);
 	AssignCommand(oKas23_freyyr_01, sub3(OBJECT_INVALID));
 	sub3(OBJECT_INVALID);
+  //SetLocked(GetObjectByTag("KashyyykDoor2"),0);
 }
 
