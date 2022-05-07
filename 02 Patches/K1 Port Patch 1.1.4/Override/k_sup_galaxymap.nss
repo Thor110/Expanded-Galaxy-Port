@@ -75,6 +75,10 @@ void LoadVision()
   {
     if(GetGlobalBoolean("k_vis_korriban") == FALSE)
     {
+      /*if(GetGlobalNumber("K_CAPTURED_LEV") == 12)
+      {
+        SetGlobalBoolean("k_vis_korriban",TRUE);
+      }*/
       StartNewModule("stunt_00","","08");//,"","0d"
     }
     else
@@ -86,6 +90,10 @@ void LoadVision()
   {
     if(GetGlobalBoolean("k_vis_kashyyyk") == FALSE)
     {
+      /*if(GetGlobalNumber("K_CAPTURED_LEV") == 12)
+      {
+        SetGlobalBoolean("k_vis_kashyyyk",TRUE);
+      }*/
       StartNewModule("stunt_00","","08");//,"","0c"
     }
     else
@@ -97,6 +105,10 @@ void LoadVision()
   {
     if(GetGlobalBoolean("k_vis_tatooine") == FALSE)
     {
+      /*if(GetGlobalNumber("K_CAPTURED_LEV") == 12)
+      {
+        SetGlobalBoolean("k_vis_tatooine",TRUE);
+      }*/
       StartNewModule("stunt_00","","08");//,"","0a"
     }
     else
@@ -108,6 +120,10 @@ void LoadVision()
   {
     if(GetGlobalBoolean("k_vis_manaan") == FALSE)
     {
+      /*if(GetGlobalNumber("K_CAPTURED_LEV") == 12)
+      {
+        SetGlobalBoolean("k_vis_manaan",TRUE);
+      }*/
       StartNewModule("stunt_00","","08");
     }
     else
@@ -185,8 +201,9 @@ void main()
     QueueMovie("08");
     SetGlobalNumber("K_CAPTURED_LEV",11);
   }
-  else if(GetGlobalNumber("K_CAPTURED_LEV") == 10)
+  else if(GetGlobalNumber("K_CAPTURED_LEV") == 11)
   {
+    SetGlobalNumber("K_CAPTURED_LEV",12);
     LoadVision();
   }
   else

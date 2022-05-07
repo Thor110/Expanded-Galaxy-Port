@@ -26,19 +26,35 @@ void main()
     }*/
     else if(GetGlobalNumber("K_CURRENT_PLANET") == 30)
     {
-        StartNewModule("ebo_m12aa","","0d","05_7a");
+      if(GetGlobalNumber("K_CAPTURED_LEV") == 12)
+      {
+        SetGlobalBoolean("k_vis_korriban",TRUE);
+      }
+      StartNewModule("ebo_m12aa","","0d","05_7a");
     }
     else if(GetGlobalNumber("K_CURRENT_PLANET") == 20)
     {
-        StartNewModule("ebo_m12aa","","0c","05_4a");
+      if(GetGlobalNumber("K_CAPTURED_LEV") == 12)
+      {
+        SetGlobalBoolean("k_vis_kashyyyk",TRUE);
+      }
+      StartNewModule("ebo_m12aa","","0c","05_4a");
     }
     else if(GetGlobalNumber("K_CURRENT_PLANET") == 35)
     {
-        StartNewModule("ebo_m12aa","","0a","05_3a");
+      if(GetGlobalNumber("K_CAPTURED_LEV") == 12)
+      {
+        SetGlobalBoolean("k_vis_tatooine",TRUE);
+      }
+      StartNewModule("ebo_m12aa","","0a","05_3a");
     }
     else if(GetGlobalNumber("K_CURRENT_PLANET") == 25)
     {
-        StartNewModule("ebo_m12aa","","0b","05_5a");
+      if(GetGlobalNumber("K_CAPTURED_LEV") == 12)
+      {
+        SetGlobalBoolean("k_vis_manaan",TRUE);
+      }
+      StartNewModule("ebo_m12aa","","0b","05_5a");
     }
 }
 
