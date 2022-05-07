@@ -33,7 +33,7 @@ int sub1() {
 			return 4;
 			break;
 		case 8: //
-			return 5;//5 = extra planet ///////
+			return 2;//5 = Taris ///////The returned value matches the 2DA Rows
 			break;
 		case 9: // malachor / onderon ?
 			return 7;//9
@@ -63,201 +63,73 @@ int sub1() {
 }
 
 void main() {
-
-///*
-
-    /*if (GetGlobalNumber("003EBO_Atton_Talk") <= 4) {
-        object oPC = GetFirstPC();
-        AssignCommand(oPC, ClearAllActions());
-        AssignCommand(OBJECT_SELF, ActionStartConversation(oPC, "galaxy", FALSE, CONVERSATION_TYPE_CINEMATIC, TRUE));   
-        return;
-    }
-    else if (GetGlobalNumber("003EBO_RETURN_DEST") == 4) {
-        if (GetGlobalNumber("502OND_End_First") == 0) {
-            object oPC = GetFirstPC();
-            AssignCommand(oPC, ClearAllActions());
-            AssignCommand(OBJECT_SELF, ActionStartConversation(oPC, "galaxy2", FALSE, CONVERSATION_TYPE_CINEMATIC, TRUE));          
-            return;
-        }
-    }
-    else if (GetGlobalNumber("003_IN_COMBAT") == 1) {
-        object oPC = GetFirstPC();
-        AssignCommand(oPC, ClearAllActions());
-        AssignCommand(OBJECT_SELF, ActionStartConversation(oPC, "galaxy", FALSE, CONVERSATION_TYPE_CINEMATIC, TRUE));           
-        return;
-    }*///Combat and Dialog?
-    int nWorld = 0;/*
-    for (nWorld = PLANET_DANTOOINE; nWorld < PLANET_LIVE_01; ++nWorld) {
-        SetPlanetAvailable(nWorld, FALSE);
-        SetPlanetSelectable(nWorld, FALSE); 
-    }
-    
-    if (GetGlobalNumber("900MAL_Open") == 1) {
-        for (nWorld = PLANET_DANTOOINE; nWorld < PLANET_LIVE_01; nWorld++) {
-            int nPlanet = nWorld;
-            SetPlanetAvailable(nPlanet, TRUE);
-            
-            if (nWorld == PLANET_MALACHOR_V) 
-                SetPlanetSelectable(nPlanet, TRUE); 
-        }       
-    }*/
+    int nWorld = 0;
     int nMain = GetGlobalNumber("K_KOTOR_MASTER");
-    /*else
+    int nMaps = GetGlobalNumber("K_STAR_MAP");
+    int kCapt = GetGlobalNumber("K_CAPTURED_LEV");
+    if (GetGlobalBoolean("K_STAR_MAP") <= 10)
     {
-        SetPlanetAvailable(PLANET_TELOS, FALSE);
-        SetPlanetSelectable(PLANET_TELOS, FALSE);
-    {*/
-    //else if Tar_Destroyed
-    if (GetGlobalBoolean("Tar_Destroyed") == 1) {
-        for (nWorld = PLANET_DANTOOINE; nWorld < PLANET_LIVE_01; nWorld++) {
+        for (nWorld = PLANET_DANTOOINE; nWorld < PLANET_LIVE_06; nWorld++)
+        {
             int nPlanet = nWorld;
-            
-            if (nWorld != PLANET_MALACHOR_V) {
-                SetPlanetAvailable(nPlanet, TRUE);
-                
-                if (nWorld != PLANET_PERAGUS) 
-                    SetPlanetSelectable(nPlanet, TRUE);                 
-            }
-        }    
-            //if (GetGlobalBoolean("Tar_Destroyed") == 1) {
-            SetPlanetAvailable(PLANET_LIVE_01, TRUE);
-            SetPlanetSelectable(PLANET_LIVE_01, TRUE); 
-            SetPlanetAvailable(PLANET_LIVE_02, TRUE);
-            SetPlanetSelectable(PLANET_LIVE_02, TRUE);  
-            SetPlanetAvailable(PLANET_LIVE_03, TRUE);
-            SetPlanetSelectable(PLANET_LIVE_03, TRUE);   
-            SetPlanetAvailable(PLANET_LIVE_04, TRUE);
-            SetPlanetSelectable(PLANET_LIVE_04, TRUE);   
-            SetPlanetAvailable(PLANET_LIVE_05, TRUE);
-            SetPlanetSelectable(PLANET_LIVE_05, TRUE); 
-            SetPlanetAvailable(PLANET_PERAGUS, TRUE);
-            SetPlanetSelectable(PLANET_PERAGUS, TRUE);
+            //if (nWorld != PLANET_MALACHOR_V)
+            //{
+              SetPlanetAvailable(nPlanet, TRUE);
+              //if (nWorld != PLANET_PERAGUS) 
+                SetPlanetSelectable(nPlanet, TRUE);                 
+            //}
+        }
+            //ALL TRUE VALUES COMMENTED OUT ARE CURRENTLY TRUE
             //SetPlanetAvailable(PLANET_LIVE_06, TRUE);// can #06 be used too?
-            //SetPlanetSelectable(PLANET_LIVE_06, TRUE); 
-            SetPlanetAvailable(PLANET_HARBINGER, FALSE);
+            //SetPlanetSelectable(PLANET_LIVE_06, TRUE);// or is just to enable the above for to include 06?
+            //SetPlanetAvailable(PLANET_LIVE_01, TRUE);// LIVE_01 IS KASHYYYK
+            //SetPlanetSelectable(PLANET_LIVE_01, TRUE); 
+            //SetPlanetAvailable(PLANET_LIVE_02, TRUE);// LIVE_02 IS CORUSCANT
+            //SetPlanetSelectable(PLANET_LIVE_02, TRUE);
+            //SetPlanetAvailable(PLANET_LIVE_03, TRUE);// LIVE_03 IS YAVIN
+            //SetPlanetSelectable(PLANET_LIVE_03, TRUE);   
+            //SetPlanetAvailable(PLANET_LIVE_04, TRUE);// LIVE_04 IS TATOOINE
+            //SetPlanetSelectable(PLANET_LIVE_04, TRUE);
+            //SetPlanetAvailable(PLANET_LIVE_05, TRUE);// LIVE_05 IS MANAAN
+            //SetPlanetSelectable(PLANET_LIVE_05, TRUE);
+            //SetPlanetAvailable(PLANET_PERAGUS, TRUE);// PERAGUS IS SLEHEYRON
+            //SetPlanetSelectable(PLANET_PERAGUS, TRUE);
+            SetPlanetAvailable(PLANET_HARBINGER, FALSE);//TELOS IS OFF FOR NOW
             SetPlanetSelectable(PLANET_HARBINGER, FALSE);    
-            SetPlanetAvailable(PLANET_MALACHOR_V, TRUE);
-            SetPlanetSelectable(PLANET_MALACHOR_V, FALSE);
-            SetPlanetAvailable(PLANET_M4_78, TRUE);
+            //SetPlanetAvailable(PLANET_MALACHOR_V, TRUE);//TARIS IS DESTROYED
+            SetPlanetSelectable(PLANET_MALACHOR_V, FALSE);//THEREFORE NOT SELECTABLE
+            SetPlanetAvailable(PLANET_M4_78, TRUE);//M4-78
             SetPlanetSelectable(PLANET_M4_78, TRUE);
-            SetPlanetAvailable(PLANET_EBON_HAWK, FALSE);// MALACHOR V IS OFF FOR NOW
+            SetPlanetAvailable(PLANET_EBON_HAWK, FALSE);//MALACHOR V IS OFF FOR NOW
             SetPlanetSelectable(PLANET_EBON_HAWK, FALSE);
-            SetPlanetAvailable(PLANET_DANTOOINE, TRUE);
-            SetPlanetSelectable(PLANET_DANTOOINE, TRUE);
-            SetPlanetAvailable(PLANET_ONDERON, FALSE);// ONDERON IS OFF FOR NOW
+            //SetPlanetAvailable(PLANET_DANTOOINE, TRUE);//DANTOOINE
+            //SetPlanetSelectable(PLANET_DANTOOINE, TRUE);
+            SetPlanetAvailable(PLANET_ONDERON, FALSE);//ONDERON IS OFF FOR NOW
             SetPlanetSelectable(PLANET_ONDERON, FALSE);
-            SetPlanetAvailable(PLANET_DXUN, TRUE);
+            SetPlanetAvailable(PLANET_DXUN, TRUE);//DXUN
             SetPlanetSelectable(PLANET_DXUN, TRUE);
-            //SetPlanetAvailable(PLANET_KORRIBAN, TRUE);
+            //SetPlanetAvailable(PLANET_KORRIBAN, TRUE);//KORRIBAN
             //SetPlanetSelectable(PLANET_KORRIBAN, TRUE);
-            SetPlanetAvailable(PLANET_NAR_SHADDAA, TRUE);
+            SetPlanetAvailable(PLANET_NAR_SHADDAA, TRUE);//NAR SHADDAA
             SetPlanetSelectable(PLANET_NAR_SHADDAA, TRUE);
-//
-    if (nMain == 30)
-    {
+            SetPlanetAvailable(PLANET_TELOS, FALSE);//UNKNOWN WORLD
+            SetPlanetSelectable(PLANET_TELOS, FALSE);
+            if (GetGlobalBoolean("MAN_EXILED")) {
+              SetPlanetSelectable(PLANET_LIVE_05, FALSE);
+            }
+      if (nMaps >= 40 && kCapt >= 10)
+      {
+        //SetPlanetAvailable(PLANET_DANTOOINE, FALSE);
+        SetPlanetSelectable(PLANET_DANTOOINE, FALSE);
+      }
+      if (nMaps >= 50 && kCapt >= 10)
+      {
         SetPlanetAvailable(PLANET_TELOS, TRUE);
         SetPlanetSelectable(PLANET_TELOS, TRUE);
-    }
-    else
-    {
-        SetPlanetAvailable(PLANET_TELOS, FALSE);
-        SetPlanetSelectable(PLANET_TELOS, FALSE);
-    }
-    /*if (nMain == 20)
-    {
-        SetPlanetAvailable(PLANET_DANTOOINE, TRUE); //DAT
-        SetPlanetSelectable(PLANET_DANTOOINE, FALSE);
-    }*/
-        //}
-        /*else {
-            SetPlanetSelectable(PLANET_LIVE_01, FALSE);
-            SetPlanetSelectable(PLANET_LIVE_02, FALSE);
-            SetPlanetSelectable(PLANET_LIVE_03, FALSE);
-            SetPlanetSelectable(PLANET_LIVE_04, FALSE);
-            SetPlanetSelectable(PLANET_LIVE_05, FALSE);
-            SetPlanetSelectable(PLANET_TELOS, FALSE);
-            SetPlanetSelectable(PLANET_EBON_HAWK, FALSE);
-            SetPlanetSelectable(PLANET_HARBINGER, FALSE);   
-            SetPlanetSelectable(PLANET_PERAGUS, FALSE);   
-            SetPlanetSelectable(PLANET_MALACHOR_V, FALSE); 
-            SetPlanetSelectable(PLANET_M4_78, FALSE);
-        }*/
-    
-    }
-    /*else { 
-        // After Peragus Before Telos
-        SetPlanetAvailable(PLANET_HARBINGER, TRUE); // HARBINGER IS TELOS : CITADEL STATION
-        SetPlanetSelectable(PLANET_HARBINGER, TRUE); //
-        SetPlanetAvailable(PLANET_MALACHOR_V, TRUE); // MALACHOR_V is a spare planet space - now peragus - spare for future use
-        SetPlanetSelectable(PLANET_MALACHOR_V, TRUE);
-        SetPlanetAvailable(PLANET_EBON_HAWK, TRUE);// EBON_HAWK IS MALACHOR_V
-        SetPlanetSelectable(PLANET_EBON_HAWK, TRUE);
-        SetPlanetAvailable(PLANET_PERAGUS, TRUE);// PERAGUS IS SLEHEYRON
-        SetPlanetSelectable(PLANET_PERAGUS, TRUE);//     
-        SetPlanetAvailable(PLANET_TELOS, TRUE);// TELOS IS LEHON
-        SetPlanetSelectable(PLANET_TELOS, TRUE);//   
-        SetPlanetAvailable(PLANET_LIVE_01, TRUE); // LIVE_01 IS KASHYYYK
-        SetPlanetSelectable(PLANET_LIVE_01, TRUE); 
-        SetPlanetAvailable(PLANET_LIVE_02, TRUE); // LIVE_02 IS CORUSCANT
-        SetPlanetSelectable(PLANET_LIVE_02, TRUE);  
-        SetPlanetAvailable(PLANET_LIVE_03, TRUE); // LIVE_03 IS YAVIN
-        SetPlanetSelectable(PLANET_LIVE_03, TRUE);   
-        SetPlanetAvailable(PLANET_LIVE_04, TRUE); // LIVE_04 IS TATOOINE
-        SetPlanetSelectable(PLANET_LIVE_04, TRUE);   
-        SetPlanetAvailable(PLANET_LIVE_05, TRUE); // LIVE_05 IS MANAAN
-        SetPlanetSelectable(PLANET_LIVE_05, TRUE);      // can PLANET_ONDERON be used?                  
-    }*/
-    //if ((GetGlobalNumber("000_M478_Found") == 0)) {
-		//SetPlanetAvailable(PLANET_M4_78, FALSE);
-		//SetPlanetSelectable(PLANET_M4_78, FALSE);
-    //}
-    //
-    /*if (GetGlobalNumber("852NIH_Nihilus_Dead") == 1)
-    {
-      SetPlanetAvailable(PLANET_EBON_HAWK, TRUE);
-      SetPlanetSelectable(PLANET_EBON_HAWK, TRUE); 
-      if (GetGlobalNumber("GBL_GAME_COMPLETE") >= 1)
-      {
-        SetPlanetAvailable(PLANET_EBON_HAWK, TRUE);// EBON HAWK IS MALACHOR
-        SetPlanetSelectable(PLANET_EBON_HAWK, FALSE); 
       }
     }
-    else
-    {
-      SetPlanetAvailable(PLANET_EBON_HAWK, FALSE);
-      SetPlanetSelectable(PLANET_EBON_HAWK, FALSE); 
-    }*/
-    //
     int int12 = sub1();
-    // Show Malachor Anyway For Now
-      //SetPlanetAvailable(PLANET_EBON_HAWK, TRUE);
-      //SetPlanetSelectable(PLANET_EBON_HAWK, TRUE); 
-    
-    // ST: In Space or Hyperspace
-    //if ((GetGlobalNumber("003EBO_BACKGROUND") == 8) || (GetGlobalNumber("003EBO_BACKGROUND") == 10)) {
-        //int12 = 2;
-        //SetPlanetAvailable(2, 1); 
-    //}
-    // check after telos
-    if (nMain == 20)
-    {
-        int12=6;// otherwise Sleheyron is selected
-        //int12=5;
-        SetPlanetAvailable(int12, TRUE);
-        SetPlanetSelectable(int12, FALSE);
-        //QueueMovie("HypMov01");// make a "HypMov02" removing the entering hyperspace
-        //QueueMovie("TelMov01");
-        //PlayMovieQueue();
-        //StartNewModule("201TEL", "WP_from_ebonhawk");
-        ExecuteScript("k_sup_galaxymap", OBJECT_SELF, -1);
-    }
-    /*if(GetGlobalBoolean("Tar_Destroyed") == 1 && GetGlobalBoolean("Tar_Destroyed") == 1 )
-    {// change to a number to alter so this doesnt always happen
-        int12=0;//
-        SetPlanetSelectable(int12, FALSE);
-        ShowGalaxyMap(int12);
-    }*/
-    else
+    if(nMaps >= 10)
     {
         SetPlanetSelectable(int12, FALSE);
         ShowGalaxyMap(int12);

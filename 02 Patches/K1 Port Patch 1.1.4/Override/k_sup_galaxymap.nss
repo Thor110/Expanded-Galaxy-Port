@@ -185,6 +185,10 @@ void main()
     QueueMovie("08");
     SetGlobalNumber("K_CAPTURED_LEV",11);
   }
+  else if(GetGlobalNumber("K_CAPTURED_LEV") == 10)
+  {
+    LoadVision();
+  }
   else
   {
     switch(GetGlobalNumber("003EBO_BACKGROUND"))

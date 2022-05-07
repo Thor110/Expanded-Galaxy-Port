@@ -10,279 +10,244 @@
 //turns off all of the core worlds and live planets.
 void CUSTOM_TurnOffPlanets();
 
+//void BastilaConversation();
+
 int CUSTOM_PlanetIDTo2DA(int nPlanetID);
 int CUSTOM_2DAToPlanetID(int nPlanet2DA);
+/*
+void BastilaConversation()
+{
 
+	int nGlobal = GetGlobalNumber("K_CURRENT_PLANET");
+	int int5 = 0;
+	if (((((((nGlobal == 15) || (nGlobal == 20)) || (nGlobal == 25)) || (nGlobal == 30)) || (nGlobal == 35)))) {
+		object oNearestBastila = GetNearestObjectByTag("Bastila", OBJECT_SELF, 1);
+		if (GetIsObjectValid(oNearestBastila)) {
+			if (((nGlobal == 15) && (!GetGlobalBoolean("k_vis_dantooine")))) {
+				int5 = 1;
+				SetGlobalBoolean("k_vis_dantooine", 1);
+			}
+			else {
+				if (((nGlobal == 20) && (!GetGlobalBoolean("k_vis_kashyyyk")))) {
+					int5 = 1;
+					SetGlobalBoolean("k_vis_kashyyyk", 1);
+				}
+				else {
+					if (((nGlobal == 25) && (!GetGlobalBoolean("k_vis_manaan")))) {
+						int5 = 1;
+						SetGlobalBoolean("k_vis_manaan", 1);
+					}
+					else {
+						if (((nGlobal == 30) && (!GetGlobalBoolean("k_vis_korriban")))) {
+							int5 = 1;
+							SetGlobalBoolean("k_vis_korriban", 1);
+						}
+						else {
+							if (((nGlobal == 35) && (!GetGlobalBoolean("k_vis_tatooine")))) {
+								int5 = 1;
+								SetGlobalBoolean("k_vis_tatooine", 1);
+							}
+						}
+					}
+				}
+			}
+			if ((int5 == 1)) {
+				object oPC = GetFirstPC();
+				AurPostString("I am going to talk", 5, 6, 4.0);
+				AurPostString(("Bastila is Valid = " + IntToString(GetIsObjectValid(oNearestBastila))), 5, 7, 4.0);
+				AurPostString(("PC is Valid = " + IntToString(GetIsObjectValid(oPC))), 5, 8, 4.0);
+				AssignCommand(oNearestBastila, ActionStartConversation(oPC, "ebo_bast_vision", 0, 0, 1, "", "", "", "", "", "", 0));  
+        SendMessageToPC(GetFirstPC(),"bastila conversation happen here");
+			}
+		}
+	}
+}
+*/
 void DoPlanetChange()
 {
-    /*int nSelected = GetSelectedPlanet();
-    //int nPrevPlanet = GetCurrentPlanet();
-    SetGlobalNumber("K_FUTURE_PLANET", nSelected);
-    //Game Variables
-    int nCurrent = GetGlobalNumber("K_CURRENT_PLANET");//003EBO_RETURN_DEST
-    //int nCurrent = GetGlobalNumber("003EBO_RETURN_DEST");
-    int nStarmap = GetGlobalNumber("K_STAR_MAP");
-    int nLevCapture = GetGlobalNumber("K_CAPTURED_LEV");
-    int nKOTOR = GetGlobalNumber("K_KOTOR_MASTER");
-    int nCALO = GetGlobalNumber("K_KALO_BANDON");*/
-    //
-    /*if(GetGlobalNumber("401DXN_STARTED") == 1)
-    {
-        //SetGlobalNumber("401DXN_STARTED", 2);
-        PlayMovieQueue();
-        //StartNewModule("003EBO", "WP_PC_WALK_MAP");
-    }
-    else if(GetModuleName() == "001EBO")
-    {
-        // if we are in tutorial, the galaxy map has different functionality
-        //SetGlobalNumber ( "001EBO_Movie_End", 1);
-        //PlayMovie("permov02");//play tutorial
-        //AssignCommand( GetObjectByTag("Galaxymap"),ActionStartConversation(GetFirstPC(),"outro") );
-    }
-    else if( (GetGlobalNumber("003EBO_BACKGROUND") == 3)  && !GetGlobalBoolean("301_FIRST_ENTER") && (GetGlobalNumber("301_INTRO_SCENE") == 0) )
-    {// first time to nar shadda
-        //SetGlobalNumber("003EBO_RETURN_DEST",3);
-        //SetGlobalNumber("301_INTRO_SCENE", 1);
-        //DoFirst301();
-        PlayMovieQueue();
-    }
-    else if( (GetGlobalNumber("003EBO_BACKGROUND") == 6) && !GetGlobalBoolean("701_FIRST_ENTER") && (GetGlobalNumber("701_INTRO_SCENE") == 0) )
-    {//first time to koriban
-        //SetGlobalNumber("003EBO_RETURN_DEST",6);
-        //SetGlobalBoolean("701_FIRST_SCENE", TRUE);
-        //SetGlobalNumber("701_INTRO_SCENE", 1);
-        //DoFirst701();
-
-        //old module load way below:
-        PlayMovieQueue();
-        //StartNewModule("003EBO", "WP_from_outside");
-    }
-    //AWD-OEI 10-23-2004
-    else if((GetGlobalNumber("003EBO_BACKGROUND") == 1) && (!GetGlobalBoolean("201_FIRST_ENTER")))//201 first time
-    {//first time to Telos, go ahead and jump to 201
-        PlayMovieQueue();
-        //StartNewModule("201TEL", "WP_from_ebonhawk");
-    }
-    //if (GetGlobalNumber("Tar_Destroyed") == 1)
-    //{
-        //int12=0;// otherwise Sleheyron is selected
-        //SetGlobalNumber("003EBO_RETURN_DEST",10);
-        //SetGlobalNumber("003EBO_BACKGROUND",8);
-        
-        //PlayMovie("HypMov01");// make a "HypMov02" removing the entering hyperspace
-        //PlayMovie("TelMov01");
-        //QueueMovie("HypMov01");// make a "HypMov02" removing the entering hyperspace
-        //QueueMovie("TelMov01");
-        //PlayMovieQueue();
-        
-        //StartNewModule("201TEL","WP_from_ebonhawk"); // ("", "WP_from_ebonhawk")
-    //}
-    // 262TEL cutscene triggers (JAB-OEI 10/22/04)
-    else if( (GetGlobalNumber("000_Jedi_Found") >= 1) && (GetGlobalNumber("000_Jedi_Found") < 4) && (GetGlobalNumber("000_Atriscs1") == 0) && (IsAvailableCreature(NPC_HANDMAIDEN)))
-    {//only if player is male
-        PlayMovieQueue();
-        //SetGlobalNumber("000_Atriscs1",2);
-        //StartNewModule("262TEL");
-    }
-    else if( (GetGlobalNumber("000_Jedi_Found") >= 2) && (GetGlobalNumber("000_Jedi_Found") < 4) && (GetGlobalNumber("000_Siscut1") == 0) && (IsAvailableCreature(NPC_HANDMAIDEN)))
-    {//only if player is male
-        PlayMovieQueue();
-        //SetGlobalNumber("000_Siscut1",2);
-        //StartNewModule("262TEL");
-    }*/
-    //else
-    //{
-    /*if(nSelected != -1 && nSelected != nCurrent)
-    {
-        if(nKOTOR == 15 && nCALO == 0)
-        {
-            //Db_MyPrintString("GALAXY MAP DEBUG *********** I am running ST_PlayDantooineTakeOff()");
-            SetGlobalNumber("K_KALO_BANDON", 10);
-            //ST_PlayDantooineTakeOff();
-            SetGlobalNumber("K_KOTOR_MASTER",12);
-            StartNewModule("stunt_12");//
-        }
-        else if(nStarmap == 30 && nCALO == 20)
-        {
-            //Db_MyPrintString("GALAXY MAP DEBUG *********** I am running ST_PlayStunt14()");
-            SetGlobalNumber("K_KALO_BANDON", 30);
-            //ST_PlayStunt14();
-            StartNewModule("stunt_14");
-        }
-        else if(nStarmap == 40 && nLevCapture == 5)
-        {
-            //Db_MyPrintString("GALAXY MAP DEBUG *********** I am running ST_PlayLevCaptureStunt()");
-            SetPlanetSelectable(PLANET_DANTOOINE, FALSE);
-            //ST_PlayLevCaptureStunt();
-            SetGlobalNumber("K_CURRENT_PLANET", 40);
-            StartNewModule("stunt_16");
-            //StartNewModule("stunt_16", "",  sRender, "08");
-        }
-        else if(nStarmap == 50 && nKOTOR == 30 && nSelected == 45)
-        {
-            //When the Unknown World is selected then turn off the other parts of the galaxy map.
-            //CUSTOM_TurnOffPlanets();
-            //Db_MyPrintString("GALAXY MAP DEBUG *********** I am running ST_PlayBastilaTorture()");
-            SetGlobalNumber("K_KOTOR_MASTER", 40);
-            //ST_PlayBastilaTorture();
-            StartNewModule("stunt_18");
-            //StartNewModule("stunt_18", "", ST_GetTakeOffRender(), "08");
-        }
-        else if(nKOTOR == 50)
-        {
-            //Play the Lightside / Darkside Starforge approach
-            //Db_MyPrintString("GALAXY MAP DEBUG *********** I am running Unknown World Take-Off");
-            //ST_PlayUnknownWorldTakeOff();
-              //STUNT_44    05_8C   5_9 = DARK SIDE   1
-              //STUNT_42    05_8C   5_9 = LIGHT SIDE  2
-            int nChoice = GetGlobalNumber("G_FINALCHOICE");
-            if(nChoice == 1)
-            {
-                StartNewModule("stunt_44", "", "05_8C", "5_9");
-            }
-            else if(nChoice == 2)
-            {
-                StartNewModule("stunt_42", "", "05_8C", "5_9");
-            }
-            if(nChoice == 1 || nChoice == 2)
-            {
-                SetGlobalNumber("K_KOTOR_MASTER", 60);
-            }
-        }
-        /*else if(nSelected != -1 && nSelected != nCurrent)// Planet To Planet Starfighter Battles
-        {
-            //Db_MyPrintString("GALAXY MAP DEBUG *********** Firing Default Transition ST_PlayPlanetToPlanet");
-            //ST_PlayPlanetToPlanet();
-            //StartNewModule("ebo_m12aa", ST_GetTakeOffRender(), ST_GetLandingRender());
-            StartNewModule("ebo_m12aa");
-            SetGlobalNumber("K_CURRENT_PLANET", nSelected);
-        }*/
-        /*else
-        {
-            Db_MyPrintString("GALAXY MAP DEBUG ********************** NO PLANETS SELECTED AND/OR AVAILABLE");
-        }
-        Db_MyPrintString("GALAXY MAP DEBUG ********************** K_SUP_GALAXYMAP ENDING");
-        Db_MyPrintString("");
-        //
-        PlayMovieQueue();//
-    }*/
-    //else
-    //{
-        //Db_MyPrintString("GALAXY MAP DEBUG ********************** INVALID SELECTION K_SUP_GALAXYMAP ENDING");
-        //Db_MyPrintString("");
-        SignalEvent(GetArea(GetFirstPC()), EventUserDefined(1));
-        PlayMovieQueue();
-    //}//
-    //}
+  SignalEvent(GetArea(GetFirstPC()), EventUserDefined(1));
+  PlayMovieQueue();//BastilaConversation();
 }
 
+void LoadVision()
+{
+  if(GetGlobalNumber("K_FUTURE_PLANET") == 3)
+  {
+    if(GetGlobalBoolean("k_vis_korriban") == FALSE)
+    {
+      StartNewModule("stunt_00","","08");//,"","0d"
+    }
+    else
+    {
+      QueueMovie("08");//,"","0c"
+    }
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 11)
+  {
+    if(GetGlobalBoolean("k_vis_kashyyyk") == FALSE)
+    {
+      StartNewModule("stunt_00","","08");//,"","0c"
+    }
+    else
+    {
+      QueueMovie("08");//,"","0c"
+    }
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 14)
+  {
+    if(GetGlobalBoolean("k_vis_tatooine") == FALSE)
+    {
+      StartNewModule("stunt_00","","08");//,"","0a"
+    }
+    else
+    {
+      QueueMovie("08");//,"","0c"
+    }
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 15)
+  {
+    if(GetGlobalBoolean("k_vis_manaan") == FALSE)
+    {
+      StartNewModule("stunt_00","","08");
+    }
+    else
+    {
+      QueueMovie("08");//,"","0c"
+    }
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 1)
+  {
+    QueueMovie("08");
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 2)
+  {
+    QueueMovie("08");
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 4)
+  {
+    QueueMovie("08");
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 5)
+  {
+    QueueMovie("08");
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 6)
+  {
+    QueueMovie("08");
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 7)
+  {
+    QueueMovie("08");
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 8)
+  {
+    QueueMovie("08");
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 9)
+  {
+    QueueMovie("08");
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 10)
+  {
+    QueueMovie("08");
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 12)
+  {
+    QueueMovie("08");
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 13)
+  {
+    QueueMovie("08");
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 16)
+  {
+    QueueMovie("08");
+  }
+}
 void main()
 {
-    int nSelected = GetSelectedPlanet();
-    int nPrevPlanet = GetCurrentPlanet();
-    SetGlobalNumber("K_FUTURE_PLANET", nSelected);
-    //Game Variables
-    int nCurrent = GetGlobalNumber("K_CURRENT_PLANET");//003EBO_RETURN_DEST
-    //int nCurrent = GetGlobalNumber("003EBO_RETURN_DEST");
-    int nStarmap = GetGlobalNumber("K_STAR_MAP");
-    int nLevCapture = GetGlobalNumber("K_CAPTURED_LEV");
-    int nKOTOR = GetGlobalNumber("K_KOTOR_MASTER");
-    int nCALO = GetGlobalNumber("K_KALO_BANDON");
-    //
-
-//#include "k_inc_ebonhawk"
-//#include "k_inc_stunt"
-
-//void main()
-//{
-    //int nSelected = GetSelectedPlanet();
-    //nSelected = EBO_GetPlanetFrom2DA(nSelected);
-    //SetGlobalNumber("K_FUTURE_PLANET", nSelected);
-    //int nCurrent = GetGlobalNumber("K_CURRENT_PLANET");
-    //int nStarmap = GetGlobalNumber("K_STAR_MAP");
-    //int nLevCapture = GetGlobalNumber("K_CAPTURE_LEV");
-
-    // This where it is makes both leaving manaan and leaving dantooin play then get gapture by the leviathan?
-
-    /*if(nStarmap == 40 && nLevCapture == 5)
-    {
-        ST_PlayLevCaptureStunt();
-        SetGlobalNumber("K_CURRENT_PLANET", 40);
-    }*/
-    //else
-    //{
-        //StartNewModule("ebo_m12aa", ST_GetTakeOffRender(), "8", ST_GetLandingRender());
-        //SetGlobalNumber("K_CURRENT_PLANET", EBO_GetPlanetFrom2DA(nSelected));
-    //}
-//}
-    if(nSelected == -1)
-    {
-      nSelected=PLANET_DANTOOINE;
-    }
-    // queue up leaving movie                 //
+  int nSelected = GetSelectedPlanet();
+  int nPrevPlanet = GetCurrentPlanet();
+  SetGlobalNumber("K_FUTURE_PLANET", nSelected);
+  //Game Variables
+  int nCurrent = GetGlobalNumber("K_CURRENT_PLANET");//003EBO_RETURN_DEST
+  //int nCurrent = GetGlobalNumber("003EBO_RETURN_DEST");
+  int nStarmap = GetGlobalNumber("K_STAR_MAP");
+  int nLevCapture = GetGlobalNumber("K_CAPTURED_LEV");
+  int nKOTOR = GetGlobalNumber("K_KOTOR_MASTER");
+  int nCALO = GetGlobalNumber("K_KALO_BANDON");
+  if(nSelected == -1)
+  {
+    nSelected=PLANET_DANTOOINE;
+  }                //
+  if(GetGlobalNumber("K_CAPTURED_LEV") == 10)
+  {
+    QueueMovie("08");
+    SetGlobalNumber("K_CAPTURED_LEV",11);
+  }
+  else
+  {
     switch(GetGlobalNumber("003EBO_BACKGROUND"))
     {
         case 0://106PER
         {
-            // if and else case statements within a switch statement don't work.
-            /*if(nStarmap == 40 && nLevCapture == 5)
-            {
-                QueueMovie("KorMov02");
-                ST_PlayLevCaptureStunt();
-                SetGlobalNumber("K_CURRENT_PLANET", 40);
-            }*/
-            //else
-            //{
-            // I don't think we have a movie to play here
-            QueueMovie("KorMov02");
-            QueueMovie("08");
-            //}
-            //Add a case and condition here that once met for all star map planets triggers the leviathan properly?
+            PlayMovie("KorMov02");
+            //QueueMovie("08");
+            LoadVision();
         }break;
         case 1://201TEL
         {
-            QueueMovie("TelMov02");
-            QueueMovie("08");
+            PlayMovie("TelMov02");
+            //QueueMovie("08");
+            LoadVision();
         }break;
-        case 2://New Yavin
+        case 2://Unknown World
         {
-            QueueMovie("05_8c");
-            QueueMovie("08");
+            PlayMovie("05_8c");
+            //QueueMovie("08");
+            LoadVision();
         }break;
         case 3://301NAR
         {
-            QueueMovie("NarMov02");
-            QueueMovie("08");
+            PlayMovie("NarMov02");
+            //QueueMovie("08");
+            LoadVision();
         }break;
         case 4://401DXN
         {
-            QueueMovie("OndMov04");
-            QueueMovie("08");
+            PlayMovie("OndMov04");
+            //QueueMovie("08");
+            LoadVision();
         }break;
         case 5://601DAN
         {
-            QueueMovie("05_2c");//
-            QueueMovie("08");
+            PlayMovie("05_2c");//
+            //QueueMovie("08");
+            LoadVision();
         }break;
         case 6://701KOR
         {
-            QueueMovie("05_7c");//K1 Movie?05_7c/KorMov02
-            QueueMovie("08");
+            PlayMovie("05_7c");//K1 Movie?05_7c/KorMov02
+            //QueueMovie("08");
+            LoadVision();
         }break;
         case 7://801DRO
         {
-            QueueMovie("DroMov04");
-            QueueMovie("08");
+            PlayMovie("DroMov04");
+            //QueueMovie("08");
+            LoadVision();
         }break;
         case 8://
         {
-            QueueMovie("Live_1c");
-            QueueMovie("08");
+            //QueueMovie("Live_1c");
+            //QueueMovie("08");
+            LoadVision();
         }break;
         case 9://901MAL // new planet 02?
         {
-            QueueMovie("Live_1c");
-            QueueMovie("08");
+            PlayMovie("Live_1c");
+            //QueueMovie("08");
+            LoadVision();
         }break;
         case 10://Hyperspace // new planet 03?
         {
@@ -291,56 +256,36 @@ void main()
         }break;
         case 11: //KASHYYK
         {
-            /*if(nStarmap == 40 && nLevCapture == 5)
-            {
-                QueueMovie("05_4c");
-                ST_PlayLevCaptureStunt();
-                SetGlobalNumber("K_CURRENT_PLANET", 40);
-            }*/
-            //else
-            //{
-            QueueMovie("05_4c");
-            QueueMovie("08");
-            //}
+            PlayMovie("05_4c");
+            //QueueMovie("08");
+            LoadVision();
         }break;
         case 12: //954COR
         {
-            QueueMovie("NarMov02");
-            QueueMovie("08");
+            PlayMovie("NarMov02");
+            //QueueMovie("08");
+            LoadVision();
         }break;
         case 13: //YAVIN
         {
-            QueueMovie("Live_1c");
-            QueueMovie("08");
+            PlayMovie("Live_1c");
+            //QueueMovie("08");
+            LoadVision();
         }break;
         case 14: //TATOOINE
         {
-            /*if(nStarmap == 40 && nLevCapture == 5)
-            {
-                QueueMovie("05_3c");
-                ST_PlayLevCaptureStunt();
-                SetGlobalNumber("K_CURRENT_PLANET", 40);
-            }*/
-            //else
-            //{
-            QueueMovie("05_3c");
-            QueueMovie("08");
-            //}
+            PlayMovie("05_3c");
+            //QueueMovie("08");
+            LoadVision();
         }break;
         case 15: //MANAAN
         {
-            /*if(nStarmap == 40 && nLevCapture == 5)
-            {
-                QueueMovie("05_5c");
-                ST_PlayLevCaptureStunt();
-                SetGlobalNumber("K_CURRENT_PLANET", 40);
-            }*/
-            //else//if/else doesnt work in switch statemens
-            //{
-            QueueMovie("05_5c");
-            QueueMovie("08");//HypMov01
-            //}
+            PlayMovie("05_5c");
+            //QueueMovie("08");//HypMov01
+            LoadVision();
+            //Add Previous Planet K_PREVIOUS_PLANET here
         }break;
+      }
     }
 
     int nPlanet = nSelected;
@@ -366,8 +311,6 @@ void main()
             else if (nMain == 30 && nFuture == 9)//if player has all four star maps and is travelling to the unknown world
             {
                 StartNewModule("stunt_18");
-                //if/else doesnt work in switch statement
-                //{// can a switch statement be inside an if/else statement?
           }
           else//else do landing movie and set return destination / background variables for the ebon hawk
           {
@@ -380,6 +323,7 @@ void main()
             SetGlobalNumber("003EBO_RETURN_DEST",0);//
             SetGlobalNumber("003EBO_BACKGROUND",0);//2
 
+            SetGlobalNumber("K_CURRENT_PLANET",10);// set accordingly
             // need to check where we are landing
             QueueMovie("KorMov01");
         }break;
@@ -389,6 +333,7 @@ void main()
             SetGlobalNumber("003EBO_BACKGROUND",1);
 
             // need to check where we are landing
+            SetGlobalNumber("K_CURRENT_PLANET",60);// set accordingly
             QueueMovie("TelMov01");
         }break;
         case PLANET_TELOS://3//Unknown World : Lehon
@@ -398,12 +343,14 @@ void main()
 
             // need to check where we are landing
             QueueMovie("05_8a");
+            SetGlobalNumber("K_CURRENT_PLANET",45);
         }break;
         case PLANET_NAR_SHADDAA://4//Nar Shaddaa
         {
             SetGlobalNumber("003EBO_RETURN_DEST",3);
             SetGlobalNumber("003EBO_BACKGROUND",3);
 
+            SetGlobalNumber("K_CURRENT_PLANET",65);// set accordingly
             //if(GetGlobalBoolean("301_FIRST_ENTER"))//only que this movie if we have been here before
             QueueMovie("NarMov01");
         }break;
@@ -413,6 +360,7 @@ void main()
             SetGlobalNumber("003EBO_RETURN_DEST",4);
             SetGlobalNumber("003EBO_BACKGROUND",4);
 
+            SetGlobalNumber("K_CURRENT_PLANET",70);// set accordingly
             QueueMovie("OndMov03");
         }break;
         case PLANET_ONDERON://6//Dxun ?.!
@@ -421,6 +369,7 @@ void main()
             SetGlobalNumber("003EBO_RETURN_DEST",4);
             SetGlobalNumber("003EBO_BACKGROUND",4);
 
+            SetGlobalNumber("K_CURRENT_PLANET",75);// set accordingly
             //first time going to onderon?
             /*if( (GetGlobalNumber("401DXN_Visited") == 0) && (GetGlobalNumber("401DXN_STARTED") == 0) )
             {
@@ -428,9 +377,7 @@ void main()
                 SetGlobalNumber("003EBO_RETURN_DEST",8);
                 SetGlobalNumber("003EBO_BACKGROUND",8);//set space background
                 QueueMovie("OndScn01");
-            }
-            else
-                AurPostString("ERROR!!! GALAXY MAP!",5,15,10.0);*/
+            }*/
         }break;
         case PLANET_DANTOOINE://7//Dantooine
         {
@@ -438,19 +385,30 @@ void main()
             SetGlobalNumber("003EBO_BACKGROUND",5);
 
             QueueMovie("05_2a");
+            SetGlobalNumber("K_CURRENT_PLANET",15);
         }break;
         case PLANET_KORRIBAN://8//Korriban
         {
             SetGlobalNumber("003EBO_RETURN_DEST",6);
             SetGlobalNumber("003EBO_BACKGROUND",6);
 
-            QueueMovie("05_7a");//K1 Movie? 05_7a?KorMov01
+            SetGlobalNumber("K_CURRENT_PLANET",30);
+            if(GetGlobalBoolean("k_vis_korriban") == FALSE)
+            {
+                //QueueMovie("0d");
+                //StartNewModule("stunt_00");//,"","0d"
+            }
+            else
+            {
+              QueueMovie("05_7a");//K1 Movie? 05_7a?KorMov01
+            }
         }break;
         case PLANET_M4_78://9//M478
         {
             SetGlobalNumber("003EBO_RETURN_DEST",7);
             SetGlobalNumber("003EBO_BACKGROUND",7);
 
+            SetGlobalNumber("K_CURRENT_PLANET",80);// set accordingly
             QueueMovie("DroMov02");
         }break;
         case PLANET_MALACHOR_V://10//Yavin Station or Malachor V?.!
@@ -461,7 +419,7 @@ void main()
             SetGlobalNumber("003EBO_RETURN_DEST",9);//8 originally - exit destination case
             SetGlobalNumber("003EBO_BACKGROUND",8);//4 is dxun - background and return planet icon case
                                                 // alternating 8 for space background and 9 for return destination
-
+            SetGlobalNumber("K_CURRENT_PLANET",55);// set accordingly
             QueueMovie("LIVE_1a");//
         }break;
         case PLANET_LIVE_01://11//Kashyyyk
@@ -469,13 +427,23 @@ void main()
             SetGlobalNumber("003EBO_RETURN_DEST",11);
             SetGlobalNumber("003EBO_BACKGROUND",11);// background check fires different planet exit
 
-            QueueMovie("05_4a");
+            SetGlobalNumber("K_CURRENT_PLANET",20);
+            if(GetGlobalBoolean("k_vis_kashyyyk") == FALSE)
+            {
+                //QueueMovie("0c");
+                //StartNewModule("stunt_00");//,"","0c"
+            }
+            else
+            {
+              QueueMovie("05_4a");
+            }
         }break;
         case PLANET_LIVE_02://12//Coruscant
         {
             SetGlobalNumber("003EBO_RETURN_DEST",12);
             SetGlobalNumber("003EBO_BACKGROUND",12);
           
+            SetGlobalNumber("K_CURRENT_PLANET",85);// set accordingly
             //Coruscant No Movie
             QueueMovie("NarMov01");
         }break;
@@ -484,6 +452,7 @@ void main()
             SetGlobalNumber("003EBO_RETURN_DEST",13);
             SetGlobalNumber("003EBO_BACKGROUND",13);
 
+            SetGlobalNumber("K_CURRENT_PLANET",55);// set accordingly
             QueueMovie("LIVE_1a");
         }break;
         case PLANET_LIVE_04://14//Tatooine
@@ -491,30 +460,44 @@ void main()
             SetGlobalNumber("003EBO_RETURN_DEST",14);
             SetGlobalNumber("003EBO_BACKGROUND",14);
 
-            QueueMovie("05_3a");
+            SetGlobalNumber("K_CURRENT_PLANET",35);
+            if(GetGlobalBoolean("k_vis_tatooine") == FALSE)
+            {
+              //QueueMovie("0a");
+              //StartNewModule("stunt_00");//,"","0a"
+            }
+            else
+            {
+              QueueMovie("05_3a");
+            }
         }break;
         case PLANET_LIVE_05://15//Manaan
         {
             SetGlobalNumber("003EBO_RETURN_DEST",15);
             SetGlobalNumber("003EBO_BACKGROUND",15);
-            QueueMovie("05_5a");
+            SetGlobalNumber("K_CURRENT_PLANET",25);
+            if(GetGlobalBoolean("k_vis_manaan") == FALSE)
+            {
+                //QueueMovie("0b");
+                //StartNewModule("stunt_00");//,"","0b"
+            }
+            else
+            {
+              QueueMovie("05_5a");
+            }
         }break;
         case PLANET_EBON_HAWK://16//Malachor V?.!
         {
             SetGlobalNumber("003EBO_RETURN_DEST",8);
             SetGlobalNumber("003EBO_BACKGROUND",10);
-
-            QueueMovie("MalMov07");
-            //PlayMovie("MalMov07", 0);
-            //SetGlobalNumber("907MAL_CUTSCENE", 2);
-            //SetGlobalNumber("852NIH_Nihilus_Dead", 2);
-            //StartNewModule("907MAL", "", "", "", "", "", "", "");
+            SetGlobalNumber("K_CURRENT_PLANET",90);// set accordingly
         }break;
         case PLANET_HARBINGER://17//Harbinger?.!
         {
             //SetGlobalNumber("003EBO_RETURN_DEST",15);
             //SetGlobalNumber("003EBO_BACKGROUND",15);
 
+            //SetGlobalNumber("K_CURRENT_PLANET",95);// set accordingly
             //QueueMovie("KasMov01");//
             // case 15 is used for PLANET_LIVE_05
         }break;
