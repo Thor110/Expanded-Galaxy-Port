@@ -51,8 +51,8 @@ void sub1(object objectParam1, location locationParam2) {
 
 void main() {
 	MusicBackgroundStop(GetArea(OBJECT_SELF));
-	DelayCommand(0.2, MusicBackgroundChangeNight(GetArea(OBJECT_SELF), 8));
-	DelayCommand(0.2, MusicBackgroundChangeDay(GetArea(OBJECT_SELF), 8));
+	DelayCommand(0.2, MusicBackgroundChangeNight(GetArea(OBJECT_SELF), 71));
+	DelayCommand(0.2, MusicBackgroundChangeDay(GetArea(OBJECT_SELF), 71));
 	DelayCommand(0.5, MusicBackgroundPlay(GetArea(OBJECT_SELF)));
 	object oDarthMalak400 = GetObjectByTag("DarthMalak400", 0);
 	int int1;

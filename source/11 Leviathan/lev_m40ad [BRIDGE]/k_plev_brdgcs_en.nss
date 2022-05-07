@@ -74,5 +74,8 @@ void main() {
 			DelayCommand(0.5, AssignCommand(oLev40_talker, ActionStartConversation(oLev40_talker, "", 0, 0, 0, "", "", "", "", "", "")));
 		}
 	}
+  if(GetIsDead(GetObjectByTag("SaulKarath402"))==TRUE) {
+    ActionOpenDoor(OBJECT_SELF);
+  }
 }
 
