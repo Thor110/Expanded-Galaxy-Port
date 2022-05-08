@@ -13,7 +13,9 @@ void main() {
   {
     if (GetStringLength(GetGlobalString("K_LAST_WAYPOINT")) <= 1)
     {
-      RemoveJournalQuestEntry("k_rapidtransit");
+      RemoveJournalQuestEntry("k_rapidtransit");//only happens if you return to base before using it.
+      //AddJournalQuestEntry("k_rapidtransit",99,0);//Either remove extra entry or update the existing entry when first used.
+      // this being here prevents you being able to warp from the hideout to the hideout which would prevent the removal of the quest from the journal.
     }
     else
     {
@@ -30,6 +32,10 @@ void main() {
       if(!GetIsObjectValid(GetObjectByTag("K_LAST_LOCATION")))
       {
         CreateObject(32,"g_lastlocal",GetLocation(GetFirstPC()),0);
+        if (GetStringLength(GetGlobalString("K_LAST_WAYPOINT")) <= 1)
+        {
+          RemoveJournalQuestEntry("k_rapidtransit");
+        }
       }
       else
       {

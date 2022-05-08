@@ -26,7 +26,7 @@ void main()
 
         //Check for banter 1
         if (GetGlobalBoolean("G_Banter1")==FALSE &&
-        IsNPCPartyMember(NPC_CANDEROUS)==TRUE &&
+        IsNPCPartyMember(NPC_BAO_DUR)==TRUE &&
         IsNPCPartyMember(NPC_ATTON)==TRUE &&
         GetDistanceBetween(GetPartyMemberByIndex(0), GetPartyMemberByIndex(1)) <= 8.0 &&
         GetDistanceBetween(GetPartyMemberByIndex(0), GetPartyMemberByIndex(2)) <= 8.0 &&

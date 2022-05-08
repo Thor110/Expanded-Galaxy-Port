@@ -83,7 +83,10 @@ void ExitToDxunOnderon () {
 }
 
 void ExitToKorriban() {
-    //SetNPCSelectability(NPC_KREIA, FALSE);
+    if(GetGlobalNumber("K_CURRENT_PLANET")==30) {
+      SetNPCSelectability(NPC_ATTON, FALSE);
+      //SendMessageToPC(GetFirstPC(),"testing");
+    }
     AurPostString("Kreia is NOT selectable", 5, 19, 10.0);
     AurPostString("Showing party selection", 5, 20, 10.0);
     ShowPartySelectionGUI("check_party_gui");   
