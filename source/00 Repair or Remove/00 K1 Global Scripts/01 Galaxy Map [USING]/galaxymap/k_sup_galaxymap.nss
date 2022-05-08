@@ -206,6 +206,11 @@ void main()
     SetGlobalNumber("K_CAPTURED_LEV",12);
     LoadVision();
   }
+  else if(GetGlobalNumber("K_CAPTURED_LEV") == 13)
+  {
+    SetGlobalNumber("K_CAPTURED_LEV",14);
+    LoadVision();
+  }
   else
   {
     switch(GetGlobalNumber("003EBO_BACKGROUND"))
