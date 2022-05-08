@@ -147,12 +147,14 @@
 	string stringGLOB_1 = "k35_itm_sithrwrd";
 
 // Prototypes
+//void sub7();
 void sub6();
 void sub5(int intParam1, int intParam2);
 int sub4(int intParam1, int intParam2);
 int sub3(int intParam1);
 void sub2();
 void sub1();
+//int sub9(object objectParam1);
 
 void sub6() {
 	int nRandom = d8(1);
@@ -384,11 +386,102 @@ void sub1() {
 	AssignCommand(oK35_stdnt_wndrf, sub2());
 	AssignCommand(oK35_stdnt_wndrm, sub2());
 }
+/*
+int sub9(object objectParam1) {
+string string1 = GetTag(objectParam1);
+	if ((!GetIsObjectValid(objectParam1))) {
+		return (-1);
+	}
+	if ((string1 == "bastila")) {
+		return 0;
+	}
+	if ((string1 == "cand")) {
+		return 1;
+	}
+	if ((string1 == "carth")) {
+		return 2;
+	}
+	if ((string1 == "hk47")) {
+		return 3;
+	}
+	if ((string1 == "jolee")) {
+		return 4;
+	}
+	if ((string1 == "juhani")) {
+		return 5;
+	}
+	if ((string1 == "mission")) {
+		return 6;
+	}
+	if ((string1 == "t3m4")) {
+		return 7;
+	}
+	if ((string1 == "zaalbar")) {
+		return 8;
+	}
+	return (-1);
+}
 
+void sub7() {
+	if ((GetPartyMemberByIndex(0) != GetFirstPC())) {
+		SetPartyLeader(0xFFFFFFFF);
+	}
+	object oNPC = GetPartyMemberByIndex(1);
+	object object5 = GetPartyMemberByIndex(2);
+	int int2;
+	int int3;
+	int int4;
+	int int5;
+	int2 = 0;
+	if (GetIsObjectValid(oNPC)) {
+		DestroyObject(GetObjectByTag(GetTag(oNPC)), 0.0, 0, 0.0);
+	}
+	if (GetIsObjectValid(object5)) {
+		DestroyObject(GetObjectByTag(GetTag(object5)), 0.0, 0, 0.0);
+	}
+	while (((int2 <= 8) && (!int4))) {
+		int5 = IsNPCPartyMember(int2);
+		if (int5) {
+			if ((int3 == 0)) {
+				RemovePartyMember(int2);
+				SetGlobalNumber("K_PARTY_STORE1", int2);
+				int3 = 1;
+				SetGlobalBoolean("K_PARTY_STORED", 1);
+			}
+			else {
+				RemovePartyMember(int2);
+				SetGlobalNumber("K_PARTY_STORE2", int2);
+				int4 = 1;
+				SetGlobalBoolean("K_PARTY_STORED", 1);
+			}
+		}
+		int5 = 0;
+		(int2++);
+	}
+}*/
 void main() {
-	sub1();
+
+/*
+  int int1;
+	int int2;
+	object oNPC;
+	int1;
+	while ((int1 < 3)) {
+		oNPC = GetPartyMemberByIndex(int1);
+		if ((GetFirstPC() != oNPC)) {
+			int int3 = sub9(oNPC);
+			if ((int3 != (-1))) {
+				SaveNPCState(int3);
+			}
+		}
+		(int1++);
+	}*/
+	//sub7();
+
+	//sub1();
 	SetGlobalNumber("KOR_START_FINAL", 1);
-	SetGlobalFadeIn(1.0, 1.0, 0.0, 0.0, 0.0);
-	StartNewModule("korr_m39aa", "", "", "", "", "", "", "");
+	//SetGlobalFadeIn(1.0, 1.0, 0.0, 0.0, 0.0);
+  //DelayCommand(1.0,StartNewModule("korr_m35aa", "", "", "", "", "", "", ""));
+	//StartNewModule("korr_m39aa", "", "", "", "", "", "", "");//39!!!
 }
 

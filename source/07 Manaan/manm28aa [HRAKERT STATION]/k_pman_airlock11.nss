@@ -249,6 +249,9 @@ int sub1(object objectParam1) {
 	if ((string1 == "zaalbar")) {
 		return 8;
 	}
+	if ((string1 == "kor39_yuthura")) {
+		return 9;
+	}
 	return (-1);
 }
 

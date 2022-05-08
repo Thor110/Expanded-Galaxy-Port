@@ -147,6 +147,7 @@
 	string stringGLOB_1 = "k35_itm_sithrwrd";
 
 // Prototypes
+void sub12();
 void sub11(object objectParam1, location locationParam2);
 void sub10(int intParam1, int intParam2);
 void sub9(object objectParam1, int intParam2, int intParam3);
@@ -246,8 +247,38 @@ int sub2() {
 int sub1() {
 	return GetGlobalNumber("KOR33_SHAARDAN");
 }
-
+/*
+void sub12() {
+	int nGlobal = GetGlobalNumber("K_PARTY_STORE1");
+	int int3 = GetGlobalNumber("K_PARTY_STORE2");
+	object object1;
+	if (GetGlobalBoolean("K_PARTY_STORED")) {
+		if (((nGlobal >= 0) && (nGlobal <= 8))) {
+			if ((GetIsObjectValid(GetPartyMemberByIndex(1)) == 0)) {
+				object1 = SpawnAvailableNPC(nGlobal, GetLocation(GetFirstPC()));
+				if (GetIsObjectValid(object1)) {
+					AddPartyMember(nGlobal, object1);
+				}
+			}
+		}
+		if (((int3 >= 0) && (int3 <= 8))) {
+			if ((GetIsObjectValid(GetPartyMemberByIndex(2)) == 0)) {
+				object1 = SpawnAvailableNPC(int3, GetLocation(GetFirstPC()));
+				if (GetIsObjectValid(object1)) {
+					AddPartyMember(int3, object1);
+				}
+			}
+		}
+	}
+	SetGlobalNumber("K_PARTY_STORE2", (-2));
+	SetGlobalNumber("K_PARTY_STORE1", (-2));
+	SetGlobalBoolean("K_PARTY_STORED", 0);
+}
+*/
 void main() {
+
+  //sub12();
+
 	object oPC = GetFirstPC();
 	if ((GetEnteringObject() == oPC)) {
 		if (((GetGlobalNumber("KOR_SHAARDAN_SWORD") == 2) && (GetGlobalNumber("KOR33_SHAARDAN") != 5))) {
@@ -285,6 +316,11 @@ void main() {
 				sub5("Locker created", 5, 5, 5.0);
 			}
 		}
+
+
+
+
+
 		int nGlobal = GetGlobalNumber("KOR_FINAL_TEST");
 		if (((nGlobal > 3) && (!sub6()))) {
 			SetGlobalBoolean("KOR_ADD_PARTY", 1);
@@ -295,13 +331,13 @@ void main() {
 			int18 = 0;
 
 // add in tomb then check for here
-/*
+
 if(GetGlobalNumber("KOR_REMOVE_PC")>0)
 {
   SetGlobalNumber("KOR_REMOVE_PC",9);
 }
-*/
-			while ((int18 < GetGlobalNumber("KOR_REMOVE_PCS"))) {
+
+			while ((int18 < GetGlobalNumber("KOR_REMOVE_PCS"))) {/*
 				int19 = GetGlobalNumber(("KOR_REMOVE_PC" + IntToString(int18)));
 				//sub5(((("KOR_REMOVE_PC" + IntToString((int18 - 1))) + ":") + IntToString(int19)), (6 + int18), (6 + int18), 5.0);
 				switch (int19) {
@@ -343,7 +379,7 @@ if(GetGlobalNumber("KOR_REMOVE_PC")>0)
         //else
         //{
           (int18++);
-        //}
+        //}*/
 			}
 			object oNPC = GetPartyMemberByIndex(1);
 			object object19 = GetPartyMemberByIndex(2);
