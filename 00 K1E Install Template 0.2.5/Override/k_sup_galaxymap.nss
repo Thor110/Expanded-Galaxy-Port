@@ -5,7 +5,7 @@
 */
 
 #include "k_inc_hawk"
-//#include "k_inc_stunt"
+#include "k_inc_stunt"
 
 //turns off all of the core worlds and live planets.
 void CUSTOM_TurnOffPlanets();
@@ -69,6 +69,115 @@ void DoPlanetChange()
   PlayMovieQueue();//BastilaConversation();
 }
 
+void SetPlanet()
+{
+            //SetGlobalNumber("K_CURRENT_PLANET", nPlanet);
+  switch(GetGlobalNumber("K_CURRENT_PLANET"))//17 cases in this switch statement 0-15 = 16? 17 = LIVE_PLANET_06 ?.! figure out, find and assign the extra slot
+    {               //also look into adding more slots if possible via LIVE_PLANET_##, 07 onwards extensions.
+        case PLANET_PERAGUS://1//Korriban ?.!
+        {
+            SetGlobalNumber("003EBO_RETURN_DEST",0);//
+            SetGlobalNumber("003EBO_BACKGROUND",0);//2
+            SetGlobalNumber("K_CURRENT_PLANET",10);
+        }break;
+        case 10://2//Telos : Citadel Station // extra case 0-16 exist and LIVE_PLANET_06 would be further extra
+        {
+            SetGlobalNumber("003EBO_RETURN_DEST",1);
+            SetGlobalNumber("003EBO_BACKGROUND",1);
+            SetGlobalNumber("K_CURRENT_PLANET",60);// set accordingly
+        }break;
+        case PLANET_TELOS://3//Unknown World : Lehon
+        {
+            SetGlobalNumber("003EBO_RETURN_DEST",2);
+            SetGlobalNumber("003EBO_BACKGROUND",2);
+            SetGlobalNumber("K_CURRENT_PLANET",45);
+        }break;
+        case PLANET_NAR_SHADDAA://4//Nar Shaddaa
+        {
+            SetGlobalNumber("003EBO_RETURN_DEST",3);
+            SetGlobalNumber("003EBO_BACKGROUND",3);
+            SetGlobalNumber("K_CURRENT_PLANET",65);// set accordingly
+        }break;
+        case PLANET_DXUN://5//Onderon
+        {
+            SetGlobalNumber("003EBO_RETURN_DEST",4);
+            SetGlobalNumber("003EBO_BACKGROUND",4);
+            SetGlobalNumber("K_CURRENT_PLANET",70);// set accordingly
+        }break;
+        case PLANET_ONDERON://6//Dxun ?.!
+        {
+
+            SetGlobalNumber("003EBO_RETURN_DEST",4);
+            SetGlobalNumber("003EBO_BACKGROUND",4);
+            SetGlobalNumber("K_CURRENT_PLANET",75);// set accordingly
+        }break;
+        case PLANET_DANTOOINE://7//Dantooine
+        {
+            SetGlobalNumber("003EBO_RETURN_DEST",5);
+            SetGlobalNumber("003EBO_BACKGROUND",5);
+            SetGlobalNumber("K_CURRENT_PLANET",15);
+        }break;
+        case PLANET_KORRIBAN://8//Korriban
+        {
+            SetGlobalNumber("003EBO_RETURN_DEST",6);
+            SetGlobalNumber("003EBO_BACKGROUND",6);
+            SetGlobalNumber("K_CURRENT_PLANET",30);
+        }break;
+        case PLANET_M4_78://9//M478
+        {
+            SetGlobalNumber("003EBO_RETURN_DEST",7);
+            SetGlobalNumber("003EBO_BACKGROUND",7);
+            SetGlobalNumber("K_CURRENT_PLANET",80);// set accordingly
+        }break;
+        case PLANET_MALACHOR_V://10//Yavin Station or Malachor V?.!
+        {
+            SetGlobalNumber("003EBO_RETURN_DEST",9);//8 originally - exit destination case
+            SetGlobalNumber("003EBO_BACKGROUND",8);//4 is dxun - background and return planet icon case
+            SetGlobalNumber("K_CURRENT_PLANET",55);// set accordingly
+        }break;
+        case PLANET_LIVE_01://11//Kashyyyk
+        {
+            SetGlobalNumber("003EBO_RETURN_DEST",11);
+            SetGlobalNumber("003EBO_BACKGROUND",11);// background check fires different planet exit
+            SetGlobalNumber("K_CURRENT_PLANET",20);
+        }break;
+        case PLANET_LIVE_02://12//Coruscant
+        {
+            SetGlobalNumber("003EBO_RETURN_DEST",12);
+            SetGlobalNumber("003EBO_BACKGROUND",12);
+            SetGlobalNumber("K_CURRENT_PLANET",85);// set accordingly
+        }break;
+        case PLANET_LIVE_03://13//Yavin Station?.!
+        {
+            SetGlobalNumber("003EBO_RETURN_DEST",13);
+            SetGlobalNumber("003EBO_BACKGROUND",13);
+            SetGlobalNumber("K_CURRENT_PLANET",55);// set accordingly
+        }break;
+        case PLANET_LIVE_04://14//Tatooine
+        {
+            SetGlobalNumber("003EBO_RETURN_DEST",14);
+            SetGlobalNumber("003EBO_BACKGROUND",14);
+            SetGlobalNumber("K_CURRENT_PLANET",35);
+        }break;
+        case PLANET_LIVE_05://15//Manaan
+        {
+            SetGlobalNumber("003EBO_RETURN_DEST",15);
+            SetGlobalNumber("003EBO_BACKGROUND",15);
+            SetGlobalNumber("K_CURRENT_PLANET",25);
+        }break;
+        case PLANET_EBON_HAWK://16//Malachor V?.!
+        {
+            SetGlobalNumber("003EBO_RETURN_DEST",8);
+            SetGlobalNumber("003EBO_BACKGROUND",10);
+            SetGlobalNumber("K_CURRENT_PLANET",90);// set accordingly
+        }break;
+        case PLANET_HARBINGER://17//Harbinger?.!
+        {
+            
+        }break;
+    }
+SetGlobalNumber("K_FUTURE_PLANET",GetGlobalNumber("K_CURRENT_PLANET"));
+}
 void LoadVision()
 {
   if(GetGlobalNumber("K_FUTURE_PLANET") == 3)
@@ -190,8 +299,6 @@ void main()
   //int nCurrent = GetGlobalNumber("003EBO_RETURN_DEST");
   int nStarmap = GetGlobalNumber("K_STAR_MAP");
   int nLevCapture = GetGlobalNumber("K_CAPTURED_LEV");
-  int nKOTOR = GetGlobalNumber("K_KOTOR_MASTER");
-  int nCALO = GetGlobalNumber("K_KALO_BANDON");
   if(nSelected == -1)
   {
     nSelected=PLANET_DANTOOINE;
@@ -317,6 +424,7 @@ void main()
     int nPlanet = nSelected;
     int nMain = GetGlobalNumber("K_KOTOR_MASTER");
     int nFuture = GetGlobalNumber("K_FUTURE_PLANET");
+    int nCalo = GetGlobalNumber("K_KALO_BANDON");
 
             if(nStarmap == 40 && nLevCapture == 5/* && nFuture == 11 && nFuture == 3 && nFuture == 14 && nFuture == 15*/)//11,3,14,15//star map planets
             {//figure out how to also check if you are travelling in between any of the four star map planets in order to get trapped by the Leviathan
@@ -338,6 +446,21 @@ void main()
             {
                 StartNewModule("stunt_18");
           }
+        else if(nMain == 15 && nCalo == 0)
+        {
+            SetGlobalNumber("K_KALO_BANDON", 10);
+            SetGlobalNumber("K_CURRENT_PLANET", nPlanet);
+            SetPlanet();
+            StartNewModule("stunt_12");
+        }
+        else if(nStarmap == 30 && nCalo == 20)
+        {
+            SetGlobalNumber("K_KALO_BANDON", 30);
+            //StartNewModule("stunt_14","",  ST_GetTakeOffRender());
+            SetGlobalNumber("K_CURRENT_PLANET", nPlanet);
+            SetPlanet();
+            StartNewModule("stunt_14");
+        }
           else//else do landing movie and set return destination / background variables for the ebon hawk
           {
     switch(nPlanet)//17 cases in this switch statement 0-15 = 16? 17 = LIVE_PLANET_06 ?.! figure out, find and assign the extra slot
@@ -530,6 +653,7 @@ void main()
     }
 }//extra for if
     //fade out
+//SetGlobalNumber("K_FUTURE_PLANET",GetGlobalNumber("K_CURRENT_PLANET"));
     SetBackground();
     ExecuteScript("a_holoworld", GetFirstPC());
     DoPlanetChange();
