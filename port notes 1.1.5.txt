@@ -1,0 +1,12 @@
+Yavin Station Hangar by WildKarrde included with both parts of the project.
+
+Duplicate TGA files removed that already exist as TPC files.
+
+Template patches created and files included in main patch for the Yavin Station Hangar have been removed from the port patch.
+
+Shaleena now properly goes back to randomly walking after the first dialog in the undercity on Taris.
+
+Bioware and Obsidian intro movies added back to the project and game template patches.
+
+The cutscenes in stunt_12 & stunt_14 with Malak about Calo Nord and Darth Bandon now happen when travelling from planet to planet under the correct conditions.
+
