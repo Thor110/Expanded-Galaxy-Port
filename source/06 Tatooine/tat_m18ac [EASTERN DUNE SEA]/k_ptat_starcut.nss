@@ -120,6 +120,7 @@ void sub1() {
 }
 
 void main() {
+  DestroyObject(GetObjectByTag("ebon_armband"));
 	object oNPC = GetPartyMemberByIndex(0);
 	object object3 = GetPartyMemberByIndex(1);
 	object object5 = GetPartyMemberByIndex(2);

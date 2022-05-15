@@ -440,6 +440,7 @@ void main() {
 			DestroyObject(GetObjectByTag("man26_sithdip", 0), 0.0, 1, 0.0);
 			if ((sub4(OBJECT_SELF, intGLOB_121) == 0)) {
 				sub5(OBJECT_SELF, intGLOB_121, 1);
+        CreateItemOnObject("ebon_armband",GetFirstPC(),1,0);
 				SignalEvent(OBJECT_SELF, EventUserDefined(100));
 			}
 		}
