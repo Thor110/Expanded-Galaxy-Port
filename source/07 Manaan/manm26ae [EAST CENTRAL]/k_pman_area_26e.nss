@@ -239,8 +239,9 @@ void main() {
 		if (GetGlobalBoolean("MAN_HRAKERT_START")) {
 			AssignCommand(GetObjectByTag("man26_repdip", 0), JumpToObject(GetObjectByTag("man26_wp_repdipt", 0), 1));
       if (GetGlobalNumber("MAN_PLANET_PLOT")<=3) {
+        if(!GetGlobalBoolean("MAN_STARMAP_FOUND")){
         DestroyObject(GetObjectByTag("ebon_armband"));
-        CreateItemOnObject("ebon_armband",GetFirstPC(),1,0);
+        CreateItemOnObject("ebon_armband",GetFirstPC(),1,0);}
       }
 		}
     /*else {

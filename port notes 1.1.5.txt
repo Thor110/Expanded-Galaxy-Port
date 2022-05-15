@@ -10,3 +10,13 @@ Bioware and Obsidian intro movies added back to the project and game template pa
 
 The cutscenes in stunt_12 & stunt_14 with Malak about Calo Nord and Darth Bandon now happen when travelling from planet to planet under the correct conditions.
 
+Patch seemed to be missing updated modules.
+
+Shader Fixes from JCarter426 included with the main part of the project and added to the template.
+
+Ebon Hawk Armband removed from the player while in the Sith Base on Manaan and during the encounter with Calo Nord on Tatooine.
+
+Ebon Hawk Armband removed while in the underwater base on Manaan if the plot hasn't been advanced ( because the player can return there ) and given back to the player during the Selkath Ambush after returning to the surface.
+
+The Ebon Hawk Armband is now added back to your inventory if you come back up from the underwater base early.
+
