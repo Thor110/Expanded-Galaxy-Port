@@ -51,6 +51,7 @@ int sub1(object objectParam1) {
 }
 
 void main() {
+  //CreateItemOnObject("ebon_armband",GetFirstPC(),1,0);
 	if (((GetIsPC(GetEnteringObject()) && (sub1(OBJECT_SELF) == 0)) && (GetGlobalNumber("K_Geno_Lorgal") >= 1))) {
 		AssignCommand(GetObjectByTag("EnergyCage", 0), PlayAnimation(203, 1.0, 0.0));
 		sub2(OBJECT_SELF, 1);

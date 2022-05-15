@@ -304,6 +304,9 @@ void main() {
 				oMan28_merc = GetObjectByTag("man28_merc", int6);
 			}
 		}
+    else {
+      DestroyObject(GetObjectByTag("ebon_armband"));
+    }
 	}
 }
 

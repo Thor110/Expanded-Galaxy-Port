@@ -1,4 +1,5 @@
 void main() {
+  CreateItemOnObject("ebon_armband",GetFirstPC(),1,0);
 	SetAreaUnescapable(0);
 	SetGlobalBoolean("MAN_TRIAL2_START", 1);
 	DestroyObject(GetObjectByTag("man26_cutdrd01", 0), 0.0, 0, 0.0);
