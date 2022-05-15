@@ -238,7 +238,15 @@ void main() {
 		}
 		if (GetGlobalBoolean("MAN_HRAKERT_START")) {
 			AssignCommand(GetObjectByTag("man26_repdip", 0), JumpToObject(GetObjectByTag("man26_wp_repdipt", 0), 1));
+      if (GetGlobalNumber("MAN_PLANET_PLOT")<=3) {
+        DestroyObject(GetObjectByTag("ebon_armband"));
+        CreateItemOnObject("ebon_armband",GetFirstPC(),1,0);
+      }
 		}
+    /*else {
+      DestroyObject(GetObjectByTag("ebon_armband"));
+      CreateItemOnObject("ebon_armband",GetFirstPC(),1,0);
+    }*/
 		if ((((sub2() >= intGLOB_156) && sub3()) && sub4())) {
 			object oMan26ac_door31 = GetObjectByTag("man26ac_door30", 0);
 			AssignCommand(oMan26ac_door31, ActionCloseDoor(oMan26ac_door31));
