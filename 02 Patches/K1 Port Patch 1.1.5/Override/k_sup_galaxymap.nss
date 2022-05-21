@@ -274,7 +274,25 @@ void LoadVision()
   }
   else if(GetGlobalNumber("K_FUTURE_PLANET") == 10)
   {
-    QueueMovie("08");
+    //QueueMovie("08");
+    int nMain = GetGlobalNumber("K_KOTOR_MASTER");
+    if (nMain == 61)
+    {
+      //SetGlobalNumber("K_KOTOR_MASTER", 50);
+      int nChoice = GetGlobalNumber("G_FINALCHOICE");
+      if(nChoice == 1 || nChoice == 2)
+      {
+        SetGlobalNumber("K_KOTOR_MASTER", 61);
+      }
+      if(nChoice == 1)
+      {
+        StartNewModule("stunt_44","","05_8c","05_9");
+      }
+      else if(nChoice == 2)
+      {
+        StartNewModule("stunt_42","","05_8c","05_9");
+      }
+    }
   }
   else if(GetGlobalNumber("K_FUTURE_PLANET") == 12)
   {
@@ -299,6 +317,12 @@ void main()
   //int nCurrent = GetGlobalNumber("003EBO_RETURN_DEST");
   int nStarmap = GetGlobalNumber("K_STAR_MAP");
   int nLevCapture = GetGlobalNumber("K_CAPTURED_LEV");
+
+
+    int nPlanet = nSelected;
+    int nMain = GetGlobalNumber("K_KOTOR_MASTER");
+    int nFuture = GetGlobalNumber("K_FUTURE_PLANET");
+    int nCalo = GetGlobalNumber("K_KALO_BANDON");
   if(nSelected == -1)
   {
     nSelected=PLANET_DANTOOINE;
@@ -307,7 +331,7 @@ void main()
   {
     QueueMovie("08");
     SetGlobalNumber("K_CAPTURED_LEV",11);
-  }
+  }/*
   else if(GetGlobalNumber("K_CAPTURED_LEV") == 11)
   {
     SetGlobalNumber("K_CAPTURED_LEV",12);
@@ -317,7 +341,11 @@ void main()
   {
     SetGlobalNumber("K_CAPTURED_LEV",14);
     LoadVision();
-  }
+  }*/
+          //if (!nMain == 60 || !nMain == 50)
+         // {
+            //LoadVision();
+//}
   else
   {
     switch(GetGlobalNumber("003EBO_BACKGROUND"))
@@ -330,13 +358,27 @@ void main()
         }break;
         case 1://201TEL
         {
-            PlayMovie("TelMov02");
-            //QueueMovie("08");
+            //QueueMovie("05_8c");
+            PlayMovie("05_8c");//990
             LoadVision();
         }break;
         case 2://Unknown World
         {
+    if (nMain == 50 || nMain == 60)
+    {
+      SetGlobalNumber("K_KOTOR_MASTER", 61);
+      //SetGlobalNumber("K_CURRENT_PLANET",45);// set accordingly
+      //QueueMovie("05_8c");
+      LoadVision();
+    }
+    else
+    {
+
+      //SetGlobalNumber("K_KOTOR_MASTER", 63);
+      //      SetGlobalNumber("K_CURRENT_PLANET",45);// set accordingly
             PlayMovie("05_8c");
+    }
+            //PlayMovie("05_8c");
             //QueueMovie("08");
             LoadVision();
         }break;
@@ -421,10 +463,6 @@ void main()
       }
     }
 
-    int nPlanet = nSelected;
-    int nMain = GetGlobalNumber("K_KOTOR_MASTER");
-    int nFuture = GetGlobalNumber("K_FUTURE_PLANET");
-    int nCalo = GetGlobalNumber("K_KALO_BANDON");
 
             if(nStarmap == 40 && nLevCapture == 5/* && nFuture == 11 && nFuture == 3 && nFuture == 14 && nFuture == 15*/)//11,3,14,15//star map planets
             {//figure out how to also check if you are travelling in between any of the four star map planets in order to get trapped by the Leviathan
@@ -443,9 +481,9 @@ void main()
                 //}
                 //StartNewModule("stunt_16", "",  "", "08");
             }
-            else if (nMain == 30 && nFuture == 9)//if player has all four star maps and is travelling to the unknown world
+            else if (nMain == 30 && nFuture == 10)//if player has all four star maps and is travelling to the star forge system
             {
-                StartNewModule("stunt_18");
+                StartNewModule("stunt_18","","08");
           }
         else if(nMain == 15 && nCalo == 0)
         {
@@ -462,6 +500,14 @@ void main()
             SetPlanet();
             StartNewModule("stunt_14");
         }
+    //QueueMovie("08");
+    //int nMain = GetGlobalNumber("K_KOTOR_MASTER");
+    else if (nMain == 61)
+    {
+            //SetGlobalNumber("K_FUTURE_PLANET", 10);
+            //SetGlobalNumber("K_CURRENT_PLANET", 10);
+      SetGlobalNumber("K_KOTOR_MASTER", 62);
+    }
           else//else do landing movie and set return destination / background variables for the ebon hawk
           {
     switch(nPlanet)//17 cases in this switch statement 0-15 = 16? 17 = LIVE_PLANET_06 ?.! figure out, find and assign the extra slot
@@ -479,12 +525,24 @@ void main()
         }break;
         case 10://2//Telos : Citadel Station // extra case 0-16 exist and LIVE_PLANET_06 would be further extra
         {
-            SetGlobalNumber("003EBO_RETURN_DEST",1);
-            SetGlobalNumber("003EBO_BACKGROUND",1);
+            SetGlobalNumber("003EBO_RETURN_DEST",2);//990
+            SetGlobalNumber("003EBO_BACKGROUND",2);
 
             // need to check where we are landing
-            SetGlobalNumber("K_CURRENT_PLANET",60);// set accordingly
-            QueueMovie("TelMov01");
+            
+    if (nMain == 63)
+    {
+      //SetGlobalNumber("K_KOTOR_MASTER", 63);
+            SetGlobalNumber("K_CURRENT_PLANET",45);// set accordingly
+            QueueMovie("05_8a");
+    }
+    //else
+    //{
+
+      //SetGlobalNumber("K_KOTOR_MASTER", 63);
+      //      SetGlobalNumber("K_CURRENT_PLANET",45);// set accordingly
+      //      PlayMovie("05_8a");
+    //}
         }break;
         case PLANET_TELOS://3//Unknown World : Lehon
         {
