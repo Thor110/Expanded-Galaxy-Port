@@ -143,15 +143,21 @@ void main() {
       SetPlanetSelectable(nPlanet, FALSE);                 
       //}
     }
-    SetPlanetAvailable(PLANET_HARBINGER, TRUE);//TELOS IS OFF FOR NOW
+    SetPlanetAvailable(PLANET_HARBINGER, TRUE);//TELOS IS OFF FOR NOW = STAR FORGE SYSTEM
     SetPlanetSelectable(PLANET_HARBINGER, TRUE);  
     SetPlanetAvailable(PLANET_TELOS, TRUE);//UNKNOWN WORLD
     SetPlanetSelectable(PLANET_TELOS, TRUE);
-    
-            SetGlobalNumber("003EBO_RETURN_DEST",2);
-            SetGlobalNumber("003EBO_BACKGROUND",2);
+    //SetGlobalNumber("003EBO_RETURN_DEST",2);//for testing, remove later.
+    //SetGlobalNumber("003EBO_BACKGROUND",2);//used when I was testing with a save that had the wrong variables set.
   }
   /**/
+  if (nMain == 61)
+  {
+    SetPlanetAvailable(PLANET_TELOS, TRUE);//UNKNOWN WORLD
+    SetPlanetSelectable(PLANET_TELOS, TRUE);
+    SetPlanetAvailable(PLANET_HARBINGER, FALSE);//TELOS IS OFF FOR NOW = STAR FORGE SYSTEM
+    SetPlanetSelectable(PLANET_HARBINGER, FALSE);  
+  }
   int int12 = sub1();
   if(nMaps >= 10)
   {

@@ -377,10 +377,10 @@ void main()
       //SetGlobalNumber("K_KOTOR_MASTER", 63);
       //      SetGlobalNumber("K_CURRENT_PLANET",45);// set accordingly
             PlayMovie("05_8c");
+            LoadVision();
     }
             //PlayMovie("05_8c");
             //QueueMovie("08");
-            LoadVision();
         }break;
         case 3://301NAR
         {
@@ -502,12 +502,12 @@ void main()
         }
     //QueueMovie("08");
     //int nMain = GetGlobalNumber("K_KOTOR_MASTER");
-    else if (nMain == 61)
-    {
+    //else if (nMain == 61)
+    //{
             //SetGlobalNumber("K_FUTURE_PLANET", 10);
             //SetGlobalNumber("K_CURRENT_PLANET", 10);
-      SetGlobalNumber("K_KOTOR_MASTER", 62);
-    }
+      //SetGlobalNumber("K_KOTOR_MASTER", 62);
+    //}
           else//else do landing movie and set return destination / background variables for the ebon hawk
           {
     switch(nPlanet)//17 cases in this switch statement 0-15 = 16? 17 = LIVE_PLANET_06 ?.! figure out, find and assign the extra slot
@@ -530,12 +530,12 @@ void main()
 
             // need to check where we are landing
             
-    if (nMain == 63)
-    {
+    //if (nMain == 63)
+    //{
       //SetGlobalNumber("K_KOTOR_MASTER", 63);
             SetGlobalNumber("K_CURRENT_PLANET",45);// set accordingly
             QueueMovie("05_8a");
-    }
+    //}
     //else
     //{
 
