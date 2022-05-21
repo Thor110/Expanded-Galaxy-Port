@@ -22,3 +22,13 @@ The Ebon Hawk Armband is now added back to your inventory if you come back up fr
 
 Darth Bandon and Calo Nord Encounters have been balanced better and the Ebon Hawk Armband is now only added to your inventory if you come back from the underwater base early, not if you have completed the star map solving an issue where the player could end up with two or more armbands.
 
+Ebon Hawk Armband removed when entering the Leviathan and returned to the player when leaving.
+
+Fixed Saul Karath's death scene and issues arriving at the final star map planet.
+
+Ebon Hawk Exit to Central Beach and the Star Forge from ebo_m41aa now just says "Exit Ebon Hawk" like it does in the normal ebo_m12aa level.
+
+Star Forge balancing resolved and the galaxy map no longer displays the Star Forge as well as now plays the departure from Lehon again after game completion ( Light Side )
+
+Star Forge description and name updated.
+
