@@ -20,3 +20,5 @@ Ebon Hawk Armband removed while in the underwater base on Manaan if the plot has
 
 The Ebon Hawk Armband is now added back to your inventory if you come back up from the underwater base early.
 
+Darth Bandon and Calo Nord Encounters have been balanced better and the Ebon Hawk Armband is now only added to your inventory if you come back from the underwater base early, not if you have completed the star map solving an issue where the player could end up with two or more armbands.
+

@@ -6,7 +6,8 @@ void main() {
   //SetGlobalNumber("003EBO_RETURN_DEST",8);
   //if not set you can leave the ebon hawk to previous destination
   //SetGlobalNumber("003EBO_BACKGROUND",8);
-  StartNewModule("ebo_m40ad", "", "17a", "11a", "11b");
   SetGlobalNumber("K_CAPTURED_LEV",11);
+  CreateItemOnObject("ebon_armband",GetFirstPC(),1,0);
+  StartNewModule("ebo_m40ad", "", "17a", "11a", "11b");
 }
 

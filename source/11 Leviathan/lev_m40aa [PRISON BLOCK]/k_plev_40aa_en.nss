@@ -56,5 +56,6 @@ void main() {
 	SetGlobalNumber("LEV_LEVEL", 1);
 	sub1(OBJECT_SELF);
 	SetGlobalNumber("LEV_SPIKES", (-1));
+  DestroyObject(GetObjectByTag("ebon_armband"));
 }
 

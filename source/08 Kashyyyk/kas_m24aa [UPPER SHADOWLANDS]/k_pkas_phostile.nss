@@ -3480,7 +3480,11 @@ void main() {
 	}
 	object object4 = GetFirstObjectInArea(GetArea(OBJECT_SELF), 1);
 	while (GetIsObjectValid(object4)) {
-		if (((GetTag(object4) == "kas24_pgener_01") || (GetTag(object4) == "kas24_poffice_01"))) {
+		if (((GetTag(object4) == "kas24_pgener_01") || (GetTag(object4) == "kas24_poffice_01") || (GetTag(object4) == "kas24_pgener_02") 
+|| (GetTag(object4) == "kas24_pgener_03") 
+|| (GetTag(object4) == "kas24_pgener_04") 
+|| (GetTag(object4) == "kas24_pgener_05") 
+)) {
 			ChangeToStandardFaction(object4, 1);
 			AssignCommand(object4, sub2(OBJECT_INVALID));
 		}
