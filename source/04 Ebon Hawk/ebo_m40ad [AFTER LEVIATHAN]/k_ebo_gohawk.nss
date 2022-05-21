@@ -4,7 +4,7 @@ void main() {
 	//DelayCommand(0.1, ExecuteScript("k_ren_leavlev", OBJECT_SELF, 0xFFFFFFFF));
   int nFPlanet = GetGlobalNumber("K_FUTURE_PLANET");
 
-  if(nFPlanet == 15)
+  if(nFPlanet == 3 || nFPlanet == 11 || nFPlanet == 14 || nFPlanet == 15 )
   {
       if(GetGlobalBoolean("K_STAR_MAP_KASHYYYK") == FALSE)
       {
@@ -26,14 +26,14 @@ void main() {
   SetGlobalNumber("K_FUTURE_PLANET", nFPlanet);
   if(ST_VisionPlayed() == TRUE)
   {
-      //StartNewModule("ebo_m12aa","",  ST_GetLandingRender());
-      StartNewModule("ebo_m12aa");
       SetGlobalNumber("K_CURRENT_PLANET", nFPlanet);
+      StartNewModule("ebo_m12aa","",  ST_GetLandingRender());
+      //StartNewModule("ebo_m12aa");
   }
   else
   {
-      //ST_PlayVisionStunt();
-      StartNewModule("stunt_00","", "07_1");
+      ST_PlayVisionStunt();
+      //StartNewModule("stunt_00","", "07_1");
   }
 }
 

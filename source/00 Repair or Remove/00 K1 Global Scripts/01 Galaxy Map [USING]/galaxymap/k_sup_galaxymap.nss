@@ -437,8 +437,9 @@ void main()
                 }*/
                 //else
                 //{
-                    SetGlobalNumber("K_CURRENT_PLANET", 40);
+                    //SetGlobalNumber("K_CURRENT_PLANET", 40);
                     StartNewModule("stunt_16");
+            SetGlobalNumber("K_CURRENT_PLANET", nPlanet);
                 //}
                 //StartNewModule("stunt_16", "",  "", "08");
             }
