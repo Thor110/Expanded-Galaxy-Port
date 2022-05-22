@@ -193,7 +193,7 @@ void sub4() {
 					DelayCommand(2.0, AssignCommand(oG_lena, ActionStartConversation(oPC, "", 0, 0, 1, "", "", "", "", "", "", 0)));
 					return;
 				}
-				if ((((IsNPCPartyMember(0) && (GetGlobalBoolean("K_MESS_BASTILA") == 0)) && (GetGlobalNumber("K_CURRENT_PLANET") != 25)) && (GetGlobalNumber("K_SWG_HELENA") == 1))) {
+				if ((((IsNPCPartyMember(0) && (GetGlobalBoolean("K_MESS_BASTILA") == 0)) && (GetGlobalNumber("K_CURRENT_PLANET") != 15)) && (GetGlobalNumber("K_SWG_HELENA") == 1))) {
 					SetGlobalBoolean("K_MESSENGER_AVAILABLE", 0);
 					SetGlobalBoolean("K_MESS_BASTILA", 1);
 					oG_lena = CreateObject(1, "g_malare", location1, 0);
@@ -201,7 +201,7 @@ void sub4() {
 					DelayCommand(2.0, AssignCommand(oG_lena, ActionStartConversation(oPC, "", 0, 0, 1, "", "", "", "", "", "", 0)));
 					return;
 				}
-				if (((((IsNPCPartyMember(2) && (GetGlobalBoolean("KOR_END_HOSTILE") == 0)) && (GetGlobalBoolean("K_MESS_CARTH") == 0)) && (GetGlobalNumber("K_CURRENT_PLANET") != 30)) && (GetGlobalNumber("KOR_DANEL") == 1))) {
+				if (((((IsNPCPartyMember(2) && (GetGlobalBoolean("KOR_END_HOSTILE") == 0)) && (GetGlobalBoolean("K_MESS_CARTH") == 0)) && (GetGlobalNumber("K_CURRENT_PLANET") != 3)) && (GetGlobalNumber("KOR_DANEL") == 1))) {
 					SetGlobalBoolean("K_MESSENGER_AVAILABLE", 0);
 					SetGlobalBoolean("K_MESS_CARTH", 1);
 					oG_lena = CreateObject(1, "g_jordo", location1, 0);
@@ -209,7 +209,7 @@ void sub4() {
 					DelayCommand(2.0, AssignCommand(oG_lena, ActionStartConversation(oPC, "", 0, 0, 1, "", "", "", "", "", "", 0)));
 					return;
 				}
-				if (((((IsNPCPartyMember(4) && (GetGlobalBoolean("K_MESS_JOLEE") == 0)) && (GetGlobalNumber("K_CURRENT_PLANET") != 25)) && (GetGlobalNumber("K_CURRENT_PLANET") != 20)) && (GetGlobalNumber("MAN_MURDER_PLOT") == 0))) {
+				if (((((IsNPCPartyMember(4) && (GetGlobalBoolean("K_MESS_JOLEE") == 0)) && (GetGlobalNumber("K_CURRENT_PLANET") != 15)) && (GetGlobalNumber("K_CURRENT_PLANET") != 11)) && (GetGlobalNumber("MAN_MURDER_PLOT") == 0))) {
 					SetGlobalBoolean("K_MESSENGER_AVAILABLE", 0);
 					SetGlobalBoolean("K_MESS_JOLEE", 1);
 					oG_lena = CreateObject(1, "g_davink", location1, 0);
@@ -217,7 +217,7 @@ void sub4() {
 					DelayCommand(2.0, AssignCommand(oG_lena, ActionStartConversation(oPC, "", 0, 0, 1, "", "", "", "", "", "", 0)));
 					return;
 				}
-				if (((((IsNPCPartyMember(5) && (GetGlobalBoolean("K_MESS_JUHANI") == 0)) && ((GetGlobalNumber("G_JUHANIH_STATE") > 5) && (GetGlobalNumber("G_JUHANIP_STATE") < 10))) && (GetGlobalNumber("G_JUHANI_PLOT") == 0)) && (GetGlobalNumber("K_CURRENT_PLANET") != 15))) {
+				if (((((IsNPCPartyMember(5) && (GetGlobalBoolean("K_MESS_JUHANI") == 0)) && ((GetGlobalNumber("G_JUHANIH_STATE") > 5) && (GetGlobalNumber("G_JUHANIP_STATE") < 10))) && (GetGlobalNumber("G_JUHANI_PLOT") == 0)) && (GetGlobalNumber("K_CURRENT_PLANET") != 0))) {
 					SetGlobalBoolean("K_MESSENGER_AVAILABLE", 0);
 					SetGlobalBoolean("K_MESS_JUHANI", 1);
 					oG_lena = CreateObject(1, "g_xor", location1, 0);
@@ -225,7 +225,7 @@ void sub4() {
 					DelayCommand(2.0, AssignCommand(oG_lena, ActionStartConversation(oPC, "", 0, 0, 1, "", "", "", "", "", "", 0)));
 					return;
 				}
-				if ((((((IsNPCPartyMember(1) && (GetGlobalBoolean("K_MESS_CANDEROUS") == 0)) && (GetGlobalNumber("K_CURRENT_PLANET") != 35)) && (GetGlobalNumber("G_CAND_STATE") >= 6)) && (GetGlobalBoolean("G_CAND_THING") == 1)) && (GetGlobalNumber("G_CAND_PLOT") == 0))) {
+				if ((((((IsNPCPartyMember(1) && (GetGlobalBoolean("K_MESS_CANDEROUS") == 0)) && (GetGlobalNumber("K_CURRENT_PLANET") != 14)) && (GetGlobalNumber("G_CAND_STATE") >= 6)) && (GetGlobalBoolean("G_CAND_THING") == 1)) && (GetGlobalNumber("G_CAND_PLOT") == 0))) {
 					SetGlobalBoolean("K_MESSENGER_AVAILABLE", 0);
 					SetGlobalBoolean("K_MESS_CANDEROUS", 1);
 					oG_lena = CreateObject(1, "g_jagi", location1, 0);
@@ -233,7 +233,7 @@ void sub4() {
 					DelayCommand(2.0, AssignCommand(oG_lena, ActionStartConversation(oPC, "", 0, 0, 1, "", "", "", "", "", "", 0)));
 					return;
 				}
-				if (((((IsNPCPartyMember(6) && (GetGlobalBoolean("K_MESS_MISSION") == 0)) && (GetGlobalNumber("K_CURRENT_PLANET") != 35)) && (GetGlobalNumber("K_CURRENT_PLANET") != 25)) && (GetGlobalNumber("Mis_MissionTalk") == 5))) {
+				if (((((IsNPCPartyMember(6) && (GetGlobalBoolean("K_MESS_MISSION") == 0)) && (GetGlobalNumber("K_CURRENT_PLANET") != 14)) && (GetGlobalNumber("K_CURRENT_PLANET") != 15)) && (GetGlobalNumber("Mis_MissionTalk") == 5))) {
 					SetGlobalBoolean("K_MESSENGER_AVAILABLE", 0);
 					SetGlobalBoolean("K_MESS_MISSION", 1);
 					oG_lena = CreateObject(1, "g_lena", location1, 0);

@@ -68,7 +68,7 @@ void main() {
   CreateItemOnObject("ebon_armband",GetFirstPC(),1,0);
 
 		sub1("TRIGGERFIRE", 5, 5, 3.0);
-		SetGlobalNumber("K_CURRENT_PLANET", 15);
+		SetGlobalNumber("K_CURRENT_PLANET", 0);
 		SetGlobalBoolean("Tar_Destroyed", 1);
 		RemoveJournalQuestEntry("tar_party");
 		RemoveJournalQuestEntry("k_rapidtransit");

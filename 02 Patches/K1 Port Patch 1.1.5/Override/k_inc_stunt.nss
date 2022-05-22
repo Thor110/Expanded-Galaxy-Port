@@ -609,22 +609,22 @@ int ST_VisionPlayed()
     //ST_MyPrintString("k_vis_korriban2  = " + IntToString(GetGlobalBoolean("k_vis_korriban2")));
     //ST_MyPrintString("k_vis_tatooine2  = " + IntToString(GetGlobalBoolean("k_vis_tatooine2")));
 
-    if(nFUTURE == 20 && GetGlobalBoolean("k_vis_kashyyyk2") == FALSE)
+    if(nFUTURE == 11 && GetGlobalBoolean("k_vis_kashyyyk2") == FALSE)
     {
         SetGlobalBoolean("k_vis_kashyyyk2", TRUE);
         return FALSE;
     }
-    else if(nFUTURE == 25 && GetGlobalBoolean("k_vis_manaan2") == FALSE)
+    else if(nFUTURE == 15 && GetGlobalBoolean("k_vis_manaan2") == FALSE)
     {
         SetGlobalBoolean("k_vis_manaan2", TRUE);
         return FALSE;
     }
-    else if(nFUTURE == 30 && GetGlobalBoolean("k_vis_korriban2") == FALSE)
+    else if(nFUTURE == 3 && GetGlobalBoolean("k_vis_korriban2") == FALSE)
     {
         SetGlobalBoolean("k_vis_korriban2", TRUE);
         return FALSE;
     }
-    else if(nFUTURE == 35 && GetGlobalBoolean("k_vis_tatooine2") == FALSE)
+    else if(nFUTURE == 14 && GetGlobalBoolean("k_vis_tatooine2") == FALSE)
     {
         SetGlobalBoolean("k_vis_tatooine2", TRUE);
         return FALSE;
