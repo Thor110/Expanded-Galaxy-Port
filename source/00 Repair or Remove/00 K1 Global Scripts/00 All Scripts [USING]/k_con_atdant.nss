@@ -21,5 +21,8 @@ int StartingConditional()
     {
         return TRUE;
     }
-    return FALSE;
+    else
+    {
+        return FALSE;
+    }
 }

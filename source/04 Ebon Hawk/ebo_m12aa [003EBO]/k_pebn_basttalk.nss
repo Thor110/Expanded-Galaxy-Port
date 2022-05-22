@@ -45,28 +45,28 @@ int sub3() {
 	int nGlobal = GetGlobalNumber("K_CURRENT_PLANET");
 	int int3 = GetGlobalNumber("Ebon_Vision");
 	int int5 = 0;
-	if (((((((nGlobal == 15) || (nGlobal == 20)) || (nGlobal == 25)) || (nGlobal == 30)) || (nGlobal == 35)) && (int3 != 99))) {
-		if (((nGlobal == 15) && (!GetGlobalBoolean("k_vis_dantooine")))) {
+	if (((((((nGlobal == 0) || (nGlobal == 11)) || (nGlobal == 15)) || (nGlobal == 3)) || (nGlobal == 14)) && (int3 != 99))) {
+		if (((nGlobal == 0) && (!GetGlobalBoolean("k_vis_dantooine")))) {
 			int5 = 1;
 			SetGlobalBoolean("k_vis_dantooine", 1);
 		}
 		else {
-			if (((nGlobal == 20) && (!GetGlobalBoolean("k_vis_kashyyyk")))) {
+			if (((nGlobal == 11) && (!GetGlobalBoolean("k_vis_kashyyyk")))) {
 				int5 = 1;
 				SetGlobalBoolean("k_vis_kashyyyk", 1);
 			}
 			else {
-				if (((nGlobal == 25) && (!GetGlobalBoolean("k_vis_manaan")))) {
+				if (((nGlobal == 15) && (!GetGlobalBoolean("k_vis_manaan")))) {
 					int5 = 1;
 					SetGlobalBoolean("k_vis_manaan", 1);
 				}
 				else {
-					if (((nGlobal == 30) && (!GetGlobalBoolean("k_vis_korriban")))) {
+					if (((nGlobal == 3) && (!GetGlobalBoolean("k_vis_korriban")))) {
 						int5 = 1;
 						SetGlobalBoolean("k_vis_korriban", 1);
 					}
 					else {
-						if (((nGlobal == 35) && (!GetGlobalBoolean("k_vis_tatooine")))) {
+						if (((nGlobal == 14) && (!GetGlobalBoolean("k_vis_tatooine")))) {
 							int5 = 1;
 							SetGlobalBoolean("k_vis_tatooine", 1);
 						}

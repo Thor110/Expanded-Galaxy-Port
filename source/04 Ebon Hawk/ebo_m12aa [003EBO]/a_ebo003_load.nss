@@ -29,31 +29,31 @@
 
 // Prototypes
 void sub9(int intParam1, string stringParam2, location locationParam3);
-void sub8(string stringParam1, int intParam2, int intParam3, float floatParam4);
+//void sub8(string stringParam1, int intParam2, int intParam3, float floatParam4);
 void sub7();
 void sub6(object objectParam1);
 void sub5();
 void sub4(int intParam1, location locationParam2);
 void sub3();
 void sub2();
-void sub1(string stringParam1);
+//void sub1(string stringParam1);
 
 void sub9(int intParam1, string stringParam2, location locationParam3) {
 	object object1 = CreateObject(intParam1, stringParam2, locationParam3, 0);
 }
-
+/*
 void sub8(string stringParam1, int intParam2, int intParam3, float floatParam4) {
 	if ((!ShipBuild())) {
 		AurPostString(stringParam1, intParam2, intParam3, floatParam4);
 	}
 }
-
+*/
 void sub7() {
 	int int1 = 0;
 	while (GetIsObjectValid(GetObjectByTag("gizka", int1))) {
 		DelayCommand(0.2, DestroyObject(GetObjectByTag("gizka", int1), 0.0, 0, 0.0));
 		(int1++);
-		sub8(("Destroy Gizka " + IntToString(int1)), 5, 5, 1.0);
+		//sub8(("Destroy Gizka " + IntToString(int1)), 5, 5, 1.0);
 	}
 	int int3;
 	int int4 = 0;
@@ -64,7 +64,7 @@ void sub7() {
 			int3 = 15;
 		}
 		while ((int4 <= int3)) {
-			sub8(("Spawn Gizka " + IntToString(int3)), 7, 7, 1.0);
+			//sub8(("Spawn Gizka " + IntToString(int3)), 7, 7, 1.0);
 			(int4++);
 			{
 				location location1;
@@ -235,7 +235,7 @@ void main() {
 			oInveb001 = CreateObject(64, "inveb001", location1, 0);
 		}
 	}*/
-  sub1("Run enter script");
+  //sub1("Run enter script");
 	location location1;
 	object oPebn_zaalbar;
 	object oZaalbar;
