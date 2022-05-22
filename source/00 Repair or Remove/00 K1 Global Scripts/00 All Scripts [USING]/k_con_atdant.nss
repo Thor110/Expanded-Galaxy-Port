@@ -17,7 +17,7 @@
 int StartingConditional()
 {
     int nPlanet = GetGlobalNumber("K_CURRENT_PLANET");
-    if(nPlanet == 15)
+    if(nPlanet == 0)
     {
         return TRUE;
     }

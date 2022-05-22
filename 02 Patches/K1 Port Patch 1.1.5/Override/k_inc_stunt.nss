@@ -518,53 +518,69 @@ string ST_GetTakeOffRender()
 string ST_GetLandingRender()
 {
     int nFUTURE = GetGlobalNumber("K_FUTURE_PLANET");
-    if(nFUTURE == 15)
+    if(nFUTURE == 0)
     {
-        return "05_2a";
+        return "05_2a";//Dantooine
     }
-    else if(nFUTURE == 20)
+    else if(nFUTURE == 1)
     {
-        return "05_4a";
+        return "OndMov03";//Dxun
     }
-    else if(nFUTURE == 25)
+    else if(nFUTURE == 2)
     {
-        return "05_5a";
+        return "";//Malachor V
     }
-    else if(nFUTURE == 30)
+    else if(nFUTURE == 3)
     {
-        return "05_7a";
+        return "05_7a";//Korriban
     }
-    else if(nFUTURE == 35)
+    else if(nFUTURE == 4)
     {
-        return "05_3a";
+        return "DroMov02";//M4-78
     }
-    else if(nFUTURE == 40)
+    else if(nFUTURE == 5)
     {
-        return  "NULL";
+        return "";//Taris
     }
-    else if(nFUTURE == 55)
+    else if(nFUTURE == 6)
     {
-        return "LIVE_1a";
+        return "NarMov01";//Nar Shaddaa
     }
-    else if(nFUTURE == 60)
+    else if(nFUTURE == 7)
     {
-        return "LIVE_2a";
+        return "";//Onderon
     }
-    else if(nFUTURE == 65)
+    else if(nFUTURE == 8)
     {
-        return "LIVE_3a";
+        return "KorMov01";//Sleheyron
     }
-    else if(nFUTURE == 70)
+    else if(nFUTURE == 9)
     {
-        return "LIVE_4a";
+        return "05_8a";//Lehon - Unknown World
     }
-    else if(nFUTURE == 75)
+    else if(nFUTURE == 10)
     {
-        return "LIVE_5a";
+        return "05_8a";//The Star Forge
     }
-    else if(nFUTURE == 80)
+    else if(nFUTURE == 11)
     {
-        return "LIVE_6a";
+        return "05_4a";//Kashyyyk
+    }
+    else if(nFUTURE == 12)
+    {
+        return "NarMov01";//Coruscant
+    }
+    else if(nFUTURE == 13)
+    {
+        return "LIVE_1a";//Yavin
+    }
+    else if(nFUTURE == 14)
+    {
+        return "05_3a";//Tatooine
+    }
+    else if(nFUTURE == 15)
+    {
+        return "05_5a";//Manaan
     }
     return  "NULL";
 }

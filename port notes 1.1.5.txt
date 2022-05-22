@@ -32,3 +32,11 @@ Star Forge balancing resolved and the galaxy map no longer displays the Star For
 
 Star Forge description and name updated.
 
+The Ebon Hawk now has the storage bay from the first game instead of the one from the second game.
+
+Tatooine Sandcrawler removed and model variants added to the templates.
+
+Yuthura and Bastila now appear on the main menu when entering the academy and leaving the Leviathan.
+
+
+

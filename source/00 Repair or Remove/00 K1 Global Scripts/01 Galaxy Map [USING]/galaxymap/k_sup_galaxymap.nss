@@ -176,7 +176,7 @@ void SetPlanet()
             
         }break;
     }
-SetGlobalNumber("K_FUTURE_PLANET",GetGlobalNumber("K_CURRENT_PLANET"));
+SetGlobalNumber("K_CURRENT_PLANET",GetGlobalNumber("K_FUTURE_PLANET"));
 }
 void LoadVision()
 {
@@ -312,6 +312,9 @@ void main()
   int nSelected = GetSelectedPlanet();
   int nPrevPlanet = GetCurrentPlanet();
   SetGlobalNumber("K_FUTURE_PLANET", nSelected);
+
+  SetGlobalNumber("K_CURRENT_PLANET",GetGlobalNumber("K_FUTURE_PLANET"));
+
   //Game Variables
   int nCurrent = GetGlobalNumber("K_CURRENT_PLANET");//003EBO_RETURN_DEST
   //int nCurrent = GetGlobalNumber("003EBO_RETURN_DEST");
@@ -488,7 +491,7 @@ void main()
         else if(nMain == 15 && nCalo == 0)
         {
             SetGlobalNumber("K_KALO_BANDON", 10);
-            SetGlobalNumber("K_CURRENT_PLANET", nPlanet);
+            //SetGlobalNumber("K_CURRENT_PLANET", nPlanet);
             SetPlanet();
             StartNewModule("stunt_12");
         }

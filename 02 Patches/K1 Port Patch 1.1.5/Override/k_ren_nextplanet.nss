@@ -11,6 +11,32 @@
 
 void main()
 {
+  if(GetGlobalNumber("K_FUTURE_PLANET") == 3 || GetGlobalNumber("K_FUTURE_PLANET") == 11 || GetGlobalNumber("K_FUTURE_PLANET") == 14 || GetGlobalNumber("K_FUTURE_PLANET") == 15)
+  {
+    if(GetGlobalBoolean("k_vis_korriban") == FALSE)
+    {
+      ST_PlayVisionStunt();
+    }
+    if(GetGlobalBoolean("k_vis_kashyyyk") == FALSE)
+    {
+      ST_PlayVisionStunt();
+    }
+    if(GetGlobalBoolean("k_vis_tatooine") == FALSE)
+    {
+      ST_PlayVisionStunt();
+    }
+    if(GetGlobalBoolean("k_vis_manaan") == FALSE)
+    {
+      ST_PlayVisionStunt();
+    }
+    else
+    {
+      ST_PlayGenericLanding();
+    }
+  }
+  else
+  {
     ST_PlayGenericLanding();
+  }
 }
 
