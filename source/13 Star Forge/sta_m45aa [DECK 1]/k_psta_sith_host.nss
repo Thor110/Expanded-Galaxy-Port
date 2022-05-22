@@ -119,6 +119,10 @@
 	int intGLOB_117 = 4;
 
 void main() {
+  SetMinOneHP(GetObjectByTag("k_sta_lightjedi1", 0),0);
+  SetMinOneHP(GetObjectByTag("k_sta_lightjedi2", 0),0);
+  SetMinOneHP(GetObjectByTag("k_sta_lightjedi3", 0),0);
+  
 	object oPC = GetFirstPC();
 	object oK_sta_darkjedi1 = GetObjectByTag("k_sta_darkjedi1", 0);
 	object oK_sta_darkjedi2 = GetObjectByTag("k_sta_darkjedi2", 0);
@@ -133,4 +137,7 @@ void main() {
 	DelayCommand(0.1, AssignCommand(oK_sta_darkjedi1, ClearAllActions()));
 	DelayCommand(0.11, AssignCommand(oK_sta_darkjedi2, ClearAllActions()));
 	DelayCommand(0.120000005, AssignCommand(oK_sta_darkjedi3, ClearAllActions()));
+	DelayCommand(0.0, AssignCommand(oK_sta_darkjedi1, ActionAttack(GetObjectByTag("k_sta_lightjedi1", 0),FALSE)));
+	DelayCommand(0.0, AssignCommand(oK_sta_darkjedi2, ActionAttack(GetObjectByTag("k_sta_lightjedi2", 0),FALSE)));
+	DelayCommand(0.0, AssignCommand(oK_sta_darkjedi3,ActionAttack(GetObjectByTag("k_sta_lightjedi3", 0),FALSE)));
 }
