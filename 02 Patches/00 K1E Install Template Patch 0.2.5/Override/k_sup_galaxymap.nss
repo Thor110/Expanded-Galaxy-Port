@@ -69,6 +69,10 @@ void DoPlanetChange()
   PlayMovieQueue();//BastilaConversation();
 }
 
+void ConfirmPlanet()
+{
+  SetGlobalNumber("K_CURRENT_PLANET",GetGlobalNumber("K_FUTURE_PLANET"));
+}
 void SetPlanet()
 {
             //SetGlobalNumber("K_CURRENT_PLANET", nPlanet);
@@ -78,105 +82,122 @@ void SetPlanet()
         {
             SetGlobalNumber("003EBO_RETURN_DEST",0);//
             SetGlobalNumber("003EBO_BACKGROUND",0);//2
-            SetGlobalNumber("K_CURRENT_PLANET",10);
+            SetGlobalNumber("K_CURRENT_PLANET",8);//10
+            ConfirmPlanet();
         }break;
         case 10://2//Telos : Citadel Station // extra case 0-16 exist and LIVE_PLANET_06 would be further extra
         {
             SetGlobalNumber("003EBO_RETURN_DEST",1);
             SetGlobalNumber("003EBO_BACKGROUND",1);
-            SetGlobalNumber("K_CURRENT_PLANET",60);// set accordingly
+            SetGlobalNumber("K_CURRENT_PLANET",10);// set accordingly//60
+            ConfirmPlanet();
         }break;
         case PLANET_TELOS://3//Unknown World : Lehon
         {
             SetGlobalNumber("003EBO_RETURN_DEST",2);
             SetGlobalNumber("003EBO_BACKGROUND",2);
-            SetGlobalNumber("K_CURRENT_PLANET",45);
+            SetGlobalNumber("K_CURRENT_PLANET",9);//45
+            ConfirmPlanet();
         }break;
         case PLANET_NAR_SHADDAA://4//Nar Shaddaa
         {
             SetGlobalNumber("003EBO_RETURN_DEST",3);
             SetGlobalNumber("003EBO_BACKGROUND",3);
-            SetGlobalNumber("K_CURRENT_PLANET",65);// set accordingly
+            SetGlobalNumber("K_CURRENT_PLANET",6);// set accordingly//65
+            ConfirmPlanet();
         }break;
         case PLANET_DXUN://5//Onderon
         {
             SetGlobalNumber("003EBO_RETURN_DEST",4);
             SetGlobalNumber("003EBO_BACKGROUND",4);
-            SetGlobalNumber("K_CURRENT_PLANET",70);// set accordingly
+            SetGlobalNumber("K_CURRENT_PLANET",1);// set accordingly//70
+            ConfirmPlanet();
         }break;
         case PLANET_ONDERON://6//Dxun ?.!
         {
 
             SetGlobalNumber("003EBO_RETURN_DEST",4);
             SetGlobalNumber("003EBO_BACKGROUND",4);
-            SetGlobalNumber("K_CURRENT_PLANET",75);// set accordingly
+            SetGlobalNumber("K_CURRENT_PLANET",7);// set accordingly//75
+            ConfirmPlanet();
         }break;
         case PLANET_DANTOOINE://7//Dantooine
         {
             SetGlobalNumber("003EBO_RETURN_DEST",5);
             SetGlobalNumber("003EBO_BACKGROUND",5);
-            SetGlobalNumber("K_CURRENT_PLANET",15);
+            SetGlobalNumber("K_CURRENT_PLANET",0);//15
+            ConfirmPlanet();
         }break;
         case PLANET_KORRIBAN://8//Korriban
         {
             SetGlobalNumber("003EBO_RETURN_DEST",6);
             SetGlobalNumber("003EBO_BACKGROUND",6);
-            SetGlobalNumber("K_CURRENT_PLANET",30);
+            SetGlobalNumber("K_CURRENT_PLANET",3);//30
+            ConfirmPlanet();
         }break;
         case PLANET_M4_78://9//M478
         {
             SetGlobalNumber("003EBO_RETURN_DEST",7);
             SetGlobalNumber("003EBO_BACKGROUND",7);
-            SetGlobalNumber("K_CURRENT_PLANET",80);// set accordingly
+            SetGlobalNumber("K_CURRENT_PLANET",4);// set accordingly//80
+            ConfirmPlanet();
         }break;
-        case PLANET_MALACHOR_V://10//Yavin Station or Malachor V?.!
+        case PLANET_MALACHOR_V://PLANET_MALACHOR_V = 5//10//Yavin Station or Malachor V?.!//
         {
             SetGlobalNumber("003EBO_RETURN_DEST",9);//8 originally - exit destination case
             SetGlobalNumber("003EBO_BACKGROUND",8);//4 is dxun - background and return planet icon case
-            SetGlobalNumber("K_CURRENT_PLANET",55);// set accordingly
+            SetGlobalNumber("K_CURRENT_PLANET",5);// set accordingly//55
+            ConfirmPlanet();
         }break;
         case PLANET_LIVE_01://11//Kashyyyk
         {
             SetGlobalNumber("003EBO_RETURN_DEST",11);
             SetGlobalNumber("003EBO_BACKGROUND",11);// background check fires different planet exit
-            SetGlobalNumber("K_CURRENT_PLANET",20);
+            SetGlobalNumber("K_CURRENT_PLANET",11);//20
+            ConfirmPlanet();
         }break;
         case PLANET_LIVE_02://12//Coruscant
         {
             SetGlobalNumber("003EBO_RETURN_DEST",12);
             SetGlobalNumber("003EBO_BACKGROUND",12);
-            SetGlobalNumber("K_CURRENT_PLANET",85);// set accordingly
+            SetGlobalNumber("K_CURRENT_PLANET",12);// set accordingly//85
+            ConfirmPlanet();
         }break;
         case PLANET_LIVE_03://13//Yavin Station?.!
         {
             SetGlobalNumber("003EBO_RETURN_DEST",13);
             SetGlobalNumber("003EBO_BACKGROUND",13);
-            SetGlobalNumber("K_CURRENT_PLANET",55);// set accordingly
+            SetGlobalNumber("K_CURRENT_PLANET",13);// set accordingly//55
+            ConfirmPlanet();
         }break;
         case PLANET_LIVE_04://14//Tatooine
         {
             SetGlobalNumber("003EBO_RETURN_DEST",14);
             SetGlobalNumber("003EBO_BACKGROUND",14);
-            SetGlobalNumber("K_CURRENT_PLANET",35);
+            SetGlobalNumber("K_CURRENT_PLANET",14);//35
+            ConfirmPlanet();
+//SetGlobalNumber("K_CURRENT_PLANET",GetGlobalNumber("K_FUTURE_PLANET"));
         }break;
         case PLANET_LIVE_05://15//Manaan
         {
             SetGlobalNumber("003EBO_RETURN_DEST",15);
             SetGlobalNumber("003EBO_BACKGROUND",15);
-            SetGlobalNumber("K_CURRENT_PLANET",25);
+            SetGlobalNumber("K_CURRENT_PLANET",15);//25
+            ConfirmPlanet();
         }break;
-        case PLANET_EBON_HAWK://16//Malachor V?.!
+        case PLANET_EBON_HAWK://PLANET_EBON_HAWK = 2//16//Malachor V?.!
         {
             SetGlobalNumber("003EBO_RETURN_DEST",8);
             SetGlobalNumber("003EBO_BACKGROUND",10);
-            SetGlobalNumber("K_CURRENT_PLANET",90);// set accordingly
+            SetGlobalNumber("K_CURRENT_PLANET",2);// set accordingly//90
+            ConfirmPlanet();
         }break;
         case PLANET_HARBINGER://17//Harbinger?.!
         {
             
         }break;
     }
-SetGlobalNumber("K_FUTURE_PLANET",GetGlobalNumber("K_CURRENT_PLANET"));
+//SetGlobalNumber("K_CURRENT_PLANET",GetGlobalNumber("K_FUTURE_PLANET"));
 }
 void LoadVision()
 {
@@ -239,6 +260,10 @@ void LoadVision()
     {
       QueueMovie("08");//,"","0c"
     }
+  }
+  else if(GetGlobalNumber("K_FUTURE_PLANET") == 0)
+  {
+    QueueMovie("08");
   }
   else if(GetGlobalNumber("K_FUTURE_PLANET") == 1)
   {
@@ -312,6 +337,9 @@ void main()
   int nSelected = GetSelectedPlanet();
   int nPrevPlanet = GetCurrentPlanet();
   SetGlobalNumber("K_FUTURE_PLANET", nSelected);
+
+  SetGlobalNumber("K_CURRENT_PLANET",GetGlobalNumber("K_FUTURE_PLANET"));
+
   //Game Variables
   int nCurrent = GetGlobalNumber("K_CURRENT_PLANET");//003EBO_RETURN_DEST
   //int nCurrent = GetGlobalNumber("003EBO_RETURN_DEST");
@@ -488,7 +516,7 @@ void main()
         else if(nMain == 15 && nCalo == 0)
         {
             SetGlobalNumber("K_KALO_BANDON", 10);
-            SetGlobalNumber("K_CURRENT_PLANET", nPlanet);
+            //SetGlobalNumber("K_CURRENT_PLANET", nPlanet);
             SetPlanet();
             StartNewModule("stunt_12");
         }
@@ -519,7 +547,7 @@ void main()
             SetGlobalNumber("003EBO_RETURN_DEST",0);//
             SetGlobalNumber("003EBO_BACKGROUND",0);//2
 
-            SetGlobalNumber("K_CURRENT_PLANET",10);// set accordingly
+            SetGlobalNumber("K_CURRENT_PLANET",8);// set accordingly
             // need to check where we are landing
             QueueMovie("KorMov01");
         }break;
@@ -533,7 +561,7 @@ void main()
     //if (nMain == 63)
     //{
       //SetGlobalNumber("K_KOTOR_MASTER", 63);
-            SetGlobalNumber("K_CURRENT_PLANET",45);// set accordingly
+            SetGlobalNumber("K_CURRENT_PLANET",10);// set accordingly
             QueueMovie("05_8a");
     //}
     //else
@@ -551,14 +579,14 @@ void main()
 
             // need to check where we are landing
             QueueMovie("05_8a");
-            SetGlobalNumber("K_CURRENT_PLANET",45);
+            SetGlobalNumber("K_CURRENT_PLANET",9);
         }break;
         case PLANET_NAR_SHADDAA://4//Nar Shaddaa
         {
             SetGlobalNumber("003EBO_RETURN_DEST",3);
             SetGlobalNumber("003EBO_BACKGROUND",3);
 
-            SetGlobalNumber("K_CURRENT_PLANET",65);// set accordingly
+            SetGlobalNumber("K_CURRENT_PLANET",6);// set accordingly
             //if(GetGlobalBoolean("301_FIRST_ENTER"))//only que this movie if we have been here before
             QueueMovie("NarMov01");
         }break;
@@ -568,7 +596,7 @@ void main()
             SetGlobalNumber("003EBO_RETURN_DEST",4);
             SetGlobalNumber("003EBO_BACKGROUND",4);
 
-            SetGlobalNumber("K_CURRENT_PLANET",70);// set accordingly
+            SetGlobalNumber("K_CURRENT_PLANET",1);// set accordingly
             QueueMovie("OndMov03");
         }break;
         case PLANET_ONDERON://6//Dxun ?.!
@@ -577,7 +605,7 @@ void main()
             SetGlobalNumber("003EBO_RETURN_DEST",4);
             SetGlobalNumber("003EBO_BACKGROUND",4);
 
-            SetGlobalNumber("K_CURRENT_PLANET",75);// set accordingly
+            SetGlobalNumber("K_CURRENT_PLANET",7);// set accordingly
             //first time going to onderon?
             /*if( (GetGlobalNumber("401DXN_Visited") == 0) && (GetGlobalNumber("401DXN_STARTED") == 0) )
             {
@@ -593,14 +621,14 @@ void main()
             SetGlobalNumber("003EBO_BACKGROUND",5);
 
             QueueMovie("05_2a");
-            SetGlobalNumber("K_CURRENT_PLANET",15);
+            SetGlobalNumber("K_CURRENT_PLANET",0);
         }break;
         case PLANET_KORRIBAN://8//Korriban
         {
             SetGlobalNumber("003EBO_RETURN_DEST",6);
             SetGlobalNumber("003EBO_BACKGROUND",6);
 
-            SetGlobalNumber("K_CURRENT_PLANET",30);
+            SetGlobalNumber("K_CURRENT_PLANET",3);
             if(GetGlobalBoolean("k_vis_korriban") == FALSE)
             {
                 //QueueMovie("0d");
@@ -616,7 +644,7 @@ void main()
             SetGlobalNumber("003EBO_RETURN_DEST",7);
             SetGlobalNumber("003EBO_BACKGROUND",7);
 
-            SetGlobalNumber("K_CURRENT_PLANET",80);// set accordingly
+            SetGlobalNumber("K_CURRENT_PLANET",4);// set accordingly
             QueueMovie("DroMov02");
         }break;
         case PLANET_MALACHOR_V://10//Yavin Station or Malachor V?.!
@@ -627,7 +655,7 @@ void main()
             SetGlobalNumber("003EBO_RETURN_DEST",9);//8 originally - exit destination case
             SetGlobalNumber("003EBO_BACKGROUND",8);//4 is dxun - background and return planet icon case
                                                 // alternating 8 for space background and 9 for return destination
-            SetGlobalNumber("K_CURRENT_PLANET",55);// set accordingly
+            SetGlobalNumber("K_CURRENT_PLANET",5);// set accordingly
             QueueMovie("LIVE_1a");//
         }break;
         case PLANET_LIVE_01://11//Kashyyyk
@@ -635,7 +663,7 @@ void main()
             SetGlobalNumber("003EBO_RETURN_DEST",11);
             SetGlobalNumber("003EBO_BACKGROUND",11);// background check fires different planet exit
 
-            SetGlobalNumber("K_CURRENT_PLANET",20);
+            SetGlobalNumber("K_CURRENT_PLANET",11);
             if(GetGlobalBoolean("k_vis_kashyyyk") == FALSE)
             {
                 //QueueMovie("0c");
@@ -651,7 +679,7 @@ void main()
             SetGlobalNumber("003EBO_RETURN_DEST",12);
             SetGlobalNumber("003EBO_BACKGROUND",12);
           
-            SetGlobalNumber("K_CURRENT_PLANET",85);// set accordingly
+            SetGlobalNumber("K_CURRENT_PLANET",12);// set accordingly
             //Coruscant No Movie
             QueueMovie("NarMov01");
         }break;
@@ -660,7 +688,7 @@ void main()
             SetGlobalNumber("003EBO_RETURN_DEST",13);
             SetGlobalNumber("003EBO_BACKGROUND",13);
 
-            SetGlobalNumber("K_CURRENT_PLANET",55);// set accordingly
+            SetGlobalNumber("K_CURRENT_PLANET",13);// set accordingly
             QueueMovie("LIVE_1a");
         }break;
         case PLANET_LIVE_04://14//Tatooine
@@ -668,7 +696,7 @@ void main()
             SetGlobalNumber("003EBO_RETURN_DEST",14);
             SetGlobalNumber("003EBO_BACKGROUND",14);
 
-            SetGlobalNumber("K_CURRENT_PLANET",35);
+            SetGlobalNumber("K_CURRENT_PLANET",14);
             if(GetGlobalBoolean("k_vis_tatooine") == FALSE)
             {
               //QueueMovie("0a");
@@ -683,7 +711,7 @@ void main()
         {
             SetGlobalNumber("003EBO_RETURN_DEST",15);
             SetGlobalNumber("003EBO_BACKGROUND",15);
-            SetGlobalNumber("K_CURRENT_PLANET",25);
+            SetGlobalNumber("K_CURRENT_PLANET",15);
             if(GetGlobalBoolean("k_vis_manaan") == FALSE)
             {
                 //QueueMovie("0b");
@@ -698,7 +726,7 @@ void main()
         {
             SetGlobalNumber("003EBO_RETURN_DEST",8);
             SetGlobalNumber("003EBO_BACKGROUND",10);
-            SetGlobalNumber("K_CURRENT_PLANET",90);// set accordingly
+            SetGlobalNumber("K_CURRENT_PLANET",2);// set accordingly//is this ever the case? Ebon Hawk = Malachor V now.
         }break;
         case PLANET_HARBINGER://17//Harbinger?.!
         {
