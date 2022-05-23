@@ -5,7 +5,7 @@
 //:: Created By: 
 //:: Copyright (c) 2002 Bioware Corp.
 
-#include "k_inc_debug"
+//#include "k_inc_debug"
 //#include "k_inc_stunt"
 
 void main()

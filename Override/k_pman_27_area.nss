@@ -1,6 +1,7 @@
 #include "k_inc_man"
 void main()
 {
+  DestroyObject(GetObjectByTag("ebon_armband"));
     object oEnter = GetEnteringObject();
     if(GetIsPC(oEnter))
     {
