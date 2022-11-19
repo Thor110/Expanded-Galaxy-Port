@@ -1,0 +1,38 @@
+workbench scroll bar is now blue - uibit_fill_16b.tga
+
+gauntlet item string references for g1_i_gauntlet01.uti updated from
+
+48149 to 136391
+48150 to 136392
+
+danm13
+
+Zhar's missing voice over fixed
+
+m33aa - dreshdae
+
+missing voiceover from encounter with sith thugs fixed
+
+ebon hawk model fixed
+
+unk_m41aa
+
+missing voiceover with duros on lehon fixed
+
+tar_m04aa
+
+missing voiceover line for infected outcast fixed
+
+war veteran feat removed
+
+string 22095 changed from Zaalbar to T3-M4
+
+rakghoul serum is no longer a stack of 99 stims ( still a stim icon though )
+
+danm13 & danm14aa - excess files removed ( test scripts )
+
+001ebo / end_m01aa - fixed an issue where occasionally the republic soldier would kill both of the sith soldiers leaving the player stuck in dialog
+
+ebon hawk armband now prompts a dialog when trying to warp in combat or when the player character is dead
+
+Trayus Rank Reform now properly included again ( Sith missing heads etc )
