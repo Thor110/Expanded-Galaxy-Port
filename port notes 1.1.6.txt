@@ -1,1 +1,3 @@
 strings 353/354/355 changed back to jedi classes
+classes.2da removed from both templates and the port install
+classes set back to their original values for all .utc files except those that have been given advanced jedi or sith classes
