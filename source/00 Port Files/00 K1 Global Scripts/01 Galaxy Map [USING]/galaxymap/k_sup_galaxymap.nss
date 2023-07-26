@@ -65,6 +65,7 @@ void BastilaConversation()
 */
 void DoPlanetChange()
 {
+  SetGlobalBoolean("K_LAST_WAYPOINT",FALSE);
   SignalEvent(GetArea(GetFirstPC()), EventUserDefined(1));
   PlayMovieQueue();//BastilaConversation();
 }
