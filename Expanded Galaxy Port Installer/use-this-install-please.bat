@@ -89,13 +89,32 @@ if exist "%mykey2%\chitin.key" (
 
 echo "Installing Expanded Galaxy Project Port"
 
-FOR /F "delims=" %%a IN (tslpatchdata\lips-file-list.txt) DO COPY "%mykey1%\lips\%%~a" "%cd%\tslpatchdata\%%~nxa"
-FOR /F "delims=" %%a IN (tslpatchdata\movies-file-list.txt) DO COPY "%mykey1%\movies\%%~a" "%cd%\tslpatchdata\%%~nxa"
-FOR /F "delims=" %%a IN (tslpatchdata\streammusic-file-list.txt) DO COPY "%mykey1%\streammusic\%%~a" "%cd%\tslpatchdata\%%~nxa"
-FOR /F "delims=" %%a IN (tslpatchdata\streamsounds-file-list.txt) DO COPY "%mykey1%\streamsounds\%%~a" "%cd%\tslpatchdata\%%~nxa"
-FOR /F "delims=" %%a IN (tslpatchdata\streamwaves-file-list.txt) DO COPY "%mykey1%\streamwaves%%~a" "%cd%\tslpatchdata\%%~nxa"
+Rem FOR /F "delims=" %%a IN (tslpatchdata\lips-file-list.txt) DO COPY "%mykey1%\lips\%%~a" "%cd%\tslpatchdata\%%~nxa"
+Rem FOR /F "delims=" %%a IN (tslpatchdata\movies-file-list.txt) DO COPY "%mykey1%\movies\%%~a" "%cd%\tslpatchdata\%%~nxa"
+Rem FOR /F "delims=" %%a IN (tslpatchdata\streammusic-file-list.txt) DO COPY "%mykey1%\streammusic\%%~a" "%cd%\tslpatchdata\%%~nxa"
+Rem FOR /F "delims=" %%a IN (tslpatchdata\streamsounds-file-list.txt) DO COPY "%mykey1%\streamsounds\%%~a" "%cd%\tslpatchdata\%%~nxa"
+Rem FOR /F "delims=" %%a IN (tslpatchdata\streamwaves-file-list.txt) DO COPY "%mykey1%\streamwaves%%~a" "%cd%\tslpatchdata\%%~nxa"
 
-tslpatchdata\pykotorcli.exe "%mykey2%" "%cd%"
+
+pause
+
+echo testing
+
+pause
+
+FOR /F "delims=" %%a IN (tslpatchdata\lips-file-list.txt) DO COPY "%mykey1%\lips\%%~a" "%mykey1%\lips\%%~nxa"
+FOR /F "delims=" %%a IN (tslpatchdata\movies-file-list.txt) DO COPY "%mykey1%\movies\%%~a" "%mykey1%\movies\%%~nxa"
+FOR /F "delims=" %%a IN (tslpatchdata\streammusic-file-list.txt) DO COPY "%mykey1%\streammusic\%%~a" "%mykey1%\streammusic\%%~nxa"
+FOR /F "delims=" %%a IN (tslpatchdata\streamsounds-file-list.txt) DO COPY "%mykey1%\streamsounds\%%~a" "%mykey1%\streamsounds\%%~nxa"
+FOR /F "delims=" %%a IN (tslpatchdata\streamwaves-file-list.txt) DO COPY "%mykey1%\streamwaves%%~a" "%mykey1%\streamwaves%%~nxa"
+
+pause
+
+echo testing
+
+pause
+
+Rem tslpatchdata\pykotorcli.exe "%mykey2%" "%cd%"
 
 echo "Star Wars : Knights of the Old Republic II Expanded Galaxy Port Project Installation Completed!"
 
