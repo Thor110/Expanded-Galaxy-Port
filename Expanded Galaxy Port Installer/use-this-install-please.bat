@@ -32,7 +32,7 @@ if %errorlevel% equ 0 (
 Rem KOTOR2 DISC
 reg query HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\LucasArts\KotOR2 /v Path /s
 if %errorlevel% equ 0 (
-  Rem echo "kotor 2 disc registry entry detected!"
+  echo "Hello World! Loyal fan & owner of a disc copy of the game!"
   FOR /F "tokens=2* skip=2" %%a in ('reg query "HKLM\SOFTWARE\WOW6432Node\LucasArts\KotOR2" /v "Path"') do set mykey2=%%b
 ) else (
   Rem echo "kotor 2 disc registry entry not detected!"
@@ -41,7 +41,7 @@ if %errorlevel% equ 0 (
 Rem KOTOR2 GOG
 reg query HKEY_LOCAL_MACHINE\SOFTWARE\GOG.com\Games\1421404581 /v PATH /s
 if %errorlevel% equ 0 (
-  Rem echo "kotor 2 gog registry entry detected!"
+  echo "Hello World! Good old Games User!"
   FOR /F "tokens=2* skip=2" %%a in ('reg query "HKLM\SSOFTWARE\GOG.com\Games\1421404581" /v "PATH"') do set mykey2=%%b
 ) else (
   Rem echo "kotor 2 gog registry entry not detected!"
@@ -50,7 +50,7 @@ if %errorlevel% equ 0 (
 Rem KOTOR2 STEAM
 reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 208580" /v InstallLocation /s
 if %errorlevel% equ 0 (
-  Rem echo "kotor 2 steam registry entry detected!"
+  echo "Hello World! Steam User!"
   FOR /F "tokens=2* skip=2" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 208580" /v "InstallLocation"') do set mykey2=%%b
 ) else (
   Rem echo "kotor 2 steam registry entry not detected!"
@@ -66,18 +66,19 @@ pause
 exit
 )
 
-if exist "%mykey1%\chitin.key" (
-  Rem echo Game Found.
-) else (
-  Rem echo Game Not Found!
-  exit
-)
 if defined mykey2 (
 echo "Star Wars : Knights of the Old Republic II Installation Detected!"
 ) else (
 echo "Star Wars : Knights of the Old Republic II Installation Not Detected!"
 pause
 exit
+)
+
+if exist "%mykey1%\chitin.key" (
+  Rem echo Game Found.
+) else (
+  Rem echo Game Not Found!
+  exit
 )
 
 if exist "%mykey2%\chitin.key" (
@@ -89,95 +90,17 @@ if exist "%mykey2%\chitin.key" (
 
 echo "Installing Expanded Galaxy Project Port"
 
-Rem FOR /F "delims=" %%a IN (tslpatchdata\lips-file-list.txt) DO COPY "%mykey1%\lips\%%~a" "%cd%\tslpatchdata\%%~nxa"
-Rem FOR /F "delims=" %%a IN (tslpatchdata\movies-file-list.txt) DO COPY "%mykey1%\movies\%%~a" "%cd%\tslpatchdata\%%~nxa"
-Rem FOR /F "delims=" %%a IN (tslpatchdata\streammusic-file-list.txt) DO COPY "%mykey1%\streammusic\%%~a" "%cd%\tslpatchdata\%%~nxa"
-Rem FOR /F "delims=" %%a IN (tslpatchdata\streamsounds-file-list.txt) DO COPY "%mykey1%\streamsounds\%%~a" "%cd%\tslpatchdata\%%~nxa"
-Rem FOR /F "delims=" %%a IN (tslpatchdata\streamwaves-file-list.txt) DO COPY "%mykey1%\streamwaves%%~a" "%cd%\tslpatchdata\%%~nxa"
+FOR /F "delims=" %%a IN (tslpatchdata\lips-file-list.txt) DO COPY "%mykey1%\lips\%%~a" "%mykey2%\lips\%%~nxa"
+FOR /F "delims=" %%a IN (tslpatchdata\movies-file-list.txt) DO COPY "%mykey1%\movies\%%~a" "%mykey2%\movies\%%~nxa"
+FOR /F "delims=" %%a IN (tslpatchdata\streammusic-file-list.txt) DO COPY "%mykey1%\streammusic\%%~a" "%mykey2%\streammusic\%%~nxa"
+FOR /F "delims=" %%a IN (tslpatchdata\streamsounds-file-list.txt) DO COPY "%mykey1%\streamsounds\%%~a" "%mykey2%\streamsounds\%%~nxa"
+FOR /F "delims=" %%a IN (tslpatchdata\streamwaves-file-list.txt) DO COPY "%mykey1%\streamwaves%%~a" "%mykey2%\streamvoice%%~nxa"
+copy /y "%mykey1%\movies\biologo.bik" "%mykey2%\movies\ObsidianEnt.bik"
 
+tslpatchdata\pykotorcli.exe "%mykey2%" "%cd%"
 
-pause
-
-echo testing
-
-pause
-
-FOR /F "delims=" %%a IN (tslpatchdata\lips-file-list.txt) DO COPY "%mykey1%\lips\%%~a" "%mykey1%\lips\%%~nxa"
-FOR /F "delims=" %%a IN (tslpatchdata\movies-file-list.txt) DO COPY "%mykey1%\movies\%%~a" "%mykey1%\movies\%%~nxa"
-FOR /F "delims=" %%a IN (tslpatchdata\streammusic-file-list.txt) DO COPY "%mykey1%\streammusic\%%~a" "%mykey1%\streammusic\%%~nxa"
-FOR /F "delims=" %%a IN (tslpatchdata\streamsounds-file-list.txt) DO COPY "%mykey1%\streamsounds\%%~a" "%mykey1%\streamsounds\%%~nxa"
-FOR /F "delims=" %%a IN (tslpatchdata\streamwaves-file-list.txt) DO COPY "%mykey1%\streamwaves%%~a" "%mykey1%\streamwaves%%~nxa"
-
-pause
-
-echo testing
-
-pause
-
-Rem tslpatchdata\pykotorcli.exe "%mykey2%" "%cd%"
+cls
 
 echo "Star Wars : Knights of the Old Republic II Expanded Galaxy Port Project Installation Completed!"
 
 pause
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Rem KOTOR2 DISC
-reg query HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\LucasArts\KotOR2 /v Path /s
-if %errorlevel% equ 0 (
-  Rem echo "kotor 2 disc registry entry detected!"
-  FOR /F "tokens=2* skip=2" %%a in ('reg query "HKLM\SOFTWARE\WOW6432Node\LucasArts\KotOR2" /v "Path"') do set mykey2=%%b
-) else (
-  Rem echo "kotor 2 disc registry entry not detected!"
-)
-
-Rem KOTOR2 GOG
-reg query HKEY_LOCAL_MACHINE\SOFTWARE\GOG.com\Games\1421404581 /v PATH /s
-if %errorlevel% equ 0 (
-  Rem echo "kotor 2 gog registry entry detected!"
-  FOR /F "tokens=2* skip=2" %%a in ('reg query "HKLM\SSOFTWARE\GOG.com\Games\1421404581" /v "PATH"') do set mykey2=%%b
-) else (
-  Rem echo "kotor 2 gog registry entry not detected!"
-)
-
-Rem KOTOR2 STEAM
-reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 208580" /v InstallLocation /s
-if %errorlevel% equ 0 (
-  Rem echo "kotor 2 steam registry entry detected!"
-  FOR /F "tokens=2* skip=2" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 208580" /v "InstallLocation"') do set mykey2=%%b
-) else (
-  Rem echo "kotor 2 steam registry entry not detected!"
-)
-
-cls
-
-if defined mykey2 (
-echo "Star Wars : Knights of the Old Republic II Installation Detected!"
-) else (
-echo "Star Wars : Knights of the Old Republic II Installation Not Detected!"
-pause
-exit
-)
-
-if exist "%mykey2%\chitin.key" (
-  Rem echo Game Found.
-) else (
-  Rem echo Game Not Found!
-  exit
-)
