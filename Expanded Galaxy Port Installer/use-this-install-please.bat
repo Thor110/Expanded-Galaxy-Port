@@ -157,6 +157,8 @@ cls
 
 :INSTALL
 
+setlocal disabledelayedexpansion
+
 if exist "%mykeyA%\chitin.key" (
   echo Star Wars : Knights of the Old Republic Installation Detected!
 ) else (
@@ -179,7 +181,7 @@ FOR /F "delims=" %%a IN (tslpatchdata\lips-file-list.txt) DO COPY "%mykeyA%\lips
 FOR /F "delims=" %%a IN (tslpatchdata\movies-file-list.txt) DO COPY "%mykeyA%\movies\%%~a" "%mykeyB%\movies\%%~nxa"
 FOR /F "delims=" %%a IN (tslpatchdata\streammusic-file-list.txt) DO COPY "%mykeyA%\streammusic\%%~a" "%mykeyB%\streammusic\%%~nxa"
 FOR /F "delims=" %%a IN (tslpatchdata\streamsounds-file-list.txt) DO COPY "%mykeyA%\streamsounds\%%~a" "%mykeyB%\streamsounds\%%~nxa"
-FOR /F "delims=" %%a IN (tslpatchdata\streamwaves-file-list.txt) DO COPY "%mykeyA%\streamwaves%%~a" "%mykeyB%\streamvoice%%~nxa"
+FOR /F "delims=" %%a IN (tslpatchdata\streamwaves-file-list.txt) DO COPY "%mykeyA%\streamwaves%%~a" "%mykeyB%\streamvoice\%%~nxa"
 copy /y "%mykeyA%\movies\biologo.bik" "%mykeyB%\movies\ObsidianEnt.bik"
 
 tslpatchdata\pykotorcli.exe "%mykeyB%" "%cd%"
