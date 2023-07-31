@@ -62,17 +62,20 @@ cls
 
 if defined mykey1 (
   set /a tempA=%tempA%+1
+  set mykey=%mykey1%
 )
 
 if defined mykey2 (
   set /a tempA=%tempA%+1
+  set mykey=%mykey2%
 )
 
 if defined mykey3 (
   set /a tempA=%tempA%+1
+  set mykey=%mykey3%
 )
 
-if tempA == 0 goto INPUT2
+if %tempA% equ 1 goto :INSTALL
 
 :INPUT1
 echo Please enter which install of the first game to use.
@@ -104,21 +107,24 @@ Rem one temp variable next time
 
 if defined mykey4 (
   set /a tempB=%tempB%+1
+  set mykey=%mykey4%
 )
 
 if defined mykey5 (
   set /a tempB=%tempB%+1
+  set mykey=%mykey5%
 )
 
 if defined mykey6 (
   set /a tempB=%tempB%+1
+  set mykey=%mykey6%
 )
 
 Rem one temp variable next time
 
 :INPUT2
 
-if tempB == 0 goto INSTALL
+if %tempB% equ 1 goto :INSTALL
 
 echo Please enter which install of the second game to use.
 echo Disc Version = 1
