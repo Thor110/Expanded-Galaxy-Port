@@ -1,4 +1,4 @@
-title Expanded Galaxy Project Installer
+title Star Wars : Knights of the Old Republic II : Expanded Galaxy Project Port Installer
 
 @echo off
 setlocal enabledelayedexpansion
@@ -35,7 +35,7 @@ if %errorlevel% equ 0 (
 Rem KOTOR2 DISC
 reg query HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\LucasArts\KotOR2 /v Path /s
 if %errorlevel% equ 0 (
-  echo "Hello World! Loyal fan & owner of a disc copy of the game!"
+  echo Hello World! Loyal fan & owner of a disc copy of the game!
   FOR /F "tokens=2* skip=2" %%a in ('reg query "HKLM\SOFTWARE\WOW6432Node\LucasArts\KotOR2" /v "Path"') do set mykey4=%%b
 ) else (
   Rem echo "kotor 2 disc registry entry not detected!"
@@ -44,7 +44,7 @@ if %errorlevel% equ 0 (
 Rem KOTOR2 GOG
 reg query HKEY_LOCAL_MACHINE\SOFTWARE\GOG.com\Games\1421404581 /v PATH /s
 if %errorlevel% equ 0 (
-  echo "Hello World! Good old Games User!"
+  echo Hello World! Good old Games User!
   FOR /F "tokens=2* skip=2" %%a in ('reg query "HKLM\SSOFTWARE\GOG.com\Games\1421404581" /v "PATH"') do set mykey5=%%b
 ) else (
   Rem echo "kotor 2 gog registry entry not detected!"
@@ -53,7 +53,7 @@ if %errorlevel% equ 0 (
 Rem KOTOR2 STEAM
 reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 208580" /v InstallLocation /s
 if %errorlevel% equ 0 (
-  echo "Hello World! Steam User!"
+  echo Hello World! Steam User!
   FOR /F "tokens=2* skip=2" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 208580" /v "InstallLocation"') do set mykey6=%%b
 ) else (
   Rem echo "kotor 2 steam registry entry not detected!"
@@ -153,25 +153,27 @@ if not defined mykeyB (
   goto :INPUT2
 )
 
+cls
+
 :INSTALL
 
 if exist "%mykeyA%\chitin.key" (
-  echo "Star Wars : Knights of the Old Republic Installation Detected!"
+  echo Star Wars : Knights of the Old Republic Installation Detected!
 ) else (
-  echo "Star Wars : Knights of the Old Republic Installation Not Detected!"
+  echo Star Wars : Knights of the Old Republic Installation Not Detected!
   pause
   exit
 )
 
 if exist "%mykeyB%\chitin.key" (
-  echo "Star Wars : Knights of the Old Republic II Installation Detected!"
+  echo Star Wars : Knights of the Old Republic II Installation Detected!
 ) else (
-  echo "Star Wars : Knights of the Old Republic II Installation Not Detected!"
+  echo Star Wars : Knights of the Old Republic II Installation Not Detected!
   pause
   exit
 )
 
-echo "Installing Expanded Galaxy Project Port"
+echo Installing Expanded Galaxy Project Port
 
 FOR /F "delims=" %%a IN (tslpatchdata\lips-file-list.txt) DO COPY "%mykeyA%\lips\%%~a" "%mykeyB%\lips\%%~nxa"
 FOR /F "delims=" %%a IN (tslpatchdata\movies-file-list.txt) DO COPY "%mykeyA%\movies\%%~a" "%mykeyB%\movies\%%~nxa"
@@ -184,6 +186,6 @@ tslpatchdata\pykotorcli.exe "%mykeyB%" "%cd%"
 
 cls
 
-echo "Star Wars : Knights of the Old Republic II Expanded Galaxy Port Project Installation Completed!"
+echo Star Wars : Knights of the Old Republic II Expanded Galaxy Port Project Installation Completed!
 
 pause
