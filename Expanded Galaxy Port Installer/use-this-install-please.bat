@@ -81,21 +81,25 @@ echo GoG Version = 2
 echo Steam Version = 3
 set /p InstallA="Which install to use: "
 echo %InstallA%|findstr /r "[^0-9]" && (
-    goto :INPUT1
+  goto :INPUT1
 )
 if %InstallA% gtr 3  (
-   echo enter a number between 1 and 3
-   goto :INPUT1
+  echo enter a number between 1 and 3
+  goto :INPUT1
 )
 if %InstallA% lss 1 (
-   echo enter a number between 1 and 3
-   goto :INPUT1
+  echo enter a number between 1 and 3
+  goto :INPUT1
 )
 
 if %InstallA% == 1 set mykeyA=%mykey1%
 if %InstallA% == 2 set mykeyA=%mykey2%
 if %InstallA% == 3 set mykeyA=%mykey3%
-
+if not defined mykeyA (
+  cls
+  echo Input incorrect or no installation of the game detected!
+  goto :INPUT1
+)
 Rem one temp variable next time
 
 if defined mykey4 (
@@ -122,20 +126,25 @@ echo GoG Version = 2
 echo Steam Version = 3
 set /p InstallB="Which install to use: "
 echo %InstallB%|findstr /r "[^0-9]" && (
-   goto :INPUT2
+  goto :INPUT2
 )
 if %InstallB% gtr 3  (
-   echo enter a number between 1 and 3
-   goto :INPUT2
+  echo enter a number between 1 and 3
+  goto :INPUT2
 )
 if %InstallB% lss 1 (
-   echo enter a number between 1 and 3
-   goto :INPUT2
+  echo enter a number between 1 and 3
+  goto :INPUT2
 )
 
 if %InstallB% == 1 set mykeyB=%mykey4%
 if %InstallB% == 2 set mykeyB=%mykey5%
 if %InstallB% == 3 set mykeyB=%mykey6%
+if not defined mykeyB (
+  cls
+  echo Input incorrect or no installation of the game detected!
+  goto :INPUT2
+)
 
 :INSTALL
 
