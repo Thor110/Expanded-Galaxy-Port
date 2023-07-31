@@ -139,16 +139,6 @@ if %InstallB% == 3 set mykeyB=%mykey6%
 
 :INSTALL
 
-pause
-
-echo testing
-
-pause
-
-echo testing
-
-pause
-
 if exist "%mykeyA%\chitin.key" (
   echo "Star Wars : Knights of the Old Republic Installation Detected!"
 ) else (
