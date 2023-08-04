@@ -255,11 +255,11 @@ void SetBackground()
         }break;
         case 5://601DAN
         {
-            nRoomAnimation = ANIMATION_ROOM_SCRIPTLOOP06;//DANTOOINE
+            nRoomAnimation = ANIMATION_ROOM_SCRIPTLOOP17;//DANTOOINE
         }break;
         case 6://701KOR
         {
-            nRoomAnimation = ANIMATION_ROOM_SCRIPTLOOP07;//KORRIBAN
+            nRoomAnimation = ANIMATION_ROOM_SCRIPTLOOP18;//KORRIBAN
         }break;
         case 7://801DRO
         {
