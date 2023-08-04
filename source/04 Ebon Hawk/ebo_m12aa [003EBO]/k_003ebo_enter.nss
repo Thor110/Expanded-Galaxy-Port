@@ -87,6 +87,13 @@ object GetAndMovePUPToWaypoint(int nPUP, string sTag);
 // ST: Main function
 // ---------------------------------------------------------------
 void main() {
+  if(GetGlobalBoolean("k_vis_Dantooine") == FALSE)
+  {
+    SetGlobalNumber("K_CURRENT_PLANET", 0);
+    //DelayCommand(1.0, AssignCommand(oT3M4, ActionStartConversation(oPC, "hk47t3m4", FALSE, CONVERSATION_TYPE_CINEMATIC, TRUE)));
+    AssignCommand(GetObjectByTag("bastila"), ActionStartConversation(GetFirstPC(), "ebo_bast_vision", FALSE, CONVERSATION_TYPE_CINEMATIC, TRUE));
+    //ActionStartConversation(GetObjectByTag("bastila"),"ebo_bast_vision");
+  }
     object oEnter = GetEnteringObject();
     if (oEnter == GetFirstPC()) {
         // ST: Fix since 004EBO has a script with the same name :/
@@ -101,10 +108,10 @@ void main() {
         SetBackground();
         SetHologramWorld();
         
-        if (GetLoadFromSaveGame()) {
-            //DelayCommand(1.0, RebuildPartyTable());
-            return;
-        }
+        //if (GetLoadFromSaveGame()) {
+        //    //DelayCommand(1.0, RebuildPartyTable());
+        //    return;
+        //}
 
         //object oDoor = GetObjectByTag("CargoDoor");
         //AssignCommand(oDoor, ActionOpenDoor(oDoor));
@@ -119,9 +126,9 @@ void main() {
         //UpdateSomeNumbers();
         
         // ST: Fire this script to do extra unrelated things when entering the hawk.
-        ExecuteScript("003_onenter_hook", OBJECT_SELF);     
+        //ExecuteScript("003_onenter_hook", OBJECT_SELF);     
         
-        DelayCommand(1.0, DoCutscenes());
+        //DelayCommand(1.0, DoCutscenes());
     }
 }
 
