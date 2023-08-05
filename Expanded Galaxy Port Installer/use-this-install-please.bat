@@ -186,8 +186,6 @@ copy /y "%mykeyA%\movies\biologo.bik" "%mykeyB%\movies\ObsidianEnt.bik"
 
 tslpatchdata\pykotorcli.exe "%mykeyB%" "%cd%"
 
-cls
-
 echo Star Wars : Knights of the Old Republic II Expanded Galaxy Port Project Installation Completed!
 
 pause
