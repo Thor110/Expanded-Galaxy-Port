@@ -1,1 +1,0 @@
-ambientmusic.2da and ambientsound.2da are the same as they were before.
