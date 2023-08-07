@@ -2,6 +2,18 @@
 
 setlocal EnableDelayedExpansion
 
+if exist dialog.tlk.main echo KotOR1 is currently enabled.
+if exist dialog.tlk.port echo KotOR2 is currently enabled.
+
+goto :INPUT
+
+:INPUT1
+echo KotOR1 is currently enabled.
+goto :INPUT
+:INPUT2
+echo KotOR2 is currently enabled.
+goto :INPUT
+
 :INPUT
 echo Please select whether you want to enable KotOR1 or KotOR2.
 echo Enable KotOR1 = 1
@@ -19,10 +31,12 @@ if %Choice% lss 1 (
   goto :INPUT
 )
 
-if %Choice% == 1 goto :KOTOR
+if %Choice% == 1 goto :KOTOR1
 if %Choice% == 2 goto :KOTOR2
 
-:KOTOR
+:KOTOR1
+
+if exist dialog.tlk.main goto :INPUT1
 
 ren Movies\ObsidianEnt.bik ObsidianEnt.bik.main
 
@@ -49,6 +63,8 @@ echo KotOR1 Enabled!
 goto :END
 
 :KOTOR2
+
+if exist dialog.tlk.port goto :INPUT2
 
 ren Movies\ObsidianEnt.bik ObsidianEnt.bik.port
 
