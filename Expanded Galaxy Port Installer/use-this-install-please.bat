@@ -182,7 +182,7 @@ FOR /F "delims=" %%a IN (tslpatchdata\movies-file-list.txt) DO COPY "%mykeyA%\mo
 FOR /F "delims=" %%a IN (tslpatchdata\streammusic-file-list.txt) DO COPY "%mykeyA%\streammusic\%%~a" "%mykeyB%\streammusic\%%~nxa"
 FOR /F "delims=" %%a IN (tslpatchdata\streamsounds-file-list.txt) DO COPY "%mykeyA%\streamsounds\%%~a" "%mykeyB%\streamsounds\%%~nxa"
 FOR /F "delims=" %%a IN (tslpatchdata\streamwaves-file-list.txt) DO COPY "%mykeyA%\streamwaves%%~a" "%mykeyB%\streamvoice\%%~nxa"
-ren "%mykey%\movies\ObsidianEnt.bik" "ObsidianEnt02.bik"
+ren "%mykey%\movies\ObsidianEnt.bik" "ObsidianEnt.bik.main"
 copy /y "%mykeyA%\movies\biologo.bik" "%mykeyB%\movies\ObsidianEnt.bik"
 copy /y "%mykeyA%\lips\end_m01aa_loc.mod" "%mykeyB%\lips\001EBO_loc.mod"
 
