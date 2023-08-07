@@ -8,9 +8,11 @@ if exist dialog.tlk.port echo KotOR2 is currently enabled.
 goto :INPUT
 
 :INPUT1
+cls
 echo KotOR1 is currently enabled.
 goto :INPUT
 :INPUT2
+cls
 echo KotOR2 is currently enabled.
 goto :INPUT
 
