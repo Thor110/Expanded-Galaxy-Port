@@ -3,12 +3,10 @@
 003eboe.wok 
 abchrgen_p.gui 
 abilities_p.gui 
-appearance.2da 
 areatrans_p.gui 
 a_galaxymap.ncs 
 a_galaxymap.nss 
 barkbubble_p.gui 
-baseitems.2da 
 blackdot.tga 
 character_p.gui 
 check_party_gui.ncs 
@@ -31,7 +29,6 @@ ebonarmband.ncs
 ebonarmband.nss 
 equip_p.gui 
 fade_p.gui 
-feat.2da 
 friendlyarrow.tga 
 friendlyreticle.tga 
 friendlyreticle2.tga 
@@ -42,7 +39,6 @@ galaxymap_x.gui
 GAL_PeragusII_2.tga 
 gameover_p.gui 
 global.jrl 
-globalcat.2da 
 gui_mp_bashd.tga 
 gui_mp_bashdp.tga 
 gui_mp_bashU.tga 
@@ -72,7 +68,6 @@ gui_mp_used.tga
 gui_mp_usedp.tga 
 gui_mp_useu.tga 
 gui_mp_useup.tga 
-heads.2da 
 iarmor.tga 
 ibelt.tga 
 idarmor.tga 
@@ -484,9 +479,7 @@ lbl_miscroll_f.tga
 lbl_miscroll_f2.tga 
 Legal.tga 
 leveluppnl_p.gui 
-loadhints.2da 
 loadscreen3.tga 
-loadscreens.2da 
 loadscreen_p.gui 
 load_001ebo.tga 
 load_default.tga 
@@ -522,8 +515,6 @@ mipc28x6_p.gui
 mipc8x6_p.gui 
 mm_barrow.tga 
 mm_barrow_p.tga 
-movies.2da 
-musictable.2da 
 name_p.gui 
 ntscpat_p.gui 
 optautopause_p.gui 
@@ -542,13 +533,9 @@ optsound_p.gui
 partyselect_p.gui 
 pause_p.gui 
 PER_Rk02.tga 
-placeables.2da 
-planetary.2da 
 planet_01.mdl 
 planet_01.mdx 
-plot.2da 
 portcust_p.gui 
-portraits.2da 
 pwrlvlup_p.gui 
 p_bastilla.utc 
 p_cand.utc 
@@ -568,8 +555,6 @@ savename_p.gui
 scriptselect_p.gui 
 skchrgen_p.gui 
 skillinfo_p.gui 
-soundset.2da 
-spells.2da 
 startscreen_p.gui 
 statussummary_p.gui 
 store_p.gui 

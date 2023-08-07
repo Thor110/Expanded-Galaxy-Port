@@ -32,9 +32,7 @@ ren "Modules\001ebo.mod" "001ebo-main.mod"
 ren "StreamMusic\mus_a_503.wav" "mus_a_503-main.wav"
 ren "StreamMusic\mus_sion.wav" "mus_sion-main.wav"
 
-for /f "delims=|" %%i in (port-file-list.txt) do (
-  ren "Override\%%i" "%%i-main"
-)
+for /f "delims=|" %%i in (port-file-list.txt) do ren "Override\%%i" "%%i.main"
 
 ren "Movies\ObsidianEnt01.bik" "ObsidianEnt.bik"
 
@@ -44,9 +42,7 @@ ren "Modules\001ebo-port.mod" "001ebo.mod"
 ren "StreamMusic\mus_a_503-port.wav" "mus_a_503.wav"
 ren "StreamMusic\mus_sion-port.wav" "mus_sion.wav"
 
-for /f "delims=|" %%i in (port-file-list.txt) do (
-  ren "Override\%%i-port" "%%i"
-)
+for /f "delims=|" %%i in (port-file-list.txt) do ren "Override\%%i.port" "%%i"
 
 echo KotOR Enabled!
 
@@ -62,9 +58,7 @@ ren "Modules\001ebo.mod" "001ebo-port.mod"
 ren "StreamMusic\mus_a_503.wav" "mus_a_503-port.wav"
 ren "StreamMusic\mus_sion.wav" "mus_sion-port.wav"
 
-for /f "delims=|" %%i in (port-file-list.txt) do (
-  ren "Override\%%i" "%%i-port"
-)
+for /f "delims=|" %%i in (port-file-list.txt) do ren "Override\%%i" "%%i.port"
 
 ren "Movies\ObsidianEnt02.bik" "ObsidianEnt.bik"
 
@@ -74,9 +68,7 @@ ren "Modules\001ebo-main.mod" "001ebo.mod"
 ren "StreamMusic\mus_a_503-main.wav" "mus_a_503.wav"
 ren "StreamMusic\mus_sion-main.wav" "mus_sion.wav"
 
-for /f "delims=|" %%i in (port-file-list.txt) do (
-  ren "Override\%%i-main" "%%i"
-)
+for /f "delims=|" %%i in (port-file-list.txt) do ren "Override\%%i.main" "%%i"
 
 echo KotOR2 Disabled!
 
