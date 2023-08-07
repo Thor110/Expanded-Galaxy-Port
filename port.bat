@@ -24,23 +24,23 @@ if %Choice% == 2 goto :KOTOR2
 
 :KOTOR
 
-ren "Movies\ObsidianEnt.bik" "ObsidianEnt02.bik"
+ren "Movies\ObsidianEnt.bik" "ObsidianEnt.bik.main"
 
-ren "dialog.tlk" "dialog-main.tlk"
-ren "lips\001EBO_loc.mod" "001EBO_loc-main.mod"
-ren "Modules\001ebo.mod" "001ebo-main.mod"
-ren "StreamMusic\mus_a_503.wav" "mus_a_503-main.wav"
-ren "StreamMusic\mus_sion.wav" "mus_sion-main.wav"
+ren "dialog.tlk" "dialog.tlk.main"
+ren "lips\001EBO_loc.mod" "001EBO_loc.mod.main"
+ren "Modules\001ebo.mod" "001ebo.mod.main"
+ren "StreamMusic\mus_a_503.wav" "mus_a_503.wav.main"
+ren "StreamMusic\mus_sion.wav" "mus_sion.wav.main"
 
 for /f "delims=|" %%i in (port-file-list.txt) do ren "Override\%%i" "%%i.main"
 
-ren "Movies\ObsidianEnt01.bik" "ObsidianEnt.bik"
+ren "Movies\ObsidianEnt.bik.port" "ObsidianEnt.bik"
 
-ren "dialog-port.tlk" "dialog.tlk"
-ren "lips\001EBO_loc-port.mod" "001EBO_loc.mod"
-ren "Modules\001ebo-port.mod" "001ebo.mod"
-ren "StreamMusic\mus_a_503-port.wav" "mus_a_503.wav"
-ren "StreamMusic\mus_sion-port.wav" "mus_sion.wav"
+ren "dialog.tlk.port" "dialog.tlk"
+ren "lips\001EBO_loc.mod.port" "001EBO_loc.mod"
+ren "Modules\001ebo.mod.port" "001ebo.mod"
+ren "StreamMusic\mus_a_503.wav.port" "mus_a_503.wav"
+ren "StreamMusic\mus_sion.wav.port" "mus_sion.wav"
 
 for /f "delims=|" %%i in (port-file-list.txt) do ren "Override\%%i.port" "%%i"
 
@@ -50,23 +50,23 @@ goto :END
 
 :KOTOR2
 
-ren "Movies\ObsidianEnt.bik" "ObsidianEnt01.bik"
+ren "Movies\ObsidianEnt.bik" "ObsidianEnt01.bik.port"
 
-ren "dialog.tlk" "dialog-port.tlk"
-ren "lips\001EBO_loc.mod" "001EBO_loc-port.mod"
-ren "Modules\001ebo.mod" "001ebo-port.mod"
-ren "StreamMusic\mus_a_503.wav" "mus_a_503-port.wav"
-ren "StreamMusic\mus_sion.wav" "mus_sion-port.wav"
+ren "dialog.tlk" "dialog.tlk.port"
+ren "lips\001EBO_loc.mod" "001EBO_loc.mod.port"
+ren "Modules\001ebo.mod" "001ebo.mod.port"
+ren "StreamMusic\mus_a_503.wav" "mus_a_503.wav.port"
+ren "StreamMusic\mus_sion.wav" "mus_sion.wav.port"
 
 for /f "delims=|" %%i in (port-file-list.txt) do ren "Override\%%i" "%%i.port"
 
-ren "Movies\ObsidianEnt02.bik" "ObsidianEnt.bik"
+ren "Movies\ObsidianEnt.bik.main" "ObsidianEnt.bik"
 
-ren "dialog-main.tlk" "dialog.tlk"
-ren "lips\001EBO_loc-main.mod" "001EBO_loc.mod"
-ren "Modules\001ebo-main.mod" "001ebo.mod"
-ren "StreamMusic\mus_a_503-main.wav" "mus_a_503.wav"
-ren "StreamMusic\mus_sion-main.wav" "mus_sion.wav"
+ren "dialog.tlk.main" "dialog.tlk"
+ren "lips\001EBO_loc.mod.main" "001EBO_loc.mod"
+ren "Modules\001ebo.mod.main" "001ebo.mod"
+ren "StreamMusic\mus_a_503.wav.main" "mus_a_503.wav"
+ren "StreamMusic\mus_sion.wav.main" "mus_sion.wav"
 
 for /f "delims=|" %%i in (port-file-list.txt) do ren "Override\%%i.main" "%%i"
 
