@@ -4,8 +4,8 @@ setlocal EnableDelayedExpansion
 
 :INPUT
 echo Please whether you want to enable KotOR1 or KotOR2.
-echo Enable KotOR = 1
-echo Disable KotOR2 = 2
+echo Enable KotOR1 = 1
+echo Enable KotOR2 = 2
 set /p Choice="Enter your choice: "
 echo %Choice%|findstr /r "[^0-9]" && (
   goto :INPUT
