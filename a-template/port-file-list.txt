@@ -5,12 +5,10 @@ abchrgen_p.gui
 abilities_p.gui
 areatrans_p.gui
 a_galaxymap.ncs
-a_galaxymap.nss
 barkbubble_p.gui
 blackdot.tga
 character_p.gui
 check_party_gui.ncs
-check_party_gui.nss
 chemical_p.gui
 classsel_p.gui
 component_p.gui
@@ -26,7 +24,6 @@ datapad_p.gui
 debug_p.gui
 dialog_p.gui
 ebonarmband.ncs
-ebonarmband.nss
 equip_p.gui
 fade_p.gui
 friendlyarrow.tga
@@ -462,7 +459,6 @@ KOTOR2LogoSml.tga
 k_align_movie.ncs
 k_inc_hawk.nss
 k_sup_galaxymap.ncs
-k_sup_galaxymap.nss
 lbl_force_neg.tga
 lbl_force_pos.tga
 lbl_icn_msg.tga
@@ -568,7 +564,6 @@ tooltip6x4_p.gui
 tooltip8x6_p.gui
 top_p.gui
 tr_leave_ehawk.ncs
-tr_leave_ehawk.nss
 uibit_abi_arrow.tga
 uibit_abi_back.tga
 uibit_arrowneg_p.tga
@@ -629,3 +624,9 @@ upgradesel_p.gui
 upgrade_p.gui
 whitetarget.tga
 yellowtarget.tga
+mainmenu04.mdx
+mainmenu04.mdl
+mainmenu03.mdx
+mainmenu03.mdl
+P_t3m4_01.txi
+armband.ncs
