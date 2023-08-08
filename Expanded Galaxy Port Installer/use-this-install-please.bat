@@ -177,8 +177,8 @@ if exist "%mykeyB%\chitin.key" (
 
 echo Installing Expanded Galaxy Project Port
 
-ren %mykey%\StreamMusic\mus_a_503.wav mus_a_503.wav.main
-ren %mykey%\StreamMusic\mus_sion.wav mus_sion.wav.main
+ren "%mykeyB%\StreamMusic\mus_a_503.wav" "mus_a_503.wav.main"
+ren "%mykeyB%\StreamMusic\mus_sion.wav" "mus_sion.wav.main"
 
 FOR /F "delims=" %%a IN (tslpatchdata\lips-file-list.txt) DO COPY "%mykeyA%\lips\%%~a" "%mykeyB%\lips\%%~nxa"
 FOR /F "delims=" %%a IN (tslpatchdata\movies-file-list.txt) DO COPY "%mykeyA%\movies\%%~a" "%mykeyB%\movies\%%~nxa"
@@ -188,9 +188,9 @@ FOR /F "delims=" %%a IN (tslpatchdata\streamwaves-file-list.txt) DO COPY "%mykey
 
 ren "%mykeyB%\movies\ObsidianEnt.bik" "ObsidianEnt.bik.main"
 
-ren %mykeyB%\dialog.tlk dialog.tlk.main
-ren %mykeyB%\lips\001EBO_loc.mod 001EBO_loc.mod.main
-ren %mykeyB%\Modules\001ebo.mod 001ebo.mod.main
+copy "%mykeyB%\dialog.tlk" "dialog.tlk.main"
+ren "%mykeyB%\lips\001EBO_loc.mod" "001EBO_loc.mod.main"
+ren "%mykeyB%\Modules\001ebo.mod" "001ebo.mod.main"
 
 for /f "delims=|" %%i in (port-file-list.txt) do ren "%mykey%\Override\%%i" "%%i.main"
 
@@ -209,4 +209,4 @@ echo Star Wars : Knights of the Old Republic II Expanded Galaxy Port Project Ins
 
 pause
 
-%mykeyB%\launcher.bat
+call "%mykeyB%\launcher.bat"
