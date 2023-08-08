@@ -197,6 +197,9 @@ for /f "delims=|" %%i in (port-file-list.txt) do ren "%mykey%\Override\%%i" "%%i
 copy /y "%mykeyA%\movies\biologo.bik" "%mykeyB%\movies\ObsidianEnt.bik"
 copy /y "%mykeyA%\lips\end_m01aa_loc.mod" "%mykeyB%\lips\001EBO_loc.mod"
 
+copy /y "launcher.bat" "%mykeyB%\launcher.bat"
+copy /y "port.bat" "%mykeyB%\port.bat"
+
 tslpatchdata\pykotorcli.exe "%mykeyB%" "%cd%"
 
 echo Star Wars : Knights of the Old Republic II Expanded Galaxy Port Project Installation Completed!
