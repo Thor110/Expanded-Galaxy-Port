@@ -66,6 +66,10 @@ for /f "delims=|" %%i in (port-file-list.txt) do ren "Override\%%i.port" "%%i"
 
 echo KotOR1 Enabled!
 
+pause
+
+launcher.bat
+
 goto :END
 
 :KOTOR2
@@ -93,6 +97,10 @@ ren StreamMusic\mus_sion.wav.main mus_sion.wav
 for /f "delims=|" %%i in (port-file-list.txt) do ren "Override\%%i.main" "%%i"
 
 echo KotOR2 Enabled!
+
+pause
+
+launcher.bat
 
 goto :END
 
