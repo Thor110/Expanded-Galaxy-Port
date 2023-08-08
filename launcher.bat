@@ -98,15 +98,12 @@ if %Enable% == 2 goto :NO
 
 :YES
 brotherhood.bat
-
 pause
 exit
 :NO
-echo Play Game!
+echo Play Game! Starting KotOR without Brotherhood of Shadow : Solomon's Revenge.
 pause
 exit
-
-goto :END
 
 :HOOD3
 echo do you wish to enable Brotherhood?
