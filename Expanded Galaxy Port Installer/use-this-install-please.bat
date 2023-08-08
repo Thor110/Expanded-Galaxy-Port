@@ -188,7 +188,6 @@ FOR /F "delims=" %%a IN (tslpatchdata\streamwaves-file-list.txt) DO COPY "%mykey
 
 ren "%mykeyB%\movies\ObsidianEnt.bik" "ObsidianEnt.bik.main"
 
-copy "%mykeyB%\dialog.tlk" "dialog.tlk.main"
 ren "%mykeyB%\lips\001EBO_loc.mod" "001EBO_loc.mod.main"
 ren "%mykeyB%\Modules\001ebo.mod" "001ebo.mod.main"
 
@@ -205,6 +204,8 @@ copy /y "port-patch-notes.rtf" "%mykeyB%\port-patch-notes.rtf"
 copy /y "port-readme.rtf" "%mykeyB%\port-readme.rtf"
 
 tslpatchdata\pykotorcli.exe "%mykeyB%" "%cd%"
+
+copy /y "source\dialog.tlk.main" "%mykeyB%\dialog.tlk.main"
 
 echo Star Wars : Knights of the Old Republic II Expanded Galaxy Port Project Installation Completed!
 
