@@ -1,5 +1,7 @@
 @echo off
 
+:START
+
 cls
 
 if exist dialog.tlk.main goto :INPUTA
@@ -17,15 +19,15 @@ echo KotOR2 = 2
 echo BOSSR  = 3
 set /p Choice="Enter your choice: "
 echo %Choice%|findstr /r "[^0-9]" && (
-  goto :INPUT
+  goto :START
 )
 if %Choice% gtr 3  (
   echo enter a number between 1 and 3
-  goto :INPUT
+  goto :START
 )
 if %Choice% lss 1 (
   echo enter a number between 1 and 3
-  goto :INPUT
+  goto :START
 )
 
 if %Choice% == 1 goto :KOTOR1
@@ -74,6 +76,7 @@ echo KotOR1 is currently enabled.
 if exist Movies\ObsidianEnt.bik.hood goto :HOOD3
 
 :HOOD4
+cls
 echo do you wish to enable or disable Brotherhood?
 echo Please select what you want to do?
 echo YES = 1
@@ -104,6 +107,7 @@ pause
 exit
 
 :HOOD3
+cls
 echo do you wish to enable Brotherhood?
 echo Please select what you want to do?
 echo YES = 1
