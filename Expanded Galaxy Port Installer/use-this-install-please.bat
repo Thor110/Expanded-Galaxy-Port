@@ -186,11 +186,11 @@ FOR /F "delims=" %%a IN (tslpatchdata\streammusic-file-list.txt) DO COPY "%mykey
 FOR /F "delims=" %%a IN (tslpatchdata\streamsounds-file-list.txt) DO COPY "%mykeyA%\streamsounds\%%~a" "%mykeyB%\streamsounds\%%~nxa"
 FOR /F "delims=" %%a IN (tslpatchdata\streamwaves-file-list.txt) DO COPY "%mykeyA%\streamwaves%%~a" "%mykeyB%\streamvoice\%%~nxa"
 
-ren "%mykey%\movies\ObsidianEnt.bik" "ObsidianEnt.bik.main"
+ren "%mykeyB%\movies\ObsidianEnt.bik" "ObsidianEnt.bik.main"
 
-ren %mykey%\dialog.tlk dialog.tlk.main
-ren %mykey%\lips\001EBO_loc.mod 001EBO_loc.mod.main
-ren %mykey%\Modules\001ebo.mod 001ebo.mod.main
+ren %mykeyB%\dialog.tlk dialog.tlk.main
+ren %mykeyB%\lips\001EBO_loc.mod 001EBO_loc.mod.main
+ren %mykeyB%\Modules\001ebo.mod 001ebo.mod.main
 
 for /f "delims=|" %%i in (port-file-list.txt) do ren "%mykey%\Override\%%i" "%%i.main"
 
@@ -209,4 +209,4 @@ echo Star Wars : Knights of the Old Republic II Expanded Galaxy Port Project Ins
 
 pause
 
-call "%mykeyB%\launcher.bat"
+%mykeyB%\launcher.bat
