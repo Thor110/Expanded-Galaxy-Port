@@ -4,9 +4,14 @@ cls
 
 :START
 
-if exist dialog.tlk.main echo KotOR1 Active!
-if exist dialog.tlk.port echo KotOR2 Active!
+if exist dialog.tlk.main goto :INPUTA
+if exist dialog.tlk.port goto :INPUTB
 
+:INPUTA
+echo KotOR1 Active!
+goto :INPUT
+:INPUTB
+echo KotOR2 Active!
 :INPUT
 echo Please select what you want to play?
 echo KotOR1 = 1
