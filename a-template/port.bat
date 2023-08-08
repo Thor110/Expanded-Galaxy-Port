@@ -2,12 +2,15 @@
 
 setlocal EnableDelayedExpansion
 
-if exist dialog.tlk.main echo KotOR1 is currently enabled.
-if exist dialog.tlk.port echo KotOR2 is currently enabled.
+if exist dialog.tlk.main goto :INPUT1
+if exist dialog.tlk.port goto :INPUT2
 
-goto :INPUT
+:HOOD
+echo Brotherhood of Shadow : Solomon's Revenge is enabled, you must disable it first!
+pause
 
 :INPUT1
+if exist Movies\ObsidianEnt.bik.port goto :HOOD
 cls
 echo KotOR1 is currently enabled.
 goto :INPUT
