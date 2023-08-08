@@ -152,7 +152,7 @@ port.bat
 cls
 echo KotOR2 is currently enabled! therefore Brotherhood is currently disabled! Please enable it.
 pause
-exit
+port.bat
 
 :INPUT7
 cls
