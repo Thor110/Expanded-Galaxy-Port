@@ -1,17 +1,15 @@
 @echo off
 
+cls
+
 if exist dialog.tlk.main goto :INPUTA
 if exist dialog.tlk.port goto :INPUTB
 
 :INPUTA
-cls
 echo KotOR1 Active!
 goto :INPUT
 :INPUTB
-cls
 echo KotOR2 Active!
-goto :INPUT
-
 :INPUT
 echo Please select what you want to play?
 echo KotOR1 = 1
@@ -77,7 +75,7 @@ if exist Movies\ObsidianEnt.bik.hood goto :HOOD3
 
 :HOOD4
 echo do you wish to enable or disable Brotherhood?
-echo Please select what you want to play?
+echo Please select what you want to do?
 echo YES = 1
 echo NO  = 2
 set /p Enable="Enter your choice: "
@@ -107,7 +105,7 @@ exit
 
 :HOOD3
 echo do you wish to enable Brotherhood?
-echo Please select what you want to play?
+echo Please select what you want to do?
 echo YES = 1
 echo NO  = 2
 set /p Enable="Enter your choice: "
