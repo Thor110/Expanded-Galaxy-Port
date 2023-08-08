@@ -8,6 +8,7 @@ if exist dialog.tlk.port goto :INPUT2
 :HOOD
 echo Brotherhood of Shadow : Solomon's Revenge is enabled, you must disable it first!
 pause
+brotherhood.bat
 
 :INPUT1
 if exist Movies\ObsidianEnt.bik.port goto :HOOD
