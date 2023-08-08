@@ -8,6 +8,8 @@ if exist dialog.tlk.main goto :INPUTA
 if exist dialog.tlk.port goto :INPUTB
 
 :INPUTA
+if exist Movies\ObsidianEnt.bik.port echo Brotherhood of Shadow : Solomon's Revenge is Active!
+goto :INPUT
 echo KotOR1 Active!
 goto :INPUT
 :INPUTB
