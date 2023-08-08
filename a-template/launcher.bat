@@ -47,12 +47,14 @@ goto :INPUT2
 cls
 echo KotOR1 is currently enabled. Play Game!
 pause
+start "" "steam://rungameid/208580//"
 exit
 
 :INPUT2
 cls
 echo KotOR2 is currently enabled. Play Game!
 pause
+start "" "steam://rungameid/208580//"
 exit
 
 :INPUT3
