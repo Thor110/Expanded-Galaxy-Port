@@ -186,12 +186,14 @@ FOR /F "delims=" %%a IN (tslpatchdata\streammusic-file-list.txt) DO COPY "%mykey
 FOR /F "delims=" %%a IN (tslpatchdata\streamsounds-file-list.txt) DO COPY "%mykeyA%\streamsounds\%%~a" "%mykeyB%\streamsounds\%%~nxa"
 FOR /F "delims=" %%a IN (tslpatchdata\streamwaves-file-list.txt) DO COPY "%mykeyA%\streamwaves%%~a" "%mykeyB%\streamvoice\%%~nxa"
 
+for /f "delims=" %%i in (tslpatchdata\missing-file-list.txt) do copy "source\template\%%i" "%mykeyB%\Override\%%i"
+
 ren "%mykeyB%\movies\ObsidianEnt.bik" "ObsidianEnt.bik.main"
 
 ren "%mykeyB%\lips\001EBO_loc.mod" "001EBO_loc.mod.main"
-ren "%mykeyB%\Modules\001ebo.mod" "001ebo.mod.main"
+ren "%mykeyB%\Modules\001ebo.mod" 001ebo.mod.main"
 
-for /f "delims=|" %%i in (port-file-list.txt) do ren "%mykeyB%\Override\%%i" "%%i.main"
+for /f "delims=" %%i in (tslpatchdata\port-file-list.txt) do ren "%mykeyB%\Override\%%i" "%%i.main"
 
 copy /y "%mykeyA%\movies\biologo.bik" "%mykeyB%\movies\ObsidianEnt.bik"
 copy /y "%mykeyA%\lips\end_m01aa_loc.mod" "%mykeyB%\lips\001EBO_loc.mod"
@@ -203,9 +205,9 @@ copy /y "tslpatchdata\port.bat" "%mykeyB%\port.bat"
 copy /y "port-patch-notes.rtf" "%mykeyB%\port-patch-notes.rtf"
 copy /y "port-readme.rtf" "%mykeyB%\port-readme.rtf"
 
-tslpatchdata\pykotorcli.exe "%mykeyB%" "%cd%"
+copy /y "%mykeyB%\dialog.tlk" "%mykeyB%\dialog.tlk.main"
 
-copy /y "source\dialog.tlk.main" "%mykeyB%\dialog.tlk.main"
+tslpatchdata\pykotorcli.exe "%mykeyB%" "%cd%"
 
 echo Star Wars : Knights of the Old Republic II Expanded Galaxy Port Project Installation Completed!
 
