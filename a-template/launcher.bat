@@ -47,14 +47,14 @@ goto :INPUT2
 cls
 echo KotOR1 is currently enabled. Play Game!
 pause
-start "" "steam://rungameid/208580//"
+goto :STEAMORDISC
 exit
 
 :INPUT2
 cls
 echo KotOR2 is currently enabled. Play Game!
 pause
-start "" "steam://rungameid/208580//"
+goto :STEAMORDISC
 exit
 
 :INPUT3
@@ -67,5 +67,15 @@ cls
 echo KotOR2 is currently enabled! Please enable KotOR1!
 pause
 port.bat
+
+:STEAMORDISC
+if exist steam_api.dll goto :STEAM
+goto :DISCORGOG
+:STEAM
+start "" "steam://rungameid/208580//"
+exit
+:DISCORGOG
+swkotor2.exe
+exit
 
 :END
