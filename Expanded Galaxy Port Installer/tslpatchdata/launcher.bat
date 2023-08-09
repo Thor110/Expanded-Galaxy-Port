@@ -34,7 +34,7 @@ if %Choice% == 2 goto :KOTOR2
 
 :KOTOR1
 
-if exist dialog.tlk.main goto :INPUT1
+if exist dialog.tlk.main goto :STEAMORDISC
 
 ren Movies\ObsidianEnt.bik ObsidianEnt.bik.main
 
@@ -58,13 +58,11 @@ for /f "delims=|" %%i in (port-file-list.txt) do ren "Override\%%i.port" "%%i"
 
 echo Launching KotOR1 in KotOR2!
 
-pause
-
 goto :STEAMORDISC
 
 :KOTOR2
 
-if exist dialog.tlk.port goto :INPUT2
+if exist dialog.tlk.port goto :STEAMORDISC
 
 ren Movies\ObsidianEnt.bik ObsidianEnt.bik.port
 
@@ -87,8 +85,6 @@ ren StreamMusic\mus_sion.wav.main mus_sion.wav
 for /f "delims=|" %%i in (port-file-list.txt) do ren "Override\%%i.main" "%%i"
 
 echo Launching KotOR2!
-
-pause
 
 goto :STEAMORDISC
 
