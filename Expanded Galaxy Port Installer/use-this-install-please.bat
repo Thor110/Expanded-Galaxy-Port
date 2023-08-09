@@ -200,7 +200,6 @@ copy /y "%mykeyA%\lips\end_m01aa_loc.mod" "%mykeyB%\lips\001EBO_loc.mod"
 
 copy /y "tslpatchdata\port-file-list.txt" "%mykeyB%\port-file-list.txt"
 copy /y "tslpatchdata\launcher.bat" "%mykeyB%\launcher.bat"
-copy /y "tslpatchdata\port.bat" "%mykeyB%\port.bat"
 
 copy /y "port-patch-notes.rtf" "%mykeyB%\port-patch-notes.rtf"
 copy /y "port-readme.rtf" "%mykeyB%\port-readme.rtf"

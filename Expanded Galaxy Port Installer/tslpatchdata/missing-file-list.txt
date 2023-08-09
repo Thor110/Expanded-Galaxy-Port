@@ -1,8 +1,6 @@
-a_galaxymap.nss
-check_party_gui.nss
-ebonarmband.nss
-file-list.bat
-file-list.txt
+a_galaxymap.ncs
+check_party_gui.ncs
+ebonarmband.ncs
 GAL_PeragusII_2.tga
 if_flurry01.tga
 if_flurry02.tga
@@ -31,7 +29,7 @@ ip_surpress.tga
 ip_wave.tga
 ip_whirlwind.tga
 ip_wound.tga
-k_sup_galaxymap.nss
+k_sup_galaxymap.ncs
 load_001EBO.tga
 load_legal.tga
 l_drdprot02.mdl
@@ -51,7 +49,7 @@ p_jolee.utc
 p_juhani.utc
 p_mission.utc
 p_zaalbar.utc
-tr_leave_ehawk.nss
+tr_leave_ehawk.ncs
 uibit_abi_back.tga
 uibit_arrowneg_p.tga
 uibit_arrowneg_x.tga
@@ -85,3 +83,4 @@ uibit_no_npc_p.tga
 uibit_uparrowo.tga
 whitetarget.tga
 yellowtarget.tga
+k_inc_hawk.nss
