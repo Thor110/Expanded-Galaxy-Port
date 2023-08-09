@@ -1,0 +1,2 @@
+envmaptexture CM_Baremetal
+xbox_downsample 256
