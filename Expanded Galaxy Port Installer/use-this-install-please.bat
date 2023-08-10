@@ -193,11 +193,11 @@ ren "%mykeyB%\movies\ObsidianEnt.bik" "ObsidianEnt.bik.main"
 ren "%mykeyB%\lips\001EBO_loc.mod" "001EBO_loc.mod.main"
 ren "%mykeyB%\Modules\001ebo.mod" 001ebo.mod.main"
 
-copy /y "%mykeyB%\Override\appearance.2da" "appearance.2da.main"
-copy /y "%mykeyB%\Override\feat.2da" "feat.2da.main"
-copy /y "%mykeyB%\Override\globalcat.2da" "globalcat.2da.main"
-copy /y "%mykeyB%\Override\modulesave.2da" "modulesave.2da.main"
-copy /y "%mykeyB%\Override\planetary.2da" "planetary.2da.main"
+copy /y "%mykeyB%\Override\appearance.2da" "%mykeyB%\Override\appearance.2da.main"
+copy /y "%mykeyB%\Override\feat.2da" "%mykeyB%\Override\feat.2da.main"
+copy /y "%mykeyB%\Override\globalcat.2da" "%mykeyB%\Override\globalcat.2da.main"
+copy /y "%mykeyB%\Override\modulesave.2da" "%mykeyB%\Override\modulesave.2da.main"
+copy /y "%mykeyB%\Override\planetary.2da" "%mykeyB%\Override\planetary.2da.main"
 
 for /f "delims=" %%i in (tslpatchdata\main-file-list.txt) do ren "%mykeyB%\Override\%%i" "%%i.main"
 
