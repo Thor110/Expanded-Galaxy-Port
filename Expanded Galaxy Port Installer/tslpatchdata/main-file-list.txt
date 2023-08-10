@@ -629,8 +629,3 @@ mainmenu04.mdl
 mainmenu03.mdx
 mainmenu03.mdl
 armband.ncs
-globalcat.2da
-planetary.2da
-modulesave.2da
-feat.2da
-appearance.2da
