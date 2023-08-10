@@ -628,5 +628,9 @@ mainmenu04.mdx
 mainmenu04.mdl
 mainmenu03.mdx
 mainmenu03.mdl
-P_t3m4_01.txi
 armband.ncs
+globalcat.2da
+planetary.2da
+modulesave.2da
+feat.2da
+appearance.2da
