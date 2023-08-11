@@ -197,6 +197,8 @@ copy /y "%mykeyB%\Override\appearance.2da" "%mykeyB%\Override\appearance.2da.mai
 copy /y "%mykeyB%\Override\feat.2da" "%mykeyB%\Override\feat.2da.main"
 copy /y "%mykeyB%\Override\globalcat.2da" "%mykeyB%\Override\globalcat.2da.main"
 copy /y "%mykeyB%\Override\modulesave.2da" "%mykeyB%\Override\modulesave.2da.main"
+copy /y "%mykeyB%\Override\movies.2da" "%mykeyB%\Override\movies.2da.main"
+copy /y "%mykeyB%\Override\musictable.2da" "%mykeyB%\Override\musictable.2da.main"
 copy /y "%mykeyB%\Override\planetary.2da" "%mykeyB%\Override\planetary.2da.main"
 
 for /f "delims=" %%i in (tslpatchdata\main-file-list.txt) do ren "%mykeyB%\Override\%%i" "%%i.main"
