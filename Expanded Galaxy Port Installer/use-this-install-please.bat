@@ -180,6 +180,8 @@ echo Installing Expanded Galaxy Project Port
 ren "%mykeyB%\StreamMusic\mus_a_503.wav" "mus_a_503.wav.main"
 ren "%mykeyB%\StreamMusic\mus_sion.wav" "mus_sion.wav.main"
 
+copy /y "%mykeyA%\streammusic\mus_theme_cult.wav" "%mykeyB%\streammusic\mus_sion.wav"
+
 FOR /F "delims=" %%a IN (tslpatchdata\lips-file-list.txt) DO COPY "%mykeyA%\lips\%%~a" "%mykeyB%\lips\%%~nxa"
 FOR /F "delims=" %%a IN (tslpatchdata\movies-file-list.txt) DO COPY "%mykeyA%\movies\%%~a" "%mykeyB%\movies\%%~nxa"
 FOR /F "delims=" %%a IN (tslpatchdata\streammusic-file-list.txt) DO COPY "%mykeyA%\streammusic\%%~a" "%mykeyB%\streammusic\%%~nxa"
