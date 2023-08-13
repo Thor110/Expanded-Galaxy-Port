@@ -1,12 +1,8 @@
 @echo off
-
-cls
-
 :START
-
+cls
 if exist dialog.tlk.main goto :INPUTA
 if exist dialog.tlk.port goto :INPUTB
-
 :INPUTA
 echo KotOR1 Active!
 goto :INPUT
@@ -28,12 +24,9 @@ if %Choice% lss 1 (
   echo enter a number between 1 and 2
   goto :START
 )
-
 if %Choice% == 1 goto :KOTOR1
 if %Choice% == 2 goto :KOTOR2
-
 :KOTOR1
-
 if exist dialog.tlk.main goto :STEAMORDISC
 
 ren Movies\ObsidianEnt.bik ObsidianEnt.bik.main
@@ -57,9 +50,7 @@ for /f "delims=|" %%i in (port-file-list.txt) do ren "Override\%%i.port" "%%i"
 echo Launching KotOR1 in KotOR2!
 
 goto :STEAMORDISC
-
 :KOTOR2
-
 if exist dialog.tlk.port goto :STEAMORDISC
 
 ren Movies\ObsidianEnt.bik ObsidianEnt.bik.port
@@ -81,10 +72,9 @@ ren StreamMusic\mus_sion.wav.main mus_sion.wav
 for /f "delims=|" %%i in (port-file-list.txt) do ren "Override\%%i.main" "%%i"
 
 echo Launching KotOR2!
-
-goto :STEAMORDISC
-
 :STEAMORDISC
+echo press any key to play the game. . .
+pause
 if exist steam_api.dll goto :STEAM
 goto :DISCORGOG
 :STEAM
@@ -92,6 +82,3 @@ start "" "steam://rungameid/208580//"
 exit
 :DISCORGOG
 start swkotor2.exe
-exit
-
-:END
