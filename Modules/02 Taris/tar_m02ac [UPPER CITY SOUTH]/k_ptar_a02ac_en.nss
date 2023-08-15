@@ -63,13 +63,6 @@ void sub1(string stringParam1, int intParam2, int intParam3, float floatParam4) 
 void main() {
 	object oTar02_levinthug;
 	object oTar02_cantdoor = GetObjectByTag("tar02_cantdoor", 0);
-  if(GetGlobalBoolean("K_LAST_WAYPOINT") == FALSE)
-  {
-    AddJournalQuestEntry("k_rapidtransit", 1, 0);
-    CreateItemOnObject("taris_armband",GetFirstPC(),1,0);
-    //SetGlobalString("K_LAST_WAYPOINT","1");
-    //SetGlobalString("K_LAST_WAYPOINT","1");
-  }
 	//sub1("RUNNING AREA EVENT", 5, 5, 5.0);
 	AssignCommand(oTar02_cantdoor, ActionCloseDoor(oTar02_cantdoor));
 	/*if ((!GetLoadFromSaveGame())) {
