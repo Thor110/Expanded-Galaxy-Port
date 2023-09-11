@@ -76,6 +76,7 @@ if defined mykey3 (
   set "mykey=!mykey3!"
 )
 
+if %tempA% equ 0 goto :MANUAL
 if %tempA% equ 1 goto :INSTALL
 
 :INPUT1
@@ -125,6 +126,7 @@ Rem one temp variable next time
 
 :INPUT2
 
+if %tempB% equ 0 goto :MANUAL
 if %tempB% equ 1 goto :INSTALL
 
 echo Please enter which install of the second game to use.
@@ -152,11 +154,14 @@ if not defined mykeyB (
   echo Input incorrect or no installation of the game detected!
   goto :INPUT2
 )
-
 cls
-
+goto :Install
+:MANUAL
+echo Please enter the first game directory.
+set /p mykeyA="Enter your KotOR1 Directory: "
+echo Please enter the second game directory.
+set /p mykeyB="Enter your KotOR2 Directory: "
 :INSTALL
-
 setlocal disabledelayedexpansion
 
 if exist "%mykeyA%\chitin.key" (
@@ -164,6 +169,7 @@ if exist "%mykeyA%\chitin.key" (
 ) else (
   echo Star Wars : Knights of the Old Republic Installation Not Detected!
   pause
+  goto :MANUAL
   exit
 )
 
@@ -172,6 +178,7 @@ if exist "%mykeyB%\chitin.key" (
 ) else (
   echo Star Wars : Knights of the Old Republic II Installation Not Detected!
   pause
+  goto :MANUAL
   exit
 )
 
