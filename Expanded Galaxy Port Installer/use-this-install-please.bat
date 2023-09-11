@@ -157,6 +157,7 @@ if not defined mykeyB (
 cls
 goto :Install
 :MANUAL
+echo Failed to locate the registry entry, please enter the game directories manually.
 echo Please enter the first game directory.
 set /p mykeyA="Enter your KotOR1 Directory: "
 echo Please enter the second game directory.
