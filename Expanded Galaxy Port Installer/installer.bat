@@ -8,7 +8,6 @@ if "%~1"=="" (set "TSLPath=") else (set "TSLPath=%~1")
 :: Initialize empty KOTORPaths variable
 set "KOTORPaths="
 set "KOTORPath="
-set "Install="
 
 goto StartMainLogic
 
