@@ -129,7 +129,6 @@ call :Process-Choice "TSL" "%KOTOR2RegOptions%" "%KOTOR2PathOptions%" "%TSLPath%
 echo.
 echo TSL Path chosen: !KOTORPaths!
 
-pause
 echo Installing Expanded Galaxy Project Port
 
 :: Call executable based on chosen path
