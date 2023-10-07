@@ -80,12 +80,22 @@ echo %choice%|findstr /r "[^1-!index!]" && (
 )
 if %choice% gtr !index! (
   cls
+  echo Please select the directory that you wish to use for the first game:
   echo Enter a number between 1 and !index!
+  if defined KOTORPath (
+	echo KotOR Path chosen: !KOTORPath!
+  )
+  endlocal
   goto :Process-Choice
 )
 if %choice% lss 1 (
   cls
+  echo Please select the directory that you wish to use for the first game:
   echo Enter a number between 1 and !index!
+  if defined KOTORPath (
+	echo KotOR Path chosen: !KOTORPath!
+  )
+  endlocal
   goto :Process-Choice
 )
 :FinalInput
@@ -107,12 +117,12 @@ if !ERRORLEVEL! equ 0 (
     call :Process-Choice "%title%" "%regOptions%" "%pathOptions%" "%cmdlinePath%"
     exit /b
 )
-
 endlocal & (
-	if not defined KOTORPath (
+	if %Options% == 1 (
 		set "KOTORPath=%chosenPath%"
+	) else (
+		set "KOTORPaths=%chosenPath%"
 	)
-  set "KOTORPaths=%chosenPath%"
 )
 exit /b
 
@@ -125,15 +135,17 @@ set "KOTOR2PathOptions=C:\Program Files\Steam\steamapps\common\Knights of the Ol
 
 set "KOTOR1RegOptions=HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 32370;HKLM:\SOFTWARE\GOG.com\Games\1207666283;HKLM:\SOFTWARE\WOW6432Node\BioWare\SW\KOTOR;HKLM:\SOFTWARE\BioWare\SW\KOTOR"
 set "KOTOR1PathOptions=C:\Program Files\Steam\steamapps\common\swkotor;C:\Program Files (x86)\Steam\steamapps\common\swkotor;C:\Program Files\Bioware\SWKotOR;C:\Program Files (x86)\Bioware\SWKotOR;C:\GOG Games\Star Wars - KotOR"
-
+set /a "Options=1"
 echo Please select the directory that you wish to use for the first game:
 call :Process-Choice "KotOR" "%KOTOR1RegOptions%" "%KOTOR1PathOptions%" "%KOTORPath%"
 
+echo.
 echo KotOR Path chosen: !KOTORPath!
-
+set /a "Options=2"
 echo Please select the directory that you wish to install the mod to:
 call :Process-Choice "TSL" "%KOTOR2RegOptions%" "%KOTOR2PathOptions%" "%TSLPath%"
 
+echo.
 echo TSL Path chosen: !KOTORPaths!
 
 echo Installing Expanded Galaxy Project Port
@@ -162,7 +174,7 @@ if exist "tslpatchdata\pykotorcli.exe" (
 	copy /y "!KOTORPaths!\dialog.tlk" "!KOTORPaths!\dialog.tlk.main"
     call "tslpatchdata\pykotorcli.exe" "!KOTORPaths!" "%cd%"
 	cls
-    echo Star Wars : Knights of the Old Republic II Expanded Galaxy Project Port Installation Completed!
+    echo Star Wars : Knights of the Old Republic II Expanded Galaxy Port Project Installation Completed!
 ) else (
     echo An error occurred: Cannot find the executable 'pykotorcli.exe'
     exit /b 2
