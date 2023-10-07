@@ -72,7 +72,6 @@ for %%B in ("%pathOptions:;=" "%") do (
 
 echo [!index!] Enter a manual path
 set /a "manualIndex=index"
-Rem set /a "index+=1"
 
 :CaptureInput
 set /p choice=Please choose an option [1-%index%]
@@ -99,10 +98,6 @@ if "%choice%"=="%manualIndex%" (
 )
 set "chosenPath=%chosenPath:"=%"   :: Remove quotes if they exist
 
-:: Store the path
-echo User chose index: !choice!
-echo User chose: "!chosenPath!"
-
 call :Check-Folder "!chosenPath!"
 if !ERRORLEVEL! equ 0 (
     echo Check for chitin.key - success
@@ -121,7 +116,6 @@ endlocal & (
 )
 exit /b
 
-
 :: Main logic
 :StartMainLogic
 
@@ -132,14 +126,14 @@ set "KOTOR2PathOptions=C:\Program Files\Steam\steamapps\common\Knights of the Ol
 set "KOTOR1RegOptions=HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 32370;HKLM:\SOFTWARE\GOG.com\Games\1207666283;HKLM:\SOFTWARE\WOW6432Node\BioWare\SW\KOTOR;HKLM:\SOFTWARE\BioWare\SW\KOTOR"
 set "KOTOR1PathOptions=C:\Program Files\Steam\steamapps\common\swkotor;C:\Program Files (x86)\Steam\steamapps\common\swkotor;C:\Program Files\Bioware\SWKotOR;C:\Program Files (x86)\Bioware\SWKotOR;C:\GOG Games\Star Wars - KotOR"
 
+echo Please select the directory that you wish to use for the first game:
 call :Process-Choice "KotOR" "%KOTOR1RegOptions%" "%KOTOR1PathOptions%" "%KOTORPath%"
 
-echo.
 echo KotOR Path chosen: !KOTORPath!
 
+echo Please select the directory that you wish to install the mod to:
 call :Process-Choice "TSL" "%KOTOR2RegOptions%" "%KOTOR2PathOptions%" "%TSLPath%"
 
-echo.
 echo TSL Path chosen: !KOTORPaths!
 
 echo Installing Expanded Galaxy Project Port
@@ -148,7 +142,6 @@ echo Installing Expanded Galaxy Project Port
 if exist "tslpatchdata\pykotorcli.exe" (
 	ren "%KOTORPaths%\StreamMusic\mus_a_503.wav" "mus_a_503.wav.main"
 	ren "!KOTORPaths!\StreamMusic\mus_sion.wav" "mus_sion.wav.main"
-	pause
 	copy /y "%KOTORPath%\StreamMusic\mus_theme_cult.wav" "!KOTORPaths!\StreamMusic\mus_sion.wav"
 	FOR /F "delims=" %%a IN (tslpatchdata\lips-file-list.txt) DO COPY "%KOTORPath%\lips\%%~a" "!KOTORPaths!\lips\%%~nxa"
 	FOR /F "delims=" %%a IN (tslpatchdata\movies-file-list.txt) DO COPY "%KOTORPath%\movies\%%~a" "!KOTORPaths!\movies\%%~nxa"
@@ -168,7 +161,8 @@ if exist "tslpatchdata\pykotorcli.exe" (
 	copy /y "port-readme.rtf" "!KOTORPaths!\port-readme.rtf"
 	copy /y "!KOTORPaths!\dialog.tlk" "!KOTORPaths!\dialog.tlk.main"
     call "tslpatchdata\pykotorcli.exe" "!KOTORPaths!" "%cd%"
-    echo Star Wars : Knights of the Old Republic II Expanded Galaxy Port Project Installation Completed!
+	cls
+    echo Star Wars : Knights of the Old Republic II Expanded Galaxy Project Port Installation Completed!
 ) else (
     echo An error occurred: Cannot find the executable 'pykotorcli.exe'
     exit /b 2
