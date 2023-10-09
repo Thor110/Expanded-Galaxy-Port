@@ -152,7 +152,7 @@ echo Installing Expanded Galaxy Project Port
 
 :: Call executable based on chosen path
 if exist "tslpatchdata\pykotorcli.exe" (
-	ren "%KOTORPaths%\StreamMusic\mus_a_503.wav" "mus_a_503.wav.main"
+	Rem ren "%KOTORPaths%\StreamMusic\mus_a_503.wav" "mus_a_503.wav.main"
 	ren "!KOTORPaths!\StreamMusic\mus_sion.wav" "mus_sion.wav.main"
 	copy /y "%KOTORPath%\StreamMusic\mus_theme_cult.wav" "!KOTORPaths!\StreamMusic\mus_sion.wav"
 	FOR /F "delims=" %%a IN (tslpatchdata\lips-file-list.txt) DO COPY "%KOTORPath%\lips\%%~a" "!KOTORPaths!\lips\%%~nxa"
