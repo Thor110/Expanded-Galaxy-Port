@@ -1,4 +1,4 @@
 void main() {
-	ActionStartConversation(GetFirstPC(), "", 0, 0, 0, "", "", "", "", "", "", 0);
+	ActionStartConversation(GetLastUsedBy(), "", 0, 1, 0, "", "", "", "", "", "");
 }
 
