@@ -11,53 +11,33 @@
 
 void main()
 {
-  if(GetGlobalNumber("K_FUTURE_PLANET") == 3)
+  if(GetGlobalNumber("K_CURRENT_PLANET") == 3)
   {
-    if(GetGlobalBoolean("k_vis_korriban") == FALSE)
+    if(GetGlobalBoolean("k_vis_korriban") == 0)
     {
-      ST_PlayVisionStunt();
-    }
-    else
-    {
-      ST_PlayGenericLanding();
+      StartNewModule("stunt_00","","07_1");
     }
   }
-  if(GetGlobalNumber("K_FUTURE_PLANET") == 11)
+  if(GetGlobalNumber("K_CURRENT_PLANET") == 11)
   {
-    if(GetGlobalBoolean("k_vis_kashyyyk") == FALSE)
+    if(GetGlobalBoolean("k_vis_kashyyyk") == 0)
     {
-      ST_PlayVisionStunt();
-    }
-    else
-    {
-      ST_PlayGenericLanding();
+      StartNewModule("stunt_00","","07_1");
     }
   }
-  if(GetGlobalNumber("K_FUTURE_PLANET") == 14)
+  if(GetGlobalNumber("K_CURRENT_PLANET") == 14)
   {
-    if(GetGlobalBoolean("k_vis_tatooine") == FALSE)
+    if(GetGlobalBoolean("k_vis_tatooine") == 0)
     {
-      ST_PlayVisionStunt();
-    }
-    else
-    {
-      ST_PlayGenericLanding();
+      StartNewModule("stunt_00","","07_1");
     }
   }
-  if(GetGlobalNumber("K_FUTURE_PLANET") == 15)
+  if(GetGlobalNumber("K_CURRENT_PLANET") == 15)
   {
-    if(GetGlobalBoolean("k_vis_manaan") == FALSE)
+    if(GetGlobalBoolean("k_vis_manaan") == 0)
     {
-      ST_PlayVisionStunt();
+      StartNewModule("stunt_00","","07_1");
     }
-    else
-    {
-      ST_PlayGenericLanding();
-    }
-  }
-  else
-  {
-    ST_PlayGenericLanding();
   }
 }
 
