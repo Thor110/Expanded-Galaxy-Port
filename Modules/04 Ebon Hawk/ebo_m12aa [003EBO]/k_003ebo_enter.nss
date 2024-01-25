@@ -87,24 +87,24 @@ object GetAndMovePUPToWaypoint(int nPUP, string sTag);
 // ST: Main function
 // ---------------------------------------------------------------
 void main() {
-  if(GetGlobalBoolean("k_vis_Dantooine") == FALSE)
+  if(GetGlobalBoolean("k_vis_Dantooine") == 0) // only runs when first landing on Dantooine
   {
     SetGlobalNumber("K_CURRENT_PLANET", 0);
     AssignCommand(GetObjectByTag("bastila"), ActionStartConversation(GetFirstPC(), "ebo_bast_vision", FALSE, CONVERSATION_TYPE_CINEMATIC, TRUE));
   }
-  if(GetGlobalBoolean("k_vis_korriban") == FALSE && GetGlobalNumber("K_CURRENT_PLANET") == 3)
+  if(GetGlobalBoolean("k_vis_korriban") == 0 && GetGlobalNumber("K_CURRENT_PLANET") == 3)
   {
     AssignCommand(GetObjectByTag("bastila"), ActionStartConversation(GetFirstPC(), "ebo_bast_vision", FALSE, CONVERSATION_TYPE_CINEMATIC, TRUE));
   }
-  if(GetGlobalBoolean("k_vis_Kashyyyk") == FALSE && GetGlobalNumber("K_CURRENT_PLANET") == 11)
+  if(GetGlobalBoolean("k_vis_Kashyyyk") == 0 && GetGlobalNumber("K_CURRENT_PLANET") == 11)
   {
     AssignCommand(GetObjectByTag("bastila"), ActionStartConversation(GetFirstPC(), "ebo_bast_vision", FALSE, CONVERSATION_TYPE_CINEMATIC, TRUE));
   }
-  if(GetGlobalBoolean("k_vis_Tatooine") == FALSE && GetGlobalNumber("K_CURRENT_PLANET") == 14)
+  if(GetGlobalBoolean("k_vis_Tatooine") == 0 && GetGlobalNumber("K_CURRENT_PLANET") == 14)
   {
     AssignCommand(GetObjectByTag("bastila"), ActionStartConversation(GetFirstPC(), "ebo_bast_vision", FALSE, CONVERSATION_TYPE_CINEMATIC, TRUE));
   }
-  if(GetGlobalBoolean("k_vis_Manaan") == FALSE && GetGlobalNumber("K_CURRENT_PLANET") == 15)
+  if(GetGlobalBoolean("k_vis_Manaan") == 0 && GetGlobalNumber("K_CURRENT_PLANET") == 15)
   {
     AssignCommand(GetObjectByTag("bastila"), ActionStartConversation(GetFirstPC(), "ebo_bast_vision", FALSE, CONVERSATION_TYPE_CINEMATIC, TRUE));
   }
