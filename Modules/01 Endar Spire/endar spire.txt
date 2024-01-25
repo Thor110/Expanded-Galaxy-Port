@@ -1,16 +1,16 @@
 all thats left off is
 
-1 - waking up animations for each class
+1 - waking up animations for each class - linked to #3
 
-2 - starting gear
+2 - starting gear - linked to #1 & #3
 
-3 - class specific clothing
+3 - class specific clothing - linked to #1
 
-4 - fifth room cutscene
+4 - fifth room cutscene ( battle scene )
 
-5 - bridge door is meant to lock
+5 - bridge door is meant to lock - linked to #6
 
-6 - class specific dialog
+6 - class specific dialog - linked to #5
 
 7 - that's a wrap
 

@@ -90,9 +90,23 @@ void main() {
   if(GetGlobalBoolean("k_vis_Dantooine") == FALSE)
   {
     SetGlobalNumber("K_CURRENT_PLANET", 0);
-    //DelayCommand(1.0, AssignCommand(oT3M4, ActionStartConversation(oPC, "hk47t3m4", FALSE, CONVERSATION_TYPE_CINEMATIC, TRUE)));
     AssignCommand(GetObjectByTag("bastila"), ActionStartConversation(GetFirstPC(), "ebo_bast_vision", FALSE, CONVERSATION_TYPE_CINEMATIC, TRUE));
-    //ActionStartConversation(GetObjectByTag("bastila"),"ebo_bast_vision");
+  }
+  if(GetGlobalBoolean("k_vis_korriban") == FALSE && GetGlobalNumber("K_CURRENT_PLANET") == 3)
+  {
+    AssignCommand(GetObjectByTag("bastila"), ActionStartConversation(GetFirstPC(), "ebo_bast_vision", FALSE, CONVERSATION_TYPE_CINEMATIC, TRUE));
+  }
+  if(GetGlobalBoolean("k_vis_Kashyyyk") == FALSE && GetGlobalNumber("K_CURRENT_PLANET") == 11)
+  {
+    AssignCommand(GetObjectByTag("bastila"), ActionStartConversation(GetFirstPC(), "ebo_bast_vision", FALSE, CONVERSATION_TYPE_CINEMATIC, TRUE));
+  }
+  if(GetGlobalBoolean("k_vis_Tatooine") == FALSE && GetGlobalNumber("K_CURRENT_PLANET") == 14)
+  {
+    AssignCommand(GetObjectByTag("bastila"), ActionStartConversation(GetFirstPC(), "ebo_bast_vision", FALSE, CONVERSATION_TYPE_CINEMATIC, TRUE));
+  }
+  if(GetGlobalBoolean("k_vis_Manaan") == FALSE && GetGlobalNumber("K_CURRENT_PLANET") == 15)
+  {
+    AssignCommand(GetObjectByTag("bastila"), ActionStartConversation(GetFirstPC(), "ebo_bast_vision", FALSE, CONVERSATION_TYPE_CINEMATIC, TRUE));
   }
     object oEnter = GetEnteringObject();
     if (oEnter == GetFirstPC()) {
