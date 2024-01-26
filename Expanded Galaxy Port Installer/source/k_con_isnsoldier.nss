@@ -1,4 +1,4 @@
 int StartingConditional() {
-	return (!GetLevelByClass(0, GetPCSpeaker()));
+	return (!GetLevelByClass(3, GetPCSpeaker()));
 }
 

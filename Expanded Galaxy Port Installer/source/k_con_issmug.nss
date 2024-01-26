@@ -9,5 +9,5 @@
 
 int StartingConditional()
 {
-    return(GetLevelByClass(CLASS_TYPE_SCOUNDREL,GetPCSpeaker()));
+    return(GetLevelByClass(CLASS_TYPE_JEDICONSULAR,GetPCSpeaker()));
 }

@@ -10,7 +10,7 @@
 int StartingConditional()
 {
   object oPC = GetFirstPC();
-    if(GetLevelByClass(4,oPC))
+    if(GetLevelByClass(5,oPC))
     {
       return TRUE;
     }
