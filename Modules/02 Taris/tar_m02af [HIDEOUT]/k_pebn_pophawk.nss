@@ -111,8 +111,8 @@ void sub8(object objectParam1) {
 }
 
 void sub7() {
-	object oBastila = GetObjectByTag("bastila", 0);
-	object oCarth = GetObjectByTag("carth", 0);/*
+	object oBastila = GetObjectByTag("bastila", 0);/*
+	object oCarth = GetObjectByTag("carth", 0);
 	object oCand = GetObjectByTag("cand", 0);
 	object oHk47 = GetObjectByTag("hk47", 0);
 	object oJolee = GetObjectByTag("jolee", 0);
@@ -125,10 +125,10 @@ void sub7() {
 	while ((int1 <= 9)) {
 		if ((int1 == 1)) {
 			object19 = oBastila;
-		}
+		}/*
 		if ((int1 == 2)) {
 			object19 = oCarth;
-		}/*
+		}
 		if ((int1 == 3)) {
 			object19 = oCand;
 		}
@@ -170,7 +170,7 @@ void sub5() {
 	oZaalbar = GetObjectByTag("cand", 0);
 	if (GetIsObjectValid(oZaalbar)) {
 		DestroyObject(oZaalbar, 0.0, 0, 0.0);
-	}*/
+	}
 	oZaalbar = GetObjectByTag("carth", 0);
 	if (GetIsObjectValid(oZaalbar)) {
 		if (GetGlobalBoolean("TAR_STARTED")) {
@@ -179,7 +179,7 @@ void sub5() {
 		else {
 			SetGlobalBoolean("TAR_STARTED", 1);
 		}
-	}/*
+	}
 	oZaalbar = GetObjectByTag("hk47", 0);
 	if (GetIsObjectValid(oZaalbar)) {
 		DestroyObject(oZaalbar, 0.0, 0, 0.0);
@@ -300,12 +300,12 @@ void main() {
 	location location1;
 	object oPebn_zaalbar;
 	object oZaalbar;
-	int int1 = 0;
+	//int int1 = 0;
 	//DelayCommand(0.5, sub2());
 	sub4();
 	DelayCommand(0.2, sub5());
 	//SetGlobalBoolean("K_AT_EBON_HAWK", 1);
-	if ((IsAvailableCreature(0) && (GetGlobalBoolean("DAN_BASTILA_AT_JEDI") == 0))) {
+	if ((IsAvailableCreature(0)/* && (GetGlobalBoolean("DAN_BASTILA_AT_JEDI") == 0)*/)) {
 		oZaalbar = GetObjectByTag("bastila", 0);
 		oPebn_zaalbar = GetWaypointByTag("pebn_bastila");
 		location1 = GetLocation(oPebn_zaalbar);
@@ -322,7 +322,7 @@ void main() {
 			DelayCommand(0.5, sub6(1, location1));
 			DelayCommand(2.0, SaveNPCState(1));
 		}
-	}*/
+	}
 	if ((IsAvailableCreature(2) && (GetGlobalBoolean("DAN_CARTH_AT_JEDI") == 0))) {
 		oZaalbar = GetObjectByTag("carth", 0);
 		oPebn_zaalbar = GetWaypointByTag("pebn_carth");
@@ -331,7 +331,7 @@ void main() {
 			DelayCommand(0.5, sub6(2, location1));
 			DelayCommand(2.0, SaveNPCState(2));
 		}
-	}/*
+	}
 	if (IsAvailableCreature(3)) {
 		oZaalbar = GetObjectByTag("hk47", 0);
 		oPebn_zaalbar = GetWaypointByTag("pebn_hk47");
