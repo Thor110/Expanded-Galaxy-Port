@@ -8,20 +8,36 @@
 //#include "k_inc_debug"
 //#include "k_inc_stunt"
 
+int nCurrent = GetGlobalNumber("K_CURRENT_PLANET");
+
 void main()
 {
-  if(GetGlobalNumber("K_CURRENT_PLANET") == 5)
+	switch(nCurrent)
   {
-    StartNewModule("tar_m02af","","01f");
-  }
-  else if(GetGlobalBoolean("DAN_STUNT00"))// the special circumstances for the Dantooine version of Stunt_00
-  {
-    SetGlobalBoolean("DAN_STUNT00",FALSE);
-    StartNewModule("danm13","","09");
-  }
-  else
-  {
-    StartNewModule("ebo_m12aa");
-  }
+    case 5:
+    {
+      StartNewModule("tar_m02af","","01f");
+	  }break;
+    case 0:
+    {
+      StartNewModule("danm13","","09");
+	  }break;
+    case 3:
+    {
+      StartNewModule("ebo_m12aa","","0d");
+	  }break;
+    case 11:
+    {
+      StartNewModule("ebo_m12aa","","0c");
+	  }break;
+    case 14:
+    {
+      StartNewModule("ebo_m12aa","","0a");
+	  }break;
+    case 15:
+    {
+      StartNewModule("ebo_m12aa","","0b");
+	  }break;
+	}
 }
 
