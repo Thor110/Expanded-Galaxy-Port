@@ -1,4 +1,5 @@
 // Globals
+/*
 	int intGLOB_1 = 0;
 	int intGLOB_2 = 1;
 	int intGLOB_3 = 2;
@@ -82,9 +83,11 @@ void sub1(float floatParam1) {
 	ActionPauseConversation();
 	DelayCommand(floatParam1, ActionResumeConversation());
 }
-
+*/
 void main() {
-	sub1(1.5);
-	sub2(GetObjectByTag("tar_igear_pc0_jump_wp", 0), GetObjectByTag("tar_igear_pc1_jump_wp", 0), GetObjectByTag("tar_igear_pc2_jump_wp", 0));
+	//sub1(1.5);
+  ActionPauseConversation();
+	DelayCommand(1.5, ActionResumeConversation());
+	//sub2(GetObjectByTag("tar_igear_pc0_jump_wp", 0), GetObjectByTag("tar_igear_pc1_jump_wp", 0), GetObjectByTag("tar_igear_pc2_jump_wp", 0));
 }
 

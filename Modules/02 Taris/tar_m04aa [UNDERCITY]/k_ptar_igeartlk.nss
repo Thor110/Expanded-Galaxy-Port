@@ -1,4 +1,5 @@
 // Globals
+/*
 	int intGLOB_1 = 0;
 	int intGLOB_2 = 1;
 	int intGLOB_3 = 2;
@@ -26,14 +27,14 @@
 	int intGLOB_25 = (-2);
 	int intGLOB_26 = (-1);
 	int intGLOB_27 = 0;
-
+*/
 // Prototypes
-void sub5(object objectParam1, int intParam2);
-int sub4(object objectParam1);
+//void sub5(object objectParam1, int intParam2);
+//int sub4(object objectParam1);
 void sub3();
 void sub2(string stringParam1, string stringParam2, object objectParam3);
-void sub1(string stringParam1, int intParam2, int intParam3, float floatParam4);
-
+//void sub1(string stringParam1, int intParam2, int intParam3, float floatParam4);
+/*
 void sub5(object objectParam1, int intParam2) {
 	if (GetIsObjectValid(objectParam1)) {
 		if (((intParam2 == 1) || (intParam2 == 0))) {
@@ -52,7 +53,7 @@ int sub4(object objectParam1) {
 	}
 	return 0;
 }
-
+*/
 void sub3() {
 	int int1 = 0;
 	object oNPC = GetPartyMemberByIndex(int1);
@@ -86,38 +87,39 @@ void sub2(string stringParam1, string stringParam2, object objectParam3) {
 			AssignCommand(oPC, ClearAllActions());
 			AssignCommand(object1, ClearAllActions());
 			CancelCombat(oPC);
-			if ((GetIsObjectValid(objectParam3) == 1)) {
-				AssignCommand(oPC, DelayCommand(0.2, JumpToObject(objectParam3, 1)));
+			/*if ((GetIsObjectValid(objectParam3) == 1)) {
+				//AssignCommand(oPC, DelayCommand(0.2, JumpToObject(objectParam3, 1)));
 				AssignCommand(oPC, DelayCommand(0.4, SetFacingPoint(GetPosition(object1))));
 			}
 			else {
-				AssignCommand(oPC, DelayCommand(0.2, JumpToObject(object1, 1)));
-			}
-			AssignCommand(oNPC, DelayCommand(0.5, JumpToObject(oPC, 1)));
-			AssignCommand(object8, DelayCommand(0.5, JumpToObject(oPC, 1)));
+				//AssignCommand(oPC, DelayCommand(0.2, JumpToObject(object1, 1)));
+			}*/
+			//AssignCommand(oNPC, DelayCommand(0.5, JumpToObject(oPC, 1)));
+			//AssignCommand(object8, DelayCommand(0.5, JumpToObject(oPC, 1)));
 			AssignCommand(object1, ActionDoCommand(SetGlobalFadeIn(0.5, 2.0, 0.0, 0.0, 0.0)));
 			AssignCommand(object1, ActionStartConversation(oPC, stringParam2, 0, 0, 1, "", "", "", "", "", ""));
 		}
 	}
 }
 
-void sub1(string stringParam1, int intParam2, int intParam3, float floatParam4) {
+/*void sub1(string stringParam1, int intParam2, int intParam3, float floatParam4) {
 	if ((!ShipBuild())) {
 		AurPostString(stringParam1, intParam2, intParam3, floatParam4);
 	}
-}
+}*/
 
 void main() {
 	object oEntering = GetEnteringObject();
-	sub1(("IGEAR TRIGGER - " + IntToString(GetGlobalNumber("tar_rukil"))), 5, 5, 5.0);
+	//sub1(("IGEAR TRIGGER - " + IntToString(GetGlobalNumber("tar_rukil"))), 5, 5, 5.0);
 	if ((GetIsPC(oEntering) && (GetGlobalNumber("tar_rukil") == 20))) {
-		sub1("IGEAR TALK", 5, 6, 5.0);
+		//sub1("IGEAR TALK", 5, 6, 5.0);
 		SetGlobalBoolean("tar_igearquest", 1);
 		sub2("igear", "", OBJECT_INVALID);
 	}
-	if ((GetIsPC(oEntering) && (!sub4(OBJECT_SELF)))) {
-		sub1("IGEAR TALK", 5, 6, 5.0);
-		sub5(OBJECT_SELF, 1);
+	if ((GetIsPC(oEntering)/* && (!sub4(OBJECT_SELF))*/)) {
+		//sub1("IGEAR TALK", 5, 6, 5.0);
+		//sub5(OBJECT_SELF, 1);
+    DestroyObject(OBJECT_SELF);
 		sub2("igear", "", OBJECT_INVALID);
 	}
 }
