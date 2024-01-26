@@ -25,7 +25,7 @@ void main() {
   else {
     if(GetIsInCombat(GetFirstPC())&&GetIsDead(GetFirstPC()))
     {
-      BarkString(GetFirstPC(),42402);
+      BarkString(GetFirstPC(),42407);
     }
     else
     {
