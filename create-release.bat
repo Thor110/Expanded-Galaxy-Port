@@ -4,11 +4,7 @@ for /f "delims=" %%x in (version.txt) do set Build=port-v%%x
 
 "C:\Program Files\7-Zip\7z.exe" a "%Build%.7z" "%cd%\Expanded Galaxy Port Installer\*"
 
-set fld=lips
-call :ADD
 set fld=Override
-call :ADD
-set fld=StreamVoice
 call :ADD
 
 md tslpatchdata
