@@ -1,6 +1,0 @@
-the following files in the tslpatchdata folder list the required files for the port.
-lips-file-list.txt
-movies-file-list.txt
-streammusic-file-list.txt
-streamsounds-file-list.txt
-streamwaves-file-list.txt
