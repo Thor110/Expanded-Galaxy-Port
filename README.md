@@ -5,6 +5,8 @@ Expanded Galaxy : Port
 # Folders
 00 Manual Install - leftover files from the manual install version of the game that I need to double / triple check before deleting. [TO BE DELETED EVENTUALLY]
 
+50 Scripts Left To Decompile - scripts that haven't been decompiled yet exist here.
+
 99 Clutter - contains a note regarding what files or folders are used to create the release. [TO BE DELETED EVENTUALLY]
 
 Expanded Galaxy Port Installer - the port installer folder containing the source folder and tslpatchdata folder as well as the installer scripts.
