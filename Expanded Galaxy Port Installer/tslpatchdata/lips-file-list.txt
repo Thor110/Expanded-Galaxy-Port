@@ -13,7 +13,6 @@ ebo_m41aa_loc.mod
 ebo_m46ab_loc.mod
 end_m01aa_loc.mod
 end_m01ab_loc.mod
-global.mod
 kas_m22aa_loc.mod
 kas_m22ab_loc.mod
 kas_m23aa_loc.mod
