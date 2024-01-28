@@ -657,7 +657,3 @@ cus_gpad_solox.tga
 cus_gpad_ste.tga
 cus_gpad_ste3.tga
 lbl_miscroll_open_f.tga
-uibit_brdr_16gc.tga
-uibit_brdr_16ge.tga
-uibit_fill_16g.tga
-uibit_fill_16gd.tga

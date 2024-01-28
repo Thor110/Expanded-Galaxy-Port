@@ -83,4 +83,8 @@ uibit_no_npc_p.tga
 uibit_uparrowo.tga
 whitetarget.tga
 yellowtarget.tga
+uibit_brdr_16gc.tga
+uibit_brdr_16ge.tga
+uibit_fill_16g.tga
+uibit_fill_16gd.tga
 k_inc_hawk.nss
