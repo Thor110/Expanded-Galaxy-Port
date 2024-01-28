@@ -83,7 +83,7 @@ void ExitToDxunOnderon () {
 }
 
 void ExitToKorriban() {
-    if(GetGlobalNumber("K_CURRENT_PLANET")==30) {
+    if(GetGlobalNumber("K_CURRENT_PLANET")==3) {
       SetNPCSelectability(NPC_ATTON, FALSE);
       //SendMessageToPC(GetFirstPC(),"testing");
     }
