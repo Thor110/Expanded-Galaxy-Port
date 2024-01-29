@@ -23,6 +23,8 @@ version.txt - the current version number.
 
 Requires the Main part of the project! [https://github.com/Thor110/Expanded-Galaxy-Main]
 
+This also requires that you own and have a copy of the original game installed.
+
 # Playing the game
 
 launcher.bat - is for choosing between KotOR1 & KotOR2 and is installed to the main game directory.
