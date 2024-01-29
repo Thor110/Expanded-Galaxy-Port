@@ -3,11 +3,11 @@ KotOR : Expanded Galaxy is a port of the first game to the second games version 
 
 ## Repository folder and file structure
 # Folders
-00 Scripts Left To Decompile - scripts that haven't been decompiled yet exist here.
-
 Expanded Galaxy Port Installer - the port installer folder containing the source folder and tslpatchdata folder as well as HoloPatcher.
 
 Modules Source - contains the level files organised into folders denoting the planet and module names as well as the .mod files themselves, I use this to quickly and easily repack levels.
+
+Scripts Left To Decompile - scripts that haven't been decompiled yet exist here.
 
 # Files
 
