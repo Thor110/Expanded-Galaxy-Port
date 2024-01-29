@@ -23,7 +23,7 @@ version.txt - the current version number.
 
 ## Installation
 
-Requires the Main part of the project!
+Requires the Main part of the project! [https://github.com/Thor110/Expanded-Galaxy-Main]
 
 # Playing the game
 
