@@ -1,5 +1,7 @@
 # Expanded-Galaxy-Port
-Expanded Galaxy : Port
+KotOR : Expanded Galaxy : Port
+
+KotOR : Expanded Galaxy is a port of the first game to the second games version of the engine as well as a mod that adds the planets from the second game and a bunch of fixes / changes / additions.
 
 ## Repository folder and file structure
 # Folders
