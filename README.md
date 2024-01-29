@@ -1,5 +1,3 @@
-In order to install the most up-to-date version, you must download the entire repository and then use create-release.bat to pack the relevant files into a zip file and then unpack them, I will move files around and fix it so that this isn't the case soon.
-
 # Expanded-Galaxy-Port
 Expanded Galaxy : Port
 
@@ -7,11 +5,9 @@ Expanded Galaxy : Port
 # Folders
 00 Scripts Left To Decompile - scripts that haven't been decompiled yet exist here.
 
-Expanded Galaxy Port Installer - the port installer folder containing the source folder and tslpatchdata folder as well as the installer scripts.
+Expanded Galaxy Port Installer - the port installer folder containing the source folder and tslpatchdata folder as well as HoloPatcher.
 
-Modules - contains the level files organised into folders denoting the planet and module names as well as the .mod files themselves, I use this to quickly and easily repack levels.
-
-Override - the contents of the Override folder.
+Modules Source - contains the level files organised into folders denoting the planet and module names as well as the .mod files themselves, I use this to quickly and easily repack levels.
 
 # Files
 
@@ -19,9 +15,9 @@ Override - the contents of the Override folder.
 
 README.md - the readme.md file.
 
-create-release.bat - a batch file for creating the release 7zip file.
+update-modules.bat - A batch file used for updating the .mod files inside the "Expanded Galaxy Port Installer\tslpatchdata\modules" directory using those from the "Modules Source" folder.
 
-version.txt - this text file contains the version number and is used by "create-release.bat" in order to number and name the 7zip file it produces.
+version.txt - the current version number.
 
 ## Installation
 
