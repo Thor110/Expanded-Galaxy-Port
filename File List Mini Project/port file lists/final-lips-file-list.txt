@@ -1,0 +1,4 @@
+localizaton.mod		- this file needs unpacking from K1 files and packing into K2s file of the same name
+
+
+this might not even need doing as I cannot find any reference to these lip files amongst the games files
