@@ -1,0 +1,9 @@
+final txt files exist in kotor 1s files
+
+trimmed txt files exist in kotor 1s files but might not be required
+
+checked txt files are the initial text files generated that I am using as reference to construct these file lists
+
+check later folder is a list of other file types to check over
+
+custom files contain files that are definitely custom or altered
