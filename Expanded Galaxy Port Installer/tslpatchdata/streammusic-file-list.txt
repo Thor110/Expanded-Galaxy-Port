@@ -112,7 +112,6 @@ mus_bat_valsith.wav
 mus_loadscreen.wav
 mus_theme_bast.wav
 mus_theme_carth.wav
-mus_theme_cult.wav
 mus_theme_czerka.wav
 mus_theme_malak.wav
 mus_theme_rep.wav
