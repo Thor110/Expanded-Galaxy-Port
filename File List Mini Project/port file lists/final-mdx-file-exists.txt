@@ -318,7 +318,6 @@ m08aa_09d.mdx
 m08aa_09e.mdx
 m08aa_10a.mdx
 m08aa_10c.mdx
-m08aa_10d.mdx
 m08aa_11a.mdx
 m08aa_12a.mdx
 m08aa_13a.mdx
@@ -521,7 +520,6 @@ m12ah_mgt04.mdx
 m12ah_mgt05.mdx
 m12ah_mgt06.mdx
 m12ah_mgt07.mdx
-m13aa_01a.mdx
 m13aa_01f.mdx
 m13aa_02a.mdx
 m13aa_02b.mdx
@@ -685,7 +683,6 @@ m28ad_04a.mdx
 m31aa_00a.mdx
 m31ab_00a.mdx
 m31ad_00a.mdx
-m33aa_01b.mdx
 m33aa_02a.mdx
 m33aa_03a.mdx
 m33aa_03b.mdx
@@ -885,7 +882,6 @@ m40ac_39c.mdx
 m40ac_40a.mdx
 m40ac_40b.mdx
 m40ac_40c.mdx
-m40ac_42a.mdx
 m40ad_07b.mdx
 m40ad_08a.mdx
 m40ad_08b.mdx
@@ -947,7 +943,6 @@ m45aa_01h.mdx
 m45aa_01z.mdx
 m45aa_02a.mdx
 m45aa_02b.mdx
-m45aa_03a.mdx
 m45aa_04a.mdx
 m45aa_04b.mdx
 m45aa_05a.mdx
