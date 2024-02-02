@@ -88,3 +88,4 @@ uibit_brdr_16ge.tga
 uibit_fill_16g.tga
 uibit_fill_16gd.tga
 k_inc_hawk.nss
+pnl_datapad.tga
