@@ -1,0 +1,1 @@
+the lists in this folder contain a list of all tga and tpc textures that are currently used in the port.
