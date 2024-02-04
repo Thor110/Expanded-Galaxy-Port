@@ -11,33 +11,33 @@
 
 void main()
 {
-  if(GetGlobalNumber("K_CURRENT_PLANET") == 3)
+  switch(GetGlobalNumber("K_CURRENT_PLANET"))
   {
-    if(GetGlobalBoolean("k_vis_korriban") == 0)
+    case 3:
     {
       StartNewModule("stunt_00","","07_1");
-    }
-  }
-  if(GetGlobalNumber("K_CURRENT_PLANET") == 11)
-  {
-    if(GetGlobalBoolean("k_vis_kashyyyk") == 0)
+    }break;
+    case 8:
+    {
+      StartNewModule("ebo_m12aa","","KorMov01");
+    }break;
+    case 11:
     {
       StartNewModule("stunt_00","","07_1");
-    }
-  }
-  if(GetGlobalNumber("K_CURRENT_PLANET") == 14)
-  {
-    if(GetGlobalBoolean("k_vis_tatooine") == 0)
+    }break;
+    case 13:
+    {
+      StartNewModule("ebo_m12aa","","LIVE_1a");
+    }break;
+    case 14:
     {
       StartNewModule("stunt_00","","07_1");
-    }
-  }
-  if(GetGlobalNumber("K_CURRENT_PLANET") == 15)
-  {
-    if(GetGlobalBoolean("k_vis_manaan") == 0)
+    }break;
+    case 15:
     {
       StartNewModule("stunt_00","","07_1");
-    }
+    }break;
   }
 }
+
 

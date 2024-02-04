@@ -18,10 +18,6 @@ void main()
     {
       StartNewModule("tar_m02af","","01f");
 	  }break;
-    case 0:
-    {
-      StartNewModule("danm13","","09");
-	  }break;
     case 3:
     {
       StartNewModule("ebo_m12aa","","0d");

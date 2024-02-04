@@ -9,6 +9,7 @@
 int CUSTOM_PlanetIDTo2DA(int nPlanetID);
 int CUSTOM_2DAToPlanetID(int nPlanet2DA);
 int nSelected = GetSelectedPlanet();
+int nMain = GetGlobalNumber("K_KOTOR_MASTER");
 
 void DoPlanetChange()
 {
@@ -216,6 +217,10 @@ void SetPlanet()
 
 void LoadVision()
 {
+  int nStarmap = GetGlobalNumber("K_STAR_MAP");
+  int nLevCapture = GetGlobalNumber("K_CAPTURED_LEV");
+  //int nMain = GetGlobalNumber("K_KOTOR_MASTER");
+  int nCalo = GetGlobalNumber("K_KALO_BANDON");
   if(GetGlobalNumber("K_CURRENT_PLANET") == 3 && GetGlobalBoolean("k_vis_korriban") == 0)
   {
     StartNewModule("stunt_00","","08");//,"","0d"
@@ -239,10 +244,10 @@ void LoadVision()
     {
       //SetGlobalNumber("K_KOTOR_MASTER", 50);
       int nChoice = GetGlobalNumber("G_FINALCHOICE");
-      if(nChoice == 1 || nChoice == 2)
-      {
+      //if(nChoice == 1 || nChoice == 2)
+      //{
         SetGlobalNumber("K_KOTOR_MASTER", 61);
-      }
+      //}
       if(nChoice == 1)
       {
         StartNewModule("stunt_44","","05_8c","05_9");
@@ -255,25 +260,50 @@ void LoadVision()
   }
   else
   {
-    QueueMovie("08");
-    LandPlanet();
+    if(nStarmap == 40 && nLevCapture == 5/* && nSelected == 11 && nSelected == 3 && nSelected == 14 && nSelected == 15*/)//11,3,14,15//star map planets
+    {//figure out how to also check if you are travelling in between any of the four star map planets in order to get trapped by the Leviathan
+      if(nSelected == 11 || nSelected == 3 || nSelected == 14 || nSelected == 15)
+      {
+        StartNewModule("stunt_16");
+      }
+    }
+    else if (nMain == 30 && nSelected == 10)//if player has all four star maps and is travelling to the star forge system
+    {
+      StartNewModule("stunt_18","","08");
+    }
+    else if(nMain == 15 && nCalo == 0)
+    {
+      SetGlobalNumber("K_KALO_BANDON", 10);
+      SetPlanet();
+      StartNewModule("stunt_12","","08");
+    }
+    else if(nStarmap == 30 && nCalo == 20)
+    {
+      SetGlobalNumber("K_KALO_BANDON", 30);
+      SetPlanet();
+      StartNewModule("stunt_14");
+    }
+    else
+    {
+      QueueMovie("08");
+      LandPlanet();
+    }
   }
+
+
 }
 
 void main()
 {
+  //int nMain = GetGlobalNumber("K_KOTOR_MASTER");
   SetGlobalNumber("K_CURRENT_PLANET", nSelected);
-  int nStarmap = GetGlobalNumber("K_STAR_MAP");
-  int nLevCapture = GetGlobalNumber("K_CAPTURED_LEV");
-  int nMain = GetGlobalNumber("K_KOTOR_MASTER");
-  int nCalo = GetGlobalNumber("K_KALO_BANDON");
   if(nSelected == -1)//in-case it isn't set, which happens when first loading into the ebon hawk after escaping Taris.
   {
     nSelected=PLANET_DANTOOINE;
   }
   if(GetGlobalNumber("K_CAPTURED_LEV") == 10)
   {
-    QueueMovie("08");
+    //QueueMovie("08");
     SetGlobalNumber("K_CAPTURED_LEV",11);
   }
   else
@@ -321,7 +351,7 @@ void main()
       }break;
       case 8://EMPTY CASE???
       {
-
+        
       }break;
       case 9://901MAL // new planet 02?
       {
@@ -329,7 +359,7 @@ void main()
       }break;
       case 10://Hyperspace Case // new planet 03?
       {
-
+        
       }break;
       case 11: //KASHYYK
       {
@@ -353,29 +383,6 @@ void main()
       }break;
     }
     LoadVision();
-  }
-  if(nStarmap == 40 && nLevCapture == 5/* && nSelected == 11 && nSelected == 3 && nSelected == 14 && nSelected == 15*/)//11,3,14,15//star map planets
-  {//figure out how to also check if you are travelling in between any of the four star map planets in order to get trapped by the Leviathan
-    if(nSelected == 11 || nSelected == 3 || nSelected == 14 || nSelected == 15)
-    {
-      StartNewModule("stunt_16");
-    }
-  }
-  else if (nMain == 30 && nSelected == 10)//if player has all four star maps and is travelling to the star forge system
-  {
-    StartNewModule("stunt_18","","08");
-  }
-  else if(nMain == 15 && nCalo == 0)
-  {
-    SetGlobalNumber("K_KALO_BANDON", 10);
-    SetPlanet();
-    StartNewModule("stunt_12","","08");
-  }
-  else if(nStarmap == 30 && nCalo == 20)
-  {
-    SetGlobalNumber("K_KALO_BANDON", 30);
-    SetPlanet();
-    StartNewModule("stunt_14");
   }
   //int nMain = GetGlobalNumber("K_KOTOR_MASTER");
   //else if (nMain == 61)
