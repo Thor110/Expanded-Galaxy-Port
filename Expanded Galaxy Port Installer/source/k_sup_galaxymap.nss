@@ -218,35 +218,19 @@ void LoadVision()
 {
   if(GetGlobalNumber("K_CURRENT_PLANET") == 3 && GetGlobalBoolean("k_vis_korriban") == 0)
   {
-      /*if(GetGlobalNumber("K_CAPTURED_LEV") == 12)
-      {
-        SetGlobalBoolean("k_vis_korriban",TRUE);
-      }*/
-      StartNewModule("stunt_00","","08");//,"","0d"
+    StartNewModule("stunt_00","","08");//,"","0d"
   }
   else if(GetGlobalNumber("K_CURRENT_PLANET") == 11 && GetGlobalBoolean("k_vis_kashyyyk") == 0)
   {
-      /*if(GetGlobalNumber("K_CAPTURED_LEV") == 12)
-      {
-        SetGlobalBoolean("k_vis_kashyyyk",TRUE);
-      }*/
-      StartNewModule("stunt_00","","08");//,"","0c"
+    StartNewModule("stunt_00","","08");//,"","0c"
   }
   else if(GetGlobalNumber("K_CURRENT_PLANET") == 14 && GetGlobalBoolean("k_vis_tatooine") == 0)
   {
-      /*if(GetGlobalNumber("K_CAPTURED_LEV") == 12)
-      {
-        SetGlobalBoolean("k_vis_tatooine",TRUE);
-      }*/
-      StartNewModule("stunt_00","","08");//,"","0a"
+    StartNewModule("stunt_00","","08");//,"","0a"
   }
   else if(GetGlobalNumber("K_CURRENT_PLANET") == 15 && GetGlobalBoolean("k_vis_manaan") == 0)
   {
-      /*if(GetGlobalNumber("K_CAPTURED_LEV") == 12)
-      {
-        SetGlobalBoolean("k_vis_manaan",TRUE);
-      }*/
-      StartNewModule("stunt_00","","08");
+    StartNewModule("stunt_00","","08");
   }
   else if(GetGlobalNumber("K_CURRENT_PLANET") == 10)
   {
@@ -298,11 +282,11 @@ void main()
     {
       case 0://106PER
       {
-        PlayMovie("KorMov02");
+        QueueMovie("KorMov02");
       }break;
       case 1://201TEL
       {
-        PlayMovie("05_8c");
+        QueueMovie("05_8c");
       }break;
       case 2://Unknown World
       {
@@ -312,28 +296,28 @@ void main()
         }
         else
         {
-          PlayMovie("05_8c");
+          QueueMovie("05_8c");
         }
       }break;
       case 3://301NAR
       {
-        PlayMovie("NarMov02");
+        QueueMovie("NarMov02");
       }break;
       case 4://401DXN
       {
-        PlayMovie("OndMov04");
+        QueueMovie("OndMov04");
       }break;
       case 5://601DAN
       {
-        PlayMovie("05_2c");
+        QueueMovie("05_2c");
       }break;
       case 6://701KOR
       {
-        PlayMovie("05_7c");
+        QueueMovie("05_7c");
       }break;
       case 7://801DRO
       {
-        PlayMovie("DroMov04");
+        QueueMovie("DroMov04");
       }break;
       case 8://EMPTY CASE???
       {
@@ -341,7 +325,7 @@ void main()
       }break;
       case 9://901MAL // new planet 02?
       {
-        PlayMovie("Live_1c");
+        QueueMovie("Live_1c");
       }break;
       case 10://Hyperspace Case // new planet 03?
       {
@@ -349,23 +333,23 @@ void main()
       }break;
       case 11: //KASHYYK
       {
-        PlayMovie("05_4c");
+        QueueMovie("05_4c");
       }break;
       case 12: //954COR
       {
-        PlayMovie("NarMov02");
+        QueueMovie("NarMov02");
       }break;
       case 13: //YAVIN
       {
-        PlayMovie("Live_1c");
+        QueueMovie("Live_1c");
       }break;
       case 14: //TATOOINE
       {
-        PlayMovie("05_3c");
+        QueueMovie("05_3c");
       }break;
       case 15: //MANAAN
       {
-        PlayMovie("05_5c");
+        QueueMovie("05_5c");
       }break;
     }
     LoadVision();
@@ -393,13 +377,12 @@ void main()
     SetPlanet();
     StartNewModule("stunt_14");
   }
-    //int nMain = GetGlobalNumber("K_KOTOR_MASTER");
-    //else if (nMain == 61)
-    //{
-      //SetGlobalNumber("K_CURRENT_PLANET", 10);
-      //SetGlobalNumber("K_KOTOR_MASTER", 62);
-    //}
-  
+  //int nMain = GetGlobalNumber("K_KOTOR_MASTER");
+  //else if (nMain == 61)
+  //{
+    //SetGlobalNumber("K_CURRENT_PLANET", 10);
+    //SetGlobalNumber("K_KOTOR_MASTER", 62);
+  //}
   SetBackground();
   ExecuteScript("a_holoworld", GetFirstPC());
   DoPlanetChange();
