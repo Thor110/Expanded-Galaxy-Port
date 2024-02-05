@@ -1,1 +1,17 @@
 the lists in this folder contain a list of all tga and tpc textures that are currently used in the port.
+
+
+the .tpc files in the port do not exist in the TSL base game files
+
+
+
+exists-in-k2-base-files-as-well-as-the-port.txt
+
+the above file contains a list of files that exist in the second game by default and are present in the ports files.
+
+these need cross referencing and checking to determine why they are there, what the differences are and if they can be removed.
+
+
+tpc-list.txt
+
+the above files do not exist in swpc_tex_gui.bif or swpc_tex_tpa.bif
