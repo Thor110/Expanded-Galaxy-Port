@@ -20,19 +20,19 @@ void main()
 	  }break;
     case 3:
     {
-      StartNewModule("ebo_m12aa","","0d");
+      StartNewModule("ebo_m12aa","","0d","05_7a");
 	  }break;
     case 11:
     {
-      StartNewModule("ebo_m12aa","","0c");
+      StartNewModule("ebo_m12aa","","0c","05_4a");
 	  }break;
     case 14:
     {
-      StartNewModule("ebo_m12aa","","0a");
+      StartNewModule("ebo_m12aa","","0a","05_3a");
 	  }break;
     case 15:
     {
-      StartNewModule("ebo_m12aa","","0b");
+      StartNewModule("ebo_m12aa","","0b","05_5a");
 	  }break;
 	}
 }
