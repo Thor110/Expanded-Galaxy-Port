@@ -223,18 +223,22 @@ void LoadVision()
   int nCalo = GetGlobalNumber("K_KALO_BANDON");
   if(GetGlobalNumber("K_CURRENT_PLANET") == 3 && GetGlobalBoolean("k_vis_korriban") == 0)
   {
+    SetPlanet();
     StartNewModule("stunt_00","","08");//,"","0d"
   }
   else if(GetGlobalNumber("K_CURRENT_PLANET") == 11 && GetGlobalBoolean("k_vis_kashyyyk") == 0)
   {
+    SetPlanet();
     StartNewModule("stunt_00","","08");//,"","0c"
   }
   else if(GetGlobalNumber("K_CURRENT_PLANET") == 14 && GetGlobalBoolean("k_vis_tatooine") == 0)
   {
+    SetPlanet();
     StartNewModule("stunt_00","","08");//,"","0a"
   }
   else if(GetGlobalNumber("K_CURRENT_PLANET") == 15 && GetGlobalBoolean("k_vis_manaan") == 0)
   {
+    SetPlanet();
     StartNewModule("stunt_00","","08");
   }
   else if(GetGlobalNumber("K_CURRENT_PLANET") == 10)
@@ -250,10 +254,12 @@ void LoadVision()
       //}
       if(nChoice == 1)
       {
+        SetPlanet();
         StartNewModule("stunt_44","","05_8c","05_9");
       }
       else if(nChoice == 2)
       {
+        SetPlanet();
         StartNewModule("stunt_42","","05_8c","05_9");
       }
     }
@@ -264,11 +270,13 @@ void LoadVision()
     {//figure out how to also check if you are travelling in between any of the four star map planets in order to get trapped by the Leviathan
       if(nSelected == 11 || nSelected == 3 || nSelected == 14 || nSelected == 15)
       {
+        SetPlanet();
         StartNewModule("stunt_16");
       }
     }
     else if (nMain == 30 && nSelected == 10)//if player has all four star maps and is travelling to the star forge system
     {
+      SetPlanet();
       StartNewModule("stunt_18","","08");
     }
     else if(nMain == 15 && nCalo == 0)
@@ -289,8 +297,6 @@ void LoadVision()
       LandPlanet();
     }
   }
-
-
 }
 
 void main()
