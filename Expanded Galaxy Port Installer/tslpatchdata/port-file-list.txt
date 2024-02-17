@@ -32,7 +32,6 @@ friendlyreticle2.tga
 friend_bar.tga
 ftchrgen_p.gui
 galaxymap_p.gui
-galaxymap_x.gui
 GAL_PeragusII_2.tga
 gameover_p.gui
 global.jrl
