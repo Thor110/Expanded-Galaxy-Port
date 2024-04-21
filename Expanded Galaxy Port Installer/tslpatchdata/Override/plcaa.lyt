@@ -1,9 +1,0 @@
-#MAXLAYOUT ASCII
-filedependancy PLCaa.max
-beginlayout
-   roomcount 1
-      PLCaa 0.0 -0.00835073 0.0
-   trackcount 0
-   obstaclecount 0
-   doorhookcount 0
-donelayout
