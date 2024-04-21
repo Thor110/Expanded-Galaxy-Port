@@ -1,4 +1,3 @@
-	int intGLOB_130 = 62;
 // Prototypes
 void sub1(object objectParam1, int intParam2);
 
@@ -7,7 +6,7 @@ void sub1(object objectParam1, int intParam2) {
 		return;
 	}
 	SetCommandable(1, objectParam1);
-	SetLocalBoolean(objectParam1, intGLOB_130, 0);
+	SetLocalBoolean(objectParam1, 62, 0);
 	ChangeToStandardFaction(objectParam1, intParam2);
 	SetMinOneHP(objectParam1, 0);
 }
@@ -23,4 +22,3 @@ void main() {
 		(int1++);
 	}
 }
-

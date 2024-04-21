@@ -1,50 +1,22 @@
-// Globals
-	string stringGLOB_1 = "end_trask";
-
-	int intGLOB_152 = 3;
-	int intGLOB_154 = 5;
-	int intGLOB_155 = 6;
-
-	int intGLOB_170 = 21;
-	int intGLOB_171 = 22;
-
-// Prototypes
-void sub3(int intParam1);
-object sub2();
-int sub1();
-
-void sub3(int intParam1) {
-	SetGlobalNumber("END_TRASK_DLG", intParam1);
-}
-
-object sub2() {
-	return GetObjectByTag(stringGLOB_1, 0);
-}
-
-int sub1() {
-	return GetGlobalNumber("END_TRASK_DLG");
-}
-
 void main() {
 	object oPC = GetFirstPC();
-	int int1 = sub1();
+	int int1 = GetGlobalNumber("END_TRASK_DLG");
 	int int3 = GetSubScreenID();
-	object object3 = sub2();
-	if (((int1 == intGLOB_152) && (int3 == 1))) {
+	object object3 = GetObjectByTag("end_trask", 0);;
+	if (((int1 == 3) && (int3 == 1))) {
 		AssignCommand(object3, ActionWait(0.1));
-		AssignCommand(object3, ActionDoCommand(SignalEvent(sub2(), EventUserDefined(200))));
+		AssignCommand(object3, ActionDoCommand(SignalEvent(object3, EventUserDefined(200))));
 	}
 	else {
-		if (((int1 == intGLOB_154) && ((int3 == 5) || (int3 == 6)))) {
-			sub3(intGLOB_155);
+		if (((int1 == 5) && ((int3 == 5) || (int3 == 6)))) {
+			SetGlobalNumber("END_TRASK_DLG", 6);
 			AssignCommand(object3, ActionWait(0.1));
 			AssignCommand(object3, ActionStartConversation(oPC, "", 0, 0, 0, "", "", "", "", "", ""));
 		}
 		else {
-			if (((int1 == intGLOB_170) && (int3 == 5))) {
-				sub3(intGLOB_171);
+			if (((int1 == 21) && (int3 == 5))) {
+				SetGlobalNumber("END_TRASK_DLG", 22);
 			}
 		}
 	}
 }
-

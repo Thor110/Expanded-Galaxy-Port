@@ -1,43 +1,6 @@
-// Globals
-	int intGLOB_21 = 1100;
-	string stringGLOB_1 = "end_trask";
-	int intGLOB_146 = 4;
-	int intGLOB_148 = (-1);
-// Prototypes
-void sub4(string stringParam1);
-void sub3();
-object sub2();
-void sub1(int intParam1);
-
-void sub4(string stringParam1) {
-	object object1 = OBJECT_SELF;
-	if (GetCommandable(object1)) {
-		ClearAllActions();
-		CancelCombat(object1);
-		ActionMoveToObject(GetNearestObjectByTag("wp_homebase", OBJECT_SELF, 1), 1, 3.0);
-		ActionDoCommand(SetCommandable(1, object1));
-		SetCommandable(0, OBJECT_SELF);
-	}
-}
-
-void sub3() {
-	object object1 = sub2();
-	if ((GetPartyMemberByIndex(0) == object1)) {
-		SetPartyLeader(0xFFFFFFFF);
-	}
-	NoClicksFor(0.5);
-	DelayCommand(0.1, SignalEvent(object1, EventUserDefined(50)));
-}
-
-object sub2() {
-	return GetObjectByTag(stringGLOB_1, 0);
-}
-
-void sub1(int intParam1) {
-	SetGlobalNumber("END_TRASK_DLG", intParam1);
-}
-
 void main() {
+	object object1 = GetObjectByTag("end_trask", 0);
+	object object2 = OBJECT_SELF;
 	int int1 = GetUserDefinedEventNumber();
 	if ((int1 == 1001)) {
 	}
@@ -59,12 +22,16 @@ void main() {
 						else {
 							if ((int1 == 1007)) {
 								int int3 = (GetGlobalNumber("END_ROOM5_DEAD") + 1);
-								if ((int3 >= intGLOB_146)) {
-									sub1(intGLOB_148);
+								if ((int3 >= 4)) {
+									SetGlobalNumber("END_TRASK_DLG", -1);
 									SetLocked(GetObjectByTag("end_door16", 0), 0);
-									CancelCombat(sub2());
+									CancelCombat(object1);
 									CancelCombat(GetFirstPC());
-									sub3();
+									if ((GetPartyMemberByIndex(0) == object1)) {
+										SetPartyLeader(0xFFFFFFFF);
+									}
+									NoClicksFor(0.5);
+									DelayCommand(0.1, SignalEvent(object1, EventUserDefined(50)));
 								}
 								SetGlobalNumber("END_ROOM5_DEAD", int3);
 							}
@@ -78,8 +45,14 @@ void main() {
 										if ((int1 == 1010)) {
 										}
 										else {
-											if ((int1 == intGLOB_21)) {
-												sub4("wp_homebase");
+											if ((int1 == 1100)) {
+												if (GetCommandable(object2)) {
+													ClearAllActions();
+													CancelCombat(object2);
+													ActionMoveToObject(GetNearestObjectByTag("wp_homebase", OBJECT_SELF, 1), 1, 3.0);
+													ActionDoCommand(SetCommandable(1, object2));
+													SetCommandable(0, OBJECT_SELF);
+												}
 											}
 										}
 									}
@@ -92,4 +65,3 @@ void main() {
 		}
 	}
 }
-

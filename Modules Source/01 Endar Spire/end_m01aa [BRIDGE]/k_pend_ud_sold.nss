@@ -1,18 +1,5 @@
-// Prototypes
-void sub1(string stringParam1);
-
-void sub1(string stringParam1) {
-	object object1 = OBJECT_SELF;
-	if (GetCommandable(object1)) {
-		ClearAllActions();
-		CancelCombat(object1);
-		ActionMoveToObject(GetNearestObjectByTag("wp_homebase", OBJECT_SELF, 1), 1, 3.0);
-		ActionDoCommand(SetCommandable(1, object1));
-		SetCommandable(0, OBJECT_SELF);
-	}
-}
-
 void main() {
+	object object1 = OBJECT_SELF;
 	int int1 = GetUserDefinedEventNumber();
 	if ((int1 == 1001)) {
 		object oEnd_cut2_sith5 = GetObjectByTag("end_cut2_sith5", 0);
@@ -54,7 +41,13 @@ void main() {
 										}
 										else {
 											if ((int1 == 1100)) {
-												sub1("wp_homebase");
+												if (GetCommandable(object1)) {
+                          ClearAllActions();
+                          CancelCombat(object1);
+                          ActionMoveToObject(GetNearestObjectByTag("wp_homebase", OBJECT_SELF, 1), 1, 3.0);
+                          ActionDoCommand(SetCommandable(1, object1));
+                          SetCommandable(0, OBJECT_SELF);
+                        }
 											}
 										}
 									}
@@ -67,4 +60,3 @@ void main() {
 		}
 	}
 }
-

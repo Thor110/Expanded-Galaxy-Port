@@ -1,13 +1,8 @@
-// Globals
-	string stringGLOB_1 = "end_trask";
-	int intGLOB_163 = 14;
 // Prototypes
 void sub3();
-void sub2(int intParam1);
-object sub1();
 
 void sub3() {
-	object object1 = sub1();
+	object object1 = GetObjectByTag("end_trask", 0);
 	if ((GetPartyMemberByIndex(0) == object1)) {
 		SetPartyLeader(0xFFFFFFFF);
 	}
@@ -15,16 +10,9 @@ void sub3() {
 	DelayCommand(0.1, SignalEvent(object1, EventUserDefined(50)));
 }
 
-void sub2(int intParam1) {
-	SetGlobalNumber("END_TRASK_DLG", intParam1);
-}
-
-object sub1() {
-	return GetObjectByTag(stringGLOB_1, 0);
-}
-
 void main() {
 	int int1 = GetUserDefinedEventNumber();
+	object object1 = GetObjectByTag("end_trask", 0);
 	if ((int1 == 1001)) {
 	}
 	else {
@@ -72,17 +60,16 @@ void main() {
 								DelayCommand(0.5, SetDialogPlaceableCamera(int3));
 								AssignCommand(oEnd01_sceneobj01, DelayCommand(2.2, ActionResumeConversation()));
 								object oPC = GetFirstPC();
-								object object5 = sub1();
 								int nCurHP = GetCurrentHitPoints(oPC);
 								int nMaxHP = GetMaxHitPoints(oPC);
-								int int8 = GetCurrentHitPoints(object5);
-								int int10 = GetMaxHitPoints(object5);
+								int int8 = GetCurrentHitPoints(object1);
+								int int10 = GetMaxHitPoints(object1);
 								int nGlobal = GetGlobalNumber("END_ROOM3_DEAD");
 								if ((nGlobal >= 1)) {
-									sub2(intGLOB_163);
+									SetGlobalNumber("END_TRASK_DLG", 14);
 									SetLocked(GetObjectByTag("end_door05", 0), 0);
 									if (((int8 < int10) || (nCurHP < nMaxHP))) {
-										CancelCombat(sub1());
+										CancelCombat(object1);
 										CancelCombat(GetFirstPC());
 										DelayCommand(1.0, sub3());
 									}
@@ -108,4 +95,3 @@ void main() {
 		}
 	}
 }
-

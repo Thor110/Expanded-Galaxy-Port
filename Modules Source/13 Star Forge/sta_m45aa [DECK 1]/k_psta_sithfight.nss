@@ -1,13 +1,6 @@
-// Prototypes
-void sub1(float floatParam1);
-
-void sub1(float floatParam1) {
-	ActionPauseConversation();
-	DelayCommand(floatParam1, ActionResumeConversation());
-}
-
 void main() {
-	sub1(2.1);
+	ActionPauseConversation();
+	DelayCommand(2.1, ActionResumeConversation());
 	object oSta_Jedi002 = GetObjectByTag("sta_Jedi002", 0);
 	object oSta_Jedi003 = GetObjectByTag("sta_Jedi003", 0);
 	object oSta_Jedi004 = GetObjectByTag("sta_Jedi004", 0);
@@ -39,4 +32,3 @@ void main() {
 	AssignCommand(oSta45a_Sith03, ActionAttack(oSta_Jedi003, 0));
 	AssignCommand(oSta45a_Sith04, ActionAttack(oSta_Jedi004, 0));
 }
-

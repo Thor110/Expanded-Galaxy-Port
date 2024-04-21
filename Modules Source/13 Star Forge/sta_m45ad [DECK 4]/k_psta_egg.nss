@@ -1,14 +1,8 @@
 // Prototypes
 void sub2(int intParam1, string stringParam2, location locationParam3);
-void sub1(float floatParam1);
 
 void sub2(int intParam1, string stringParam2, location locationParam3) {
 	object object1 = CreateObject(intParam1, stringParam2, locationParam3, 0);
-}
-
-void sub1(float floatParam1) {
-	ActionPauseConversation();
-	DelayCommand(floatParam1, ActionResumeConversation());
 }
 
 void main() {
@@ -18,7 +12,8 @@ void main() {
 	string string1 = "g_w_hvrptbltr002";
 	object oSta_way_party2 = GetObjectByTag("sta_way_party2", 0);
 	location location1 = GetLocation(OBJECT_SELF);
-	sub1(17.6);
+	ActionPauseConversation();
+	DelayCommand(17.6, ActionResumeConversation());
 	SetGlobalBoolean("STA_MALAK_DRAIN", 1);
 	MusicBackgroundStop(GetArea(OBJECT_SELF));
 	MusicBackgroundChangeDay(GetArea(OBJECT_SELF), 27);

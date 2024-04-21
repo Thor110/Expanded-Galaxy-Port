@@ -1,16 +1,3 @@
-// Globals
-	int intGLOB_1 = 0;
-	int intGLOB_2 = 1;
-	int intGLOB_3 = 2;
-	int intGLOB_4 = 3;
-	int intGLOB_5 = 4;
-	int intGLOB_6 = 5;
-	int intGLOB_7 = 6;
-	int intGLOB_8 = 7;
-	int intGLOB_9 = 8;
-	int intGLOB_10 = 9;
-	int intGLOB_11 = 10;
-
 // Prototypes
 void sub4(string stringParam1, int intParam2, int intParam3, float floatParam4);
 void sub3(object objectParam1, int intParam2, int intParam3);
@@ -40,23 +27,23 @@ int sub2(object objectParam1, int intParam2) {
 void sub1() {
 	object object1 = OBJECT_INVALID;
 	string string1 = "";
-	if (sub2(OBJECT_SELF, intGLOB_1)) {
+	if (sub2(OBJECT_SELF, 0)) {
 		string1 = "ptar_testwp1";
 	}
 	else {
-		if (sub2(OBJECT_SELF, intGLOB_2)) {
+		if (sub2(OBJECT_SELF, 1)) {
 			string1 = "ptar_testwp2";
 		}
 		else {
-			if (sub2(OBJECT_SELF, intGLOB_3)) {
+			if (sub2(OBJECT_SELF, 2)) {
 				string1 = "ptar_testwp3";
 			}
 			else {
-				if (sub2(OBJECT_SELF, intGLOB_4)) {
+				if (sub2(OBJECT_SELF, 3)) {
 					string1 = "ptar_testwp4";
 				}
 				else {
-					if (sub2(OBJECT_SELF, intGLOB_5)) {
+					if (sub2(OBJECT_SELF, 4)) {
 						string1 = "ptar_testwp5";
 					}
 					else {
@@ -66,13 +53,13 @@ void sub1() {
 			}
 		}
 	}
-	if (sub2(OBJECT_SELF, intGLOB_6)) {
+	if (sub2(OBJECT_SELF, 5)) {
 		string1 = (string1 + "_1");
-		sub3(OBJECT_SELF, intGLOB_6, 0);
+		sub3(OBJECT_SELF, 5, 0);
 	}
 	else {
 		string1 = (string1 + "_0");
-		sub3(OBJECT_SELF, intGLOB_6, 1);
+		sub3(OBJECT_SELF, 5, 1);
 	}
 	object1 = GetObjectByTag(string1, 0);
 	sub4(("MOVING TO " + GetTag(object1)), 5, 5, 2.0);
@@ -83,4 +70,3 @@ void sub1() {
 void main() {
 	sub1();
 }
-

@@ -1,11 +1,3 @@
-// Prototypes
-void sub1(float floatParam1);
-
-void sub1(float floatParam1) {
-	ActionPauseConversation();
-	DelayCommand(floatParam1, ActionResumeConversation());
-}
-
 void main() {
 	object oSta45a_Sith01 = GetObjectByTag("sta45a_Sith01", 0);
 	object oSta45a_Sith02 = GetObjectByTag("sta45a_Sith02", 0);
@@ -19,7 +11,8 @@ void main() {
 	object oSta_way_sithjed4 = GetObjectByTag("sta_way_sithjed4", 0);
 	object oSta_way_sithjedi = GetObjectByTag("sta_way_sithjedi", 0);
 	object oSta45a_sta45d = GetObjectByTag("sta45a_sta45d", 0);
-	sub1(6.0);
+	ActionPauseConversation();
+	DelayCommand(6.0, ActionResumeConversation());
 	AssignCommand(oSta45a_sta45d, ActionOpenDoor(oSta45a_sta45d));
 	DelayCommand(3.3, SetLightsaberPowered(oSta45a_Sith01, 1, 1, 1));
 	DelayCommand(4.2, SetLightsaberPowered(oSta45a_Sith02, 1, 1, 1));
@@ -31,4 +24,3 @@ void main() {
 	DelayCommand(2.0, AssignCommand(oSta45a_Sith04, ActionMoveToObject(oSta_way_sithjed4, 1, 1.0)));
 	DelayCommand(2.7, SetDialogPlaceableCamera(13));
 }
-
