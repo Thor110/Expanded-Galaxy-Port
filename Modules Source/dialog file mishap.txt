@@ -1,0 +1,3 @@
+for some reason the changes made to stunt modules, ebon hawk and dantooine modules would not revert.
+
+dialog files must either be fixed or reconverted.
