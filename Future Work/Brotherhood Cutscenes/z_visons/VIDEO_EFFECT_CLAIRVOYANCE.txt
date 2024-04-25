@@ -5,3 +5,5 @@ make a pan around the star map as it opens in one map, then copy it to the other
 check other cutscenes in both games for something to use as a base
 
 example : Ebon Hawk pan throughs and jedi training cutscenes
+
+also : Nar Shaddaa, M478, Dantooine, Coruscant ( 950cor ) and any similar cutscenes
