@@ -1,0 +1,3 @@
+cutstrt.dlg from 952cor uses this
+
+make a pan around the star map as it opens in one map, then copy it to the others
