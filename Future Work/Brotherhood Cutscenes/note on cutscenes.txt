@@ -1,8 +1,8 @@
-01f.bik-remake lev_vision.mod
-02.bik-remake lev_vision.mod
-09.bik-remake dan_vision.mod
-31a.bik-remake dantooine bastila talk
-0a.bik-remake star map visions?
-0b.bik-remake star map visions?
-0c.bik-remake star map visions?
-0d.bik-remake star map visions?
+01f.bik-remake lev_vision.mod - 9 seconds
+02.bik-remake lev_vision.mod - 37 seconds
+09.bik-remake dan_vision.mod - 1 minute and 1 second
+31a.bik-remake dantooine bastila talk - no chance
+0a.bik-remake star map visions? Tatooine - 9 seconds
+0b.bik-remake star map visions? Manaan - 9 seconds
+0c.bik-remake star map visions? Kashyyyk - 9 seconds
+0d.bik-remake star map visions? Korriban - 9 seconds
