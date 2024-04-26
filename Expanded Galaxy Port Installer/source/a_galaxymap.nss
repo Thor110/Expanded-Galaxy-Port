@@ -67,7 +67,7 @@ void main() {
   int nMain = GetGlobalNumber("K_KOTOR_MASTER");
   int nMaps = GetGlobalNumber("K_STAR_MAP");
   int kCapt = GetGlobalNumber("K_CAPTURED_LEV");
-  if (GetGlobalBoolean("K_STAR_MAP") <= 10)
+  if (GetGlobalBoolean("K_STAR_MAP") <= 10)//Found first star map
   {
     for (nWorld = PLANET_DANTOOINE; nWorld < PLANET_LIVE_06; nWorld++)
     {
@@ -142,6 +142,26 @@ void main() {
     SetPlanetSelectable(PLANET_TELOS, TRUE);
     SetPlanetAvailable(PLANET_HARBINGER, FALSE);  //HARBINGER IS STAR FORGE SYSTEM
     SetPlanetSelectable(PLANET_HARBINGER, FALSE);  
+  }
+  if(nMain == 63)//DS End Game
+  {
+    SetPlanetAvailable(PLANET_HARBINGER, TRUE);  //HARBINGER IS STAR FORGE SYSTEM
+    SetPlanetSelectable(PLANET_HARBINGER, TRUE);  
+  }
+  if(nMain >= 62)//LS OR DS End Game
+  {
+    SetPlanetAvailable(PLANET_LIVE_02, TRUE);    // LIVE_02 IS CORUSCANT
+    SetPlanetSelectable(PLANET_LIVE_02, TRUE); 
+    SetPlanetAvailable(PLANET_M4_78, TRUE);      //M4-78
+    SetPlanetSelectable(PLANET_M4_78, TRUE);
+    //SetPlanetAvailable(PLANET_EBON_HAWK, TRUE);  //EBON HAWK IS MALACHOR V
+    //SetPlanetSelectable(PLANET_EBON_HAWK, TRUE);
+    //SetPlanetAvailable(PLANET_ONDERON, TRUE);    //ONDERON
+    //SetPlanetSelectable(PLANET_ONDERON, TRUE);
+    SetPlanetAvailable(PLANET_DXUN, TRUE);       //DXUN
+    SetPlanetSelectable(PLANET_DXUN, TRUE);
+    SetPlanetAvailable(PLANET_NAR_SHADDAA, TRUE);//NAR SHADDAA
+    SetPlanetSelectable(PLANET_NAR_SHADDAA, TRUE);
   }
   int int12 = sub1();
   if(nMaps >= 10)
