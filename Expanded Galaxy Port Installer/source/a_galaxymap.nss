@@ -72,90 +72,75 @@ void main() {
     for (nWorld = PLANET_DANTOOINE; nWorld < PLANET_LIVE_06; nWorld++)
     {
       int nPlanet = nWorld;
-      //if (nWorld != PLANET_MALACHOR_V)
-      //{
       SetPlanetAvailable(nPlanet, TRUE);
-      //if (nWorld != PLANET_PERAGUS) 
-      SetPlanetSelectable(nPlanet, TRUE);                 
-      //}
+      SetPlanetSelectable(nPlanet, TRUE);
     }
     //ALL TRUE VALUES COMMENTED OUT ARE CURRENTLY TRUE
-    //SetPlanetAvailable(PLANET_LIVE_06, TRUE);// can #06 be used too?
-    //SetPlanetSelectable(PLANET_LIVE_06, TRUE);// or is just to enable the above for to include 06?
-    //SetPlanetAvailable(PLANET_LIVE_01, TRUE);// LIVE_01 IS KASHYYYK
+    //SetPlanetAvailable(PLANET_LIVE_06, TRUE);   // can #06 be used too?
+    //SetPlanetSelectable(PLANET_LIVE_06, TRUE);  // or is just to enable the above for to include 06?
+    //SetPlanetAvailable(PLANET_LIVE_01, TRUE);   // LIVE_01 IS KASHYYYK
     //SetPlanetSelectable(PLANET_LIVE_01, TRUE); 
-    SetPlanetAvailable(PLANET_LIVE_02, FALSE);// LIVE_02 IS CORUSCANT
+    SetPlanetAvailable(PLANET_LIVE_02, FALSE);    // LIVE_02 IS CORUSCANT
     SetPlanetSelectable(PLANET_LIVE_02, FALSE);
-    //SetPlanetAvailable(PLANET_LIVE_03, TRUE);// LIVE_03 IS YAVIN
+    //SetPlanetAvailable(PLANET_LIVE_03, TRUE);   // LIVE_03 IS YAVIN
     //SetPlanetSelectable(PLANET_LIVE_03, TRUE);   
-    //SetPlanetAvailable(PLANET_LIVE_04, TRUE);// LIVE_04 IS TATOOINE
+    //SetPlanetAvailable(PLANET_LIVE_04, TRUE);   // LIVE_04 IS TATOOINE
     //SetPlanetSelectable(PLANET_LIVE_04, TRUE);
-    //SetPlanetAvailable(PLANET_LIVE_05, TRUE);// LIVE_05 IS MANAAN
+    //SetPlanetAvailable(PLANET_LIVE_05, TRUE);   // LIVE_05 IS MANAAN
     //SetPlanetSelectable(PLANET_LIVE_05, TRUE);
-    //SetPlanetAvailable(PLANET_PERAGUS, TRUE);// PERAGUS IS SLEHEYRON
+    //SetPlanetAvailable(PLANET_PERAGUS, TRUE);   // PERAGUS IS SLEHEYRON
     //SetPlanetSelectable(PLANET_PERAGUS, TRUE);
-    SetPlanetAvailable(PLANET_HARBINGER, FALSE);//TELOS IS OFF FOR NOW = STAR FORGE SYSTEM
+    SetPlanetAvailable(PLANET_HARBINGER, FALSE);  //HARBINGER IS STAR FORGE SYSTEM
     SetPlanetSelectable(PLANET_HARBINGER, FALSE);    
-    //SetPlanetAvailable(PLANET_MALACHOR_V, TRUE);//TARIS IS DESTROYED
-    SetPlanetSelectable(PLANET_MALACHOR_V, FALSE);//THEREFORE NOT SELECTABLE
-    SetPlanetAvailable(PLANET_M4_78, FALSE);//M4-78
+    //SetPlanetAvailable(PLANET_MALACHOR_V, TRUE);//MALACHOR V IS TARIS
+    SetPlanetSelectable(PLANET_MALACHOR_V, FALSE);
+    SetPlanetAvailable(PLANET_M4_78, FALSE);      //M4-78
     SetPlanetSelectable(PLANET_M4_78, FALSE);
-    SetPlanetAvailable(PLANET_EBON_HAWK, FALSE);//MALACHOR V IS OFF FOR NOW
+    SetPlanetAvailable(PLANET_EBON_HAWK, FALSE);  //EBON HAWK IS MALACHOR V
     SetPlanetSelectable(PLANET_EBON_HAWK, FALSE);
-    //SetPlanetAvailable(PLANET_DANTOOINE, TRUE);//DANTOOINE
+    //SetPlanetAvailable(PLANET_DANTOOINE, TRUE); //DANTOOINE
     //SetPlanetSelectable(PLANET_DANTOOINE, TRUE);
-    SetPlanetAvailable(PLANET_ONDERON, FALSE);//ONDERON IS OFF FOR NOW
+    SetPlanetAvailable(PLANET_ONDERON, FALSE);    //ONDERON
     SetPlanetSelectable(PLANET_ONDERON, FALSE);
-    SetPlanetAvailable(PLANET_DXUN, FALSE);//DXUN
+    SetPlanetAvailable(PLANET_DXUN, FALSE);       //DXUN
     SetPlanetSelectable(PLANET_DXUN, FALSE);
-    //SetPlanetAvailable(PLANET_KORRIBAN, TRUE);//KORRIBAN
+    //SetPlanetAvailable(PLANET_KORRIBAN, TRUE);  //KORRIBAN
     //SetPlanetSelectable(PLANET_KORRIBAN, TRUE);
     SetPlanetAvailable(PLANET_NAR_SHADDAA, FALSE);//NAR SHADDAA
     SetPlanetSelectable(PLANET_NAR_SHADDAA, FALSE);
-    SetPlanetAvailable(PLANET_TELOS, FALSE);//UNKNOWN WORLD
+    SetPlanetAvailable(PLANET_TELOS, FALSE);      //UNKNOWN WORLD
     SetPlanetSelectable(PLANET_TELOS, FALSE);
     if (GetGlobalBoolean("MAN_EXILED")) {
       SetPlanetSelectable(PLANET_LIVE_05, FALSE);
     }
     if (nMaps >= 40 && kCapt >= 10)
     {
-      //SetPlanetAvailable(PLANET_DANTOOINE, FALSE);
       SetPlanetSelectable(PLANET_DANTOOINE, FALSE);
     }
     if (nMaps >= 50 && kCapt >= 10)
     {
-      //SetPlanetAvailable(PLANET_TELOS, TRUE);
-      //SetPlanetSelectable(PLANET_TELOS, TRUE);
-      SetPlanetAvailable(PLANET_HARBINGER, TRUE);//TELOS IS OFF FOR NOW = STAR FORGE SYSTEM
+      SetPlanetAvailable(PLANET_HARBINGER, TRUE); //HARBINGER IS STAR FORGE SYSTEM
       SetPlanetSelectable(PLANET_HARBINGER, TRUE);    
     }
   }
-  /**/
   if (nMain == 60 || nMain == 50)
   {
     for (nWorld = PLANET_DANTOOINE; nWorld < PLANET_LIVE_06; nWorld++)
     {
       int nPlanet = nWorld;
-      //if (nWorld != PLANET_MALACHOR_V)
-      //{
       SetPlanetAvailable(nPlanet, FALSE);
-      //if (nWorld != PLANET_PERAGUS) 
-      SetPlanetSelectable(nPlanet, FALSE);                 
-      //}
+      SetPlanetSelectable(nPlanet, FALSE);
     }
-    SetPlanetAvailable(PLANET_HARBINGER, TRUE);//TELOS IS OFF FOR NOW = STAR FORGE SYSTEM
+    SetPlanetAvailable(PLANET_HARBINGER, TRUE);   //HARBINGER IS OFF FOR NOW = STAR FORGE SYSTEM
     SetPlanetSelectable(PLANET_HARBINGER, TRUE);  
-    SetPlanetAvailable(PLANET_TELOS, TRUE);//UNKNOWN WORLD
+    SetPlanetAvailable(PLANET_TELOS, TRUE);       //UNKNOWN WORLD
     SetPlanetSelectable(PLANET_TELOS, TRUE);
-    //SetGlobalNumber("003EBO_RETURN_DEST",2);//for testing, remove later.
-    //SetGlobalNumber("003EBO_BACKGROUND",2);//used when I was testing with a save that had the wrong variables set.
   }
-  /**/
   if (nMain == 61)
   {
-    SetPlanetAvailable(PLANET_TELOS, TRUE);//UNKNOWN WORLD
+    SetPlanetAvailable(PLANET_TELOS, TRUE);       //UNKNOWN WORLD
     SetPlanetSelectable(PLANET_TELOS, TRUE);
-    SetPlanetAvailable(PLANET_HARBINGER, FALSE);//TELOS IS OFF FOR NOW = STAR FORGE SYSTEM
+    SetPlanetAvailable(PLANET_HARBINGER, FALSE);  //HARBINGER IS STAR FORGE SYSTEM
     SetPlanetSelectable(PLANET_HARBINGER, FALSE);  
   }
   int int12 = sub1();
