@@ -6,3 +6,11 @@
 0b.bik-remake star map visions? Manaan - 9 seconds
 0c.bik-remake star map visions? Kashyyyk - 9 seconds
 0d.bik-remake star map visions? Korriban - 9 seconds
+
+make camera model for each star map vision ( linked in dialog )
+
+connect tatooine/manaan/kashyyyk/korriban segments into one level alongside the ebon hawk quarters
+
+stunt_00 + danm15 + tat_m18ac + manm28ad + kas_m25aa + korr_m39aa
+
+otherwise it won't be worth it just for 9 seconds of animation, might not even be worth it now.
