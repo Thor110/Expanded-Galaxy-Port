@@ -221,6 +221,9 @@ void LoadVision()
   int nLevCapture = GetGlobalNumber("K_CAPTURED_LEV");
   //int nMain = GetGlobalNumber("K_KOTOR_MASTER");
   int nCalo = GetGlobalNumber("K_KALO_BANDON");
+  //Revise this logic as stunt_12 doesn't kick in unless these initial values aren't met, consider...
+  //re-doing the levels that got heavily altered
+  //001ebo, end_m01ab, ebo_m12aa and the surrounding logic etc
   if(GetGlobalNumber("K_CURRENT_PLANET") == 3 && GetGlobalBoolean("k_vis_korriban") == 0)
   {
     SetPlanet();
