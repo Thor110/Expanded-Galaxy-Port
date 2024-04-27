@@ -588,8 +588,6 @@ uibit_uparrowo.tga
 upgradeitems_p.gui
 upgradesel_p.gui
 upgrade_p.gui
-whitetarget.tga
-yellowtarget.tga
 mainmenu04.mdx
 mainmenu04.mdl
 mainmenu03.mdx
