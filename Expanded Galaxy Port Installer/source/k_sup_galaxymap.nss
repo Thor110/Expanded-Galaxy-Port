@@ -219,41 +219,46 @@ void LoadVision()
 {
   int nStarmap = GetGlobalNumber("K_STAR_MAP");
   int nLevCapture = GetGlobalNumber("K_CAPTURED_LEV");
-  //int nMain = GetGlobalNumber("K_KOTOR_MASTER");
   int nCalo = GetGlobalNumber("K_KALO_BANDON");
   //Revise this logic as stunt_12 doesn't kick in unless these initial values aren't met, consider...
   //re-doing the levels that got heavily altered
   //001ebo, end_m01ab, ebo_m12aa and the surrounding logic etc
-  if(GetGlobalNumber("K_CURRENT_PLANET") == 3 && GetGlobalBoolean("k_vis_korriban") == 0)
+  if(nMain == 15 && nCalo == 0)
   {
+    SetGlobalNumber("K_KALO_BANDON", 10);
     SetPlanet();
-    StartNewModule("stunt_00","","08");//,"","0d"
+    StartNewModule("stunt_12","","08");
   }
-  else if(GetGlobalNumber("K_CURRENT_PLANET") == 11 && GetGlobalBoolean("k_vis_kashyyyk") == 0)
+  else if(nStarmap == 30 && nCalo == 20)
   {
+    SetGlobalNumber("K_KALO_BANDON", 30);
     SetPlanet();
-    StartNewModule("stunt_00","","08");//,"","0c"
+    StartNewModule("stunt_14");
   }
-  else if(GetGlobalNumber("K_CURRENT_PLANET") == 14 && GetGlobalBoolean("k_vis_tatooine") == 0)
-  {
-    SetPlanet();
-    StartNewModule("stunt_00","","08");//,"","0a"
+  else if(nStarmap == 40 && nLevCapture == 5/* && nSelected == 11 && nSelected == 3 && nSelected == 14 && nSelected == 15*/)//11,3,14,15//star map planets
+  {//figure out how to also check if you are travelling in between any of the four star map planets in order to get trapped by the Leviathan
+    if(nSelected == 11 || nSelected == 3 || nSelected == 14 || nSelected == 15)
+    {
+      SetPlanet();
+      StartNewModule("stunt_16");
+    }
   }
-  else if(GetGlobalNumber("K_CURRENT_PLANET") == 15 && GetGlobalBoolean("k_vis_manaan") == 0)
+  else if (nMain == 30 && nSelected == 10)//if player has all four star maps and is travelling to the star forge system
   {
+    SetGlobalNumber("K_KOTOR_MASTER", 40);
     SetPlanet();
-    StartNewModule("stunt_00","","08");
+    StartNewModule("stunt_18","","08");
   }
   else if(GetGlobalNumber("K_CURRENT_PLANET") == 10)
   {
-    int nMain = GetGlobalNumber("K_KOTOR_MASTER");
+    //int nMain = GetGlobalNumber("K_KOTOR_MASTER");
     if (nMain == 61)
     {
       //SetGlobalNumber("K_KOTOR_MASTER", 50);
       int nChoice = GetGlobalNumber("G_FINALCHOICE");
       //if(nChoice == 1 || nChoice == 2)
       //{
-        SetGlobalNumber("K_KOTOR_MASTER", 61);
+      SetGlobalNumber("K_KOTOR_MASTER", 61);//was 60????also set twice???in this script???
       //}
       if(nChoice == 1)
       {
@@ -267,44 +272,35 @@ void LoadVision()
       }
     }
   }
+  else if(GetGlobalNumber("K_CURRENT_PLANET") == 3 && GetGlobalBoolean("k_vis_korriban") == 0)
+  {
+    SetPlanet();
+    StartNewModule("stunt_00","","08");
+  }
+  else if(GetGlobalNumber("K_CURRENT_PLANET") == 11 && GetGlobalBoolean("k_vis_kashyyyk") == 0)
+  {
+    SetPlanet();
+    StartNewModule("stunt_00","","08");
+  }
+  else if(GetGlobalNumber("K_CURRENT_PLANET") == 14 && GetGlobalBoolean("k_vis_tatooine") == 0)
+  {
+    SetPlanet();
+    StartNewModule("stunt_00","","08");
+  }
+  else if(GetGlobalNumber("K_CURRENT_PLANET") == 15 && GetGlobalBoolean("k_vis_manaan") == 0)
+  {
+    SetPlanet();
+    StartNewModule("stunt_00","","08");
+  }
   else
   {
-    if(nStarmap == 40 && nLevCapture == 5/* && nSelected == 11 && nSelected == 3 && nSelected == 14 && nSelected == 15*/)//11,3,14,15//star map planets
-    {//figure out how to also check if you are travelling in between any of the four star map planets in order to get trapped by the Leviathan
-      if(nSelected == 11 || nSelected == 3 || nSelected == 14 || nSelected == 15)
-      {
-        SetPlanet();
-        StartNewModule("stunt_16");
-      }
-    }
-    else if (nMain == 30 && nSelected == 10)//if player has all four star maps and is travelling to the star forge system
-    {
-      SetPlanet();
-      StartNewModule("stunt_18","","08");
-    }
-    else if(nMain == 15 && nCalo == 0)
-    {
-      SetGlobalNumber("K_KALO_BANDON", 10);
-      SetPlanet();
-      StartNewModule("stunt_12","","08");
-    }
-    else if(nStarmap == 30 && nCalo == 20)
-    {
-      SetGlobalNumber("K_KALO_BANDON", 30);
-      SetPlanet();
-      StartNewModule("stunt_14");
-    }
-    else
-    {
-      QueueMovie("08");
-      LandPlanet();
-    }
+    QueueMovie("08");
+    LandPlanet();
   }
 }
 
 void main()
 {
-  //int nMain = GetGlobalNumber("K_KOTOR_MASTER");
   SetGlobalNumber("K_CURRENT_PLANET", nSelected);
   if(nSelected == -1)//in-case it isn't set, which happens when first loading into the ebon hawk after escaping Taris.
   {
@@ -312,7 +308,6 @@ void main()
   }
   if(GetGlobalNumber("K_CAPTURED_LEV") == 10)
   {
-    //QueueMovie("08");
     SetGlobalNumber("K_CAPTURED_LEV",11);
   }
   else
@@ -328,10 +323,10 @@ void main()
         QueueMovie("05_8c");
       }break;
       case 2://Unknown World
-      {
+      {//revise this if possible
         if (nMain == 50 || nMain == 60)
         {
-          SetGlobalNumber("K_KOTOR_MASTER", 61);
+          SetGlobalNumber("K_KOTOR_MASTER", 61);//two times?
         }
         else
         {
@@ -399,6 +394,8 @@ void main()
     //SetGlobalNumber("K_CURRENT_PLANET", 10);
     //SetGlobalNumber("K_KOTOR_MASTER", 62);
   //}
+  //Set the armband variable to null so the armband system is renewed for each jump between planets.
+  SetGlobalString("K_LAST_MODULE", "");
   SetBackground();
   ExecuteScript("a_holoworld", GetFirstPC());
   DoPlanetChange();
