@@ -1,0 +1,9 @@
+check
+armband.ncs/ebonarmband.ncs
+
+
+003eboe.mdl
+003eboe.mdx
+003eboe.wok
+
+edit m12aa.lyt and the model for the port / room list etc
