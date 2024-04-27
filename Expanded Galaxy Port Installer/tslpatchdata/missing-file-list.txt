@@ -1,7 +1,6 @@
 a_galaxymap.ncs
 check_party_gui.ncs
 ebonarmband.ncs
-GAL_PeragusII_2.tga
 if_flurry01.tga
 if_flurry02.tga
 if_flurry03.tga
@@ -40,8 +39,6 @@ mainmenu03.mdl
 mainmenu03.mdx
 mainmenu04.mdl
 mainmenu04.mdx
-planet_01.mdl
-planet_01.mdx
 p_bastilla.utc
 p_cand.utc
 p_hk47.utc
