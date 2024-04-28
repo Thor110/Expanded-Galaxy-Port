@@ -16,19 +16,7 @@ void main() {
 				SoundObjectPlay(GetObjectByTag("Alarm01", 0));
 			}
 		}
-		else {/* TSL CODE
-			SetGlobalBoolean("421DXN_END_SYNC", 1);
-			SoundObjectStop(GetObjectByTag("Alarm01", 0));
-			SWMG_PlayAnimation(OBJECT_SELF, "Health00", 1, 0, 0);
-			DelayCommand(0.0, ApplyEffectAtLocation(0, EffectVisualEffect(3003, 0), GetLocation(GetObjectByTag("Invisible", 0)), 0.0));
-			DelayCommand(2.0, ApplyEffectAtLocation(0, EffectVisualEffect(3003, 0), GetLocation(OBJECT_SELF), 0.0));
-			SetGlobalFadeOut(3.0, 1.0, 0.0, 0.0, 0.0);
-			BarkString(OBJECT_INVALID, 127829);
-			int nGlobal = GetGlobalNumber("421DXN_Dead_Enemies");
-			GiveXPToCreature(GetFirstPC(), (100 * nGlobal));
-			SetGlobalNumber("401DXN_STARTED", 4);
-			DelayCommand(4.0, StartNewModule("ebo_m12aa", "", "", "", "", "", "", ""));
-			*/
+		else {
 			SetGlobalBoolean("M12AB_END_SYNC", 1);
 			int int5;
 			int int6 = SWMG_GetEnemyCount();
