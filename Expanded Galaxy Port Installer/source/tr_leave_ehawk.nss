@@ -8,17 +8,9 @@ void DoEbo004ExitHawk();
 
 void main() {
     object oEnter = GetEnteringObject();
-    
-    // ST: Merged tr_leave_ehawk from 003EBO and 004EBO so they both
-    //     work if put in Override.
-
-    /*if (GetTag(GetArea(oEnter)) == "004EBO") {
-        DoEbo004ExitHawk();
-        return; 
-    }*/
-
-    SetNPCSelectability(NPC_KREIA, TRUE);
-    SetNPCSelectability(NPC_ATTON, TRUE);/*
+    /*
+	SetNPCSelectability(NPC_KREIA, TRUE);
+    SetNPCSelectability(NPC_ATTON, TRUE);
     SetNPCSelectability(NPC_BAO_DUR, TRUE);
     SetNPCSelectability(NPC_CANDEROUS, TRUE);
     SetNPCSelectability(NPC_G0T0, TRUE);
@@ -27,9 +19,6 @@ void main() {
     SetNPCSelectability(NPC_MIRA, TRUE);
     SetNPCSelectability(NPC_T3_M4, TRUE);
     SetNPCSelectability(NPC_VISAS, TRUE);*/
-    //SetNPCSelectability(NPC_HANHARR, TRUE);
-    //SetNPCSelectability(NPC_DISCIPLE, TRUE);
-
     if (oEnter == GetFirstPC()) {
         // ST: In combat
         if (GetGlobalNumber("003_IN_COMBAT") == 1) {

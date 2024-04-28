@@ -14,6 +14,10 @@ void main()
 {
 	switch(nCurrent)
   {
+    case 0:
+    {
+      StartNewModule("danm13","","09");
+	  }break;
     case 5:
     {
       StartNewModule("tar_m02af","","01f");
