@@ -1,9 +1,3 @@
-// Globals
-	int intGLOB_145 = 4;
-	int intGLOB_154 = 4;
-	int intGLOB_155 = 5;
-	int intGLOB_156 = 6;
-	string stringGLOB_1 = "bastila";
 // Prototypes
 int sub6();
 int sub5();
@@ -13,11 +7,11 @@ void sub2(string stringParam1, string stringParam2);
 void sub1();
 
 int sub6() {
-	return ((GetGlobalNumber("DAN_ELISE_PLOT") == intGLOB_154) || (GetGlobalNumber("DAN_ELISE_PLOT") == intGLOB_155));
+	return ((GetGlobalNumber("DAN_ELISE_PLOT") == 4) || (GetGlobalNumber("DAN_ELISE_PLOT") == 5));
 }
 
 int sub5() {
-	return (GetGlobalNumber("DAN_ELISE_PLOT") >= intGLOB_156);
+	return (GetGlobalNumber("DAN_ELISE_PLOT") >= 6);
 }
 
 int sub4() {
@@ -25,7 +19,7 @@ int sub4() {
 }
 
 object sub3() {
-	return GetObjectByTag(stringGLOB_1, 0);
+	return GetObjectByTag("bastila", 0);
 }
 
 void sub2(string stringParam1, string stringParam2) {
@@ -65,7 +59,7 @@ void main() {
 			if (((GetGlobalNumber("DAN_JUHANI_PLOT") == 3) && (GetGlobalBoolean("DAN_JUHANI_JOINED") == 0))) {
 				sub2(string1, "");
 			}
-			if ((GetGlobalNumber("DAN_ROMANCE_PLOT") == intGLOB_145)) {
+			if ((GetGlobalNumber("DAN_ROMANCE_PLOT") == 4)) {
 				sub2(string2, "");
 				sub2(string3, "");
 			}
