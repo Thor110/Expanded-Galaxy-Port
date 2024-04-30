@@ -15,7 +15,7 @@ void main() {
 			SpawnAvailableNPC(0, GetLocation(GetObjectByTag("WP01", 0)));
 		}
 		SetPartyLeader(0xFFFFFFFF);
-		//AssignCommand(GetFirstPC(), ClearAllEffects());
+		AssignCommand(GetFirstPC(), ClearAllEffects());
 		AssignCommand(GetObjectByTag("Bastila", 0), ClearAllEffects());
 		AssignCommand(GetObjectByTag("Carth", 0), ClearAllEffects());
 		PlayRoomAnimation("m12aa_01q", 9);
