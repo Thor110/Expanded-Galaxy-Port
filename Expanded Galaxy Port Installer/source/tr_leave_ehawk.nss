@@ -8,8 +8,7 @@ void DoEbo004ExitHawk();
 
 void main() {
     object oEnter = GetEnteringObject();
-    /*
-	SetNPCSelectability(NPC_KREIA, TRUE);
+    SetNPCSelectability(NPC_KREIA, TRUE);
     SetNPCSelectability(NPC_ATTON, TRUE);
     SetNPCSelectability(NPC_BAO_DUR, TRUE);
     SetNPCSelectability(NPC_CANDEROUS, TRUE);
@@ -18,7 +17,7 @@ void main() {
     SetNPCSelectability(NPC_HK_47, TRUE);
     SetNPCSelectability(NPC_MIRA, TRUE);
     SetNPCSelectability(NPC_T3_M4, TRUE);
-    SetNPCSelectability(NPC_VISAS, TRUE);*/
+    SetNPCSelectability(NPC_VISAS, TRUE);
     if (oEnter == GetFirstPC()) {
         // ST: In combat
         if (GetGlobalNumber("003_IN_COMBAT") == 1) {
@@ -39,10 +38,11 @@ void main() {
         }   
         // ST: Landed on Korriban       
         else if (GetGlobalNumber("003EBO_RETURN_DEST") == 6) {
-            SetGlobalFadeOut();
-            SetFadeUntilScript();
-            AurPostString("Leaving the hawk", 15, 22, 10.0);
+            //SetGlobalFadeOut();
+            //SetFadeUntilScript();
+            //AurPostString("Leaving the hawk", 15, 22, 10.0);
             DelayCommand(1.0, ExitToKorriban());//
+            //ExitToKorriban();
         }
 		// M4-78EP
 		else if ((GetGlobalNumber("003EBO_RETURN_DEST") == 7) && (!GetGlobalBoolean("801DRO_FIRST_ENTER"))) {
@@ -72,11 +72,10 @@ void ExitToDxunOnderon () {
 }
 
 void ExitToKorriban() {
-    if(GetGlobalNumber("K_CURRENT_PLANET")==3) {
+    if(GetGlobalNumber("K_CURRENT_PLANET") == 3) {
       SetNPCSelectability(NPC_ATTON, FALSE);
-      //SendMessageToPC(GetFirstPC(),"testing");
     }
-    AurPostString("Kreia is NOT selectable", 5, 19, 10.0);
+    AurPostString("Bastila is NOT selectable", 5, 19, 10.0);
     AurPostString("Showing party selection", 5, 20, 10.0);
     ShowPartySelectionGUI("check_party_gui");   
 }
