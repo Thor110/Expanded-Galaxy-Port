@@ -31,8 +31,9 @@ saves - the latest common save for testing purposes.
 Scripts Left To Decompile - scripts that haven't been decompiled yet exist here.
 
 # Files
-
 .gitattributes - the gitattributes file.
+
+.gitignore - the gitignore file.
 
 README.md - the readme.md file.
 
