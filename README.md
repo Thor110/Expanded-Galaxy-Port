@@ -31,15 +31,11 @@ saves - the latest common save for testing purposes.
 Scripts Left To Decompile - scripts that haven't been decompiled yet exist here.
 
 # Files
-.gitattributes - the gitattributes file.
-
-.gitignore - the gitignore file.
-
-README.md - the readme.md file.
-
-update-modules.bat - A batch file used for updating the .mod files inside the "Expanded Galaxy Port Installer\tslpatchdata\modules" directory using those from the "Modules Source" folder.
-
-version.txt - the current version number.
+- .gitattributes - the gitattributes file.
+- .gitignore - the gitignore file.
+- README.md - the readme.md file.
+- update-modules.bat - A batch file used for updating the .mod files inside the "Expanded Galaxy Port Installer\tslpatchdata\modules" directory using those from the "Modules Source" folder.
+- version.txt - the current version number.
 
 ## Installation
 
