@@ -12,6 +12,18 @@ Dark Green Border
 0.349020 rounded to 0.35 @ 0058AA98 = 33 33 B3 3E
 0.270588 rounded to 0.27 @ 005A03AC = 71 3D 8A 3E
 
+LegacyPC/CD Addresses (rough) found by TravisDiBiase
+
+Dialog Text
+0.1 - 00426E30
+0.7 - there’s multiple of them around 00426E30
+0.5 - 00426E90 and 00426EB0
+
+Button Border
+0.05 - 00426E10
+0.35 - 00426E20
+0.27 - 00426E20
+
 Values for reference
 
 0.0 = 00 00 00 00 ( I am guessing the same issue might occur for 0.0 as did for 1.0 but haven't tried it )
