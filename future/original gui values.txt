@@ -12,17 +12,13 @@ Dark Green Border
 0.349020 rounded to 0.35 @ 0058AA98 = 33 33 B3 3E
 0.270588 rounded to 0.27 @ 005A03AC = 71 3D 8A 3E
 
-LegacyPC/CD Addresses (rough) found by TravisDiBiase
+Status Effects ( RED )
 
-Dialog Text
-0.1 - 00426E30
-0.7 - there’s multiple of them around 00426E30
-0.5 - 00426E90 and 00426EB0
+The Status Effects colour uses the Red & Green Values from the Dialog Text and alters its BlueValue
 
-Button Border
-0.05 - 00426E10
-0.35 - 00426E20
-0.27 - 00426E20
+0.9607843 rounded to 0.95 @ 0059AF70 = 33 33 73 3F
+
+
 
 Values for reference
 
@@ -38,9 +34,7 @@ Values for reference
 0.9 = 66 66 66 3F
 1.0 = 00 00 80 3F ( using 1.0 didn't seem to work so I tried 0.9 instead )
 
-Status Effects ( RED )
 
-0.9607843 rounded to 0.95 @ 0059AF70 = 33 33 73 3F
 
 Xbox GUI Memory Addresses and Original Values.
 
@@ -56,6 +50,31 @@ Dark Green Border ( RGB )
 0.349020 rounded to 0.35 @ 003F5B3C = 33 33 B3 3E
 0.270588 rounded to 0.27 @ 003F5B40 = 71 3D 8A 3E
 
-Status Effects ( RED )
+Status Effects ( BLUE )
+
+The Status Effects colour uses the Red & Green Values from the Dialog Text and alters its BlueValue
 
 0.9607843 rounded to 0.95 @ 003F5B5C = 33 33 73 3F
+
+
+
+
+
+
+
+
+
+
+
+LegacyPC/CD Addresses (rough) found by TravisDiBiase
+
+Dialog Text
+0.1 - 00426E30
+0.7 - there’s multiple of them around 00426E30
+0.5 - 00426E90 and 00426EB0
+
+Button Border
+0.05 - 00426E10
+0.35 - 00426E20
+0.27 - 00426E20
+

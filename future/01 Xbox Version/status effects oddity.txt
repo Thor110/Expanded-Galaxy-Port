@@ -1,0 +1,14 @@
+Status 0.95
+
+PC
+
+( 0.1, 0.7, 0.5 ) = TSL Text Green
+
+( 0.9, 0.7, 0.5 ) = Status Effects Orange
+
+( 0.0, 0.6, 0.9 ) = Port Text Blue
+
+( 0.0, 0.6, 0.5 ) = Status Effects Green Xbox
+( 0.5, 0.6, 0.9 ) = Status Effects Greyish Blue PC
+
+How does it add up to orange on Xbox?
