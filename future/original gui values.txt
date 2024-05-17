@@ -50,9 +50,11 @@ Light Blue Border
 0.658824 = 33 33 33 3F (0.7)
 0.980392 = 00 00 80 3F (1.0)
 
+Status Effects ( RED )
 
-
-
+0.9607843 rounded to 0.95 @ 0059AF70 = 33 33 73 3F
+0.7372549 = ???
+0.4156863 = ???
 
 Highlight Colour ( Unknown )
 
