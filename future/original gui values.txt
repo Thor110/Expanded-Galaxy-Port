@@ -54,11 +54,13 @@ Status Effects ( BLUE )
 
 The Status Effects colour uses the Red & Green Values from the Dialog Text and alters its BlueValue
 
-0.9607843 rounded to 0.95 @ 003F5B5C = 33 33 73 3F
+0.960784 rounded to 0.95 @ 003F5B5C = 33 33 73 3F
+0.270588 rounded to 0.3 @ 003F5B64 = 9A 99 99 3E
+0.050980 rounded to 0.05 @ 003F68D8 = CD CC 4C 3D
 
+Value found by accident while looking for the Inventory Button Values
 
-
-
+0.050980 rounded to 0.05 @ 003F68D8 = Unknown other colour value ( changes one inventory icon border )
 
 
 
