@@ -1,0 +1,2 @@
+character selection isn't available on the equipment screen
+
