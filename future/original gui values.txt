@@ -8,19 +8,19 @@ Light Green Text ( RGB )
 
 Dark Green Border ( RGB )
 
-0.05 @ 0058C530 = CD CC 4C 3D
-0.34 @ 0058AA98 = 33 33 B3 3E
-0.27 @ 005A03AC = 71 3D 8A 3E
+0.05 @ 0058C530 = CD CC 4C 3D ( effects use item text and item icon highlight as well )
+0.34 @ 0058AA98 = 33 33 B3 3E ( effects use item text and item icon highlight as well )
+0.27 @ 005A03AC = 71 3D 8A 3E ( effects use item text, use item button border and item icon highlight as well )
 
 Status Effects ( R?B )
 
 Can't find green for the status effects
 
-0.94 @ 0059AF70 = 33 33 73 3F ( effects use item button border in inventory too )
+0.94 @ 0059AF70 = 33 33 73 3F
 0.70 - 0.80 @ ?
-0.30 @ 00585760 = 9A 99 99 3E
+0.30 @ 00585760 = 9A 99 99 3E ( effects use item button border in inventory and unused item button borders as well )
 
-Text Highlight ( BLUE )
+Text Highlight ( ??B )
 
 Can't find red or green for the text highlight
 
@@ -28,7 +28,7 @@ Can't find red or green for the text highlight
 0.80 @ ?
 0.69 @ 0058A978 = 9A 99 19 3F
 
-Text Highlight Pulsing
+Text Highlight Pulsing ( Byte )
 
 Found this by accident.
 
@@ -81,7 +81,7 @@ Text Highlight ( RGB )
 0.69 @ 003F5B48 = 33 33 33 3F
 0.60 @ 003F5B4C = 9A 99 19 3F
 
-Text Highlight Pulsing ( Unknown )
+Text Highlight Pulsing ( Byte )
 
 A 3F somewhere amongst 9517 3F's
 

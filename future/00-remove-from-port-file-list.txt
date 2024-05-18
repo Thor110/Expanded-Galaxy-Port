@@ -7,3 +7,5 @@ armband.ncs/ebonarmband.ncs
 003eboe.wok
 
 edit m12aa.lyt and the model for the port / room list etc
+
+remove TSL GUI files from main and add to template files
