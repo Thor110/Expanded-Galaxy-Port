@@ -1,24 +1,43 @@
 Aspyr Executable Hexadecimal Addresses and Original Values.
 
-Light Green Text
+Light Green Text ( RGB )
 
-0.101961 rounded to 0.1 @ 005862FC = CD CC CC 3D
-0.698039 rounded to 0.7 @ 0058575C = 33 33 33 3F ( this value effects the text highlight as well )
-0.549020 rounded to 0.5 @ 0059DBB0 = CD CC 0C 3F
+0.10 @ 005862FC = CD CC CC 3D
+0.69 @ 0058575C = 33 33 33 3F
+0.55 @ 0059DBB0 = CD CC 0C 3F
 
-Dark Green Border
+Dark Green Border ( RGB )
 
-0.050980 rounded to 0.05 @ 0058C530 = CD CC 4C 3D
-0.349020 rounded to 0.35 @ 0058AA98 = 33 33 B3 3E
-0.270588 rounded to 0.27 @ 005A03AC = 71 3D 8A 3E
+0.05 @ 0058C530 = CD CC 4C 3D
+0.34 @ 0058AA98 = 33 33 B3 3E
+0.27 @ 005A03AC = 71 3D 8A 3E
 
-Status Effects ( RED )
+Status Effects ( R?B )
 
-The Status Effects colour uses the Red & Green Values from the Dialog Text and alters its BlueValue
+Can't find green for the status effects
 
-0.9607843 rounded to 0.95 @ 0059AF70 = 33 33 73 3F
+0.94 @ 0059AF70 = 33 33 73 3F ( effects use item button border in inventory too )
+0.70 - 0.80 @ ?
+0.30 @ 00585760 = 9A 99 99 3E
 
+Text Highlight ( BLUE )
 
+Can't find red or green for the text highlight
+
+0.80 @ ?
+0.80 @ ?
+0.69 @ 0058A978 = 9A 99 19 3F
+
+Text Highlight Pulsing
+
+Found this by accident.
+
+63 @ 005861B7 = 3F
+
+The higher the value, the slower the pulsing.
+The lower the value, the faster the pulsing.
+
+Note : byte already at it's highest value.
 
 Values for reference
 
@@ -40,28 +59,37 @@ Xbox GUI Memory Addresses and Original Values.
 
 Light Green Text ( RGB )
 
-0.101961 rounded to 0.1 @ 003F5B50 = CD CC CC 3D
-0.698039 rounded to 0.7 @ 003F5B54 = 33 33 33 3F ( this value effects the text highlight as well )
-0.549020 rounded to 0.5 @ 003F5B58 = CD CC 0C 3F
+0.10 @ 003F5B50 = CD CC CC 3D
+0.69 @ 003F5B54 = 33 33 33 3F
+0.55 @ 003F5B58 = CD CC 0C 3F
 
 Dark Green Border ( RGB )
 
-0.050980 rounded to 0.05 @ 003F5B38 = CD CC 4C 3D
-0.349020 rounded to 0.35 @ 003F5B3C = 33 33 B3 3E
-0.270588 rounded to 0.27 @ 003F5B40 = 71 3D 8A 3E
+0.05 @ 003F5B38 = CD CC 4C 3D
+0.34 @ 003F5B3C = 33 33 B3 3E
+0.27 @ 003F5B40 = 71 3D 8A 3E
 
-Status Effects ( BLUE )
+Status Effects ( RGB )
 
-The Status Effects colour uses the Red & Green Values from the Dialog Text and alters its BlueValue
+0.94 @ 003F5B5C = 33 33 73 3F
+0.66 @ 003F5B60 = C3 F5 28 3F
+0.30 @ 003F5B64 = 9A 99 99 3E
 
-0.960784 rounded to 0.95 @ 003F5B5C = 33 33 73 3F
-0.270588 rounded to 0.3 @ 003F5B64 = 9A 99 99 3E
-0.050980 rounded to 0.05 @ 003F68D8 = CD CC 4C 3D
+Text Highlight ( RGB )
+
+0.69 @ 003F5B44 = 33 33 33 3F
+0.69 @ 003F5B48 = 33 33 33 3F
+0.60 @ 003F5B4C = 9A 99 19 3F
+
+Text Highlight Pulsing ( Unknown )
+
+A 3F somewhere amongst 9517 3F's
+
+
 
 Value found by accident while looking for the Inventory Button Values
 
-0.050980 rounded to 0.05 @ 003F68D8 = Unknown other colour value ( changes one inventory icon border )
-
+0.05 @ 003F68D8 = CD CC 4C 3D = Unknown other colour value ( changes one inventory icon border )
 
 
 
