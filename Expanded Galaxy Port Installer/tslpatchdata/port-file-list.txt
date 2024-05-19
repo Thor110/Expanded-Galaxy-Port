@@ -573,3 +573,4 @@ cus_gpad_ste.tga
 cus_gpad_ste3.tga
 lbl_miscroll_open_f.tga
 pnl_datapad.tga
+pnl_pause_pc.tga

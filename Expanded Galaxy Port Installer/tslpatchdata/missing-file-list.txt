@@ -394,6 +394,7 @@ mainmenu03.mdx
 mainmenu04.mdl
 mainmenu04.mdx
 pnl_datapad.tga
+pnl_pause_pc.tga
 p_bastilla.utc
 p_cand.utc
 p_hk47.utc
