@@ -1,2 +1,2 @@
-character selection isn't available on the equipment screen
+character selection isn't available on the equipment screen when on the ebon hawk
 

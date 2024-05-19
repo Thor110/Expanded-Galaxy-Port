@@ -13,6 +13,7 @@ Expanded Galaxy Port Installer - the port installer folder containing the source
 
 future - future stuff to work on.
 - 00 Original TSL Galaxy Map Locations - original galaxy map locations for Korriban & Dantooine.
+- 01 Xbox Version - Xbox .xbe file and .gui files.
 - Brotherhood Cutscenes - brotherhood cutscenes to edit to replace movie cutscenes.
 - File List Mini Project - a set of file lists which are going to be integrated into the installer in order to pull the majority of the required files from the original games installation in order to reduce the filesize of this project.
 - LegacySupport - notes and files for legacy support.
@@ -23,6 +24,9 @@ future - future stuff to work on.
 - Turret Minigame - turret minigame testing.
 - 00-remove-from-port-file-list.txt - files that might be able to be removed from the port-file-list with further work to ensure they aren't necessary.
 - load_001ebo.tga - to load screen or not to load screen, that is the question.
+- original gui values.txt - research on the hard coded colour values in the game's executable.
+- port issues.txt - bug note.
+- port item highlight.txt - kotor 1 item highlight colour values.
 
 modules - contains the level files organised into folders denoting the planet and module names as well as the .mod files themselves, I use this to quickly and easily repack levels.
 
