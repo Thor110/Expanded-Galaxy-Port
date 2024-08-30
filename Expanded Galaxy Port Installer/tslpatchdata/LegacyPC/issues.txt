@@ -1,0 +1,1 @@
+error code : 51 on steam, file integrity must be checked using bytes from the cursor files.
