@@ -1,4 +1,19 @@
-Aspyr Executable Hexadecimal Addresses and Original Values.
+	to find in disc version for the port
+
+text is changed
+
+Dark Green Border ( RGB )
+
+0.34 @ 0058AA98 = 33 33 B3 3E
+0.27 @ 005A03AC = 71 3D 8A 3E
+
+Status Effects ( R?B )
+
+0.94 @ 0059AF70 = 33 33 73 3F
+0.70 - 0.80 @ ?
+0.30 @ 00585760 = 9A 99 99 3E
+
+	Aspyr Executable Hexadecimal Addresses and Original Values.
 
 Light Green Text ( RGB )
 
@@ -55,7 +70,7 @@ Values for reference
 
 
 
-Xbox GUI Memory Addresses and Original Values.
+	Xbox GUI Memory Addresses and Original Values.
 
 Light Green Text ( RGB )
 
