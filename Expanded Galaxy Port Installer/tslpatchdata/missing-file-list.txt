@@ -391,6 +391,7 @@ i_useitem.tga
 i_useitem01.tga
 i_useplace.tga
 journal_p.gui
+KOTOR2LogoSml.tga
 lbl_force_neg.tga
 lbl_force_pos.tga
 lbl_icn_msg.tga
@@ -435,6 +436,8 @@ mipc212x9_p.gui
 mipc216x12_p.gui
 mipc28x6_p.gui
 mipc8x6_p.gui
+mm_barrow.tga
+mm_barrow_p.tga
 name_p.gui
 ntscpat_p.gui
 optautopause_p.gui
