@@ -1,3 +1,0 @@
-not implemented yet
-
-move various tga and gui files from Override to here and update the changes.ini files

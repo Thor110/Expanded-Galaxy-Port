@@ -1,0 +1,80 @@
+Trying to keep a record of what files in the tslpatchdata are intended for
+
+This is so that files that are identical across versions don't end up duplicated across the various folders
+
+specifically GUI folders, but it may occur elsewhere
+
+
+
+
+	AllDiffUI
+
+UI files that are different in someway across versions
+
+for all versions except android/ios
+uibit_brdr_map_p.tga
+
+	AllUI
+
+UI files shared by all versions of the game
+
+	Amazon
+
+Amazon EXE
+
+	Android
+
+Android/iOS UI
+
+	Disc
+
+Disc EXE
+
+	LegacyPC
+
+For the LegacyPC EXE when error code 51 is resolved
+
+	lips
+
+lips files - localization.mod
+
+	Modules
+
+mod level files
+
+	Override
+
+override files
+
+	Steam
+
+Steam EXE
+
+	SteamUI
+
+Aspyr Specific UI files
+
+four .gui files still need updating to be blue
+custpnl_p.gui is done
+
+	StreamVoice
+
+Voice Files
+
+	Xbox
+
+Xbox XBE
+
+	XboxGUI
+
+Xbox specific GUI files
+
+Currently this folder just contains everything necessary to change the Xbox GUI to KotOR Blue
+
+It definitely contains duplicate files that exist in the Override folder
+
+These files are also above the regular resolution of the original Xbox
+
+So it will be necessary to extract and recolour the smaller versions from the Xbox version of the game at some point
+
+
