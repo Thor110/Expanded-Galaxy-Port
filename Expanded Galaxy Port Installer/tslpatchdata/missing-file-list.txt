@@ -410,6 +410,7 @@ leveluppnl_p.gui
 loadscreen3.tga
 loadscreen_p.gui
 load_001EBO.tga
+load_default.tga
 load_legal.tga
 l_drdprot02.mdl
 l_drdprot02.mdx
