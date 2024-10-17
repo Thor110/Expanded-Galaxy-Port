@@ -1,7 +1,7 @@
 #MAXLAYOUT ASCII
 filedependancy M35AA.max
 beginlayout
-   roomcount 23
+   roomcount 28
       M35AA_28 43.5 34.5 0.0
       M35AA_27 43.5375 53.2499 0.0
       M35aa_15 30.75 91.5 0.0
@@ -25,6 +25,11 @@ beginlayout
       M35aa_09 147.001 66.0 0.0
       M35aa_10 114.75 47.25 0.0
       M35aa_17 14.25 49.5 0.0
+      M35aa_03b 80.1486 128.267 0.0
+      M35aa_03c 94.1295 88.958 0.0
+      M35aa_03d 80.1486 152.269 0.0
+      M35aa_03e 164.03 96.2203 0.0
+      M35aa_03f 167.636 111.966 0.0
    trackcount 0
    obstaclecount 0
    doorhookcount 9
