@@ -1,3 +1,0 @@
-I noticed that I have most of the minimaps in the main and not in the port
-
-it's worth moving them over at some point
