@@ -409,7 +409,6 @@ m18aa_03a.mdx
 m18aa_03a.wok
 m18aa_05a.mdl
 m18aa_05a.mdx
-m18aa_05a.wok
 maincg_p.gui
 maininterface_p.gui
 mainmenu01.mdl
