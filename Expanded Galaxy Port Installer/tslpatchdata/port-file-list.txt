@@ -374,7 +374,6 @@ i_useitem01.tga
 i_useplace.tga
 journal_p.gui
 KOTOR2Logo.tga
-KOTOR2Logo.txi
 KOTOR2LogoSml.tga
 k_align_movie.ncs
 k_inc_hawk.nss
