@@ -1,0 +1,3 @@
+an issue exists with l_drdprot or l_drdprot02 or c_drdprot
+
+whichever droid walks around upper Taris, the animations are broken.
