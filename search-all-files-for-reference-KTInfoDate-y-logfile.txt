@@ -5,4 +5,8 @@ NOTE : do this later
 modules\02 Taris\tar_m02ac [UPPER CITY SOUTH]\items\taris_armband.uti
 modules\02 Taris\tar_m02ac.mod
 
+is actually in tar_m02aa
+
+
+
 NOTE : Taris armband, could be removed from override altogether if it exists in this module.

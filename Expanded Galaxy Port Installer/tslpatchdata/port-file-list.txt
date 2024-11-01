@@ -18,8 +18,6 @@ confirm_p.gui
 container_p.gui
 credits_p.gui
 custpnl_p.gui
-c_drdprot.mdl
-c_drdprot.mdx
 datapad_p.gui
 debug_p.gui
 dialog_p.gui
