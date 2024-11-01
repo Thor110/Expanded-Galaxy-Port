@@ -8,6 +8,7 @@ del "Expanded Galaxy Port Installer\tslpatchdata\changes-disc.ini"
 del "Expanded Galaxy Port Installer\tslpatchdata\changes-gog.ini"
 del "Expanded Galaxy Port Installer\tslpatchdata\changes-legacypc.ini"
 del "Expanded Galaxy Port Installer\tslpatchdata\changes-steam.ini"
+del "Expanded Galaxy Port Installer\tslpatchdata\changes-switch.ini"
 del "Expanded Galaxy Port Installer\tslpatchdata\changes-xbox.ini"
 
 dir "Expanded Galaxy Port Installer\tslpatchdata\Override" /b > temp-list.txt
@@ -42,6 +43,7 @@ for /f "delims=|" %%o in (override.txt) do (
   echo %%o>> "Expanded Galaxy Port Installer\tslpatchdata\changes-gog.ini"
   echo %%o>> "Expanded Galaxy Port Installer\tslpatchdata\changes-legacypc.ini"
   echo %%o>> "Expanded Galaxy Port Installer\tslpatchdata\changes-steam.ini"
+  echo %%o>> "Expanded Galaxy Port Installer\tslpatchdata\changes-switch.ini"
   echo %%o>> "Expanded Galaxy Port Installer\tslpatchdata\changes-xbox.ini"
 )
 
