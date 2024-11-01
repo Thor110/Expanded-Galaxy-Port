@@ -9,6 +9,8 @@ KotOR : Expanded Galaxy is a port of the first game to the second games version 
 
 ## Repository folder and file structure
 # Folders
+changes - contains the components of the changes.ini files.
+
 Expanded Galaxy Port Installer - the port installer folder containing the source folder and tslpatchdata folder as well as HoloPatcher.
 
 future - future stuff to work on.
@@ -37,7 +39,9 @@ Scripts Left To Decompile - scripts that haven't been decompiled yet exist here.
 # Files
 - .gitattributes - the gitattributes file.
 - .gitignore - the gitignore file.
+- k1-port-bugs.ods - bug tracking.
 - README.md - the readme.md file.
+- update-changes.ini.bat - A batch file used for updating the changes.ini files by constructing them from the parts in the changes folder.
 - update-modules.bat - A batch file used for updating the .mod files inside the "Expanded Galaxy Port Installer\tslpatchdata\modules" directory using those from the "Modules Source" folder.
 - version.txt - the current version number.
 
