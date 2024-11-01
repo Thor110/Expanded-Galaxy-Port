@@ -1,5 +1,4 @@
-check
-armband.ncs/ebonarmband.ncs
+remove red force power icons from template
 
 
 003eboe.mdl

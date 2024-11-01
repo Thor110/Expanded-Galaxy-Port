@@ -385,6 +385,7 @@ i_stancedefm.tga
 i_swtchwpn.tga
 i_swtchwpn1_p.tga
 i_swtchwpn2.tga
+i_swtchwpn2_p.tga
 i_unequip.tga
 i_useforearm.tga
 i_useitem.tga
@@ -397,6 +398,8 @@ lbl_force_pos.tga
 lbl_icn_msg.tga
 lbl_icredits.tga
 lbl_ilside.tga
+lbl_influ_neg.tga
+lbl_influ_pos.tga
 lbl_iplotxp.tga
 lbl_iquest.tga
 lbl_ireceive.tga
@@ -412,8 +415,6 @@ loadscreen_p.gui
 load_001EBO.tga
 load_default.tga
 load_legal.tga
-l_drdprot02.mdl
-l_drdprot02.mdx
 maincg_p.gui
 maininterface_p.gui
 mainmenu01.mdl

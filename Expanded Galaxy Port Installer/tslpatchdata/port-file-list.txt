@@ -317,6 +317,7 @@ ip_sense.tga
 ip_shield.tga
 ip_sleep01.tga
 ip_speedburst.tga
+ip_supress.tga
 isa_bodyfuel.tga
 isa_camo.tga
 isa_cmbtregen.tga
@@ -365,6 +366,7 @@ i_stancedefm.tga
 i_swtchwpn.tga
 i_swtchwpn1_p.tga
 i_swtchwpn2.tga
+i_swtchwpn2_p.tga
 i_unequip.tga
 i_useforearm.tga
 i_useitem.tga
@@ -381,6 +383,8 @@ lbl_force_pos.tga
 lbl_icn_msg.tga
 lbl_icredits.tga
 lbl_ilside.tga
+lbl_influ_neg.tga
+lbl_influ_pos.tga
 lbl_iplotxp.tga
 lbl_iquest.tga
 lbl_ireceive.tga
