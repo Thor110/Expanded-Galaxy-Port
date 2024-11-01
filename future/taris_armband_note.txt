@@ -1,0 +1,16 @@
+Expanded Galaxy Port Installer\tslpatchdata\Modules\tar_m02ac.mod
+
+NOTE : do this later
+
+modules\02 Taris\tar_m02ac [UPPER CITY SOUTH]\items\taris_armband.uti
+modules\02 Taris\tar_m02ac.mod
+
+is actually in tar_m02af on first exit ( I did this to avoid adding a new global, I think )
+
+NOTE : Taris armband, could be removed from override altogether if it exists in this module.
+
+Removing it caused a random crash during the cutscene, this doesn't make sense...
+
+Also...........
+
+Can eject NPCs from the map...
