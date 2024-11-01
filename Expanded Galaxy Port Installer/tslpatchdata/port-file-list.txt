@@ -397,10 +397,6 @@ loadscreen_p.gui
 load_001EBO.tga
 load_default.tga
 load_legal.tga
-l_drdprot.mdl
-l_drdprot.mdx
-l_drdprot02.mdl
-l_drdprot02.mdx
 m18aa_03a.mdl
 m18aa_03a.mdx
 m18aa_03a.wok
