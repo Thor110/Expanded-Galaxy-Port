@@ -1,0 +1,2 @@
+mipmap 0 
+xbox_downsample 64
