@@ -1,0 +1,7 @@
+exists-in-port-files-already.txt
+
+all these files exist in the "tslpatchdata/Override" folder already
+
+same-as-steam.txt
+
+all these files exist in the "tslpatchdata/SteamAmazonGoG" folder already
