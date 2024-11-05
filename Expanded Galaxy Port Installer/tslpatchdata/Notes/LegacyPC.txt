@@ -1,0 +1,3 @@
+This contains the LegacyPC version of the EXE ( or it will do )
+
+check the folder for notes pertaining to the issue with this

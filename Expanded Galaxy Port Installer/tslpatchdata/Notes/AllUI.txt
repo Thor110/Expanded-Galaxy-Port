@@ -1,0 +1,7 @@
+This is intended to contain ui files that are shared between all versions of the game
+
+such as
+
+statussummary_p.gui
+
+but this is to be excluded from the Xbox and Switch versions

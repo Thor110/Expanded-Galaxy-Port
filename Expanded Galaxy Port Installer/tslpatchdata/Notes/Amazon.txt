@@ -1,0 +1,1 @@
+This contains the Amazon version of the EXE with the Aspyr update

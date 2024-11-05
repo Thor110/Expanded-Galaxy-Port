@@ -1,0 +1,1 @@
+this contains localization.mod which contains the localized lip files for k1 and k2

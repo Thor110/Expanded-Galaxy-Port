@@ -1,0 +1,1 @@
+This folder contains files that vary between versions of the game for now
