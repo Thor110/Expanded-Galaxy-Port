@@ -15,4 +15,11 @@ as do the rest of the tga files in the "XboxGUI" folder
 
 those that don't or are at a different resolution are in the "New" folder
 
+the following four files are missing from the "XboxGUI" folder
+
+lbl_icn_msg.tga
+lbl_icredits.tga
+lbl_influ_neg.tga
+lbl_influ_pos.tga
+
 These all need packing as TPC then the extension changing to TXB
