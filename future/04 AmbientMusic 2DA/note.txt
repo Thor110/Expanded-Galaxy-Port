@@ -11,3 +11,5 @@ entry 60+61 use strings already used
 check 63 onwards
 
 TSL Track Names are missing from the port dialog.tlk file? While not a problem, I am wondering why.
+
+musictable.2da is what lists this

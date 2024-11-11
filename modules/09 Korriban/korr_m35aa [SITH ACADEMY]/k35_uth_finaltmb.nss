@@ -482,6 +482,6 @@ void main() {
 	SetGlobalNumber("KOR_START_FINAL", 1);
 	//SetGlobalFadeIn(1.0, 1.0, 0.0, 0.0, 0.0);
   //DelayCommand(1.0,StartNewModule("korr_m35aa", "", "", "", "", "", "", ""));
-	//StartNewModule("korr_m39aa", "", "", "", "", "", "", "");//39!!!
+	StartNewModule("korr_m39aa", "", "", "", "", "", "", "");//39!!!
 }
 
