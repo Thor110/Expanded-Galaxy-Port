@@ -1,0 +1,9 @@
+loadscreenhints.2da
+
+loadstoryhints.2da
+
+need properly sorting
+
+currently loadscreenhints.2da has the hints copied over from k1 and no xbox equivalent hints
+
+and loadstoryhints.2da has the story hints in k1's loadscreenhints.2da and no area numbers sorted

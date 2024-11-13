@@ -398,6 +398,8 @@ Legal.tga
 leveluppnl_p.gui
 loadscreen3.tga
 loadscreen_p.gui
+loadscreenhints.2da
+loadstoryhints.2da
 load_001EBO.tga
 load_default.tga
 load_legal.tga
