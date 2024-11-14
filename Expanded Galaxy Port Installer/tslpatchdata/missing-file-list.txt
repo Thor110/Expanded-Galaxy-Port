@@ -412,6 +412,7 @@ lbl_miscroll_f2.tga
 leveluppnl_p.gui
 loadscreen3.tga
 loadscreen_p.gui
+loadscreens.2da
 loadscreenhints.2da
 load_001EBO.tga
 load_default.tga
