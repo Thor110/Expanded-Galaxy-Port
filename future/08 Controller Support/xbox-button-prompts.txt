@@ -23,3 +23,31 @@ swkotor2.ini
 
 keymap.2da > swkotor2.ini > ???
 
+
+
+stringtokens.2da
+<TargetMiddleAct>		= 2
+<ToolTips>			= T
+<PersonalMedicalAct>		= 5
+
+= 765
+= 19387 = 40374 = 48881 = 77324 = 77364
+= 77404 = 95861 = 97405 = 98918 = 100434 = 113228
+= 113233 = 113238 = 113243 = 113248 = 113253 = 113258 = 113263 = 113268 = 113273 = 113278
+= 114099 = 114106 = 114113 = 114120 = 114127 = 126663
+
+not a string reference? ( 28 strings contain just the character "5" . . . )
+
+
+<FRIENDLYPOWERChg>		= Bad StrRef
+<ActionUp>			= S
+<ActionDown>			= W
+
+
+keymap.2da (name+action###) > stringtokens.2da
+
+swkotor2.ini
+Action234=81????
+
+
+stringtokens.2da > keymap.2da > swkotor2.ini > ???????
