@@ -51,3 +51,14 @@ Action234=81????
 
 
 stringtokens.2da > keymap.2da > swkotor2.ini > ???????
+
+
+
+
+
+tutorials.2da contains all the stringrefs for the tutorial messages in-case they have to be manually rewritten.
+
+
+
+
+
