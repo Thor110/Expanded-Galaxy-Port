@@ -1,60 +1,17 @@
-<abutton>
-<bbutton>
-<whbutton>
-<xbutton>
-<ybutton>
-<Pause>
+it is swkotor2.ini under [Keymapping]
 
+I swapped 70/78 from the following
+Action225=70
+Action228=78
+around and <ToolTips> showed 2 instead of T
 
-<MGActionLeft>
-<MGActionRight>
+could possibly use "fill" in .gui files as some xbox gui files do, but only these three and it's unlikely that it would even work.
 
-<FullName>
+scriptselect_x.gui
+swoopup_x.gui
+upgradeitems_x.gui
 
 49011 << edit string to test
-
-checking...
-stringtokens.2da
-bindablekeys.2da
-keymap.2da
-swkotor2.ini
-
-
-
-keymap.2da > swkotor2.ini > ???
-
-
-
-stringtokens.2da
-<TargetMiddleAct>		= 2
-<ToolTips>			= T
-<PersonalMedicalAct>		= 5
-
-= 765
-= 19387 = 40374 = 48881 = 77324 = 77364
-= 77404 = 95861 = 97405 = 98918 = 100434 = 113228
-= 113233 = 113238 = 113243 = 113248 = 113253 = 113258 = 113263 = 113268 = 113273 = 113278
-= 114099 = 114106 = 114113 = 114120 = 114127 = 126663
-
-not a string reference? ( 28 strings contain just the character "5" . . . )
-
-
-<FRIENDLYPOWERChg>		= Bad StrRef
-<ActionUp>			= S
-<ActionDown>			= W
-
-
-keymap.2da (name+action###) > stringtokens.2da
-
-swkotor2.ini
-Action234=81????
-
-
-stringtokens.2da > keymap.2da > swkotor2.ini > ???????
-
-
-
-
 
 tutorials.2da contains all the stringrefs for the tutorial messages in-case they have to be manually rewritten.
 

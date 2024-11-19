@@ -1,3 +1,0 @@
-data\2DA.bif\stringtokens.2da\
-data\Templates.bif\itempalstd.itp\
-dialog.tlk
