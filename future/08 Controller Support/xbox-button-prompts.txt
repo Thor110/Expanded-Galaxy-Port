@@ -1,0 +1,25 @@
+<abutton>
+<bbutton>
+<whbutton>
+<xbutton>
+<ybutton>
+<Pause>
+
+
+<MGActionLeft>
+<MGActionRight>
+
+<FullName>
+
+49011 << edit string to test
+
+checking...
+stringtokens.2da
+bindablekeys.2da
+keymap.2da
+swkotor2.ini
+
+
+
+keymap.2da > swkotor2.ini > ???
+
