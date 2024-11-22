@@ -6,6 +6,5 @@ void main() {
 	SetGlobalFadeIn(0.8, 0.2, 0.0, 0.0, 0.0);
 	ActionWait(0.5);
   ActionResumeConversation();
-  // This all works fine . . .
 }
 
