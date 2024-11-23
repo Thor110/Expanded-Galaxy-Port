@@ -1,0 +1,13 @@
+different-matching_files.txt
+tslpatchdata\changes-amazon.ini
+tslpatchdata\changes-android.ini
+tslpatchdata\changes-disc.ini
+tslpatchdata\changes-gog.ini
+tslpatchdata\changes-legacypc.ini
+tslpatchdata\changes-steam.ini
+tslpatchdata\changes-switch.ini
+tslpatchdata\changes-xbox.ini
+tslpatchdata\Override\m33ab_01.mdl
+tslpatchdata\Override\m36aa_01.mdl
+tslpatchdata\Override\m36aa_02.mdl
+tslpatchdata\Override\m36aa_03.mdl
