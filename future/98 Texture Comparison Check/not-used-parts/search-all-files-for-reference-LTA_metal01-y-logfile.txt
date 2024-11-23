@@ -8,4 +8,7 @@ tslpatchdata\changes-steam.ini
 tslpatchdata\changes-switch.ini
 tslpatchdata\changes-xbox.ini
 tslpatchdata\Override\LTA_metal01_00a.tpc
+
+LTA_metal01_00a is not used anywhere
+
 tslpatchdata\Override\m21aa_01a.mdl
