@@ -1,5 +1,0 @@
-different-matching_files.txt
-tslpatchdata\Override\m13aa_01f.mdl
-tslpatchdata\Override\m14aa_01f.mdl
-tslpatchdata\Override\m14ab_02d.mdl
-tslpatchdata\Override\m44ad_01x.mdl

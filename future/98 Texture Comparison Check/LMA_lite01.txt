@@ -1,8 +1,0 @@
-different-matching_files.txt
-tslpatchdata\Override\m28aa_02c.mdl
-tslpatchdata\Override\m28aa_03a.mdl
-tslpatchdata\Override\m28aa_11a.mdl
-tslpatchdata\Override\m28ab_02a.mdl
-tslpatchdata\Override\m28ab_13a.mdl
-tslpatchdata\Override\m28ac_22a.mdl
-tslpatchdata\Override\m28ac_23a.mdl
