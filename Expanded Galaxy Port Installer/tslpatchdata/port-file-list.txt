@@ -572,3 +572,10 @@ cus_gpad_ste3.tga
 lbl_miscroll_open_f.tga
 pnl_datapad.tga
 pnl_pause_pc.tga
+LDA_dor01.tpc
+PLC_CompPnl.tpc
+PLC_CompPnl2.tpc
+PLC_Desk1.tpc
+PLC_Kiosk1.tpc
+PLC_Pazaak.tpc
+twilek_f01.tpc

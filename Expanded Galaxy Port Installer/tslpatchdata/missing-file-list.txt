@@ -409,11 +409,12 @@ lbl_micombat.tga
 lbl_micomeff02.tga
 lbl_miscroll_f.tga
 lbl_miscroll_f2.tga
+LDA_dor01.tpc
 leveluppnl_p.gui
 loadscreen3.tga
-loadscreen_p.gui
-loadscreens.2da
 loadscreenhints.2da
+loadscreens.2da
+loadscreen_p.gui
 load_001EBO.tga
 load_default.tga
 load_legal.tga
@@ -459,6 +460,11 @@ optsoundadv_p.gui
 optsound_p.gui
 partyselect_p.gui
 pause_p.gui
+PLC_CompPnl.tpc
+PLC_CompPnl2.tpc
+PLC_Desk1.tpc
+PLC_Kiosk1.tpc
+PLC_Pazaak.tpc
 pnl_datapad.tga
 pnl_pause_pc.tga
 portcust_p.gui
@@ -490,6 +496,7 @@ tooltip16x12_p.gui
 tooltip6x4_p.gui
 tooltip8x6_p.gui
 top_p.gui
+twilek_f01.tpc
 uibit_abi_arrow.tga
 uibit_abi_back.tga
 uibit_arrowneg_p.tga
