@@ -475,6 +475,7 @@ p_hk47.utc
 p_jolee.utc
 p_juhani.utc
 p_mission.utc
+P_t3m4_01.tpc
 p_zaalbar.utc
 qorcpnl_p.gui
 questitem_p.gui
