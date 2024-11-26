@@ -457,7 +457,7 @@ p_jolee.utc
 p_juhani.utc
 p_mission.utc
 p_t3m4.utc
-P_t3m4_01.tga
+P_t3m4_01.tpc
 p_zaalbar.utc
 qorcpnl_p.gui
 questitem_p.gui
