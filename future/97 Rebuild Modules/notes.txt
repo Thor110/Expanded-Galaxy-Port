@@ -1,0 +1,15 @@
+main works
+
+without .nss files port fails on korr_m35aa ( too many files )
+
+use
+
+compile-all-nss-in-all-sub-directories.bat
+
+add source folder for each module IE : module-source
+
+and compile all scripts in all module source folders, then move .ncs to module folders.
+
+then update all modules
+
+figure out a work around for korr_m35aa
