@@ -1,3 +1,4 @@
+@echo off
 echo sort include scripts before running this
 pause
 exit
