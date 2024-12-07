@@ -1,0 +1,10 @@
+n_commm07 = 10
+n_commf07 = 12
+
+for some reason 07 is low res version of the following two textures
+
+N_CommFD01
+N_CommMD01
+
+these are the texture variants currently, consider resetting back to 07 then adding a solid number set to each
+and updating the variant in any utc's accordingly
