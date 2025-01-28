@@ -34,8 +34,8 @@ namespace Launcher
             else
             {
                 key = Registry.CurrentUser.CreateSubKey(@"Expanded Galaxy");
-                key.SetValue("Game", 1);
                 game = 1;
+                key.SetValue("Game", game);
             }
             if (game == 1)
             {
@@ -60,11 +60,6 @@ namespace Launcher
             {
                 if (game == 2)
                 {
-                    // change game
-                    //MessageBox.Show("Enabling Port");
-                    key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
-                    key.SetValue("Game", 1);
-                    key.Close();
                     game = 1;
                     setKotOR1();
                 }
@@ -73,15 +68,26 @@ namespace Launcher
             {
                 if (game == 1)
                 {
-                    // change game
-                    //MessageBox.Show("Enabling Main");
-                    key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
-                    key.SetValue("Game", 2);
-                    key.Close();
                     game = 2;
                     setKotOR2();
                 }
             }
+        }
+        private void setReg()
+        {
+            key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
+            key.SetValue("Game", game);
+            key.Close();
+        }
+        private void runBatch(string name)
+        {
+            var process = new Process();
+            var startinfo = new ProcessStartInfo(name);
+            process.StartInfo = startinfo;
+            process.StartInfo.CreateNoWindow = true;
+            process.OutputDataReceived += (sender, argsx) => Console.WriteLine(argsx.Data);
+            process.Start();
+            process.WaitForExit();
         }
         private void setKotOR1()
         {
@@ -89,15 +95,8 @@ namespace Launcher
             {
                 // port disabled currently. enable it.
                 // lazy non cross platform solution
-                var process = new Process();
-                var startinfo = new ProcessStartInfo("enable.bat");
-                startinfo.RedirectStandardOutput = true;
-                startinfo.UseShellExecute = false;
-                process.StartInfo = startinfo;
-                process.OutputDataReceived += (sender, argsx) => Console.WriteLine(argsx.Data); // do whatever processing you need to do in this handler
-                process.Start();
-                process.BeginOutputReadLine();
-                process.WaitForExit();
+                runBatch("enable.bat");
+                setReg();
                 this.BackgroundImage = Properties.Resources.k1swlauncher1;
                 PlaySound(Properties.Resources.k1background);
             }
@@ -113,15 +112,8 @@ namespace Launcher
             {
                 // port enabled currently. disable it.
                 // lazy non cross platform solution
-                var process = new Process();
-                var startinfo = new ProcessStartInfo("disable.bat");
-                startinfo.RedirectStandardOutput = true;
-                startinfo.UseShellExecute = false;
-                process.StartInfo = startinfo;
-                process.OutputDataReceived += (sender, argsx) => Console.WriteLine(argsx.Data); // do whatever processing you need to do in this handler
-                process.Start();
-                process.BeginOutputReadLine();
-                process.WaitForExit();
+                runBatch("disable.bat");
+                setReg();
                 this.BackgroundImage = Properties.Resources.k2swlauncher1;
                 PlaySound(Properties.Resources.background);
             }
@@ -134,15 +126,7 @@ namespace Launcher
         private void game_Click(object sender, EventArgs e)
         {
             click_play();
-            var process = new Process();
-            var startinfo = new ProcessStartInfo("play.bat");
-            startinfo.RedirectStandardOutput = true;
-            startinfo.UseShellExecute = false;
-            process.StartInfo = startinfo;
-            process.OutputDataReceived += (sender, argsx) => Console.WriteLine(argsx.Data); // do whatever processing you need to do in this handler
-            process.Start();
-            process.BeginOutputReadLine();
-            process.WaitForExit();
+            runBatch("play.bat");
             Close();
         }
         private void settings_Click(object sender, EventArgs e)
