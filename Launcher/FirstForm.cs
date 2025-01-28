@@ -8,7 +8,7 @@ namespace Launcher
     public partial class FirstForm : Form
     {
         private RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy")!;
-        public int game = 1;
+        public int game;
         public bool combo;
         public FirstForm()
         {
@@ -16,12 +16,11 @@ namespace Launcher
             comboBox1.Items.Add("KotOR1");
             comboBox1.Items.Add("KotOR2");
             InitializeRegistry();
+            // SoundPlayer cannot play sounds simultaneously
         }
         private void FirstForm_Load(object sender, EventArgs e)
         {
             //Check which game is loaded here maybe
-            PlaySound(Properties.Resources.background);
-            // SoundPlayer cannot play sounds simultaneously
         }
         /// <summary>
         /// Initialises the registry.
@@ -36,16 +35,15 @@ namespace Launcher
             {
                 key = Registry.CurrentUser.CreateSubKey(@"Expanded Galaxy");
                 key.SetValue("Game", 1);
+                game = 1;
             }
-            /*if (game == 1)
+            if (game == 1)
             {
-                //MessageBox.Show("KotOR1");
-                //comboBox1.SelectedIndex = 0;
-                // no need to set background image as default is 1
-            }*/
+                PlaySound(Properties.Resources.k1background);
+            }
             if (game == 2)
             {
-                //MessageBox.Show("KotOR2");
+                PlaySound(Properties.Resources.background);
                 comboBox1.SelectedIndex = 1;
                 this.BackgroundImage = Properties.Resources.k2swlauncher1;
             }
@@ -101,6 +99,7 @@ namespace Launcher
                 process.BeginOutputReadLine();
                 process.WaitForExit();
                 this.BackgroundImage = Properties.Resources.k1swlauncher1;
+                PlaySound(Properties.Resources.k1background);
             }
             else
             {
@@ -124,6 +123,7 @@ namespace Launcher
                 process.BeginOutputReadLine();
                 process.WaitForExit();
                 this.BackgroundImage = Properties.Resources.k2swlauncher1;
+                PlaySound(Properties.Resources.background);
             }
             else
             {
@@ -156,7 +156,11 @@ namespace Launcher
         private void minimise_Click(object sender, EventArgs e) { click_play(); this.WindowState = FormWindowState.Minimized; }
         public void PlaySound(Stream s) { var player = new SoundPlayer(s); player.Play(); }
         private void hover_play() { PlaySound(Properties.Resources.hover); }
-        private void click_play() { PlaySound(Properties.Resources.click); }
+        private void click_play()
+        {
+            if (game == 1) { PlaySound(Properties.Resources.k1click); }
+            if (game == 2) { PlaySound(Properties.Resources.click); }
+        }
         private void button6_MouseEnter(object sender, EventArgs e) { this.button6.BackgroundImage = Properties.Resources.minimisebuttonover; hover_play(); }
         private void button6_MouseLeave(object sender, EventArgs e) { this.button6.BackgroundImage = Properties.Resources.minimisebutton; }
         private void button7_MouseEnter(object sender, EventArgs e) { this.button7.BackgroundImage = Properties.Resources.xbuttonover; hover_play(); }
