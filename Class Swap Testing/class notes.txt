@@ -1,0 +1,25 @@
+Jedi Consulars Are Masters of the Force
+Jedi Sentinels are well-balanced
+Jedi Guardians Focus on combat training
+
+A skillful rogue that gets by on stealth and guile. - Scoundrel / Consular
+An explorer most at home on the fringes of space. - Scout / Sentinel
+A battle-ready fighter with no equal in combat. - Soldier / Guardian
+
+UTC Class Numbers Updated
+
+0 = 3
+1 = 5
+2 = 4
+
+original class description strings changed
+
+48031, 48032, 48033
+
+original class names strings changes
+
+353, 354, 355
+
+new class names strings added to the dialog.tlk and 2DA
+
+48037, 48038, 48039
