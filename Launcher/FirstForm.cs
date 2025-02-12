@@ -1,7 +1,7 @@
 using Microsoft.Win32;
-using System;
 using System.Diagnostics;
 using System.Media;
+using NAudio.Wave;
 
 namespace Launcher
 {
@@ -10,6 +10,8 @@ namespace Launcher
         private RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy")!;
         public int game;
         public bool combo;
+        private CancellationTokenSource cts;
+        private WaveOutEvent waveOutEvent;
         public FirstForm()
         {
             InitializeComponent();
@@ -39,11 +41,11 @@ namespace Launcher
             }
             if (game == 1)
             {
-                PlaySound(Properties.Resources.k1background);
+                PlayBackgroundSound(Properties.Resources.k1background);
             }
             if (game == 2)
             {
-                PlaySound(Properties.Resources.background);
+                PlayBackgroundSound(Properties.Resources.background);
                 comboBox1.SelectedIndex = 1;
                 this.BackgroundImage = Properties.Resources.k2swlauncher1;
             }
@@ -98,7 +100,7 @@ namespace Launcher
                 runBatch("enable.bat");
                 setReg();
                 this.BackgroundImage = Properties.Resources.k1swlauncher1;
-                PlaySound(Properties.Resources.k1background);
+                PlayBackgroundSound(Properties.Resources.k1background);
             }
             else
             {
@@ -115,7 +117,7 @@ namespace Launcher
                 runBatch("disable.bat");
                 setReg();
                 this.BackgroundImage = Properties.Resources.k2swlauncher1;
-                PlaySound(Properties.Resources.background);
+                PlayBackgroundSound(Properties.Resources.background);
             }
             else
             {
@@ -138,9 +140,73 @@ namespace Launcher
         private void discord_Click(object sender, EventArgs e) { click_play(); Process.Start(new ProcessStartInfo("https://discord.gg/bkbj8Feu7b") { UseShellExecute = true }); }
         private void close_Click(object sender, EventArgs e) { click_play(); Close(); }
         private void minimise_Click(object sender, EventArgs e) { click_play(); this.WindowState = FormWindowState.Minimized; }
-        public void PlaySound(Stream s) { var player = new SoundPlayer(s); player.Play(); }
-        private void hover_play() { PlaySound(Properties.Resources.hover); }
-        private void click_play() { PlaySound(Properties.Resources.click); }
+        public void PlaySound(string soundFilePath)
+        {
+            using (var waveFileReader = new WaveFileReader(soundFilePath))
+            using (var waveOutEvent = new WaveOutEvent())
+            {
+                waveOutEvent.Init(waveFileReader);
+                waveOutEvent.Play();
+                while (waveOutEvent.PlaybackState == PlaybackState.Playing)
+                {
+                    System.Threading.Thread.Sleep(100);
+                }
+            }
+        }
+        private void PlayBackgroundSound(Stream soundStream)
+        {
+            cts?.Cancel(); // Cancel the current sound
+            cts = new CancellationTokenSource();
+            waveOutEvent?.Dispose(); // Dispose the previous WaveOutEvent
+            waveOutEvent = new WaveOutEvent();
+            System.Threading.Thread thread = new System.Threading.Thread(() =>
+            {
+                using (var waveFileReader = new WaveFileReader(soundStream))
+                {
+                    waveOutEvent.Init(waveFileReader);
+                    waveOutEvent.Play();
+                    while (waveOutEvent.PlaybackState == PlaybackState.Playing && !cts.IsCancellationRequested)
+                    {
+                        System.Threading.Thread.Sleep(100);
+                    }
+                    waveOutEvent.Stop(); // Stop the sound playback
+                }
+            });
+            thread.IsBackground = true; // So that the thread dies when the form closes
+            thread.Start();
+        }
+        private void hover_play()
+        {
+            System.Threading.Thread thread = new System.Threading.Thread(() =>
+            {
+                PlaySound(Properties.Resources.hover);
+            });
+            thread.IsBackground = true;
+            thread.Start();
+        }
+
+        private void click_play()
+        {
+            System.Threading.Thread thread = new System.Threading.Thread(() =>
+            {
+                PlaySound(Properties.Resources.click);
+            });
+            thread.IsBackground = true;
+            thread.Start();
+        }
+        private void PlaySound(Stream soundStream)
+        {
+            using (var waveFileReader = new WaveFileReader(soundStream))
+            using (var waveOutEvent = new WaveOutEvent())
+            {
+                waveOutEvent.Init(waveFileReader);
+                waveOutEvent.Play();
+                while (waveOutEvent.PlaybackState == PlaybackState.Playing)
+                {
+                    System.Threading.Thread.Sleep(100);
+                }
+            }
+        }
         private void button6_MouseEnter(object sender, EventArgs e) { this.button6.BackgroundImage = Properties.Resources.minimisebuttonover; hover_play(); }
         private void button6_MouseLeave(object sender, EventArgs e) { this.button6.BackgroundImage = Properties.Resources.minimisebutton; }
         private void button7_MouseEnter(object sender, EventArgs e) { this.button7.BackgroundImage = Properties.Resources.xbuttonover; hover_play(); }
