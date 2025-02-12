@@ -207,10 +207,6 @@ namespace Launcher
                 }
             }
         }
-        private void button6_MouseEnter(object sender, EventArgs e) { this.button6.BackgroundImage = Properties.Resources.minimisebuttonover; hover_play(); }
-        private void button6_MouseLeave(object sender, EventArgs e) { this.button6.BackgroundImage = Properties.Resources.minimisebutton; }
-        private void button7_MouseEnter(object sender, EventArgs e) { this.button7.BackgroundImage = Properties.Resources.xbuttonover; hover_play(); }
-        private void button7_MouseLeave(object sender, EventArgs e) { this.button7.BackgroundImage = Properties.Resources.xbutton; }
         private void button_MouseEnter(object sender, EventArgs e)
         {
             Button button = (Button)sender;

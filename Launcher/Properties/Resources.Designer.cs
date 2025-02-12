@@ -139,26 +139,6 @@ namespace Launcher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap minimisebutton {
-            get {
-                object obj = ResourceManager.GetObject("minimisebutton", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap minimisebuttonover {
-            get {
-                object obj = ResourceManager.GetObject("minimisebuttonover", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap mousedown {
             get {
                 object obj = ResourceManager.GetObject("mousedown", resourceCulture);
@@ -172,26 +152,6 @@ namespace Launcher.Properties {
         internal static System.Drawing.Bitmap mouseover {
             get {
                 object obj = ResourceManager.GetObject("mouseover", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap xbutton {
-            get {
-                object obj = ResourceManager.GetObject("xbutton", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap xbuttonover {
-            get {
-                object obj = ResourceManager.GetObject("xbuttonover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
