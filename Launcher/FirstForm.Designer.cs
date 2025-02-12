@@ -46,10 +46,10 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button1.ForeColor = SystemColors.AppWorkspace;
-            button1.Location = new Point(209, 376);
+            button1.Location = new Point(209, 374);
             button1.Name = "button1";
-            button1.Size = new Size(182, 39);
-            button1.TabIndex = 4;
+            button1.Size = new Size(182, 43);
+            button1.TabIndex = 0;
             button1.Text = "Exit";
             button1.UseVisualStyleBackColor = false;
             button1.Click += close_Click;
@@ -68,10 +68,10 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button2.ForeColor = SystemColors.AppWorkspace;
-            button2.Location = new Point(209, 334);
+            button2.Location = new Point(209, 332);
             button2.Name = "button2";
-            button2.Size = new Size(182, 39);
-            button2.TabIndex = 3;
+            button2.Size = new Size(182, 43);
+            button2.TabIndex = 4;
             button2.Text = "Discord";
             button2.UseVisualStyleBackColor = false;
             button2.Click += discord_Click;
@@ -90,10 +90,10 @@
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button3.ForeColor = SystemColors.AppWorkspace;
-            button3.Location = new Point(209, 292);
+            button3.Location = new Point(209, 290);
             button3.Name = "button3";
-            button3.Size = new Size(182, 39);
-            button3.TabIndex = 2;
+            button3.Size = new Size(182, 43);
+            button3.TabIndex = 3;
             button3.Text = "Mod Page";
             button3.UseVisualStyleBackColor = false;
             button3.Click += website_Click;
@@ -112,10 +112,10 @@
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button4.ForeColor = SystemColors.AppWorkspace;
-            button4.Location = new Point(209, 250);
+            button4.Location = new Point(209, 248);
             button4.Name = "button4";
-            button4.Size = new Size(182, 39);
-            button4.TabIndex = 1;
+            button4.Size = new Size(182, 43);
+            button4.TabIndex = 2;
             button4.Text = "Configure";
             button4.UseVisualStyleBackColor = false;
             button4.Click += settings_Click;
@@ -128,16 +128,17 @@
             // button5
             // 
             button5.BackColor = Color.Transparent;
+            button5.FlatAppearance.BorderColor = Color.Black;
             button5.FlatAppearance.BorderSize = 0;
             button5.FlatAppearance.MouseDownBackColor = Color.Transparent;
             button5.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button5.ForeColor = SystemColors.AppWorkspace;
-            button5.Location = new Point(209, 208);
+            button5.Location = new Point(209, 205);
             button5.Name = "button5";
-            button5.Size = new Size(182, 39);
-            button5.TabIndex = 0;
+            button5.Size = new Size(182, 43);
+            button5.TabIndex = 1;
             button5.Text = "Game";
             button5.UseVisualStyleBackColor = false;
             button5.Click += game_Click;
@@ -153,7 +154,8 @@
             comboBox1.Location = new Point(136, 527);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(64, 23);
-            comboBox1.TabIndex = 5;
+            comboBox1.TabIndex = 6;
+            comboBox1.TabStop = false;
             comboBox1.Text = "KotOR1";
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
@@ -181,7 +183,6 @@
             Name = "FirstForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Expanded Galaxy";
-            Load += FirstForm_Load;
             ResumeLayout(false);
         }
 

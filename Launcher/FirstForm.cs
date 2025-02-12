@@ -10,6 +10,7 @@ namespace Launcher
         private RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy")!;
         public int game;
         public bool combo;
+        public bool ready;
         private CancellationTokenSource cts;
         private WaveOutEvent waveOutEvent;
         private Button previouslyFocusedButton;
@@ -20,11 +21,6 @@ namespace Launcher
             comboBox1.Items.Add("KotOR1");
             comboBox1.Items.Add("KotOR2");
             InitializeRegistry();
-            // SoundPlayer cannot play sounds simultaneously
-        }
-        private void FirstForm_Load(object sender, EventArgs e)
-        {
-            //Check which game is loaded here maybe
         }
         /// <summary>
         /// Initialises the registry.
@@ -176,6 +172,7 @@ namespace Launcher
             });
             thread.IsBackground = true; // So that the thread dies when the form closes
             thread.Start();
+            ready = true;
         }
         private void hover_play()
         {
@@ -212,6 +209,11 @@ namespace Launcher
         private void button_MouseEnter(object sender, EventArgs e)
         {
             Button button = (Button)sender;
+            if (ready)
+            {
+                ready = false;
+                return;
+            }
             if (previouslyFocusedButton != null && previouslyFocusedButton != button)
             {
                 button_MouseLeave(previouslyFocusedButton, EventArgs.Empty);
