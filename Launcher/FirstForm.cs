@@ -140,11 +140,7 @@ namespace Launcher
         private void minimise_Click(object sender, EventArgs e) { click_play(); this.WindowState = FormWindowState.Minimized; }
         public void PlaySound(Stream s) { var player = new SoundPlayer(s); player.Play(); }
         private void hover_play() { PlaySound(Properties.Resources.hover); }
-        private void click_play()
-        {
-            if (game == 1) { PlaySound(Properties.Resources.k1click); }
-            if (game == 2) { PlaySound(Properties.Resources.click); }
-        }
+        private void click_play() { PlaySound(Properties.Resources.click); }
         private void button6_MouseEnter(object sender, EventArgs e) { this.button6.BackgroundImage = Properties.Resources.minimisebuttonover; hover_play(); }
         private void button6_MouseLeave(object sender, EventArgs e) { this.button6.BackgroundImage = Properties.Resources.minimisebutton; }
         private void button7_MouseEnter(object sender, EventArgs e) { this.button7.BackgroundImage = Properties.Resources.xbuttonover; hover_play(); }
