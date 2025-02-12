@@ -12,6 +12,8 @@ namespace Launcher
         public bool combo;
         private CancellationTokenSource cts;
         private WaveOutEvent waveOutEvent;
+        private Button previouslyFocusedButton;
+        private Button mouseHoverButton;
         public FirstForm()
         {
             InitializeComponent();
@@ -210,6 +212,11 @@ namespace Launcher
         private void button_MouseEnter(object sender, EventArgs e)
         {
             Button button = (Button)sender;
+            if (previouslyFocusedButton != null && previouslyFocusedButton != button)
+            {
+                button_MouseLeave(previouslyFocusedButton, EventArgs.Empty);
+            }
+            previouslyFocusedButton = button;
             if (game == 1) { button.BackgroundImage = Properties.Resources.mouseover; }
             if (game == 2) { button.BackgroundImage = Properties.Resources.k2mouseover; }
             hover_play();
@@ -218,6 +225,10 @@ namespace Launcher
         private void button_MouseDown(object sender, EventArgs e)
         {
             Button button = (Button)sender;
+            if (previouslyFocusedButton == button)
+            {
+                previouslyFocusedButton = null!;
+            }
             if (game == 1) { button.BackgroundImage = Properties.Resources.mousedown; }
             if (game == 2) { button.BackgroundImage = Properties.Resources.k2mousedown; }
         }

@@ -4,6 +4,9 @@
     <_LastSelectedProfileId>D:\00 Expanded Galaxy Project\01 K1 Port Repository\Launcher\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="CustomButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="FirstForm.cs">
       <SubType>Form</SubType>
     </Compile>

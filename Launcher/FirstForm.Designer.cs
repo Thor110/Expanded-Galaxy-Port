@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirstForm));
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
+            button1 = new CustomButton();
+            button2 = new CustomButton();
+            button3 = new CustomButton();
+            button4 = new CustomButton();
+            button5 = new CustomButton();
             comboBox1 = new ComboBox();
             SuspendLayout();
             // 
@@ -41,18 +41,20 @@
             // 
             button1.BackColor = Color.Transparent;
             button1.FlatAppearance.BorderSize = 0;
-            button1.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            button1.FlatAppearance.MouseOverBackColor = Color.LightSlateGray;
+            button1.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button1.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button1.ForeColor = SystemColors.AppWorkspace;
-            button1.Location = new Point(208, 376);
+            button1.Location = new Point(209, 376);
             button1.Name = "button1";
             button1.Size = new Size(182, 39);
             button1.TabIndex = 4;
             button1.Text = "Exit";
             button1.UseVisualStyleBackColor = false;
             button1.Click += close_Click;
+            button1.GotFocus += button_MouseEnter;
+            button1.LostFocus += button_MouseLeave;
             button1.MouseDown += button_MouseDown;
             button1.MouseEnter += button_MouseEnter;
             button1.MouseLeave += button_MouseLeave;
@@ -61,18 +63,20 @@
             // 
             button2.BackColor = Color.Transparent;
             button2.FlatAppearance.BorderSize = 0;
-            button2.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            button2.FlatAppearance.MouseOverBackColor = Color.LightSlateGray;
+            button2.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button2.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button2.ForeColor = SystemColors.AppWorkspace;
-            button2.Location = new Point(208, 334);
+            button2.Location = new Point(209, 334);
             button2.Name = "button2";
             button2.Size = new Size(182, 39);
             button2.TabIndex = 3;
             button2.Text = "Discord";
             button2.UseVisualStyleBackColor = false;
             button2.Click += discord_Click;
+            button2.GotFocus += button_MouseEnter;
+            button2.LostFocus += button_MouseLeave;
             button2.MouseDown += button_MouseDown;
             button2.MouseEnter += button_MouseEnter;
             button2.MouseLeave += button_MouseLeave;
@@ -81,18 +85,20 @@
             // 
             button3.BackColor = Color.Transparent;
             button3.FlatAppearance.BorderSize = 0;
-            button3.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            button3.FlatAppearance.MouseOverBackColor = Color.LightSlateGray;
+            button3.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button3.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button3.ForeColor = SystemColors.AppWorkspace;
-            button3.Location = new Point(208, 292);
+            button3.Location = new Point(209, 292);
             button3.Name = "button3";
             button3.Size = new Size(182, 39);
             button3.TabIndex = 2;
             button3.Text = "Mod Page";
             button3.UseVisualStyleBackColor = false;
             button3.Click += website_Click;
+            button3.GotFocus += button_MouseEnter;
+            button3.LostFocus += button_MouseLeave;
             button3.MouseDown += button_MouseDown;
             button3.MouseEnter += button_MouseEnter;
             button3.MouseLeave += button_MouseLeave;
@@ -101,18 +107,20 @@
             // 
             button4.BackColor = Color.Transparent;
             button4.FlatAppearance.BorderSize = 0;
-            button4.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            button4.FlatAppearance.MouseOverBackColor = Color.LightSlateGray;
+            button4.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button4.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button4.ForeColor = SystemColors.AppWorkspace;
-            button4.Location = new Point(208, 250);
+            button4.Location = new Point(209, 250);
             button4.Name = "button4";
             button4.Size = new Size(182, 39);
             button4.TabIndex = 1;
             button4.Text = "Configure";
             button4.UseVisualStyleBackColor = false;
             button4.Click += settings_Click;
+            button4.GotFocus += button_MouseEnter;
+            button4.LostFocus += button_MouseLeave;
             button4.MouseDown += button_MouseDown;
             button4.MouseEnter += button_MouseEnter;
             button4.MouseLeave += button_MouseLeave;
@@ -121,18 +129,20 @@
             // 
             button5.BackColor = Color.Transparent;
             button5.FlatAppearance.BorderSize = 0;
-            button5.FlatAppearance.MouseDownBackColor = SystemColors.GradientActiveCaption;
-            button5.FlatAppearance.MouseOverBackColor = Color.LightSlateGray;
+            button5.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button5.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             button5.ForeColor = SystemColors.AppWorkspace;
-            button5.Location = new Point(208, 208);
+            button5.Location = new Point(209, 208);
             button5.Name = "button5";
             button5.Size = new Size(182, 39);
             button5.TabIndex = 0;
             button5.Text = "Game";
             button5.UseVisualStyleBackColor = false;
             button5.Click += game_Click;
+            button5.GotFocus += button_MouseEnter;
+            button5.LostFocus += button_MouseLeave;
             button5.MouseDown += button_MouseDown;
             button5.MouseEnter += button_MouseEnter;
             button5.MouseLeave += button_MouseLeave;
@@ -143,7 +153,7 @@
             comboBox1.Location = new Point(136, 527);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(64, 23);
-            comboBox1.TabIndex = 7;
+            comboBox1.TabIndex = 5;
             comboBox1.Text = "KotOR1";
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
@@ -174,12 +184,13 @@
             Load += FirstForm_Load;
             ResumeLayout(false);
         }
+
         #endregion
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
-        private Button button5;
         private ComboBox comboBox1;
+        private CustomButton button1;
+        private CustomButton button2;
+        private CustomButton button3;
+        private CustomButton button4;
+        private CustomButton button5;
     }
 }
