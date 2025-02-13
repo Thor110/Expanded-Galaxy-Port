@@ -40,6 +40,7 @@
             // button1
             // 
             button1.BackColor = Color.Transparent;
+            button1.FlatAppearance.BorderColor = Color.Black;
             button1.FlatAppearance.BorderSize = 0;
             button1.FlatAppearance.MouseDownBackColor = Color.Transparent;
             button1.FlatAppearance.MouseOverBackColor = Color.Transparent;
@@ -62,6 +63,7 @@
             // button2
             // 
             button2.BackColor = Color.Transparent;
+            button2.FlatAppearance.BorderColor = Color.Black;
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatAppearance.MouseDownBackColor = Color.Transparent;
             button2.FlatAppearance.MouseOverBackColor = Color.Transparent;
@@ -84,6 +86,7 @@
             // button3
             // 
             button3.BackColor = Color.Transparent;
+            button3.FlatAppearance.BorderColor = Color.Black;
             button3.FlatAppearance.BorderSize = 0;
             button3.FlatAppearance.MouseDownBackColor = Color.Transparent;
             button3.FlatAppearance.MouseOverBackColor = Color.Transparent;
@@ -106,6 +109,7 @@
             // button4
             // 
             button4.BackColor = Color.Transparent;
+            button4.FlatAppearance.BorderColor = Color.Black;
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatAppearance.MouseDownBackColor = Color.Transparent;
             button4.FlatAppearance.MouseOverBackColor = Color.Transparent;
