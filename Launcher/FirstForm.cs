@@ -7,7 +7,7 @@ namespace Launcher
     public partial class FirstForm : Form
     {
         private RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy")!;
-        public int game; // which game is active.
+        public int game = 1; // which game is active.
         public bool combo; // disables the comboBox until the items have been added and the relevant index is selected.
                             // and disables the button focus until the background music has been played which prevents the button being highlighted on startup.
         private CancellationTokenSource cts = null!;
@@ -20,28 +20,12 @@ namespace Launcher
             comboBox1.Items.Add("KotOR2");
             InitializeRegistry();
         }
-        /// <summary>
-        /// Initialises the registry.
-        /// </summary>
         private void InitializeRegistry()
         {
-            if (key != null)
-            {
-                game = (int)key.GetValue("Game")!;
-            }
-            else
-            {
-                key = Registry.CurrentUser.CreateSubKey(@"Expanded Galaxy");
-                game = 1;
-                key.SetValue("Game", game);
-            }
-            if (game == 1)
-            {
-                PlayBackgroundSound(Properties.Resources.k1background);
-            }
-            if (game == 2)
-            {
-                PlayBackgroundSound(Properties.Resources.background);
+            if (key != null) { game = (int)key.GetValue("Game")!; }
+            else { key = Registry.CurrentUser.CreateSubKey(@"Expanded Galaxy"); key.SetValue("Game", game); }
+            if (game == 1) { PlayBackgroundSound(Properties.Resources.k1background); }
+            if (game == 2) { PlayBackgroundSound(Properties.Resources.background);
                 comboBox1.SelectedIndex = 1;
                 this.BackgroundImage = Properties.Resources.k2swlauncher1;
             }
@@ -51,31 +35,13 @@ namespace Launcher
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (combo) { return; }
-            if (comboBox1.SelectedIndex == 0)
-            {
-                if (game == 2)
-                {
-                    game = 1;
-                    setKotOR1();
-                }
-            }
-            else
-            {
-                if (game == 1)
-                {
-                    game = 2;
-                    setKotOR2();
-                }
-            }
+            if (comboBox1.SelectedIndex == 0 && game == 2) { setKotOR1(); }
+            else if(comboBox1.SelectedIndex != 0 && game == 1) { setKotOR2(); }
         }
-        private void setReg()
-        {
-            key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
-            key.SetValue("Game", game);
-            key.Close();
-        }
+        private void setReg() { key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!; key.SetValue("Game", game); key.Close(); }
         private void setKotOR1()
         {
+            game = 1;
             // port disabled currently. enable it.
             string[] textFromFile = File.ReadAllLines("port-file-list.txt");
             foreach (string line in textFromFile)
@@ -103,6 +69,7 @@ namespace Launcher
         }
         private void setKotOR2()
         {
+            game = 2;
             // port enabled currently. disable it.
             string[] textFromFile = File.ReadAllLines("port-file-list.txt");
             foreach (string line in textFromFile)
@@ -131,19 +98,11 @@ namespace Launcher
         private void game_Click(object sender, EventArgs e)
         {
             click_play();
-            if(File.Exists("steam_api.dll"))
-            {
-                string steamUrl = $"steam://rungameid/208580";
-                Process.Start(new ProcessStartInfo
-                {
-                    FileName = steamUrl,
-                    UseShellExecute = true
-                });
-            }
+            if (File.Exists("steam_api.dll")) { Process.Start(new ProcessStartInfo("steam://rungameid/208580") { UseShellExecute = true }); }
             else { Process.Start("swkotor2.exe"); }
             Close();
         }
-        private void settings_Click(object sender, EventArgs e) { click_play(); MessageBox.Show("No Extra Settings Yet!"); }
+        private void configure_Click(object sender, EventArgs e) { click_play(); MessageBox.Show("No Extra Settings Yet!"); }
         private void website_Click(object sender, EventArgs e) { click_play(); Process.Start(new ProcessStartInfo("https://www.moddb.com/mods/kotor-ii-tsl-expanded-galaxy") { UseShellExecute = true }); }
         private void discord_Click(object sender, EventArgs e) { click_play(); Process.Start(new ProcessStartInfo("https://discord.gg/bkbj8Feu7b") { UseShellExecute = true }); }
         private void close_Click(object sender, EventArgs e) { click_play(); Close(); }
@@ -195,19 +154,18 @@ namespace Launcher
         }
         private void button_MouseEnter(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
             if (combo) { combo = false; return; }
-            if (previouslyFocusedButton != null) { button_MouseLeave(previouslyFocusedButton, EventArgs.Empty); previouslyFocusedButton = button; }
-            if (game == 1) { button.BackgroundImage = Properties.Resources.mouseover; }
-            if (game == 2) { button.BackgroundImage = Properties.Resources.k2mouseover; }
+            if (previouslyFocusedButton != null) { button_MouseLeave(previouslyFocusedButton, EventArgs.Empty); }
+            if (game == 1) { ((Button)sender).BackgroundImage = Properties.Resources.mouseover; }
+            if (game == 2) { ((Button)sender).BackgroundImage = Properties.Resources.k2mouseover; }
+            previouslyFocusedButton = (Button)sender;
             hover_play();
         }
-        private void button_MouseLeave(object sender, EventArgs e) { Button button = (Button)sender; button.BackgroundImage = null; }
+        private void button_MouseLeave(object sender, EventArgs e) { ((Button)sender).BackgroundImage = null; }
         private void button_MouseDown(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
-            if (game == 1) { button.BackgroundImage = Properties.Resources.mousedown; }
-            if (game == 2) { button.BackgroundImage = Properties.Resources.k2mousedown; }
+            if (game == 1) { ((Button)sender).BackgroundImage = Properties.Resources.mousedown; }
+            if (game == 2) { ((Button)sender).BackgroundImage = Properties.Resources.k2mousedown; }
         }
     }
 }

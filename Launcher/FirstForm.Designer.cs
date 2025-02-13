@@ -97,7 +97,7 @@
             button3.Name = "button3";
             button3.Size = new Size(182, 43);
             button3.TabIndex = 3;
-            button3.Text = "Mod Page";
+            button3.Text = "Website";
             button3.UseVisualStyleBackColor = false;
             button3.Click += website_Click;
             button3.GotFocus += button_MouseEnter;
@@ -122,7 +122,7 @@
             button4.TabIndex = 2;
             button4.Text = "Configure";
             button4.UseVisualStyleBackColor = false;
-            button4.Click += settings_Click;
+            button4.Click += configure_Click;
             button4.GotFocus += button_MouseEnter;
             button4.LostFocus += button_MouseLeave;
             button4.MouseDown += button_MouseDown;
