@@ -1,4 +1,9 @@
 @echo off
+:REGISTRY
+reg query "HKCU\Expanded Galaxy" /v Game >nul
+if %errorlevel% neq 0 (
+  reg add "HKCU\Expanded Galaxy" /v Game /t REG_DWORD /d 1
+)
 :START
 cls
 if exist dialog.tlk.main goto :INPUTA
@@ -51,6 +56,8 @@ for /f "delims=|" %%i in (port-file-list.txt) do ren "Override\%%i.port" "%%i"
 
 echo Launching KotOR1 in KotOR2!
 
+reg add "HKCU\Expanded Galaxy" /v Game /t REG_DWORD /d 1 /f
+
 goto :STEAMORDISC
 :KOTOR2
 if exist dialog.tlk.port goto :STEAMORDISC
@@ -74,6 +81,8 @@ ren StreamMusic\mus_sion.wav.main mus_sion.wav
 ren swkotor2.exe.main swkotor2.exe
 
 for /f "delims=|" %%i in (port-file-list.txt) do ren "Override\%%i.main" "%%i"
+
+reg add "HKCU\Expanded Galaxy" /v Game /t REG_DWORD /d 2 /f
 
 echo Launching KotOR2!
 :STEAMORDISC
