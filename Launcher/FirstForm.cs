@@ -1,9 +1,6 @@
 using Microsoft.Win32;
 using System.Diagnostics;
-using System.Media;
 using NAudio.Wave;
-using System.Collections.Generic;
-using System.Reflection;
 
 namespace Launcher
 {
@@ -12,7 +9,7 @@ namespace Launcher
         private RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy")!;
         public int game; // which game is active.
         public bool combo; // disables the comboBox until the items have been added and the relevant index is selected.
-        public bool ready; // disables the button focus until the background music has been played which prevents the button being highlighted on startup.
+                            // and disables the button focus until the background music has been played which prevents the button being highlighted on startup.
         private CancellationTokenSource cts = null!;
         private WaveOutEvent waveOutEvent = null!;
         private Button previouslyFocusedButton = null!;
@@ -53,11 +50,8 @@ namespace Launcher
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!combo)
-            {
-                return;
-            }
-            if(comboBox1.SelectedIndex == 0)
+            if (combo) { return; }
+            if (comboBox1.SelectedIndex == 0)
             {
                 if (game == 2)
                 {
@@ -149,15 +143,10 @@ namespace Launcher
             else { Process.Start("swkotor2.exe"); }
             Close();
         }
-        private void settings_Click(object sender, EventArgs e)
-        {
-            click_play();
-            MessageBox.Show("No Settings Yet!");
-        }
+        private void settings_Click(object sender, EventArgs e) { click_play(); MessageBox.Show("No Extra Settings Yet!"); }
         private void website_Click(object sender, EventArgs e) { click_play(); Process.Start(new ProcessStartInfo("https://www.moddb.com/mods/kotor-ii-tsl-expanded-galaxy") { UseShellExecute = true }); }
         private void discord_Click(object sender, EventArgs e) { click_play(); Process.Start(new ProcessStartInfo("https://discord.gg/bkbj8Feu7b") { UseShellExecute = true }); }
         private void close_Click(object sender, EventArgs e) { click_play(); Close(); }
-        private void minimise_Click(object sender, EventArgs e) { click_play(); this.WindowState = FormWindowState.Minimized; }
         public void PlaySound(string soundFilePath)
         {
             using (var waveFileReader = new WaveFileReader(soundFilePath))
@@ -165,10 +154,7 @@ namespace Launcher
             {
                 waveOutEvent.Init(waveFileReader);
                 waveOutEvent.Play();
-                while (waveOutEvent.PlaybackState == PlaybackState.Playing)
-                {
-                    Thread.Sleep(100);
-                }
+                while (waveOutEvent.PlaybackState == PlaybackState.Playing) { Thread.Sleep(100); }
             }
         }
         private void PlayBackgroundSound(Stream soundStream)
@@ -183,62 +169,35 @@ namespace Launcher
                 {
                     waveOutEvent.Init(waveFileReader);
                     waveOutEvent.Play();
-                    while (waveOutEvent.PlaybackState == PlaybackState.Playing && !cts.IsCancellationRequested)
-                    {
-                        Thread.Sleep(100);
-                    }
+                    while (waveOutEvent.PlaybackState == PlaybackState.Playing && !cts.IsCancellationRequested) { Thread.Sleep(100); }
                     waveOutEvent.Stop(); // Stop the sound playback
                 }
             });
             thread.IsBackground = true; // So that the thread dies when the form closes
             thread.Start();
-            ready = true;
         }
-        private void hover_play()
-        {
-            Thread thread = new Thread(() =>
-            {
-                PlaySound(Properties.Resources.hover);
-            });
-            thread.IsBackground = true;
-            thread.Start();
-        }
-
-        private void click_play()
-        {
-            Thread thread = new Thread(() =>
-            {
-                PlaySound(Properties.Resources.click);
-            });
-            thread.IsBackground = true;
-            thread.Start();
-        }
+        private void hover_play() { PlaySound(Properties.Resources.hover); }
+        private void click_play() { PlaySound(Properties.Resources.click); }
         private void PlaySound(Stream soundStream)
         {
-            using (var waveFileReader = new WaveFileReader(soundStream))
-            using (var waveOutEvent = new WaveOutEvent())
+            Thread thread = new Thread(() =>
             {
-                waveOutEvent.Init(waveFileReader);
-                waveOutEvent.Play();
-                while (waveOutEvent.PlaybackState == PlaybackState.Playing)
+                using (var waveFileReader = new WaveFileReader(soundStream))
+                using (var waveOutEvent = new WaveOutEvent())
                 {
-                    Thread.Sleep(100);
+                    waveOutEvent.Init(waveFileReader);
+                    waveOutEvent.Play();
+                    while (waveOutEvent.PlaybackState == PlaybackState.Playing) { Thread.Sleep(100); }
                 }
-            }
+            });
+            thread.IsBackground = true;
+            thread.Start();
         }
         private void button_MouseEnter(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            if (ready)
-            {
-                ready = false;
-                return;
-            }
-            if (previouslyFocusedButton != null && previouslyFocusedButton != button)
-            {
-                button_MouseLeave(previouslyFocusedButton, EventArgs.Empty);
-            }
-            previouslyFocusedButton = button;
+            if (combo) { combo = false; return; }
+            if (previouslyFocusedButton != null) { button_MouseLeave(previouslyFocusedButton, EventArgs.Empty); previouslyFocusedButton = button; }
             if (game == 1) { button.BackgroundImage = Properties.Resources.mouseover; }
             if (game == 2) { button.BackgroundImage = Properties.Resources.k2mouseover; }
             hover_play();
@@ -247,10 +206,6 @@ namespace Launcher
         private void button_MouseDown(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            if (previouslyFocusedButton == button)
-            {
-                previouslyFocusedButton = null!;
-            }
             if (game == 1) { button.BackgroundImage = Properties.Resources.mousedown; }
             if (game == 2) { button.BackgroundImage = Properties.Resources.k2mousedown; }
         }
