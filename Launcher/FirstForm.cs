@@ -84,6 +84,11 @@ namespace Launcher
         {
             // port disabled currently. enable it.
             string[] textFromFile = File.ReadAllLines("port-file-list.txt");
+            foreach (string line in textFromFile)
+            {
+                File.Move($"Override\\{line}", $"Override\\{line}.main");
+                File.Move($"Override\\{line}.port", $"Override\\{line}");
+            }
             //in -> files for main
             File.Move("Movies\\ObsidianEnt.bik", "Movies\\ObsidianEnt.bik.main");
             File.Move("dialog.tlk", "dialog.tlk.main");
@@ -91,10 +96,6 @@ namespace Launcher
             File.Move("Modules\\001ebo.mod", "Modules\\001ebo.mod.main");
             File.Move("StreamMusic\\mus_sion.wav", "StreamMusic\\mus_sion.wav.main");
             File.Move("swkotor2.exe", "swkotor2.exe.main");
-            foreach (string line in textFromFile)
-            {
-                File.Move($"Override\\{line}", $"Override\\{line}.main");
-            }
             //out -> files for port
             File.Move("Movies\\ObsidianEnt.bik.port", "Movies\\ObsidianEnt.bik");
             File.Move("dialog.tlk.port", "dialog.tlk");
@@ -102,10 +103,6 @@ namespace Launcher
             File.Move("Modules\\001ebo.mod.port", "Modules\\001ebo.mod");
             File.Move("StreamMusic\\mus_sion.wav.port", "StreamMusic\\mus_sion.wav");
             File.Move("swkotor2.exe.port", "swkotor2.exe");
-            foreach (string line in textFromFile)
-            {
-                File.Move($"Override\\{line}.port", $"Override\\{line}");
-            }
             setReg();
             this.BackgroundImage = Properties.Resources.k1swlauncher1;
             PlayBackgroundSound(Properties.Resources.k1background);
@@ -114,6 +111,11 @@ namespace Launcher
         {
             // port enabled currently. disable it.
             string[] textFromFile = File.ReadAllLines("port-file-list.txt");
+            foreach (string line in textFromFile)
+            {
+                File.Move($"Override\\{line}", $"Override\\{line}.port");
+                File.Move($"Override\\{line}.main", $"Override\\{line}");
+            }
             //in -> files for port
             File.Move("Movies\\ObsidianEnt.bik", "Movies\\ObsidianEnt.bik.port");
             File.Move("dialog.tlk", "dialog.tlk.port");
@@ -121,10 +123,6 @@ namespace Launcher
             File.Move("Modules\\001ebo.mod", "Modules\\001ebo.mod.port");
             File.Move("StreamMusic\\mus_sion.wav", "StreamMusic\\mus_sion.wav.port");
             File.Move("swkotor2.exe", "swkotor2.exe.port");
-            foreach (string line in textFromFile)
-            {
-                File.Move($"Override\\{line}", $"Override\\{line}.port");
-            }
             //out -> files for main
             File.Move("Movies\\ObsidianEnt.bik.main", "Movies\\ObsidianEnt.bik");
             File.Move("dialog.tlk.main", "dialog.tlk");
@@ -132,10 +130,6 @@ namespace Launcher
             File.Move("Modules\\001ebo.mod.main", "Modules\\001ebo.mod");
             File.Move("StreamMusic\\mus_sion.wav.main", "StreamMusic\\mus_sion.wav");
             File.Move("swkotor2.exe.main", "swkotor2.exe");
-            foreach (string line in textFromFile)
-            {
-                File.Move($"Override\\{line}.main", $"Override\\{line}");
-            }
             setReg();
             this.BackgroundImage = Properties.Resources.k2swlauncher1;
             PlayBackgroundSound(Properties.Resources.background);
