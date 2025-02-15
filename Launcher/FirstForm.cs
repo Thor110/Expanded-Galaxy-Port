@@ -13,6 +13,7 @@ namespace Launcher
         private CancellationTokenSource cts = null!;
         private WaveOutEvent waveOutEvent = null!;
         private Button previouslyFocusedButton = null!;
+        private SemaphoreSlim hoverSemaphore = new SemaphoreSlim(1, 1);
         public FirstForm()
         {
             InitializeComponent();
@@ -135,7 +136,12 @@ namespace Launcher
             thread.IsBackground = true; // So that the thread dies when the form closes
             thread.Start();
         }
-        private void hover_play() { PlaySound(Properties.Resources.hover); }
+        private void hover_play()
+        {
+            hoverSemaphore.Wait();
+            try { PlaySound(Properties.Resources.hover); }
+            finally { hoverSemaphore.Release(); }
+        }
         private void click_play() { PlaySound(Properties.Resources.click); }
         private void PlaySound(Stream soundStream)
         {
