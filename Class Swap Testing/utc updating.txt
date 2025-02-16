@@ -1,5 +1,0 @@
-All except Stunt Modules
-
-I also changed some like Gizka & Bantha over to Minion class as they should be
-
-and some droids from Minion class to the Combat Droid class
