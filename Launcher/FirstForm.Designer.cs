@@ -35,6 +35,10 @@
             button4 = new CustomButton();
             button5 = new CustomButton();
             comboBox1 = new ComboBox();
+            checkBox1 = new CheckBox();
+            checkBox2 = new CheckBox();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // button1
@@ -163,6 +167,45 @@
             comboBox1.Text = "KotOR1";
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.BackColor = Color.Transparent;
+            checkBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            checkBox1.ForeColor = SystemColors.AppWorkspace;
+            checkBox1.Location = new Point(247, 218);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(135, 19);
+            checkBox1.TabIndex = 7;
+            checkBox1.Text = "Jedi From The Start";
+            checkBox1.UseVisualStyleBackColor = false;
+            checkBox1.Visible = false;
+            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
+            // 
+            // checkBox2
+            // 
+            checkBox2.AutoSize = true;
+            checkBox2.BackColor = Color.Transparent;
+            checkBox2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            checkBox2.ForeColor = SystemColors.AppWorkspace;
+            checkBox2.Location = new Point(271, 218);
+            checkBox2.Name = "checkBox2";
+            checkBox2.Size = new Size(111, 19);
+            checkBox2.TabIndex = 8;
+            checkBox2.Text = "KotOR1 Classes";
+            checkBox2.UseVisualStyleBackColor = false;
+            checkBox2.Visible = false;
+            checkBox2.CheckedChanged += checkBox2_CheckedChanged;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Black;
+            pictureBox1.Location = new Point(209, 205);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(182, 168);
+            pictureBox1.TabIndex = 9;
+            pictureBox1.TabStop = false;
+            // 
             // FirstForm
             // 
             AcceptButton = button5;
@@ -172,12 +215,15 @@
             BackgroundImageLayout = ImageLayout.Zoom;
             CancelButton = button1;
             ClientSize = new Size(600, 560);
+            Controls.Add(checkBox2);
+            Controls.Add(checkBox1);
             Controls.Add(comboBox1);
             Controls.Add(button1);
             Controls.Add(button2);
             Controls.Add(button3);
             Controls.Add(button4);
             Controls.Add(button5);
+            Controls.Add(pictureBox1);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -187,7 +233,9 @@
             Name = "FirstForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Expanded Galaxy";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -197,5 +245,8 @@
         private CustomButton button3;
         private CustomButton button4;
         private CustomButton button5;
+        private CheckBox checkBox1;
+        private CheckBox checkBox2;
+        private PictureBox pictureBox1;
     }
 }

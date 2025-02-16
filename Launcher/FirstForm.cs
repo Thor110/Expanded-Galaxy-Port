@@ -8,9 +8,10 @@ namespace Launcher
     {
         private RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy")!;
         public int game = 1; // which game is active.
+        public int jedi = 0; // are jedi classes enabled or disabled.
         public bool combo; // disables the comboBox until the items have been added and the relevant index is selected.
                            // and disables the button focus until the background music has been played which prevents the button being highlighted on startup.
-        public bool config;
+        public bool config; // viewing the configuration page.
         private CancellationTokenSource cts = null!;
         private WaveOutEvent waveOutEvent = null!;
         private Button previouslyFocusedButton = null!;
@@ -24,13 +25,16 @@ namespace Launcher
         }
         private void InitializeRegistry()
         {
-            if (key != null) { game = (int)key.GetValue("Game")!; }
-            else { key = Registry.CurrentUser.CreateSubKey(@"Expanded Galaxy"); key.SetValue("Game", game); }
+            if (key != null) { game = (int)key.GetValue("Game")!; jedi = (int)key.GetValue("JediK1")!; }
+            else { key = Registry.CurrentUser.CreateSubKey(@"Expanded Galaxy"); key.SetValue("Game", game); key.SetValue("JediK1", jedi); key.SetValue("JediK2", jedi); }
             if (game == 1) { PlayBackgroundSound(Properties.Resources.k1background); }
-            if (game == 2) { PlayBackgroundSound(Properties.Resources.background);
+            if (game == 2)
+            {
+                PlayBackgroundSound(Properties.Resources.background);
                 comboBox1.SelectedIndex = 1;
                 this.BackgroundImage = Properties.Resources.k2swlauncher1;
             }
+            if (jedi == 1) { checkBox1.Checked = true; }
             key.Close();
             combo = true;
         }
@@ -38,9 +42,9 @@ namespace Launcher
         {
             if (combo) { return; }
             if (comboBox1.SelectedIndex == 0 && game == 2) { setKotOR1(); }
-            else if(comboBox1.SelectedIndex != 0 && game == 1) { setKotOR2(); }
+            else if (comboBox1.SelectedIndex != 0 && game == 1) { setKotOR2(); }
         }
-        private void setReg() { key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!; key.SetValue("Game", game); key.Close(); }
+        private void setReg() { key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!; key.SetValue("Game", game); jedi = (int)key.GetValue($"JediK{game}")!; key.Close(); }
         private void setKotOR1()
         {
             game = 1;
@@ -107,9 +111,7 @@ namespace Launcher
         private void configure_Click(object sender, EventArgs e)
         {
             click_play();
-            // config page prep
-            MessageBox.Show("No Extra Settings Yet!");
-            /*if (game == 1)
+            if (game == 1)
             {
                 button2.Visible = false;
                 button3.Visible = false;
@@ -118,17 +120,19 @@ namespace Launcher
                 comboBox1.Visible = false;
                 button1.Text = "Back";
                 config = true;
+                checkBox1.Visible = true;
             }
             if (game == 2)
             {
-                /*button2.Visible = false;
+                button2.Visible = false;
                 button3.Visible = false;
                 button4.Visible = false;
                 button5.Visible = false;
                 comboBox1.Visible = false;
                 button1.Text = "Back";
                 config = true;
-            }*/
+                checkBox2.Visible = true;
+            }
         }
         private void website_Click(object sender, EventArgs e) { click_play(); Process.Start(new ProcessStartInfo("https://www.moddb.com/mods/kotor-ii-tsl-expanded-galaxy") { UseShellExecute = true }); }
         private void discord_Click(object sender, EventArgs e) { click_play(); Process.Start(new ProcessStartInfo("https://discord.gg/bkbj8Feu7b") { UseShellExecute = true }); }
@@ -146,6 +150,14 @@ namespace Launcher
                 button1.Text = "Exit";
                 config = false;
                 // button 1 is highlighted for some reason?
+                if (game == 1)
+                {
+                    checkBox1.Visible = false;
+                }
+                if (game == 2)
+                {
+                    checkBox2.Visible = false;
+                }
             }
         }
         public void PlaySound(string soundFilePath)
@@ -213,6 +225,58 @@ namespace Launcher
         {
             if (game == 1) { ((Button)sender).BackgroundImage = Properties.Resources.mousedown; }
             if (game == 2) { ((Button)sender).BackgroundImage = Properties.Resources.k2mousedown; }
+        }
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!config) { return; }
+            if (!checkBox1.Checked)
+            {
+                MessageBox.Show("A");//Disable Class Changes KotOR1
+
+                //byte changes
+                //script swaps
+
+                key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
+                key.SetValue("JediK1", 0);
+                key.Close();
+            }
+            else
+            {
+                MessageBox.Show("B");//Enable Class Changes KotOR1
+
+                //byte changes
+                //script swaps
+
+                key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
+                key.SetValue("JediK1", 1);
+                key.Close();
+            }
+        }
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!config) { return; }
+            if (!checkBox2.Checked)
+            {
+                MessageBox.Show("A");//Disable Class Changes KotOR2
+
+                //byte changes
+                //script swaps
+
+                key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
+                key.SetValue("JediK2", 0);
+                key.Close();
+            }
+            else
+            {
+                MessageBox.Show("B");//Enable Class Changes KotOR2
+
+                //byte changes
+                //script swaps
+
+                key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
+                key.SetValue("JediK2", 1);
+                key.Close();
+            }
         }
     }
 }
