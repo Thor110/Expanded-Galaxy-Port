@@ -9,7 +9,8 @@ namespace Launcher
         private RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy")!;
         public int game = 1; // which game is active.
         public bool combo; // disables the comboBox until the items have been added and the relevant index is selected.
-                            // and disables the button focus until the background music has been played which prevents the button being highlighted on startup.
+                           // and disables the button focus until the background music has been played which prevents the button being highlighted on startup.
+        public bool config;
         private CancellationTokenSource cts = null!;
         private WaveOutEvent waveOutEvent = null!;
         private Button previouslyFocusedButton = null!;
@@ -103,10 +104,50 @@ namespace Launcher
             else { Process.Start("swkotor2.exe"); }
             Close();
         }
-        private void configure_Click(object sender, EventArgs e) { click_play(); MessageBox.Show("No Extra Settings Yet!"); }
+        private void configure_Click(object sender, EventArgs e)
+        {
+            click_play();
+            // config page prep
+            MessageBox.Show("No Extra Settings Yet!");
+            /*if (game == 1)
+            {
+                button2.Visible = false;
+                button3.Visible = false;
+                button4.Visible = false;
+                button5.Visible = false;
+                comboBox1.Visible = false;
+                button1.Text = "Back";
+                config = true;
+            }
+            if (game == 2)
+            {
+                /*button2.Visible = false;
+                button3.Visible = false;
+                button4.Visible = false;
+                button5.Visible = false;
+                comboBox1.Visible = false;
+                button1.Text = "Back";
+                config = true;
+            }*/
+        }
         private void website_Click(object sender, EventArgs e) { click_play(); Process.Start(new ProcessStartInfo("https://www.moddb.com/mods/kotor-ii-tsl-expanded-galaxy") { UseShellExecute = true }); }
         private void discord_Click(object sender, EventArgs e) { click_play(); Process.Start(new ProcessStartInfo("https://discord.gg/bkbj8Feu7b") { UseShellExecute = true }); }
-        private void close_Click(object sender, EventArgs e) { click_play(); Close(); }
+        private void close_Click(object sender, EventArgs e)
+        {
+            click_play();
+            if (!config) { Close(); }
+            else
+            {
+                button2.Visible = true;
+                button3.Visible = true;
+                button4.Visible = true;
+                button5.Visible = true;
+                comboBox1.Visible = true;
+                button1.Text = "Exit";
+                config = false;
+                // button 1 is highlighted for some reason?
+            }
+        }
         public void PlaySound(string soundFilePath)
         {
             using (var waveFileReader = new WaveFileReader(soundFilePath))

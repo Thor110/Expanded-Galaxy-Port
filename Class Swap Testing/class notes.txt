@@ -14,6 +14,80 @@ UTC Class Numbers Updated
 
 original class description strings changed
 
+StrRef = 48033 = A1 BB = "Jedi Guardian Description"
+Steam Aspyr
+@583FF9 = Male Jedi Guardian Description
+@58401B = Female Jedi Guardian Description
+GOG Aspyr
+@58287B = Male
+@582859 = Female
+Disc NO-CD Patch
+@42602C = Male
+@426034 = Female
+
+StrRef = 48032 = A0 BB = "Jedi Sentinel Description"
+Steam
+@583FD5 = Male Jedi Sentinel Description
+@58403F = Female Jedi Sentinel Description
+GOG Aspyr
+@582835 = Male
+@58289F = Female
+Disc NO-CD Patch
+@426024 = Male
+@42603C = Female
+
+StrRef = 48031 = 9F BB = "Jedi Consular Description"
+Steam
+@583FB1 = Male Jedi Consular Description
+@584063 = Female Jedi Consular Description
+GOG Aspyr
+@582811 = Male
+@5828C3 = Female
+Disc NO-CD Patch
+@42601C = Male
+@426044 = Female
+
+StrRef = 353 = 61 01 = "Jedi Guardian"
+Steam
+@4F9EDD
+GOG Aspyr
+@1DE29D
+Disc NO-CD Patch
+@3499F6
+
+StrRef = 354 = 62 01 = "Jedi Consular"
+Steam
+@4F9D21
+GOG Aspyr
+@1DE0E1
+Disc NO-CD Patch
+@3498E9
+
+StrRef = 355 = 63 01 = "Jedi Sentinel"
+Steam
+@4F9E0C
+GOG Aspyr
+@1DE1CC
+Disc NO-CD Patch
+@349979
+
+Class Values = 03 04 05
+Steam
+@599D9B
+GoG Aspyr
+@58BD74
+Disc NO-CD Patch
+@3C3E61
+
+Possible 353 Extras?
+
+4F9E0C??????? Extra? Untested
+173555 = NOPE?
+
+
+
+
+
 48031, 48032, 48033
 
 original class names strings changes
