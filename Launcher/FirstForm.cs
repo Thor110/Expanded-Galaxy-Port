@@ -8,7 +8,7 @@ namespace Launcher
     {
         private RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy")!;
         public int game = 1; // which game is active.
-        public int jedi = 0; // are jedi classes enabled or disabled.
+        public bool jedi = false; // are jedi classes swapped.
         public bool combo; // disables the comboBox until the items have been added and the relevant index is selected.
                            // and disables the button focus until the background music has been played which prevents the button being highlighted on startup.
         public bool config; // viewing the configuration page.
@@ -25,7 +25,7 @@ namespace Launcher
         }
         private void InitializeRegistry()
         {
-            if (key != null) { game = (int)key.GetValue("Game")!; jedi = (int)key.GetValue("JediK1")!; }
+            if (key != null) { game = (int)key.GetValue("Game")!; jedi = Convert.ToBoolean((int)key.GetValue("JediK1")!);  }
             else { key = Registry.CurrentUser.CreateSubKey(@"Expanded Galaxy"); key.SetValue("Game", game); key.SetValue("JediK1", jedi); key.SetValue("JediK2", jedi); }
             if (game == 1) { PlayBackgroundSound(Properties.Resources.k1background); }
             if (game == 2)
@@ -34,7 +34,7 @@ namespace Launcher
                 comboBox1.SelectedIndex = 1;
                 this.BackgroundImage = Properties.Resources.k2swlauncher1;
             }
-            if (jedi == 1) { checkBox1.Checked = true; }
+            if (jedi == true) { checkBox1.Checked = true; }
             key.Close();
             combo = true;
         }
@@ -44,7 +44,7 @@ namespace Launcher
             if (comboBox1.SelectedIndex == 0 && game == 2) { setKotOR1(); }
             else if (comboBox1.SelectedIndex != 0 && game == 1) { setKotOR2(); }
         }
-        private void setReg() { key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!; key.SetValue("Game", game); jedi = (int)key.GetValue($"JediK{game}")!; key.Close(); }
+        private void setReg() { key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!; key.SetValue("Game", game); jedi = (bool)key.GetValue($"JediK{game}")!; key.Close(); }
         private void setKotOR1()
         {
             game = 1;
