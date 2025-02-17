@@ -270,8 +270,7 @@ namespace Launcher
             if (!checkBox2.Checked)
             {
                 enable();//Enable Class Changes KotOR2
-                rewrite_Bytes(replacements);
-                //script swaps go here
+                rewrite_Bytes(replacements);//Byte Swaps //script swaps go here
                 key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
                 key.SetValue("JediK2", 0);
                 key.Close();
@@ -279,8 +278,7 @@ namespace Launcher
             else
             {
                 disable();//Disable Class Changes KotOR2
-                rewrite_Bytes(replacements);
-                //script swaps go here
+                rewrite_Bytes(replacements);//Byte Swaps //script swaps go here
                 key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
                 key.SetValue("JediK2", 1);
                 key.Close();

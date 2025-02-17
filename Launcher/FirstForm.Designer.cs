@@ -36,8 +36,8 @@
             button5 = new CustomButton();
             comboBox1 = new ComboBox();
             checkBox1 = new CheckBox();
-            checkBox2 = new CheckBox();
             pictureBox1 = new PictureBox();
+            checkBox2 = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -173,7 +173,7 @@
             checkBox1.BackColor = Color.Transparent;
             checkBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox1.ForeColor = SystemColors.AppWorkspace;
-            checkBox1.Location = new Point(247, 218);
+            checkBox1.Location = new Point(236, 218);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(135, 19);
             checkBox1.TabIndex = 7;
@@ -181,21 +181,6 @@
             checkBox1.UseVisualStyleBackColor = false;
             checkBox1.Visible = false;
             checkBox1.CheckedChanged += checkBox1_CheckedChanged;
-            // 
-            // checkBox2
-            // 
-            checkBox2.AutoSize = true;
-            checkBox2.BackColor = Color.Transparent;
-            checkBox2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            checkBox2.ForeColor = SystemColors.AppWorkspace;
-            checkBox2.Location = new Point(271, 218);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(111, 19);
-            checkBox2.TabIndex = 8;
-            checkBox2.Text = "KotOR1 Classes";
-            checkBox2.UseVisualStyleBackColor = false;
-            checkBox2.Visible = false;
-            checkBox2.CheckedChanged += checkBox2_CheckedChanged;
             // 
             // pictureBox1
             // 
@@ -205,6 +190,21 @@
             pictureBox1.Size = new Size(182, 168);
             pictureBox1.TabIndex = 9;
             pictureBox1.TabStop = false;
+            // 
+            // checkBox2
+            // 
+            checkBox2.AutoSize = true;
+            checkBox2.BackColor = Color.Transparent;
+            checkBox2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            checkBox2.ForeColor = SystemColors.AppWorkspace;
+            checkBox2.Location = new Point(236, 218);
+            checkBox2.Name = "checkBox2";
+            checkBox2.Size = new Size(111, 19);
+            checkBox2.TabIndex = 8;
+            checkBox2.Text = "KotOR1 Classes";
+            checkBox2.UseVisualStyleBackColor = false;
+            checkBox2.Visible = false;
+            checkBox2.CheckedChanged += checkBox2_CheckedChanged;
             // 
             // FirstForm
             // 
@@ -246,7 +246,7 @@
         private CustomButton button4;
         private CustomButton button5;
         private CheckBox checkBox1;
-        private CheckBox checkBox2;
         private PictureBox pictureBox1;
+        private CheckBox checkBox2;
     }
 }
