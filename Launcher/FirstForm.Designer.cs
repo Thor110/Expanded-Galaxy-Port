@@ -200,9 +200,9 @@
             checkBox2.ForeColor = SystemColors.AppWorkspace;
             checkBox2.Location = new Point(236, 218);
             checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(111, 19);
+            checkBox2.Size = new Size(115, 19);
             checkBox2.TabIndex = 8;
-            checkBox2.Text = "KotOR1 Classes";
+            checkBox2.Text = "Non Jedi Classes";
             checkBox2.UseVisualStyleBackColor = false;
             checkBox2.Visible = false;
             checkBox2.CheckedChanged += checkBox2_CheckedChanged;
