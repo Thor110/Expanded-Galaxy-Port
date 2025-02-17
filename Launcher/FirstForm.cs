@@ -36,7 +36,6 @@ namespace Launcher
                 comboBox1.SelectedIndex = 1;
                 this.BackgroundImage = Properties.Resources.k2swlauncher1;
             }
-            
             key.Close();
             combo = true;
         }
@@ -46,7 +45,7 @@ namespace Launcher
             if (comboBox1.SelectedIndex == 0 && game == 2) { setKotOR1(); }
             else if (comboBox1.SelectedIndex != 0 && game == 1) { setKotOR2(); }
         }
-        private void setReg() { key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!; key.SetValue("Game", game); jedi = Convert.ToBoolean((int)key.GetValue($"JediK{game}")!); key.Close(); }
+        private void setReg() { key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!; key.SetValue("Game", game); key.Close(); }
         private void setKotOR1()
         {
             game = 1;
@@ -240,22 +239,18 @@ namespace Launcher
             if (!config) { return; }
             if (!checkBox1.Checked)
             {
-                //Disable Class Changes KotOR1
-                disable();
+                disable();//Disable Class Changes KotOR1
                 rewrite_Bytes(replacements);
-                //script swaps
-
+                //script swaps go here
                 key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
                 key.SetValue("JediK1", 0);
                 key.Close();
             }
             else
             {
-                //Enable Class Changes KotOR1
-                enable();
+                enable();//Enable Class Changes KotOR1
                 rewrite_Bytes(replacements);
-                //script swaps
-
+                //script swaps go here
                 key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
                 key.SetValue("JediK1", 1);
                 key.Close();
@@ -266,22 +261,18 @@ namespace Launcher
             if (!config) { return; }
             if (!checkBox2.Checked)
             {
-                //Enable Class Changes KotOR2
-                enable();
+                enable();//Enable Class Changes KotOR2
                 rewrite_Bytes(replacements);
-                //script swaps
-
+                //script swaps go here
                 key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
                 key.SetValue("JediK2", 0);
                 key.Close();
             }
             else
             {
-                //Disable Class Changes KotOR2
-                disable();
+                disable();//Disable Class Changes KotOR2
                 rewrite_Bytes(replacements);
-                //script swaps
-
+                //script swaps go here
                 key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
                 key.SetValue("JediK2", 1);
                 key.Close();
