@@ -240,8 +240,12 @@ namespace Launcher
             if (!checkBox1.Checked)
             {
                 disable();//Disable Class Changes KotOR1
-                rewrite_Bytes(replacements);
-                //script swaps go here
+                rewrite_Bytes(replacements);//Byte Swaps //script swaps go here
+                File.Move("Override\\k_pdan_makejedi.ncs", "Override\\k_pdan_makejedi.ncs.jedi");
+                File.Move("Override\\k_pend_bedmed.ncs", "Override\\k_pend_bedmed.ncs.jedi");
+                File.Move("Override\\k_pend_bedsml.ncs", "Override\\k_pend_bedsml.ncs.jedi");
+                File.Move("Override\\k_pend_bedtal.ncs", "Override\\k_pend_bedtal.ncs.jedi");
+                File.Move("Override\\k_pend_bedtny.ncs", "Override\\k_pend_bedtny.ncs.jedi");
                 key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
                 key.SetValue("JediK1", 0);
                 key.Close();
@@ -249,8 +253,12 @@ namespace Launcher
             else
             {
                 enable();//Enable Class Changes KotOR1
-                rewrite_Bytes(replacements);
-                //script swaps go here
+                rewrite_Bytes(replacements);//Byte Swaps //script swaps go here
+                File.Move("Override\\k_pdan_makejedi.ncs.jedi", "Override\\k_pdan_makejedi.ncs");
+                File.Move("Override\\k_pend_bedmed.ncs.jedi", "Override\\k_pend_bedmed.ncs");
+                File.Move("Override\\k_pend_bedsml.ncs.jedi", "Override\\k_pend_bedsml.ncs");
+                File.Move("Override\\k_pend_bedtal.ncs.jedi", "Override\\k_pend_bedtal.ncs");
+                File.Move("Override\\k_pend_bedtny.ncs.jedi", "Override\\k_pend_bedtny.ncs");
                 key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
                 key.SetValue("JediK1", 1);
                 key.Close();
