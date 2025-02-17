@@ -1,3 +1,7 @@
 for some reason the changes made to stunt modules, ebon hawk and dantooine modules would not revert.
 
 dialog files must either be fixed or reconverted.
+
+figure out what this note actually means? I think it means the dialog node changes didn't get reverted for some reason.
+
+but it was a while back now
