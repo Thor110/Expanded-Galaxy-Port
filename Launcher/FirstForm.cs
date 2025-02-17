@@ -1,6 +1,8 @@
 using Microsoft.Win32;
 using System.Diagnostics;
 using NAudio.Wave;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System;
 
 namespace Launcher
 {
@@ -14,10 +16,10 @@ namespace Launcher
         public bool config; // viewing the configuration page.
         private CancellationTokenSource cts = null!;
         private WaveOutEvent waveOutEvent = null!;
-        private Button previouslyFocusedButton = null!;
+        private CustomButton previouslyFocusedButton = null!;
         private SemaphoreSlim hoverSemaphore = new SemaphoreSlim(1, 1);
         private List<Tuple<long, byte>> replacements = null!;
-        private ToolTip tooltip = new ToolTip();
+        private System.Windows.Forms.ToolTip tooltip = new System.Windows.Forms.ToolTip();
         private Type[] excludedControlTypes = new Type[] { typeof(PictureBox), typeof(CustomButton) };
         public FirstForm()
         {
@@ -26,6 +28,48 @@ namespace Launcher
             comboBox1.Items.Add("KotOR2");
             InitializeRegistry();
             InitializeTooltips();
+            InitializeParser();
+        }
+        private void InitializeParser()
+        {
+            // parse ini options here
+            if (!File.Exists("swkotor2.ini")) // determine what to do in the rare case that the user hasn't launched the game yet...................
+            {
+                MessageBox.Show("Please launch the game once to ensure the swkotor2.ini file is created so that some settings can be configured.");
+                checkBox4.Enabled = false; checkBox5.Enabled = false; checkBox6.Enabled = false; checkBox7.Enabled = false; checkBox8.Enabled = false;
+                return;
+            }
+            else
+            {
+                MessageBox.Show("not ready yet."); // remove this else block when parser is ready
+                checkBox4.Enabled = false; checkBox5.Enabled = false; checkBox6.Enabled = false; checkBox7.Enabled = false; checkBox8.Enabled = false;
+                return;
+            }
+            //read all lines
+            //File.ReadLines("swkotor2.ini");
+            /*
+            //Windowed / Fullscreen toggle
+            [Display Options]
+            FullScreen = 0
+            [Graphics Options]
+            FullScreen = 0
+
+            //Enable / Disable Cheats toggle
+            [Game Options]
+            EnableCheats = 1
+
+            //Hide InGame GUI toggle
+            [Game Options]
+            Hide InGame GUI = 0
+
+            //Mini Map toggle
+            [Game Options]
+            Mini Map = 1
+
+            //EnableScreenShot toggle
+            [Game Options]
+            EnableScreenShot = 0
+            */
         }
         private void InitializeRegistry()
         {
@@ -56,7 +100,7 @@ namespace Launcher
         private void InitializeTooltips()
         {
             this.components = new System.ComponentModel.Container();
-            this.tooltip = new ToolTip(this.components);
+            this.tooltip = new System.Windows.Forms.ToolTip(this.components);
             foreach (Control control in this.Controls)
             {
                 if (excludedControlTypes.Contains(control.GetType()) != true)
@@ -166,6 +210,11 @@ namespace Launcher
                 config = true;
                 checkBox1.Visible = true;
                 checkBox3.Visible = true;
+                checkBox4.Visible = true;
+                checkBox5.Visible = true;
+                checkBox6.Visible = true;
+                checkBox7.Visible = true;
+                checkBox8.Visible = true;
             }
             if (game == 2)
             {
@@ -178,6 +227,11 @@ namespace Launcher
                 config = true;
                 checkBox2.Visible = true;
                 checkBox3.Visible = true;
+                checkBox4.Visible = true;
+                checkBox5.Visible = true;
+                checkBox6.Visible = true;
+                checkBox7.Visible = true;
+                checkBox8.Visible = true;
             }
         }
         private void website_Click(object sender, EventArgs e) { click_play(); Process.Start(new ProcessStartInfo("https://www.moddb.com/mods/kotor-ii-tsl-expanded-galaxy") { UseShellExecute = true }); }
@@ -199,6 +253,11 @@ namespace Launcher
                 if (game == 1) { checkBox1.Visible = false; }
                 if (game == 2) { checkBox2.Visible = false; }
                 checkBox3.Visible = false;
+                checkBox4.Visible = false;
+                checkBox5.Visible = false;
+                checkBox6.Visible = false;
+                checkBox7.Visible = false;
+                checkBox8.Visible = false;
             }
         }
         public void PlaySound(string soundFilePath)
@@ -256,29 +315,16 @@ namespace Launcher
         {
             if (combo) { combo = false; return; }
             if (previouslyFocusedButton != null) { button_MouseLeave(previouslyFocusedButton, EventArgs.Empty); }
-            if (game == 1) { ((Button)sender).BackgroundImage = Properties.Resources.mouseover; }
-            if (game == 2) { ((Button)sender).BackgroundImage = Properties.Resources.k2mouseover; }
-            previouslyFocusedButton = (Button)sender;
+            if (game == 1) { ((CustomButton)sender).BackgroundImage = Properties.Resources.mouseover; }
+            if (game == 2) { ((CustomButton)sender).BackgroundImage = Properties.Resources.k2mouseover; }
+            previouslyFocusedButton = (CustomButton)sender;
             hover_play();
         }
-        private void button_MouseLeave(object sender, EventArgs e) { ((Button)sender).BackgroundImage = null; }
+        private void button_MouseLeave(object sender, EventArgs e) { ((CustomButton)sender).BackgroundImage = null; }
         private void button_MouseDown(object sender, EventArgs e)
         {
-            if (game == 1) { ((Button)sender).BackgroundImage = Properties.Resources.mousedown; }
-            if (game == 2) { ((Button)sender).BackgroundImage = Properties.Resources.k2mousedown; }
-        }
-        private void rewrite_Bytes(List<Tuple<long, byte>> replacements)
-        {
-            using (var stream = new FileStream("swkotor2.exe", FileMode.Open, FileAccess.ReadWrite))
-            {
-                using (var reader = new BinaryReader(stream))
-                {
-                    using (var writer = new BinaryWriter(stream))
-                    {
-                        BinaryUtility.Replace(reader, writer, replacements);
-                    }
-                }
-            }
+            if (game == 1) { ((CustomButton)sender).BackgroundImage = Properties.Resources.mousedown; }
+            if (game == 2) { ((CustomButton)sender).BackgroundImage = Properties.Resources.k2mousedown; }
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -328,6 +374,79 @@ namespace Launcher
                 key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
                 key.SetValue("JediK2", 1);
                 key.Close();
+            }
+        }
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!config) { return; }
+            if (!checkBox3.Checked)
+            {
+                File.Move("Override\\regeneration.2da.sets", "Override\\regeneration.2da");
+                key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
+                key.SetValue("Health", 0);
+                key.Close();
+            }
+            else
+            {
+                File.Move("Override\\regeneration.2da", "Override\\regeneration.2da.sets");
+                key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
+                key.SetValue("Health", 1);
+                key.Close();
+            }
+        }
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+            /*
+            //Windowed / Fullscreen toggle
+            [Display Options]
+            FullScreen = 0
+            [Graphics Options]
+            FullScreen = 0
+            */
+        }
+        private void checkBox5_CheckedChanged(object sender, EventArgs e)
+        {
+            /*
+            //Enable / Disable Cheats toggle
+            [Game Options]
+            EnableCheats = 1
+            */
+        }
+        private void checkBox6_CheckedChanged(object sender, EventArgs e)
+        {
+            /*
+            //Hide InGame GUI toggle
+            [Game Options]
+            Hide InGame GUI = 0
+            */
+        }
+        private void checkBox7_CheckedChanged(object sender, EventArgs e)
+        {
+            /*
+            //Mini Map toggle
+            [Game Options]
+            Mini Map = 1
+            */
+        }
+        private void checkBox8_CheckedChanged(object sender, EventArgs e)
+        {
+            /*
+            //EnableScreenShot toggle
+            [Game Options]
+            EnableScreenShot = 0
+            */
+        }
+        private void rewrite_Bytes(List<Tuple<long, byte>> replacements)
+        {
+            using (var stream = new FileStream("swkotor2.exe", FileMode.Open, FileAccess.ReadWrite))
+            {
+                using (var reader = new BinaryReader(stream))
+                {
+                    using (var writer = new BinaryWriter(stream))
+                    {
+                        BinaryUtility.Replace(reader, writer, replacements);
+                    }
+                }
             }
         }
         private void enable()
@@ -520,24 +639,6 @@ namespace Launcher
                     Tuple.Create(0x3C3E62L, (byte)0x02),
                     Tuple.Create(0x3C3E63L, (byte)0x01),
                 };
-            }
-        }
-        private void checkBox3_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!config) { return; }
-            if (!checkBox3.Checked)
-            {
-                File.Move("Override\\regeneration.2da.sets", "Override\\regeneration.2da");
-                key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
-                key.SetValue("Health", 0);
-                key.Close();
-            }
-            else
-            {
-                File.Move("Override\\regeneration.2da", "Override\\regeneration.2da.sets");
-                key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
-                key.SetValue("Health", 1);
-                key.Close();
             }
         }
     }
