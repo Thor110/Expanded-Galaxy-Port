@@ -16,6 +16,7 @@ namespace Launcher
         private WaveOutEvent waveOutEvent = null!;
         private Button previouslyFocusedButton = null!;
         private SemaphoreSlim hoverSemaphore = new SemaphoreSlim(1, 1);
+        private List<Tuple<long, byte>> replacements = null!;
         public FirstForm()
         {
             InitializeComponent();
@@ -25,16 +26,17 @@ namespace Launcher
         }
         private void InitializeRegistry()
         {
-            if (key != null) { game = (int)key.GetValue("Game")!; jedi = Convert.ToBoolean((int)key.GetValue("JediK1")!);  }
+            if (key != null) { game = (int)key.GetValue("Game")!; jedi = Convert.ToBoolean((int)key.GetValue($"JediK{game}")!);  }
             else { key = Registry.CurrentUser.CreateSubKey(@"Expanded Galaxy"); key.SetValue("Game", game); key.SetValue("JediK1", jedi); key.SetValue("JediK2", jedi); }
-            if (game == 1) { PlayBackgroundSound(Properties.Resources.k1background); }
+            if (game == 1) { PlayBackgroundSound(Properties.Resources.k1background); if (jedi == true) { checkBox1.Checked = true; } }
             if (game == 2)
             {
                 PlayBackgroundSound(Properties.Resources.background);
+                if (jedi == true) { checkBox2.Checked = true; }
                 comboBox1.SelectedIndex = 1;
                 this.BackgroundImage = Properties.Resources.k2swlauncher1;
             }
-            if (jedi == true) { checkBox1.Checked = true; }
+            
             key.Close();
             combo = true;
         }
@@ -150,14 +152,8 @@ namespace Launcher
                 button1.Text = "Exit";
                 config = false;
                 // button 1 is highlighted for some reason?
-                if (game == 1)
-                {
-                    checkBox1.Visible = false;
-                }
-                if (game == 2)
-                {
-                    checkBox2.Visible = false;
-                }
+                if (game == 1) { checkBox1.Visible = false; }
+                if (game == 2) { checkBox2.Visible = false; }
             }
         }
         public void PlaySound(string soundFilePath)
@@ -226,14 +222,27 @@ namespace Launcher
             if (game == 1) { ((Button)sender).BackgroundImage = Properties.Resources.mousedown; }
             if (game == 2) { ((Button)sender).BackgroundImage = Properties.Resources.k2mousedown; }
         }
+        private void rewrite_Bytes(List<Tuple<long, byte>> replacements)
+        {
+            using (var stream = new FileStream("swkotor2.exe", FileMode.Open, FileAccess.ReadWrite))
+            {
+                using (var reader = new BinaryReader(stream))
+                {
+                    using (var writer = new BinaryWriter(stream))
+                    {
+                        BinaryUtility.Replace(reader, writer, replacements);
+                    }
+                }
+            }
+        }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (!config) { return; }
             if (!checkBox1.Checked)
             {
-                MessageBox.Show("A");//Disable Class Changes KotOR1
-
-                //byte changes
+                //Disable Class Changes KotOR1
+                disable();
+                rewrite_Bytes(replacements);
                 //script swaps
 
                 key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
@@ -242,9 +251,9 @@ namespace Launcher
             }
             else
             {
-                MessageBox.Show("B");//Enable Class Changes KotOR1
-
-                //byte changes
+                //Enable Class Changes KotOR1
+                enable();
+                rewrite_Bytes(replacements);
                 //script swaps
 
                 key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
@@ -257,9 +266,9 @@ namespace Launcher
             if (!config) { return; }
             if (!checkBox2.Checked)
             {
-                MessageBox.Show("A");//Disable Class Changes KotOR2
-
-                //byte changes
+                //Enable Class Changes KotOR2
+                enable();
+                rewrite_Bytes(replacements);
                 //script swaps
 
                 key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
@@ -268,14 +277,206 @@ namespace Launcher
             }
             else
             {
-                MessageBox.Show("B");//Enable Class Changes KotOR2
-
-                //byte changes
+                //Disable Class Changes KotOR2
+                disable();
+                rewrite_Bytes(replacements);
                 //script swaps
 
                 key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
                 key.SetValue("JediK2", 1);
                 key.Close();
+            }
+        }
+        private void enable()
+        {
+            if (File.Exists("steam_api.dll"))
+            {
+                replacements = new List<Tuple<long, byte>>()
+                {
+                    Tuple.Create(0x583FF9L, (byte)0xA1),
+                    Tuple.Create(0x583FFAL, (byte)0xBB),
+                    Tuple.Create(0x58401BL, (byte)0xA1),
+                    Tuple.Create(0x58401CL, (byte)0xBB),
+
+                    Tuple.Create(0x583FD5L, (byte)0xA0),
+                    Tuple.Create(0x583FD6L, (byte)0xBB),
+                    Tuple.Create(0x58403FL, (byte)0xA0),
+                    Tuple.Create(0x584040L, (byte)0xBB),
+
+                    Tuple.Create(0x583FB1L, (byte)0x9F),
+                    Tuple.Create(0x583FB2L, (byte)0xBB),
+                    Tuple.Create(0x584063L, (byte)0x9F),
+                    Tuple.Create(0x584064L, (byte)0xBB),
+
+                    Tuple.Create(0x4F9EDDL, (byte)0x61),
+                    Tuple.Create(0x4F9EDEL, (byte)0x01),
+                    Tuple.Create(0x4F9D21L, (byte)0x62),
+                    Tuple.Create(0x4F9D22L, (byte)0x01),
+                    Tuple.Create(0x4F9E0CL, (byte)0x63),
+                    Tuple.Create(0x4F9E0DL, (byte)0x01),
+
+                    Tuple.Create(0x599D9BL, (byte)0x03),
+                    Tuple.Create(0x599D9CL, (byte)0x04),
+                    Tuple.Create(0x599D9DL, (byte)0x05),
+                };
+            }
+            else if (File.Exists("gog.ico"))
+            {
+                replacements = new List<Tuple<long, byte>>()
+                {
+                    Tuple.Create(0x58287BL, (byte)0xA1),
+                    Tuple.Create(0x58287CL, (byte)0xBB),
+                    Tuple.Create(0x582859L, (byte)0xA1),
+                    Tuple.Create(0x58285AL, (byte)0xBB),
+
+                    Tuple.Create(0x582835L, (byte)0xA0),
+                    Tuple.Create(0x582836L, (byte)0xBB),
+                    Tuple.Create(0x58289FL, (byte)0xA0),
+                    Tuple.Create(0x5828A0L, (byte)0xBB),
+
+                    Tuple.Create(0x582811L, (byte)0x9F),
+                    Tuple.Create(0x582812L, (byte)0xBB),
+                    Tuple.Create(0x5828C3L, (byte)0x9F),
+                    Tuple.Create(0x5828C4L, (byte)0xBB),
+
+                    Tuple.Create(0x1DE29DL, (byte)0x61),
+                    Tuple.Create(0x1DE29EL, (byte)0x01),
+                    Tuple.Create(0x1DE0E1L, (byte)0x62),
+                    Tuple.Create(0x1DE0E2L, (byte)0x01),
+                    Tuple.Create(0x1DE1CCL, (byte)0x63),
+                    Tuple.Create(0x1DE1CDL, (byte)0x01),
+
+                    Tuple.Create(0x58BD74L, (byte)0x03),
+                    Tuple.Create(0x58BD75L, (byte)0x04),
+                    Tuple.Create(0x58BD76L, (byte)0x05),
+                };
+            }
+            else if (File.Exists("swupdate.exe"))
+            {
+                replacements = new List<Tuple<long, byte>>()
+                {
+                    Tuple.Create(0x42602CL, (byte)0xA1),
+                    Tuple.Create(0x42602DL, (byte)0xBB),
+                    Tuple.Create(0x426034L, (byte)0xA1),
+                    Tuple.Create(0x426035L, (byte)0xBB),
+
+                    Tuple.Create(0x426024L, (byte)0xA0),
+                    Tuple.Create(0x426025L, (byte)0xBB),
+                    Tuple.Create(0x42603CL, (byte)0xA0),
+                    Tuple.Create(0x42603DL, (byte)0xBB),
+
+                    Tuple.Create(0x42601CL, (byte)0x9F),
+                    Tuple.Create(0x42601DL, (byte)0xBB),
+                    Tuple.Create(0x426044L, (byte)0x9F),
+                    Tuple.Create(0x426045L, (byte)0xBB),
+
+                    Tuple.Create(0x3499F6L, (byte)0x61),
+                    Tuple.Create(0x3499F7L, (byte)0x01),
+                    Tuple.Create(0x3498E9L, (byte)0x62),
+                    Tuple.Create(0x3498EAL, (byte)0x01),
+                    Tuple.Create(0x349979L, (byte)0x63),
+                    Tuple.Create(0x34997AL, (byte)0x01),
+
+                    Tuple.Create(0x3C3E61L, (byte)0x03),
+                    Tuple.Create(0x3C3E62L, (byte)0x04),
+                    Tuple.Create(0x3C3E63L, (byte)0x05),
+                };
+            }
+        }
+        private void disable()
+        {
+            if (File.Exists("steam_api.dll"))
+            {
+                replacements = new List<Tuple<long, byte>>()
+                {
+                    Tuple.Create(0x583FF9L, (byte)0x6F),
+                    Tuple.Create(0x583FFAL, (byte)0x7D),
+                    Tuple.Create(0x58401BL, (byte)0x6F),
+                    Tuple.Create(0x58401CL, (byte)0x7D),
+
+                    Tuple.Create(0x583FD5L, (byte)0x6E),
+                    Tuple.Create(0x583FD6L, (byte)0x7D),
+                    Tuple.Create(0x58403FL, (byte)0x6E),
+                    Tuple.Create(0x584040L, (byte)0x7D),
+
+                    Tuple.Create(0x583FB1L, (byte)0x6D),
+                    Tuple.Create(0x583FB2L, (byte)0x7D),
+                    Tuple.Create(0x584063L, (byte)0x6D),
+                    Tuple.Create(0x584064L, (byte)0x7D),
+
+                    Tuple.Create(0x4F9EDDL, (byte)0x86),
+                    Tuple.Create(0x4F9EDEL, (byte)0x00),
+                    Tuple.Create(0x4F9D21L, (byte)0x87),
+                    Tuple.Create(0x4F9D22L, (byte)0x00),
+                    Tuple.Create(0x4F9E0CL, (byte)0x85),
+                    Tuple.Create(0x4F9E0DL, (byte)0x00),
+
+                    Tuple.Create(0x599D9BL, (byte)0x00),
+                    Tuple.Create(0x599D9CL, (byte)0x02),
+                    Tuple.Create(0x599D9DL, (byte)0x01),
+                };
+            }
+            else if (File.Exists("gog.ico"))
+            {
+                replacements = new List<Tuple<long, byte>>()
+                {
+                    Tuple.Create(0x58287BL, (byte)0x6F),
+                    Tuple.Create(0x58287CL, (byte)0x7D),
+                    Tuple.Create(0x582859L, (byte)0x6F),
+                    Tuple.Create(0x58285AL, (byte)0x7D),
+
+                    Tuple.Create(0x582835L, (byte)0x6E),
+                    Tuple.Create(0x582836L, (byte)0x7D),
+                    Tuple.Create(0x58289FL, (byte)0x6E),
+                    Tuple.Create(0x5828A0L, (byte)0x7D),
+
+                    Tuple.Create(0x582811L, (byte)0x6D),
+                    Tuple.Create(0x582812L, (byte)0x7D),
+                    Tuple.Create(0x5828C3L, (byte)0x6D),
+                    Tuple.Create(0x5828C4L, (byte)0x7D),
+
+                    Tuple.Create(0x1DE29DL, (byte)0x86),
+                    Tuple.Create(0x1DE29EL, (byte)0x00),
+                    Tuple.Create(0x1DE0E1L, (byte)0x87),
+                    Tuple.Create(0x1DE0E2L, (byte)0x00),
+                    Tuple.Create(0x1DE1CCL, (byte)0x85),
+                    Tuple.Create(0x1DE1CDL, (byte)0x00),
+
+                    Tuple.Create(0x58BD74L, (byte)0x00),
+                    Tuple.Create(0x58BD75L, (byte)0x02),
+                    Tuple.Create(0x58BD76L, (byte)0x01),
+                };
+            }
+            else if (File.Exists("swupdate.exe"))
+            {
+                replacements = new List<Tuple<long, byte>>()
+                {
+                    Tuple.Create(0x42602CL, (byte)0x6F),
+                    Tuple.Create(0x42602DL, (byte)0x7D),
+                    Tuple.Create(0x426034L, (byte)0x6F),
+                    Tuple.Create(0x426035L, (byte)0x7D),
+
+                    Tuple.Create(0x426024L, (byte)0x6E),
+                    Tuple.Create(0x426025L, (byte)0x7D),
+                    Tuple.Create(0x42603CL, (byte)0x6E),
+                    Tuple.Create(0x42603DL, (byte)0x7D),
+
+                    Tuple.Create(0x42601CL, (byte)0x6D),
+                    Tuple.Create(0x42601DL, (byte)0x7D),
+                    Tuple.Create(0x426044L, (byte)0x6D),
+                    Tuple.Create(0x426045L, (byte)0x7D),
+
+                    Tuple.Create(0x3499F6L, (byte)0x86),
+                    Tuple.Create(0x3499F7L, (byte)0x00),
+                    Tuple.Create(0x3498E9L, (byte)0x87),
+                    Tuple.Create(0x3498EAL, (byte)0x00),
+                    Tuple.Create(0x349979L, (byte)0x85),
+                    Tuple.Create(0x34997AL, (byte)0x00),
+
+                    Tuple.Create(0x3C3E61L, (byte)0x00),
+                    Tuple.Create(0x3C3E62L, (byte)0x02),
+                    Tuple.Create(0x3C3E63L, (byte)0x01),
+                };
             }
         }
     }
