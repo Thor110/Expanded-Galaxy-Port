@@ -26,8 +26,15 @@ namespace Launcher
         }
         private void InitializeRegistry()
         {
-            if (key != null) { game = (int)key.GetValue("Game")!; jedi = Convert.ToBoolean((int)key.GetValue($"JediK{game}")!);  }
-            else { key = Registry.CurrentUser.CreateSubKey(@"Expanded Galaxy"); key.SetValue("Game", game); key.SetValue("JediK1", jedi); key.SetValue("JediK2", jedi); }
+            if (key != null) { game = (int)key.GetValue("Game")!; jedi = Convert.ToBoolean((int)key.GetValue($"JediK{game}")!); }
+            else
+            {
+                key = Registry.CurrentUser.CreateSubKey(@"Expanded Galaxy");
+                key.SetValue("Game", game);
+                key.SetValue("JediK1", Convert.ToInt32(jedi));
+                key.SetValue("JediK2", Convert.ToInt32(jedi));
+                key.SetValue("Health", Convert.ToInt32(true));
+            }
             if (game == 1) { PlayBackgroundSound(Properties.Resources.k1background); if (jedi == true) { checkBox1.Checked = true; } }
             if (game == 2)
             {
@@ -35,6 +42,10 @@ namespace Launcher
                 if (jedi == true) { checkBox2.Checked = true; }
                 comboBox1.SelectedIndex = 1;
                 this.BackgroundImage = Properties.Resources.k2swlauncher1;
+            }
+            if (Convert.ToBoolean((int)key.GetValue("Health")!) == false)
+            {
+                checkBox3.Checked = false;
             }
             key.Close();
             combo = true;
@@ -122,6 +133,7 @@ namespace Launcher
                 button1.Text = "Back";
                 config = true;
                 checkBox1.Visible = true;
+                checkBox3.Visible = true;
             }
             if (game == 2)
             {
@@ -133,6 +145,7 @@ namespace Launcher
                 button1.Text = "Back";
                 config = true;
                 checkBox2.Visible = true;
+                checkBox3.Visible = true;
             }
         }
         private void website_Click(object sender, EventArgs e) { click_play(); Process.Start(new ProcessStartInfo("https://www.moddb.com/mods/kotor-ii-tsl-expanded-galaxy") { UseShellExecute = true }); }
@@ -153,6 +166,7 @@ namespace Launcher
                 // button 1 is highlighted for some reason?
                 if (game == 1) { checkBox1.Visible = false; }
                 if (game == 2) { checkBox2.Visible = false; }
+                checkBox3.Visible = false;
             }
         }
         public void PlaySound(string soundFilePath)
@@ -474,6 +488,24 @@ namespace Launcher
                     Tuple.Create(0x3C3E62L, (byte)0x02),
                     Tuple.Create(0x3C3E63L, (byte)0x01),
                 };
+            }
+        }
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!config) { return; }
+            if (!checkBox3.Checked)
+            {
+                File.Move("Override\\regeneration.2da.sets", "Override\\regeneration.2da");
+                key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
+                key.SetValue("Health", 0);
+                key.Close();
+            }
+            else
+            {
+                File.Move("Override\\regeneration.2da", "Override\\regeneration.2da.sets");
+                key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
+                key.SetValue("Health", 1);
+                key.Close();
             }
         }
     }

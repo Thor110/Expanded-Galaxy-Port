@@ -38,6 +38,7 @@
             checkBox1 = new CheckBox();
             pictureBox1 = new PictureBox();
             checkBox2 = new CheckBox();
+            checkBox3 = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -206,6 +207,23 @@
             checkBox2.Visible = false;
             checkBox2.CheckedChanged += checkBox2_CheckedChanged;
             // 
+            // checkBox3
+            // 
+            checkBox3.AutoSize = true;
+            checkBox3.BackColor = Color.Transparent;
+            checkBox3.Checked = true;
+            checkBox3.CheckState = CheckState.Checked;
+            checkBox3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            checkBox3.ForeColor = SystemColors.AppWorkspace;
+            checkBox3.Location = new Point(236, 261);
+            checkBox3.Name = "checkBox3";
+            checkBox3.Size = new Size(142, 19);
+            checkBox3.TabIndex = 10;
+            checkBox3.Text = "Health Regeneration";
+            checkBox3.UseVisualStyleBackColor = false;
+            checkBox3.Visible = false;
+            checkBox3.CheckedChanged += checkBox3_CheckedChanged;
+            // 
             // FirstForm
             // 
             AcceptButton = button5;
@@ -215,6 +233,7 @@
             BackgroundImageLayout = ImageLayout.Zoom;
             CancelButton = button1;
             ClientSize = new Size(600, 560);
+            Controls.Add(checkBox3);
             Controls.Add(checkBox2);
             Controls.Add(checkBox1);
             Controls.Add(comboBox1);
@@ -248,5 +267,6 @@
         private CheckBox checkBox1;
         private PictureBox pictureBox1;
         private CheckBox checkBox2;
+        private CheckBox checkBox3;
     }
 }
