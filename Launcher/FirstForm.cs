@@ -44,7 +44,7 @@ namespace Launcher
             if (comboBox1.SelectedIndex == 0 && game == 2) { setKotOR1(); }
             else if (comboBox1.SelectedIndex != 0 && game == 1) { setKotOR2(); }
         }
-        private void setReg() { key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!; key.SetValue("Game", game); jedi = (bool)key.GetValue($"JediK{game}")!; key.Close(); }
+        private void setReg() { key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!; key.SetValue("Game", game); jedi = Convert.ToBoolean((int)key.GetValue($"JediK{game}")!); key.Close(); }
         private void setKotOR1()
         {
             game = 1;
