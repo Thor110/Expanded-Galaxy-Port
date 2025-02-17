@@ -159,6 +159,7 @@
             // 
             // comboBox1
             // 
+            comboBox1.AccessibleDescription = "Changes which game is active.";
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(136, 527);
             comboBox1.Name = "comboBox1";
@@ -170,6 +171,7 @@
             // 
             // checkBox1
             // 
+            checkBox1.AccessibleDescription = "Enables or disables Jedi From The Start.";
             checkBox1.AutoSize = true;
             checkBox1.BackColor = Color.Transparent;
             checkBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
@@ -194,6 +196,7 @@
             // 
             // checkBox2
             // 
+            checkBox2.AccessibleDescription = "Enables or disables Non Jedi Classes.";
             checkBox2.AutoSize = true;
             checkBox2.BackColor = Color.Transparent;
             checkBox2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
@@ -209,6 +212,7 @@
             // 
             // checkBox3
             // 
+            checkBox3.AccessibleDescription = "Enables or disables health regeneration.";
             checkBox3.AutoSize = true;
             checkBox3.BackColor = Color.Transparent;
             checkBox3.Checked = true;

@@ -17,12 +17,15 @@ namespace Launcher
         private Button previouslyFocusedButton = null!;
         private SemaphoreSlim hoverSemaphore = new SemaphoreSlim(1, 1);
         private List<Tuple<long, byte>> replacements = null!;
+        private ToolTip tooltip = new ToolTip();
+        private Type[] excludedControlTypes = new Type[] { typeof(PictureBox), typeof(CustomButton) };
         public FirstForm()
         {
             InitializeComponent();
             comboBox1.Items.Add("KotOR1");
             comboBox1.Items.Add("KotOR2");
             InitializeRegistry();
+            InitializeTooltips();
         }
         private void InitializeRegistry()
         {
@@ -49,6 +52,35 @@ namespace Launcher
             }
             key.Close();
             combo = true;
+        }
+        private void InitializeTooltips()
+        {
+            this.components = new System.ComponentModel.Container();
+            this.tooltip = new ToolTip(this.components);
+            foreach (Control control in this.Controls)
+            {
+                if (excludedControlTypes.Contains(control.GetType()) != true)
+                {
+                    control.MouseEnter += new EventHandler(tooltip_MouseEnter);
+                    control.MouseLeave += new EventHandler(tooltip_MouseLeave);
+                }
+            }
+        }
+        void tooltip_MouseEnter(object? sender, EventArgs e)
+        {
+            Control control = (Control)sender!;
+            if (control.AccessibleDescription != null)
+            {
+                this.tooltip.Show(control.AccessibleDescription.ToString(), control);
+            }
+            else
+            {
+                this.tooltip.Show("No description available", control);
+            }
+        }
+        void tooltip_MouseLeave(object? sender, EventArgs e)
+        {
+            tooltip.Hide((Control)sender!);
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
