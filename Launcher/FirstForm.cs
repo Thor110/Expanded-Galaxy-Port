@@ -1,8 +1,6 @@
 using Microsoft.Win32;
 using System.Diagnostics;
 using NAudio.Wave;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System;
 
 namespace Launcher
 {
@@ -18,8 +16,8 @@ namespace Launcher
         private WaveOutEvent waveOutEvent = null!;
         private CustomButton previouslyFocusedButton = null!;
         private SemaphoreSlim hoverSemaphore = new SemaphoreSlim(1, 1);
-        private List<Tuple<long, byte>> replacements = null!;
-        private System.Windows.Forms.ToolTip tooltip = new System.Windows.Forms.ToolTip();
+        private List<Tuple<long, byte[]>> replacements = null!;
+        private ToolTip tooltip = new ToolTip();
         private Type[] excludedControlTypes = new Type[] { typeof(PictureBox), typeof(CustomButton) };
         public FirstForm()
         {
@@ -100,7 +98,7 @@ namespace Launcher
         private void InitializeTooltips()
         {
             this.components = new System.ComponentModel.Container();
-            this.tooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.tooltip = new ToolTip(this.components);
             foreach (Control control in this.Controls)
             {
                 if (excludedControlTypes.Contains(control.GetType()) != true)
@@ -332,7 +330,6 @@ namespace Launcher
             if (!checkBox1.Checked)
             {
                 disable();//Disable Class Changes KotOR1
-                rewrite_Bytes(replacements);//Byte Swaps //script swaps go here
                 File.Move("Override\\k_pdan_makejedi.ncs", "Override\\k_pdan_makejedi.ncs.jedi");
                 File.Move("Override\\k_pend_bedmed.ncs", "Override\\k_pend_bedmed.ncs.jedi");
                 File.Move("Override\\k_pend_bedsml.ncs", "Override\\k_pend_bedsml.ncs.jedi");
@@ -345,7 +342,6 @@ namespace Launcher
             else
             {
                 enable();//Enable Class Changes KotOR1
-                rewrite_Bytes(replacements);//Byte Swaps //script swaps go here
                 File.Move("Override\\k_pdan_makejedi.ncs.jedi", "Override\\k_pdan_makejedi.ncs");
                 File.Move("Override\\k_pend_bedmed.ncs.jedi", "Override\\k_pend_bedmed.ncs");
                 File.Move("Override\\k_pend_bedsml.ncs.jedi", "Override\\k_pend_bedsml.ncs");
@@ -362,7 +358,6 @@ namespace Launcher
             if (!checkBox2.Checked)
             {
                 enable();//Enable Class Changes KotOR2
-                rewrite_Bytes(replacements);//Byte Swaps //script swaps go here
                 key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
                 key.SetValue("JediK2", 0);
                 key.Close();
@@ -370,7 +365,6 @@ namespace Launcher
             else
             {
                 disable();//Disable Class Changes KotOR2
-                rewrite_Bytes(replacements);//Byte Swaps //script swaps go here
                 key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
                 key.SetValue("JediK2", 1);
                 key.Close();
@@ -436,210 +430,109 @@ namespace Launcher
             EnableScreenShot = 0
             */
         }
-        private void rewrite_Bytes(List<Tuple<long, byte>> replacements)
-        {
-            using (var stream = new FileStream("swkotor2.exe", FileMode.Open, FileAccess.ReadWrite))
-            {
-                using (var reader = new BinaryReader(stream))
-                {
-                    using (var writer = new BinaryWriter(stream))
-                    {
-                        BinaryUtility.Replace(reader, writer, replacements);
-                    }
-                }
-            }
-        }
         private void enable()
         {
             if (File.Exists("steam_api.dll"))
             {
-                replacements = new List<Tuple<long, byte>>()
+                replacements = new List<Tuple<long, byte[]>>()
                 {
-                    Tuple.Create(0x583FF9L, (byte)0xA1),
-                    Tuple.Create(0x583FFAL, (byte)0xBB),
-                    Tuple.Create(0x58401BL, (byte)0xA1),
-                    Tuple.Create(0x58401CL, (byte)0xBB),
-
-                    Tuple.Create(0x583FD5L, (byte)0xA0),
-                    Tuple.Create(0x583FD6L, (byte)0xBB),
-                    Tuple.Create(0x58403FL, (byte)0xA0),
-                    Tuple.Create(0x584040L, (byte)0xBB),
-
-                    Tuple.Create(0x583FB1L, (byte)0x9F),
-                    Tuple.Create(0x583FB2L, (byte)0xBB),
-                    Tuple.Create(0x584063L, (byte)0x9F),
-                    Tuple.Create(0x584064L, (byte)0xBB),
-
-                    Tuple.Create(0x4F9EDDL, (byte)0x61),
-                    Tuple.Create(0x4F9EDEL, (byte)0x01),
-                    Tuple.Create(0x4F9D21L, (byte)0x62),
-                    Tuple.Create(0x4F9D22L, (byte)0x01),
-                    Tuple.Create(0x4F9E0CL, (byte)0x63),
-                    Tuple.Create(0x4F9E0DL, (byte)0x01),
-
-                    Tuple.Create(0x599D9BL, (byte)0x03),
-                    Tuple.Create(0x599D9CL, (byte)0x04),
-                    Tuple.Create(0x599D9DL, (byte)0x05),
+                    Tuple.Create(0x583FF9L, new byte[] { 0xA1, 0xBB }),
+                    Tuple.Create(0x58401BL, new byte[] { 0xA1, 0xBB }),
+                    Tuple.Create(0x583FD5L, new byte[] { 0xA0, 0xBB }),
+                    Tuple.Create(0x58403FL, new byte[] { 0xA0, 0xBB }),
+                    Tuple.Create(0x583FB1L, new byte[] { 0x9F, 0xBB }),
+                    Tuple.Create(0x584063L, new byte[] { 0x9F, 0xBB }),
+                    Tuple.Create(0x4F9EDDL, new byte[] { 0x61, 0x01 }),
+                    Tuple.Create(0x4F9D21L, new byte[] { 0x62, 0x01 }),
+                    Tuple.Create(0x4F9E0CL, new byte[] { 0x63, 0x01 }),
+                    Tuple.Create(0x599D9BL, new byte[] { 0x03, 0x04, 0x05 }),
                 };
             }
             else if (File.Exists("gog.ico"))
             {
-                replacements = new List<Tuple<long, byte>>()
+                replacements = new List<Tuple<long, byte[]>>()
                 {
-                    Tuple.Create(0x58287BL, (byte)0xA1),
-                    Tuple.Create(0x58287CL, (byte)0xBB),
-                    Tuple.Create(0x582859L, (byte)0xA1),
-                    Tuple.Create(0x58285AL, (byte)0xBB),
-
-                    Tuple.Create(0x582835L, (byte)0xA0),
-                    Tuple.Create(0x582836L, (byte)0xBB),
-                    Tuple.Create(0x58289FL, (byte)0xA0),
-                    Tuple.Create(0x5828A0L, (byte)0xBB),
-
-                    Tuple.Create(0x582811L, (byte)0x9F),
-                    Tuple.Create(0x582812L, (byte)0xBB),
-                    Tuple.Create(0x5828C3L, (byte)0x9F),
-                    Tuple.Create(0x5828C4L, (byte)0xBB),
-
-                    Tuple.Create(0x1DE29DL, (byte)0x61),
-                    Tuple.Create(0x1DE29EL, (byte)0x01),
-                    Tuple.Create(0x1DE0E1L, (byte)0x62),
-                    Tuple.Create(0x1DE0E2L, (byte)0x01),
-                    Tuple.Create(0x1DE1CCL, (byte)0x63),
-                    Tuple.Create(0x1DE1CDL, (byte)0x01),
-
-                    Tuple.Create(0x58BD74L, (byte)0x03),
-                    Tuple.Create(0x58BD75L, (byte)0x04),
-                    Tuple.Create(0x58BD76L, (byte)0x05),
+                    Tuple.Create(0x58287BL, new byte[] { 0xA1, 0xBB }),
+                    Tuple.Create(0x582859L, new byte[] { 0xA1, 0xBB }),
+                    Tuple.Create(0x582835L, new byte[] { 0xA0, 0xBB }),
+                    Tuple.Create(0x58289FL, new byte[] { 0xA0, 0xBB }),
+                    Tuple.Create(0x582811L, new byte[] { 0x9F, 0xBB }),
+                    Tuple.Create(0x5828C3L, new byte[] { 0x9F, 0xBB }),
+                    Tuple.Create(0x1DE29DL, new byte[] { 0x61, 0x01 }),
+                    Tuple.Create(0x1DE0E1L, new byte[] { 0x62, 0x01 }),
+                    Tuple.Create(0x1DE1CCL, new byte[] { 0x63, 0x01 }),
+                    Tuple.Create(0x58BD74L, new byte[] { 0x03, 0x04, 0x05 }),
                 };
             }
             else if (File.Exists("swupdate.exe"))
             {
-                replacements = new List<Tuple<long, byte>>()
+                replacements = new List<Tuple<long, byte[]>>()
                 {
-                    Tuple.Create(0x42602CL, (byte)0xA1),
-                    Tuple.Create(0x42602DL, (byte)0xBB),
-                    Tuple.Create(0x426034L, (byte)0xA1),
-                    Tuple.Create(0x426035L, (byte)0xBB),
-
-                    Tuple.Create(0x426024L, (byte)0xA0),
-                    Tuple.Create(0x426025L, (byte)0xBB),
-                    Tuple.Create(0x42603CL, (byte)0xA0),
-                    Tuple.Create(0x42603DL, (byte)0xBB),
-
-                    Tuple.Create(0x42601CL, (byte)0x9F),
-                    Tuple.Create(0x42601DL, (byte)0xBB),
-                    Tuple.Create(0x426044L, (byte)0x9F),
-                    Tuple.Create(0x426045L, (byte)0xBB),
-
-                    Tuple.Create(0x3499F6L, (byte)0x61),
-                    Tuple.Create(0x3499F7L, (byte)0x01),
-                    Tuple.Create(0x3498E9L, (byte)0x62),
-                    Tuple.Create(0x3498EAL, (byte)0x01),
-                    Tuple.Create(0x349979L, (byte)0x63),
-                    Tuple.Create(0x34997AL, (byte)0x01),
-
-                    Tuple.Create(0x3C3E61L, (byte)0x03),
-                    Tuple.Create(0x3C3E62L, (byte)0x04),
-                    Tuple.Create(0x3C3E63L, (byte)0x05),
+                    Tuple.Create(0x42602CL, new byte[] { 0xA1, 0xBB }),
+                    Tuple.Create(0x426034L, new byte[] { 0xA1, 0xBB }),
+                    Tuple.Create(0x426024L, new byte[] { 0xA0, 0xBB }),
+                    Tuple.Create(0x42603CL, new byte[] { 0xA0, 0xBB }),
+                    Tuple.Create(0x42601CL, new byte[] { 0x9F, 0xBB }),
+                    Tuple.Create(0x426044L, new byte[] { 0x9F, 0xBB }),
+                    Tuple.Create(0x3499F6L, new byte[] { 0x61, 0x01 }),
+                    Tuple.Create(0x3498E9L, new byte[] { 0x62, 0x01 }),
+                    Tuple.Create(0x349979L, new byte[] { 0x63, 0x01 }),
+                    Tuple.Create(0x3C3E61L, new byte[] { 0x03, 0x04, 0x05 }),
                 };
             }
+            BinaryUtility.ReplaceBytes(replacements, "swkotor2.exe");
         }
         private void disable()
         {
             if (File.Exists("steam_api.dll"))
             {
-                replacements = new List<Tuple<long, byte>>()
+                replacements = new List<Tuple<long, byte[]>>()
                 {
-                    Tuple.Create(0x583FF9L, (byte)0x6F),
-                    Tuple.Create(0x583FFAL, (byte)0x7D),
-                    Tuple.Create(0x58401BL, (byte)0x6F),
-                    Tuple.Create(0x58401CL, (byte)0x7D),
-
-                    Tuple.Create(0x583FD5L, (byte)0x6E),
-                    Tuple.Create(0x583FD6L, (byte)0x7D),
-                    Tuple.Create(0x58403FL, (byte)0x6E),
-                    Tuple.Create(0x584040L, (byte)0x7D),
-
-                    Tuple.Create(0x583FB1L, (byte)0x6D),
-                    Tuple.Create(0x583FB2L, (byte)0x7D),
-                    Tuple.Create(0x584063L, (byte)0x6D),
-                    Tuple.Create(0x584064L, (byte)0x7D),
-
-                    Tuple.Create(0x4F9EDDL, (byte)0x86),
-                    Tuple.Create(0x4F9EDEL, (byte)0x00),
-                    Tuple.Create(0x4F9D21L, (byte)0x87),
-                    Tuple.Create(0x4F9D22L, (byte)0x00),
-                    Tuple.Create(0x4F9E0CL, (byte)0x85),
-                    Tuple.Create(0x4F9E0DL, (byte)0x00),
-
-                    Tuple.Create(0x599D9BL, (byte)0x00),
-                    Tuple.Create(0x599D9CL, (byte)0x02),
-                    Tuple.Create(0x599D9DL, (byte)0x01),
+                    Tuple.Create(0x583FF9L, new byte[] { 0x6F, 0x7D }),
+                    Tuple.Create(0x58401BL, new byte[] { 0x6F, 0x7D }),
+                    Tuple.Create(0x583FD5L, new byte[] { 0x6E, 0x7D }),
+                    Tuple.Create(0x58403FL, new byte[] { 0x6E, 0x7D }),
+                    Tuple.Create(0x583FB1L, new byte[] { 0x6D, 0x7D }),
+                    Tuple.Create(0x584063L, new byte[] { 0x6D, 0x7D }),
+                    Tuple.Create(0x4F9EDDL, new byte[] { 0x86, 0x00 }),
+                    Tuple.Create(0x4F9D21L, new byte[] { 0x87, 0x00 }),
+                    Tuple.Create(0x4F9E0CL, new byte[] { 0x85, 0x00 }),
+                    Tuple.Create(0x599D9BL, new byte[] { 0x00, 0x02, 0x01 }),
                 };
             }
             else if (File.Exists("gog.ico"))
             {
-                replacements = new List<Tuple<long, byte>>()
+                replacements = new List<Tuple<long, byte[]>>()
                 {
-                    Tuple.Create(0x58287BL, (byte)0x6F),
-                    Tuple.Create(0x58287CL, (byte)0x7D),
-                    Tuple.Create(0x582859L, (byte)0x6F),
-                    Tuple.Create(0x58285AL, (byte)0x7D),
-
-                    Tuple.Create(0x582835L, (byte)0x6E),
-                    Tuple.Create(0x582836L, (byte)0x7D),
-                    Tuple.Create(0x58289FL, (byte)0x6E),
-                    Tuple.Create(0x5828A0L, (byte)0x7D),
-
-                    Tuple.Create(0x582811L, (byte)0x6D),
-                    Tuple.Create(0x582812L, (byte)0x7D),
-                    Tuple.Create(0x5828C3L, (byte)0x6D),
-                    Tuple.Create(0x5828C4L, (byte)0x7D),
-
-                    Tuple.Create(0x1DE29DL, (byte)0x86),
-                    Tuple.Create(0x1DE29EL, (byte)0x00),
-                    Tuple.Create(0x1DE0E1L, (byte)0x87),
-                    Tuple.Create(0x1DE0E2L, (byte)0x00),
-                    Tuple.Create(0x1DE1CCL, (byte)0x85),
-                    Tuple.Create(0x1DE1CDL, (byte)0x00),
-
-                    Tuple.Create(0x58BD74L, (byte)0x00),
-                    Tuple.Create(0x58BD75L, (byte)0x02),
-                    Tuple.Create(0x58BD76L, (byte)0x01),
+                    Tuple.Create(0x58287BL, new byte[] { 0x6F, 0x7D }),
+                    Tuple.Create(0x582859L, new byte[] { 0x6F, 0x7D }),
+                    Tuple.Create(0x582835L, new byte[] { 0x6E, 0x7D }),
+                    Tuple.Create(0x58289FL, new byte[] { 0x6E, 0x7D }),
+                    Tuple.Create(0x582811L, new byte[] { 0x6D, 0x7D }),
+                    Tuple.Create(0x5828C3L, new byte[] { 0x6D, 0x7D }),
+                    Tuple.Create(0x1DE29DL, new byte[] { 0x86, 0x00 }),
+                    Tuple.Create(0x1DE0E1L, new byte[] { 0x87, 0x00 }),
+                    Tuple.Create(0x1DE1CCL, new byte[] { 0x85, 0x00 }),
+                    Tuple.Create(0x58BD74L, new byte[] { 0x00, 0x02, 0x01 }),
                 };
             }
             else if (File.Exists("swupdate.exe"))
             {
-                replacements = new List<Tuple<long, byte>>()
+                replacements = new List<Tuple<long, byte[]>>()
                 {
-                    Tuple.Create(0x42602CL, (byte)0x6F),
-                    Tuple.Create(0x42602DL, (byte)0x7D),
-                    Tuple.Create(0x426034L, (byte)0x6F),
-                    Tuple.Create(0x426035L, (byte)0x7D),
-
-                    Tuple.Create(0x426024L, (byte)0x6E),
-                    Tuple.Create(0x426025L, (byte)0x7D),
-                    Tuple.Create(0x42603CL, (byte)0x6E),
-                    Tuple.Create(0x42603DL, (byte)0x7D),
-
-                    Tuple.Create(0x42601CL, (byte)0x6D),
-                    Tuple.Create(0x42601DL, (byte)0x7D),
-                    Tuple.Create(0x426044L, (byte)0x6D),
-                    Tuple.Create(0x426045L, (byte)0x7D),
-
-                    Tuple.Create(0x3499F6L, (byte)0x86),
-                    Tuple.Create(0x3499F7L, (byte)0x00),
-                    Tuple.Create(0x3498E9L, (byte)0x87),
-                    Tuple.Create(0x3498EAL, (byte)0x00),
-                    Tuple.Create(0x349979L, (byte)0x85),
-                    Tuple.Create(0x34997AL, (byte)0x00),
-
-                    Tuple.Create(0x3C3E61L, (byte)0x00),
-                    Tuple.Create(0x3C3E62L, (byte)0x02),
-                    Tuple.Create(0x3C3E63L, (byte)0x01),
+                    Tuple.Create(0x42602CL, new byte[] { 0x6F, 0x7D }),
+                    Tuple.Create(0x426034L, new byte[] { 0x6F, 0x7D }),
+                    Tuple.Create(0x426024L, new byte[] { 0x6E, 0x7D }),
+                    Tuple.Create(0x42603CL, new byte[] { 0x6E, 0x7D }),
+                    Tuple.Create(0x42601CL, new byte[] { 0x6D, 0x7D }),
+                    Tuple.Create(0x426044L, new byte[] { 0x6D, 0x7D }),
+                    Tuple.Create(0x3499F6L, new byte[] { 0x86, 0x00 }),
+                    Tuple.Create(0x3498E9L, new byte[] { 0x87, 0x00 }),
+                    Tuple.Create(0x349979L, new byte[] { 0x85, 0x00 }),
+                    Tuple.Create(0x3C3E61L, new byte[] { 0x00, 0x02, 0x01 }),
                 };
             }
+            BinaryUtility.ReplaceBytes(replacements, "swkotor2.exe");
         }
     }
 }
