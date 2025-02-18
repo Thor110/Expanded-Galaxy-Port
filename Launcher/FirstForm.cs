@@ -33,13 +33,13 @@ namespace Launcher
             // parse ini options here
             if (!File.Exists("swkotor2.ini")) // determine what to do in the rare case that the user hasn't launched the game yet...................
             {
-                MessageBox.Show("Please launch the game once to ensure the swkotor2.ini file is created so that some settings can be configured.");
+                //MessageBox.Show("Please launch the game once to ensure the swkotor2.ini file is created so that some settings can be configured.");
                 checkBox4.Enabled = false; checkBox5.Enabled = false; checkBox6.Enabled = false; checkBox7.Enabled = false; checkBox8.Enabled = false;
                 return;
             }
             else
             {
-                MessageBox.Show("not ready yet."); // remove this else block when parser is ready
+                //MessageBox.Show("not ready yet."); // remove this else block when parser is ready
                 checkBox4.Enabled = false; checkBox5.Enabled = false; checkBox6.Enabled = false; checkBox7.Enabled = false; checkBox8.Enabled = false;
                 return;
             }
