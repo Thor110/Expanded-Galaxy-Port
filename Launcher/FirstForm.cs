@@ -86,20 +86,23 @@ namespace Launcher
                 PlayBackgroundSound(Properties.Resources.background);
                 if (jedi == true) { checkBox2.Checked = true; }
                 comboBox1.SelectedIndex = 1;
-                this.BackgroundImage = Properties.Resources.k2swlauncher1;
+                BackgroundImage = Properties.Resources.k2swlauncher1;
             }
-            if (Convert.ToBoolean((int)key.GetValue("Health")!) == false)
-            {
-                checkBox3.Checked = false;
-            }
+            if (Convert.ToBoolean((int)key.GetValue("Health")!) == false) { checkBox3.Checked = false; }
             key.Close();
             combo = true;
         }
-        private void InitializeTooltips()
+        /// <summary>
+        /// InitializeTooltips prepares a tooltip for every control in the form.
+        /// </summary>
+        /// <remarks>
+        /// Uses excludedControlTypes to exclude certain types of controls from displaying tooltips.
+        /// </remarks>
+        void InitializeTooltips()
         {
-            this.components = new System.ComponentModel.Container();
-            this.tooltip = new ToolTip(this.components);
-            foreach (Control control in this.Controls)
+            components = new System.ComponentModel.Container();
+            tooltip = new ToolTip(components);
+            foreach (Control control in Controls)
             {
                 if (excludedControlTypes.Contains(control.GetType()) != true)
                 {
@@ -108,22 +111,19 @@ namespace Launcher
                 }
             }
         }
+        /// <summary>
+        /// tooltip_MouseEnter event Handler uses the existing AccessibleDescription property as the tooltip information.
+        /// </summary>
         void tooltip_MouseEnter(object? sender, EventArgs e)
         {
             Control control = (Control)sender!;
-            if (control.AccessibleDescription != null)
-            {
-                this.tooltip.Show(control.AccessibleDescription.ToString(), control);
-            }
-            else
-            {
-                this.tooltip.Show("No description available", control);
-            }
+            if (control.AccessibleDescription != null) { tooltip.Show(control.AccessibleDescription.ToString(), control); }
+            else { tooltip.Show("No description available.", control); }
         }
-        void tooltip_MouseLeave(object? sender, EventArgs e)
-        {
-            tooltip.Hide((Control)sender!);
-        }
+        /// <summary>
+        /// tooltip_MouseLeave event Handler hides the active tooltip.
+        /// </summary>
+        void tooltip_MouseLeave(object? sender, EventArgs e) { tooltip.Hide((Control)sender!); }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (combo) { return; }
@@ -156,7 +156,7 @@ namespace Launcher
             File.Move("StreamMusic\\mus_sion.wav.port", "StreamMusic\\mus_sion.wav");
             File.Move("swkotor2.exe.port", "swkotor2.exe");
             setReg();
-            this.BackgroundImage = Properties.Resources.k1swlauncher1;
+            BackgroundImage = Properties.Resources.k1swlauncher1;
             PlayBackgroundSound(Properties.Resources.k1background);
         }
         private void setKotOR2()
@@ -184,7 +184,7 @@ namespace Launcher
             File.Move("StreamMusic\\mus_sion.wav.main", "StreamMusic\\mus_sion.wav");
             File.Move("swkotor2.exe.main", "swkotor2.exe");
             setReg();
-            this.BackgroundImage = Properties.Resources.k2swlauncher1;
+            BackgroundImage = Properties.Resources.k2swlauncher1;
             PlayBackgroundSound(Properties.Resources.background);
         }
         private void game_Click(object sender, EventArgs e)
