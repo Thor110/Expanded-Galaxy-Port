@@ -1,0 +1,1 @@
+MacSteam files "should" be the same as SteamAmazonGoG files, so reference them instead?

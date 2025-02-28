@@ -1,0 +1,1 @@
+MacDisc files "should" be the same as DiscLegacyPC files, so reference them instead?
