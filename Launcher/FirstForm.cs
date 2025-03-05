@@ -155,6 +155,16 @@ namespace Launcher
             File.Move("Modules\\001ebo.mod.port", "Modules\\001ebo.mod");
             File.Move("StreamMusic\\mus_sion.wav.port", "StreamMusic\\mus_sion.wav");
             File.Move("swkotor2.exe.port", "swkotor2.exe");
+            if (Directory.Exists("SavesK1"))
+            {
+                Directory.Move("Saves", "SavesK2");
+                Directory.Move("SavesK1", "Saves");
+            }
+            else
+            {
+                Directory.CreateDirectory("SavesK2");
+                Directory.CreateDirectory("Saves");
+            }
             setReg();
             BackgroundImage = Properties.Resources.k1swlauncher1;
             PlayBackgroundSound(Properties.Resources.k1background);
@@ -183,6 +193,16 @@ namespace Launcher
             File.Move("Modules\\001ebo.mod.main", "Modules\\001ebo.mod");
             File.Move("StreamMusic\\mus_sion.wav.main", "StreamMusic\\mus_sion.wav");
             File.Move("swkotor2.exe.main", "swkotor2.exe");
+            if(Directory.Exists("Saves"))
+            {
+                Directory.Move("Saves", "SavesK1");
+                Directory.Move("SavesK2","Saves");
+            }
+            else
+            {
+                Directory.CreateDirectory("SavesK1");
+                Directory.CreateDirectory("Saves");
+            }
             setReg();
             BackgroundImage = Properties.Resources.k2swlauncher1;
             PlayBackgroundSound(Properties.Resources.background);

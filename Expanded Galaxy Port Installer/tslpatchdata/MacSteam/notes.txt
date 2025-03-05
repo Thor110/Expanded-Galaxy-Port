@@ -1,1 +1,4 @@
 MacSteam files "should" be the same as SteamAmazonGoG files, so reference them instead?
+
+save/load buttons are properly changed by the saveload_p.gui
+
