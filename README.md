@@ -13,7 +13,7 @@ Requires the Main part of the project! [https://github.com/Thor110/Expanded-Gala
 
 This also requires that you own and have a copy of the original game installed.
 
-In order to install to different versions of the game, please edit the namespaces.ini and put your version to number one, this is a temporary solution until the custom build of HoloPatcher gets recompiled with a new dropdown for the namespaces.ini entries.
+In order to install to different versions of the game, please edit the namespaces.ini and put your version to number one, this is a temporary solution until the custom build of HoloPatcher gets recompiled with a new dropdown for the namespaces.ini entries. ( Steam is the default )
 
 # Playing the game
 
