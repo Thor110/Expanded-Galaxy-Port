@@ -17,7 +17,10 @@ In order to install to different versions of the game, please edit the namespace
 
 # Playing the game
 
-launcher.bat - is for choosing between KotOR1 & KotOR2 and is installed to the main game directory.
+launcher.exe - is for choosing between KotOR1 & KotOR2 and is installed to the main game directory.
+launcher.bat - also for choosing between KotOR1 & KotOR2 and is installed to the main game directory. ( This is here as a backup incase the new executable doesn't work for anyone )
+
+You can also just launch the game directly, but this won't allow you to choose between KotOR1 and KotOR2.
 
 ## Repository folder and file structure
 # Folders
