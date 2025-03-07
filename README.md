@@ -24,9 +24,11 @@ You can also just launch the game directly, but this won't allow you to choose b
 
 ## Repository folder and file structure
 # Folders
-changes - contains the components of the changes.ini files.
+Artwork - contains artwork such as the Icon and Launcher images.
 
 Expanded Galaxy Port Installer - the port installer folder containing the source folder and tslpatchdata folder as well as HoloPatcher.
+
+changes - contains the components of the changes.ini files.
 
 future - future stuff to work on.
 - 00 Original TSL Galaxy Map Locations - original galaxy map locations for Korriban & Dantooine.
@@ -45,6 +47,8 @@ future - future stuff to work on.
 - port issues.txt - bug note.
 - port item highlight.txt - kotor 1 item highlight colour values.
 
+Launcher - contains the source project for the custom launcher.
+
 modules - contains the level files organised into folders denoting the planet and module names as well as the .mod files themselves, I use this to quickly and easily repack levels.
 
 saves - the latest common save for testing purposes.
@@ -60,6 +64,7 @@ Scripts Left To Decompile - scripts that haven't been decompiled yet exist here.
 - README.md - the readme.md file.
 - update-changes.ini.bat - A batch file used for updating the changes.ini files by constructing them from the parts in the changes folder.
 - update-everything.bat - A batch script that runs through all of the relevant steps to recompile scripts, modules, the changes.ini file and zip the latest release of the project.
+- update-missing-file-list.bat - A batch script that automatically updates missing-file-list.txt which contains files that already exist in the base game, but are required for swapping between the two.
 - update-modules.bat - A batch file used for recompiling and updating the .mod files inside the "Expanded Galaxy Port Installer\tslpatchdata\modules" directory using those from the "modules" folder.
 - update-release.bat - A batch file for zipping the latest release of the project.
 - update-scripts.bat - A batch script for compiling all scripts in all sub-directories.
