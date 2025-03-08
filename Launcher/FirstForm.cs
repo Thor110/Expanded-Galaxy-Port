@@ -484,6 +484,10 @@ namespace Launcher
                     Tuple.Create(0x599D9BL, new byte[] { 0x03, 0x04, 0x05 }),
                 };
             }
+            else if (File.Exists("DirectX/DSETUP.dll"))
+            {
+                MessageBox.Show("Class Changes Not Supported For The LegacyPC Version of the game on Steam currently.");
+            }
             else if (File.Exists("gog.ico") || File.Exists("kwrapper.dll"))
             {
                 replacements = new List<Tuple<long, byte[]>>()
@@ -535,6 +539,10 @@ namespace Launcher
                     Tuple.Create(0x4F9E0CL, new byte[] { 0x85, 0x00 }),
                     Tuple.Create(0x599D9BL, new byte[] { 0x00, 0x02, 0x01 }),
                 };
+            }
+            else if (File.Exists("DirectX/DSETUP.dll"))
+            {
+                MessageBox.Show("Class Changes Not Supported For The LegacyPC Version of the game on Steam currently.");
             }
             else if (File.Exists("gog.ico") || File.Exists("kwrapper.dll"))
             {
