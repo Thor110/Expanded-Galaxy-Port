@@ -39,6 +39,9 @@ namespace Launcher
             }
             else
             {
+                // known potential bugs
+                // - not sanitizing result when reading from the .ini which could lead to problems if the user manually
+                // edits the .ini entries to contain anything other than what's expected. IE : 0 or 1!
                 int result;
                 if (!MyIni.KeyExists("Fullscreen", "Display Options")) { MyIni.Write("Fullscreen", "1", "Display Options"); }
                 if (!MyIni.KeyExists("Fullscreen", "Graphics Options")) { MyIni.Write("Fullscreen", "1", "Graphics Options"); }
@@ -139,7 +142,15 @@ namespace Launcher
             if (comboBox1.SelectedIndex == 0 && game == 2) { setKotOR1(); }
             else if (comboBox1.SelectedIndex != 0 && game == 1) { setKotOR2(); }
         }
-        private void setReg() { key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!; key.SetValue("Game", game); key.Close(); }
+        private void setReg()
+        {
+            key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
+            key.SetValue("Game", game);
+            jedi = Convert.ToBoolean((int)key.GetValue($"JediK{game}")!);
+            if (game == 1) { if (jedi == true) { checkBox1.Checked = true; } }
+            if (game == 2) { if (jedi == true) { checkBox2.Checked = true; } }
+            key.Close();
+        }
         private void setKotOR1()
         {
             game = 1;
