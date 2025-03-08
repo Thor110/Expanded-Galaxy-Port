@@ -1,6 +1,7 @@
 using Microsoft.Win32;
 using System.Diagnostics;
 using NAudio.Wave;
+using IniParser;
 
 namespace Launcher
 {
@@ -19,6 +20,7 @@ namespace Launcher
         private List<Tuple<long, byte[]>> replacements = null!;
         private ToolTip tooltip = new ToolTip();
         private Type[] excludedControlTypes = new Type[] { typeof(PictureBox), typeof(CustomButton) };
+        private static readonly IniFile MyIni = new IniFile("swkotor2.ini");
         public FirstForm()
         {
             InitializeComponent();
@@ -30,44 +32,74 @@ namespace Launcher
         }
         private void InitializeParser()
         {
-            // parse ini options here
-            if (!File.Exists("swkotor2.ini")) // determine what to do in the rare case that the user hasn't launched the game yet...................
+            if (!File.Exists("swkotor2.ini"))
             {
-                //MessageBox.Show("Please launch the game once to ensure the swkotor2.ini file is created so that some settings can be configured.");
+                MessageBox.Show("Please launch the game once to ensure the swkotor2.ini file is created so that some settings can be configured.");
                 checkBox4.Enabled = false; checkBox5.Enabled = false; checkBox6.Enabled = false; checkBox7.Enabled = false; checkBox8.Enabled = false;
-                return;
             }
             else
             {
-                //MessageBox.Show("not ready yet."); // remove this else block when parser is ready
-                checkBox4.Enabled = false; checkBox5.Enabled = false; checkBox6.Enabled = false; checkBox7.Enabled = false; checkBox8.Enabled = false;
-                return;
+                int result;
+                if (!MyIni.KeyExists("Fullscreen", "Display Options"))
+                {
+                    MyIni.Write("Fullscreen", "1", "Display Options");
+                }
+                if (!MyIni.KeyExists("Fullscreen", "Graphics Options"))
+                {
+                    MyIni.Write("Fullscreen", "1", "Graphics Options");
+                    checkBox4.Checked = true;
+                }
+                else
+                {
+                    result = Int32.Parse(MyIni.Read("Fullscreen", "Graphics Options"));
+                    if (result == 0) { checkBox4.Checked = false; }
+                    else if (result == 1) { checkBox4.Checked = true; }
+                }
+                if (!MyIni.KeyExists("EnableCheats", "Game Options"))
+                {
+                    MyIni.Write("EnableCheats", "0", "Game Options");
+                    checkBox5.Checked = false;
+                }
+                else
+                {
+                    result = Int32.Parse(MyIni.Read("EnableCheats", "Game Options"));
+                    if (result == 0) { checkBox5.Checked = false; }
+                    else if (result == 1) { checkBox5.Checked = true; }
+                }
+                if (!MyIni.KeyExists("Hide InGame GUI", "Game Options"))
+                {
+                    MyIni.Write("Hide InGame GUI", "0", "Game Options");
+                    checkBox6.Checked = false;
+                }
+                else
+                {
+                    result = Int32.Parse(MyIni.Read("Hide InGame GUI", "Game Options"));
+                    if (result == 0) { checkBox6.Checked = false; }
+                    else if (result == 1) { checkBox6.Checked = true; }
+                }
+                if (!MyIni.KeyExists("Mini Map", "Game Options"))
+                {
+                    MyIni.Write("Mini Map", "1", "Game Options");
+                    checkBox7.Checked = true;
+                }
+                else
+                {
+                    result = Int32.Parse(MyIni.Read("Mini Map", "Game Options"));
+                    if (result == 0) { checkBox7.Checked = true; }
+                    else if (result == 1) { checkBox7.Checked = false; }
+                }
+                if (!MyIni.KeyExists("EnableScreenShot", "Game Options"))
+                {
+                    MyIni.Write("EnableScreenShot", "0", "Game Options");
+                    checkBox8.Checked = false;
+                }
+                else
+                {
+                    result = Int32.Parse(MyIni.Read("EnableScreenShot", "Game Options"));
+                    if (result == 0) { checkBox8.Checked = false; }
+                    else if (result == 1) { checkBox8.Checked = true; }
+                }
             }
-            //read all lines
-            //File.ReadLines("swkotor2.ini");
-            /*
-            //Windowed / Fullscreen toggle
-            [Display Options]
-            FullScreen = 0
-            [Graphics Options]
-            FullScreen = 0
-
-            //Enable / Disable Cheats toggle
-            [Game Options]
-            EnableCheats = 1
-
-            //Hide InGame GUI toggle
-            [Game Options]
-            Hide InGame GUI = 0
-
-            //Mini Map toggle
-            [Game Options]
-            Mini Map = 1
-
-            //EnableScreenShot toggle
-            [Game Options]
-            EnableScreenShot = 0
-            */
         }
         private void InitializeRegistry()
         {
@@ -410,45 +442,36 @@ namespace Launcher
         }
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
-            /*
-            //Windowed / Fullscreen toggle
-            [Display Options]
-            FullScreen = 0
-            [Graphics Options]
-            FullScreen = 0
-            */
+            if(checkBox4.Checked == true)
+            {
+                MyIni.Write("Fullscreen", "1", "Display Options");
+                MyIni.Write("Fullscreen", "1", "Graphics Options");
+            }
+            else
+            {
+                MyIni.Write("Fullscreen", "0", "Display Options");
+                MyIni.Write("Fullscreen", "0", "Graphics Options");
+            }
         }
         private void checkBox5_CheckedChanged(object sender, EventArgs e)
         {
-            /*
-            //Enable / Disable Cheats toggle
-            [Game Options]
-            EnableCheats = 1
-            */
+            if (checkBox5.Checked == true) { MyIni.Write("EnableCheats", "1", "Game Options"); }
+            else { MyIni.Write("EnableCheats", "0", "Game Options"); }
         }
         private void checkBox6_CheckedChanged(object sender, EventArgs e)
         {
-            /*
-            //Hide InGame GUI toggle
-            [Game Options]
-            Hide InGame GUI = 0
-            */
+            if (checkBox6.Checked == true) { MyIni.Write("Hide InGame GUI", "1", "Game Options"); }
+            else { MyIni.Write("Hide InGame GUI", "0", "Game Options"); }
         }
         private void checkBox7_CheckedChanged(object sender, EventArgs e)
         {
-            /*
-            //Mini Map toggle
-            [Game Options]
-            Mini Map = 1
-            */
+            if (checkBox7.Checked == true) { MyIni.Write("Mini Map", "0", "Game Options"); }
+            else { MyIni.Write("Mini Map", "1", "Game Options"); }
         }
         private void checkBox8_CheckedChanged(object sender, EventArgs e)
         {
-            /*
-            //EnableScreenShot toggle
-            [Game Options]
-            EnableScreenShot = 0
-            */
+            if (checkBox8.Checked == true) { MyIni.Write("EnableScreenShot", "1", "Game Options"); }
+            else { MyIni.Write("EnableScreenShot", "0", "Game Options"); }
         }
         private void enable()
         {
