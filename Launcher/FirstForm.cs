@@ -174,7 +174,14 @@ namespace Launcher
             File.Move("lips\\001EBO_loc.mod.port", "lips\\001EBO_loc.mod");
             File.Move("Modules\\001ebo.mod.port", "Modules\\001ebo.mod");
             File.Move("StreamMusic\\mus_sion.wav.port", "StreamMusic\\mus_sion.wav");
-            File.Move("swkotor2.exe.port", "swkotor2.exe");
+            if (File.Exists("DirectX/DSETUP.dll"))
+            {
+                MessageBox.Show("Class Changes Not Supported For The LegacyPC Version of the game on Steam currently.");
+            }
+            else
+            {
+                File.Move("swkotor2.exe.port", "swkotor2.exe");
+            }
             if (Directory.Exists("SavesK1"))
             {
                 Directory.Move("Saves", "SavesK2");
@@ -212,7 +219,14 @@ namespace Launcher
             File.Move("lips\\001EBO_loc.mod.main", "lips\\001EBO_loc.mod");
             File.Move("Modules\\001ebo.mod.main", "Modules\\001ebo.mod");
             File.Move("StreamMusic\\mus_sion.wav.main", "StreamMusic\\mus_sion.wav");
-            File.Move("swkotor2.exe.main", "swkotor2.exe");
+            if (File.Exists("DirectX/DSETUP.dll"))
+            {
+                MessageBox.Show("Class Changes Not Supported For The LegacyPC Version of the game on Steam currently.");
+            }
+            else
+            {
+                File.Move("swkotor2.exe.main", "swkotor2.exe");
+            }
             if(Directory.Exists("Saves"))
             {
                 Directory.Move("Saves", "SavesK1");
