@@ -484,7 +484,7 @@ namespace Launcher
                     Tuple.Create(0x599D9BL, new byte[] { 0x03, 0x04, 0x05 }),
                 };
             }
-            else if (File.Exists("gog.ico"))
+            else if (File.Exists("gog.ico") || File.Exists("kwrapper.dll"))
             {
                 replacements = new List<Tuple<long, byte[]>>()
                 {
@@ -536,7 +536,7 @@ namespace Launcher
                     Tuple.Create(0x599D9BL, new byte[] { 0x00, 0x02, 0x01 }),
                 };
             }
-            else if (File.Exists("gog.ico"))
+            else if (File.Exists("gog.ico") || File.Exists("kwrapper.dll"))
             {
                 replacements = new List<Tuple<long, byte[]>>()
                 {
