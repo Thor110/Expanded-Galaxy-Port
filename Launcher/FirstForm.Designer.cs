@@ -238,6 +238,8 @@
             checkBox4.AccessibleDescription = "Enables or disables fullscreen.";
             checkBox4.AutoSize = true;
             checkBox4.BackColor = Color.Black;
+            checkBox4.Checked = true;
+            checkBox4.CheckState = CheckState.Checked;
             checkBox4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox4.ForeColor = SystemColors.AppWorkspace;
             checkBox4.Location = new Point(236, 258);

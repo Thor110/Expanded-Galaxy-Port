@@ -40,59 +40,36 @@ namespace Launcher
             else
             {
                 int result;
-                if (!MyIni.KeyExists("Fullscreen", "Display Options"))
-                {
-                    MyIni.Write("Fullscreen", "1", "Display Options");
-                }
-                if (!MyIni.KeyExists("Fullscreen", "Graphics Options"))
-                {
-                    MyIni.Write("Fullscreen", "1", "Graphics Options");
-                    checkBox4.Checked = true;
-                }
+                if (!MyIni.KeyExists("Fullscreen", "Display Options")) { MyIni.Write("Fullscreen", "1", "Display Options"); }
+                if (!MyIni.KeyExists("Fullscreen", "Graphics Options")) { MyIni.Write("Fullscreen", "1", "Graphics Options"); }
                 else
                 {
                     result = Int32.Parse(MyIni.Read("Fullscreen", "Graphics Options"));
                     if (result == 0) { checkBox4.Checked = false; }
                     else if (result == 1) { checkBox4.Checked = true; }
                 }
-                if (!MyIni.KeyExists("EnableCheats", "Game Options"))
-                {
-                    MyIni.Write("EnableCheats", "0", "Game Options");
-                    checkBox5.Checked = false;
-                }
+                if (!MyIni.KeyExists("EnableCheats", "Game Options")) { MyIni.Write("EnableCheats", "0", "Game Options"); }
                 else
                 {
                     result = Int32.Parse(MyIni.Read("EnableCheats", "Game Options"));
                     if (result == 0) { checkBox5.Checked = false; }
                     else if (result == 1) { checkBox5.Checked = true; }
                 }
-                if (!MyIni.KeyExists("Hide InGame GUI", "Game Options"))
-                {
-                    MyIni.Write("Hide InGame GUI", "0", "Game Options");
-                    checkBox6.Checked = false;
-                }
+                if (!MyIni.KeyExists("Hide InGame GUI", "Game Options")) { MyIni.Write("Hide InGame GUI", "0", "Game Options"); }
                 else
                 {
                     result = Int32.Parse(MyIni.Read("Hide InGame GUI", "Game Options"));
                     if (result == 0) { checkBox6.Checked = false; }
                     else if (result == 1) { checkBox6.Checked = true; }
                 }
-                if (!MyIni.KeyExists("Mini Map", "Game Options"))
-                {
-                    MyIni.Write("Mini Map", "1", "Game Options");
-                    checkBox7.Checked = true;
-                }
+                if (!MyIni.KeyExists("Mini Map", "Game Options")) { MyIni.Write("Mini Map", "1", "Game Options"); }
                 else
                 {
                     result = Int32.Parse(MyIni.Read("Mini Map", "Game Options"));
                     if (result == 0) { checkBox7.Checked = true; }
                     else if (result == 1) { checkBox7.Checked = false; }
                 }
-                if (!MyIni.KeyExists("EnableScreenShot", "Game Options"))
-                {
-                    MyIni.Write("EnableScreenShot", "0", "Game Options");
-                    checkBox8.Checked = false;
-                }
+                if (!MyIni.KeyExists("EnableScreenShot", "Game Options")) { MyIni.Write("EnableScreenShot", "0", "Game Options"); }
                 else
                 {
                     result = Int32.Parse(MyIni.Read("EnableScreenShot", "Game Options"));
@@ -442,7 +419,8 @@ namespace Launcher
         }
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
-            if(checkBox4.Checked == true)
+            if (!config) { return; }
+            if (checkBox4.Checked == true)
             {
                 MyIni.Write("Fullscreen", "1", "Display Options");
                 MyIni.Write("Fullscreen", "1", "Graphics Options");
@@ -455,21 +433,25 @@ namespace Launcher
         }
         private void checkBox5_CheckedChanged(object sender, EventArgs e)
         {
+            if (!config) { return; }
             if (checkBox5.Checked == true) { MyIni.Write("EnableCheats", "1", "Game Options"); }
             else { MyIni.Write("EnableCheats", "0", "Game Options"); }
         }
         private void checkBox6_CheckedChanged(object sender, EventArgs e)
         {
+            if (!config) { return; }
             if (checkBox6.Checked == true) { MyIni.Write("Hide InGame GUI", "1", "Game Options"); }
             else { MyIni.Write("Hide InGame GUI", "0", "Game Options"); }
         }
         private void checkBox7_CheckedChanged(object sender, EventArgs e)
         {
+            if (!config) { return; }
             if (checkBox7.Checked == true) { MyIni.Write("Mini Map", "0", "Game Options"); }
             else { MyIni.Write("Mini Map", "1", "Game Options"); }
         }
         private void checkBox8_CheckedChanged(object sender, EventArgs e)
         {
+            if (!config) { return; }
             if (checkBox8.Checked == true) { MyIni.Write("EnableScreenShot", "1", "Game Options"); }
             else { MyIni.Write("EnableScreenShot", "0", "Game Options"); }
         }
