@@ -209,7 +209,7 @@ namespace Launcher
             File.Move("Modules\\001ebo.mod.main", "Modules\\001ebo.mod");
             File.Move("StreamMusic\\mus_sion.wav.main", "StreamMusic\\mus_sion.wav");
             if (!File.Exists("DirectX/DSETUP.dll")) { File.Move("swkotor2.exe.main", "swkotor2.exe"); }
-            if(Directory.Exists("Saves"))
+            if (Directory.Exists("Saves"))
             {
                 Directory.Move("Saves", "SavesK1");
                 if (Directory.Exists("SavesK2")) { Directory.Move("SavesK2", "Saves"); }

@@ -15,6 +15,8 @@ This also requires that you own and have a copy of the original game installed.
 
 In order to install to different versions of the game, please edit the namespaces.ini and put your version to number one, this is a temporary solution until the custom build of HoloPatcher gets recompiled with a new dropdown for the namespaces.ini entries. ( Steam is the default )
 
+Once you have installed the game, go to the installation directory and send a shortcut to your desktop for "launcher.exe" which will allow you to quickly choose between playing KotOR1 & KotOR2.
+
 # Playing the game
 
 - launcher.exe - This is for choosing between KotOR1 & KotOR2 and is installed to the main game directory.
