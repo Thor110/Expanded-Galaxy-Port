@@ -501,6 +501,7 @@ namespace Launcher
             else if (File.Exists("DirectX/DSETUP.dll"))
             {
                 MessageBox.Show("Class Changes Not Supported For The LegacyPC Version of the game on Steam currently.");
+                return;
             }
             else if (File.Exists("gog.ico") || File.Exists("kwrapper.dll"))
             {
@@ -557,6 +558,7 @@ namespace Launcher
             else if (File.Exists("DirectX/DSETUP.dll"))
             {
                 MessageBox.Show("Class Changes Not Supported For The LegacyPC Version of the game on Steam currently.");
+                return;
             }
             else if (File.Exists("gog.ico") || File.Exists("kwrapper.dll"))
             {
