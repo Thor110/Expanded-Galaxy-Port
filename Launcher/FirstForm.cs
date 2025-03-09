@@ -7,7 +7,7 @@ namespace Launcher
 {
     public partial class FirstForm : Form
     {
-        private RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy")!;
+        private RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
         public int game = 1; // which game is active.
         public bool jedi = false; // are jedi classes swapped.
         public bool combo; // disables the comboBox until the items have been added and the relevant index is selected.
@@ -88,6 +88,20 @@ namespace Launcher
             }
         }
         /// <summary>
+        /// DefaultRegistrySettings applies the default registry settings.
+        /// </summary>
+        /// <remarks>
+        /// This is used to setup the default registry settings as well as to reset the registry settings for a fresh installation.
+        /// </remarks>
+        private void DefaultRegistrySettings()
+        {
+            File.Delete("fresh.install");
+            key.SetValue("Game", game);
+            key.SetValue("JediK1", Convert.ToInt32(jedi));
+            key.SetValue("JediK2", Convert.ToInt32(jedi));
+            key.SetValue("Health", Convert.ToInt32(true));
+        }
+        /// <summary>
         /// InitializeRegistry prepares the registry entries and sets up some of the UI accordingly.
         /// </summary>
         /// <remarks>
@@ -95,14 +109,19 @@ namespace Launcher
         /// </remarks>
         private void InitializeRegistry()
         {
-            if (key != null) { game = (int)key.GetValue("Game")!; jedi = Convert.ToBoolean((int)key.GetValue($"JediK{game}")!); }
+            if (key != null)
+            {
+                if (File.Exists("fresh.install")) { DefaultRegistrySettings(); }
+                else
+                {
+                    game = (int)key.GetValue("Game")!;
+                    jedi = Convert.ToBoolean((int)key.GetValue($"JediK{game}")!);
+                }
+            }
             else
             {
                 key = Registry.CurrentUser.CreateSubKey(@"Expanded Galaxy");
-                key.SetValue("Game", game);
-                key.SetValue("JediK1", Convert.ToInt32(jedi));
-                key.SetValue("JediK2", Convert.ToInt32(jedi));
-                key.SetValue("Health", Convert.ToInt32(true));
+                DefaultRegistrySettings();
             }
             if (game == 1) { PlayBackgroundSound(Properties.Resources.k1background); if (jedi == true) { checkBox1.Checked = true; } }
             if (game == 2)

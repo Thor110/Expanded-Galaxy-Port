@@ -4,6 +4,10 @@ reg query "HKCU\Expanded Galaxy" /v Game >nul
 if %errorlevel% neq 0 (
   reg add "HKCU\Expanded Galaxy" /v Game /t REG_DWORD /d 1
 )
+if exist fresh.install (
+  reg add "HKCU\Expanded Galaxy" /v Game /t REG_DWORD /d 1 /f
+  del fresh.install
+)
 :START
 cls
 if exist dialog.tlk.main goto :INPUTA
