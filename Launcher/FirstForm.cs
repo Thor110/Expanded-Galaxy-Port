@@ -30,6 +30,12 @@ namespace Launcher
             InitializeTooltips();
             InitializeParser();
         }
+        /// <summary>
+        /// InitializeParser parses the relevant settings from swkotor2.ini
+        /// </summary>
+        /// <remarks>
+        /// Only parses the relevant settings.
+        /// </remarks>
         private void InitializeParser()
         {
             if (!File.Exists("swkotor2.ini"))
@@ -81,6 +87,12 @@ namespace Launcher
                 }
             }
         }
+        /// <summary>
+        /// InitializeRegistry prepares the registry entries and sets up some of the UI accordingly.
+        /// </summary>
+        /// <remarks>
+        /// The combo boolean is set to true after the registry is initialised in order to prevent it from firing when the selected index is changed on startup.
+        /// </remarks>
         private void InitializeRegistry()
         {
             if (key != null) { game = (int)key.GetValue("Game")!; jedi = Convert.ToBoolean((int)key.GetValue($"JediK{game}")!); }
@@ -136,12 +148,24 @@ namespace Launcher
         /// tooltip_MouseLeave event Handler hides the active tooltip.
         /// </summary>
         void tooltip_MouseLeave(object? sender, EventArgs e) { tooltip.Hide((Control)sender!); }
+        /// <summary>
+        /// comboBox1_SelectedIndexChanged controls which game is enabled.
+        /// </summary>
+        /// <remarks>
+        /// The combo boolean prevents it from firing when the selected index is set on startup.
+        /// </remarks>
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (combo) { return; }
             if (comboBox1.SelectedIndex == 0 && game == 2) { setKotOR1(); }
             else if (comboBox1.SelectedIndex != 0 && game == 1) { setKotOR2(); }
         }
+        /// <summary>
+        /// setReg updates the registry entries when swapping betweent he games.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
         private void setReg()
         {
             key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
@@ -151,6 +175,9 @@ namespace Launcher
             if (game == 2) { if (jedi == true) { checkBox2.Checked = true; } }
             key.Close();
         }
+        /// <summary>
+        /// setKotOR1 swaps the relevant files for enabling KotOR1.
+        /// </summary>
         private void setKotOR1()
         {
             game = 1;
@@ -185,6 +212,9 @@ namespace Launcher
             BackgroundImage = Properties.Resources.k1swlauncher1;
             PlayBackgroundSound(Properties.Resources.k1background);
         }
+        /// <summary>
+        /// setKotOR2 swaps the relevant files for enabling KotOR2.
+        /// </summary>
         private void setKotOR2()
         {
             game = 2;
@@ -219,6 +249,9 @@ namespace Launcher
             BackgroundImage = Properties.Resources.k2swlauncher1;
             PlayBackgroundSound(Properties.Resources.background);
         }
+        /// <summary>
+        /// game_Click starts the game.
+        /// </summary>
         private void game_Click(object sender, EventArgs e)
         {
             click_play();
@@ -226,6 +259,9 @@ namespace Launcher
             else { Process.Start("swkotor2.exe"); }
             Close();
         }
+        /// <summary>
+        /// configure_Click opens the configuration menu.
+        /// </summary>
         private void configure_Click(object sender, EventArgs e)
         {
             click_play();
@@ -264,8 +300,17 @@ namespace Launcher
                 checkBox8.Visible = true;
             }
         }
+        /// <summary>
+        /// website_Click links to the ModDB page for the project.
+        /// </summary>
         private void website_Click(object sender, EventArgs e) { click_play(); Process.Start(new ProcessStartInfo("https://www.moddb.com/mods/kotor-ii-tsl-expanded-galaxy") { UseShellExecute = true }); }
+        /// <summary>
+        /// discord_Click links to the Discord server for the project.
+        /// </summary>
         private void discord_Click(object sender, EventArgs e) { click_play(); Process.Start(new ProcessStartInfo("https://discord.gg/bkbj8Feu7b") { UseShellExecute = true }); }
+        /// <summary>
+        /// close_Click closes the program or returns from the configuration options.
+        /// </summary>
         private void close_Click(object sender, EventArgs e)
         {
             click_play();
@@ -290,16 +335,9 @@ namespace Launcher
                 checkBox8.Visible = false;
             }
         }
-        public void PlaySound(string soundFilePath)
-        {
-            using (var waveFileReader = new WaveFileReader(soundFilePath))
-            using (var waveOutEvent = new WaveOutEvent())
-            {
-                waveOutEvent.Init(waveFileReader);
-                waveOutEvent.Play();
-                while (waveOutEvent.PlaybackState == PlaybackState.Playing) { Thread.Sleep(100); }
-            }
-        }
+        /// <summary>
+        /// PlayBackgroundSound is for playing the background music on it's own thread.
+        /// </summary>
         private void PlayBackgroundSound(Stream soundStream)
         {
             cts?.Cancel(); // Cancel the current sound
@@ -319,13 +357,22 @@ namespace Launcher
             thread.IsBackground = true; // So that the thread dies when the form closes
             thread.Start();
         }
+        /// <summary>
+        /// hover_play
+        /// </summary>
         private void hover_play()
         {
             hoverSemaphore.Wait();
             try { PlaySound(Properties.Resources.hover); }
             finally { hoverSemaphore.Release(); }
         }
+        /// <summary>
+        /// click_play
+        /// </summary>
         private void click_play() { PlaySound(Properties.Resources.click); }
+        /// <summary>
+        /// PlaySound plays one time sounds, specifically the hover and click sounds.
+        /// </summary>
         private void PlaySound(Stream soundStream)
         {
             Thread thread = new Thread(() =>
@@ -341,6 +388,9 @@ namespace Launcher
             thread.IsBackground = true;
             thread.Start();
         }
+        /// <summary>
+        /// button_MouseEnter is the event handler for when the mouse cursor enters the area for any of the buttons.
+        /// </summary>
         private void button_MouseEnter(object sender, EventArgs e)
         {
             if (combo) { combo = false; return; }
@@ -350,12 +400,21 @@ namespace Launcher
             previouslyFocusedButton = (CustomButton)sender;
             hover_play();
         }
+        /// <summary>
+        /// button_MouseLeave is the event handler for when the mouse cursor leaves the area for any of the buttons.
+        /// </summary>
         private void button_MouseLeave(object sender, EventArgs e) { ((CustomButton)sender).BackgroundImage = null; }
+        /// <summary>
+        /// button_MouseDown is the event handler for when the mouse button is held down on any of the buttons.
+        /// </summary>
         private void button_MouseDown(object sender, EventArgs e)
         {
             if (game == 1) { ((CustomButton)sender).BackgroundImage = Properties.Resources.mousedown; }
             if (game == 2) { ((CustomButton)sender).BackgroundImage = Properties.Resources.k2mousedown; }
         }
+        /// <summary>
+        /// checkBox1_CheckedChanged controls the checkbox for the Jedi From The Start Class Settings.
+        /// </summary>
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (!config) { return; }
@@ -384,6 +443,9 @@ namespace Launcher
                 key.Close();
             }
         }
+        /// <summary>
+        /// checkBox2_CheckedChanged controls the checkbox for the Non Jedi Class Settings.
+        /// </summary>
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             if (!config) { return; }
@@ -402,6 +464,9 @@ namespace Launcher
                 key.Close();
             }
         }
+        /// <summary>
+        /// checkBox3_CheckedChanged controls the checkbox for the Health Regeneration setting.
+        /// </summary>
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
             if (!config) { return; }
@@ -420,6 +485,9 @@ namespace Launcher
                 key.Close();
             }
         }
+        /// <summary>
+        /// checkBox4_CheckedChanged controls the checkbox for the Fullscreen settings in the swkotor2.ini file.
+        /// </summary>
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
             if (!config) { return; }
@@ -434,30 +502,45 @@ namespace Launcher
                 MyIni.Write("Fullscreen", "0", "Graphics Options");
             }
         }
+        /// <summary>
+        /// checkBox5_CheckedChanged controls the checkbox for the EnableCheats setting in the swkotor2.ini file.
+        /// </summary>
         private void checkBox5_CheckedChanged(object sender, EventArgs e)
         {
             if (!config) { return; }
             if (checkBox5.Checked == true) { MyIni.Write("EnableCheats", "1", "Game Options"); }
             else { MyIni.Write("EnableCheats", "0", "Game Options"); }
         }
+        /// <summary>
+        /// checkBox6_CheckedChanged controls the checkbox for the Hide InGame GUI setting in the swkotor2.ini file.
+        /// </summary>
         private void checkBox6_CheckedChanged(object sender, EventArgs e)
         {
             if (!config) { return; }
             if (checkBox6.Checked == true) { MyIni.Write("Hide InGame GUI", "1", "Game Options"); }
             else { MyIni.Write("Hide InGame GUI", "0", "Game Options"); }
         }
+        /// <summary>
+        /// checkBox7_CheckedChanged controls the checkbox for the Mini Map setting in the swkotor2.ini file.
+        /// </summary>
         private void checkBox7_CheckedChanged(object sender, EventArgs e)
         {
             if (!config) { return; }
             if (checkBox7.Checked == true) { MyIni.Write("Mini Map", "0", "Game Options"); }
             else { MyIni.Write("Mini Map", "1", "Game Options"); }
         }
+        /// <summary>
+        /// checkBox8_CheckedChanged controls the checkbox for the EnableScreenShot setting in the swkotor2.ini file.
+        /// </summary>
         private void checkBox8_CheckedChanged(object sender, EventArgs e)
         {
             if (!config) { return; }
             if (checkBox8.Checked == true) { MyIni.Write("EnableScreenShot", "1", "Game Options"); }
             else { MyIni.Write("EnableScreenShot", "0", "Game Options"); }
         }
+        /// <summary>
+        /// enable enables the class changes to the executable.
+        /// </summary>
         private void enable()
         {
             if (File.Exists("steam_api.dll"))
@@ -515,6 +598,9 @@ namespace Launcher
             }
             BinaryUtility.ReplaceBytes(replacements, "swkotor2.exe");
         }
+        /// <summary>
+        /// disable disables the class changes to the executable.
+        /// </summary>
         private void disable()
         {
             if (File.Exists("steam_api.dll"))
