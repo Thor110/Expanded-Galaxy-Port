@@ -180,53 +180,13 @@ namespace Launcher
             else if (comboBox1.SelectedIndex != 0 && game == 1) { setKotOR2(); }
         }
         /// <summary>
-        /// setReg updates the registry entries when swapping betweent he games.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        private void setReg()
-        {
-            key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
-            key.SetValue("Game", game);
-            jedi = Convert.ToBoolean((int)key.GetValue($"JediK{game}")!);
-            if (game == 1) { if (jedi == true) { checkBox1.Checked = true; } }
-            if (game == 2) { if (jedi == true) { checkBox2.Checked = true; } }
-            key.Close();
-        }
-        /// <summary>
         /// setKotOR1 swaps the relevant files for enabling KotOR1.
         /// </summary>
         private void setKotOR1()
         {
             game = 1;
-            // port disabled currently. enable it.
-            string[] textFromFile = File.ReadAllLines("port-file-list.txt");
-            foreach (string line in textFromFile)
-            {
-                File.Move($"Override\\{line}", $"Override\\{line}.main");
-                File.Move($"Override\\{line}.port", $"Override\\{line}");
-            }
-            //in -> files for main
-            File.Move("Movies\\ObsidianEnt.bik", "Movies\\ObsidianEnt.bik.main");
-            File.Move("dialog.tlk", "dialog.tlk.main");
-            File.Move("lips\\001EBO_loc.mod", "lips\\001EBO_loc.mod.main");
-            File.Move("Modules\\001ebo.mod", "Modules\\001ebo.mod.main");
-            File.Move("StreamMusic\\mus_sion.wav", "StreamMusic\\mus_sion.wav.main");
-            File.Move("swkotor2.exe", "swkotor2.exe.main");
-            //out -> files for port
-            File.Move("Movies\\ObsidianEnt.bik.port", "Movies\\ObsidianEnt.bik");
-            File.Move("dialog.tlk.port", "dialog.tlk");
-            File.Move("lips\\001EBO_loc.mod.port", "lips\\001EBO_loc.mod");
-            File.Move("Modules\\001ebo.mod.port", "Modules\\001ebo.mod");
-            File.Move("StreamMusic\\mus_sion.wav.port", "StreamMusic\\mus_sion.wav");
-            if (!File.Exists("DirectX/DSETUP.dll")) { File.Move("swkotor2.exe.port", "swkotor2.exe"); }
-            if (Directory.Exists("Saves"))
-            {
-                Directory.Move("Saves", "SavesK2");
-                if (Directory.Exists("SavesK1")) { Directory.Move("SavesK1", "Saves"); }
-                else { Directory.CreateDirectory("Saves"); }
-            } else { Directory.CreateDirectory("Saves"); }
+            SwapGameFiles("port","main");
+            SwapSaveFolders("SavesK1", "SavesK2");
             setReg();
             BackgroundImage = Properties.Resources.k1swlauncher1;
             PlayBackgroundSound(Properties.Resources.k1background);
@@ -237,36 +197,65 @@ namespace Launcher
         private void setKotOR2()
         {
             game = 2;
-            // port enabled currently. disable it.
-            string[] textFromFile = File.ReadAllLines("port-file-list.txt");
-            foreach (string line in textFromFile)
-            {
-                File.Move($"Override\\{line}", $"Override\\{line}.port");
-                File.Move($"Override\\{line}.main", $"Override\\{line}");
-            }
-            //in -> files for port
-            File.Move("Movies\\ObsidianEnt.bik", "Movies\\ObsidianEnt.bik.port");
-            File.Move("dialog.tlk", "dialog.tlk.port");
-            File.Move("lips\\001EBO_loc.mod", "lips\\001EBO_loc.mod.port");
-            File.Move("Modules\\001ebo.mod", "Modules\\001ebo.mod.port");
-            File.Move("StreamMusic\\mus_sion.wav", "StreamMusic\\mus_sion.wav.port");
-            File.Move("swkotor2.exe", "swkotor2.exe.port");
-            //out -> files for main
-            File.Move("Movies\\ObsidianEnt.bik.main", "Movies\\ObsidianEnt.bik");
-            File.Move("dialog.tlk.main", "dialog.tlk");
-            File.Move("lips\\001EBO_loc.mod.main", "lips\\001EBO_loc.mod");
-            File.Move("Modules\\001ebo.mod.main", "Modules\\001ebo.mod");
-            File.Move("StreamMusic\\mus_sion.wav.main", "StreamMusic\\mus_sion.wav");
-            if (!File.Exists("DirectX/DSETUP.dll")) { File.Move("swkotor2.exe.main", "swkotor2.exe"); }
-            if (Directory.Exists("Saves"))
-            {
-                Directory.Move("Saves", "SavesK1");
-                if (Directory.Exists("SavesK2")) { Directory.Move("SavesK2", "Saves"); }
-                else { Directory.CreateDirectory("Saves"); }
-            } else { Directory.CreateDirectory("Saves"); }
+            SwapGameFiles("main", "port");
+            SwapSaveFolders("SavesK2", "SavesK1");
             setReg();
             BackgroundImage = Properties.Resources.k2swlauncher1;
             PlayBackgroundSound(Properties.Resources.background);
+        }
+        /// <summary>
+        /// SwapGameFiles swaps the game files when switching between games.
+        /// </summary>
+        private void SwapGameFiles(string target, string previous)
+        {
+            string[] textFromFile = File.ReadAllLines("port-file-list.txt");
+            foreach (string line in textFromFile)
+            {
+                File.Move($"Override\\{line}", $"Override\\{line}.{previous}");
+                File.Move($"Override\\{line}.{target}", $"Override\\{line}");
+            }
+            //in -> files for previous
+            File.Move("Movies\\ObsidianEnt.bik", $"Movies\\ObsidianEnt.bik.{previous}");
+            File.Move("dialog.tlk", $"dialog.tlk.{previous}");
+            File.Move("lips\\001EBO_loc.mod", $"lips\\001EBO_loc.mod.{previous}");
+            File.Move("Modules\\001ebo.mod", $"Modules\\001ebo.mod.{previous}");
+            File.Move("StreamMusic\\mus_sion.wav", $"StreamMusic\\mus_sion.wav.{previous}");
+            //out -> files for target
+            File.Move($"Movies\\ObsidianEnt.bik.{target}", "Movies\\ObsidianEnt.bik");
+            File.Move($"dialog.tlk.{target}", "dialog.tlk");
+            File.Move($"lips\\001EBO_loc.mod.{target}", "lips\\001EBO_loc.mod");
+            File.Move($"Modules\\001ebo.mod.{target}", "Modules\\001ebo.mod");
+            File.Move($"StreamMusic\\mus_sion.wav.{target}", "StreamMusic\\mus_sion.wav");
+            if (!File.Exists("DirectX/DSETUP.dll"))
+            {
+                File.Move("swkotor2.exe", $"swkotor2.exe.{previous}");
+                File.Move($"swkotor2.exe.{target}", "swkotor2.exe");
+            }
+        }
+        /// <summary>
+        /// SwapSaveFolders swaps the save folders when switching between games.
+        /// </summary>
+        private void SwapSaveFolders(string target, string previous)
+        {
+            if (Directory.Exists("Saves"))
+            {
+                Directory.Move("Saves", previous);
+                if (Directory.Exists(target)) { Directory.Move(target, "Saves"); }
+                else { Directory.CreateDirectory("Saves"); }
+            }
+            else { Directory.CreateDirectory("Saves"); }
+        }
+        /// <summary>
+        /// setReg updates the registry entries when swapping betweent he games.
+        /// </summary>
+        private void setReg()
+        {
+            key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
+            key.SetValue("Game", game);
+            jedi = Convert.ToBoolean((int)key.GetValue($"JediK{game}")!);
+            if (game == 1) { if (jedi == true) { checkBox1.Checked = true; } }
+            if (game == 2) { if (jedi == true) { checkBox2.Checked = true; } }
+            key.Close();
         }
         /// <summary>
         /// game_Click starts the game.
@@ -284,40 +273,21 @@ namespace Launcher
         private void configure_Click(object sender, EventArgs e)
         {
             click_play();
-            if (game == 1)
-            {
-                button2.Visible = false;
-                button3.Visible = false;
-                button4.Visible = false;
-                button5.Visible = false;
-                comboBox1.Visible = false;
-                button1.Text = "Back";
-                config = true;
-                checkBox1.Visible = true;
-                checkBox3.Visible = true;
-                checkBox4.Visible = true;
-                checkBox5.Visible = true;
-                checkBox6.Visible = true;
-                checkBox7.Visible = true;
-                checkBox8.Visible = true;
-            }
-            if (game == 2)
-            {
-                button2.Visible = false;
-                button3.Visible = false;
-                button4.Visible = false;
-                button5.Visible = false;
-                comboBox1.Visible = false;
-                button1.Text = "Back";
-                config = true;
-                checkBox2.Visible = true;
-                checkBox3.Visible = true;
-                checkBox4.Visible = true;
-                checkBox5.Visible = true;
-                checkBox6.Visible = true;
-                checkBox7.Visible = true;
-                checkBox8.Visible = true;
-            }
+            if (game == 1) { checkBox1.Visible = true; }
+            if (game == 2) { checkBox2.Visible = true; }
+            button2.Visible = false;
+            button3.Visible = false;
+            button4.Visible = false;
+            button5.Visible = false;
+            comboBox1.Visible = false;
+            button1.Text = "Back";
+            config = true;
+            checkBox3.Visible = true;
+            checkBox4.Visible = true;
+            checkBox5.Visible = true;
+            checkBox6.Visible = true;
+            checkBox7.Visible = true;
+            checkBox8.Visible = true;
         }
         /// <summary>
         /// website_Click links to the ModDB page for the project.
@@ -334,25 +304,22 @@ namespace Launcher
         {
             click_play();
             if (!config) { Close(); }
-            else
-            {
-                button2.Visible = true;
-                button3.Visible = true;
-                button4.Visible = true;
-                button5.Visible = true;
-                comboBox1.Visible = true;
-                button1.Text = "Exit";
-                config = false;
-                // button 1 is highlighted for some reason?
-                if (game == 1) { checkBox1.Visible = false; }
-                if (game == 2) { checkBox2.Visible = false; }
-                checkBox3.Visible = false;
-                checkBox4.Visible = false;
-                checkBox5.Visible = false;
-                checkBox6.Visible = false;
-                checkBox7.Visible = false;
-                checkBox8.Visible = false;
-            }
+            // button 1 is highlighted for some reason?
+            if (game == 1) { checkBox1.Visible = false; }
+            if (game == 2) { checkBox2.Visible = false; }
+            button2.Visible = true;
+            button3.Visible = true;
+            button4.Visible = true;
+            button5.Visible = true;
+            comboBox1.Visible = true;
+            button1.Text = "Exit";
+            config = false;
+            checkBox3.Visible = false;
+            checkBox4.Visible = false;
+            checkBox5.Visible = false;
+            checkBox6.Visible = false;
+            checkBox7.Visible = false;
+            checkBox8.Visible = false;
         }
         /// <summary>
         /// PlayBackgroundSound is for playing the background music on it's own thread.
@@ -437,29 +404,37 @@ namespace Launcher
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (!config) { return; }
+            key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
+            string[] files = new string[]
+            {
+                "k_pdan_makejedi.ncs",
+                "k_pend_bedmed.ncs",
+                "k_pend_bedsml.ncs",
+                "k_pend_bedtal.ncs",
+                "k_pend_bedtny.ncs"
+            };
             if (!checkBox1.Checked)
             {
                 disable();//Disable Class Changes KotOR1
-                File.Move("Override\\k_pdan_makejedi.ncs", "Override\\k_pdan_makejedi.ncs.jedi");
-                File.Move("Override\\k_pend_bedmed.ncs", "Override\\k_pend_bedmed.ncs.jedi");
-                File.Move("Override\\k_pend_bedsml.ncs", "Override\\k_pend_bedsml.ncs.jedi");
-                File.Move("Override\\k_pend_bedtal.ncs", "Override\\k_pend_bedtal.ncs.jedi");
-                File.Move("Override\\k_pend_bedtny.ncs", "Override\\k_pend_bedtny.ncs.jedi");
-                key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
+                MoveFiles(files, "", ".jedi");
                 key.SetValue("JediK1", 0);
-                key.Close();
             }
             else
             {
                 enable();//Enable Class Changes KotOR1
-                File.Move("Override\\k_pdan_makejedi.ncs.jedi", "Override\\k_pdan_makejedi.ncs");
-                File.Move("Override\\k_pend_bedmed.ncs.jedi", "Override\\k_pend_bedmed.ncs");
-                File.Move("Override\\k_pend_bedsml.ncs.jedi", "Override\\k_pend_bedsml.ncs");
-                File.Move("Override\\k_pend_bedtal.ncs.jedi", "Override\\k_pend_bedtal.ncs");
-                File.Move("Override\\k_pend_bedtny.ncs.jedi", "Override\\k_pend_bedtny.ncs");
-                key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
+                MoveFiles(files, ".jedi", "");
                 key.SetValue("JediK1", 1);
-                key.Close();
+            }
+            key.Close();
+        }
+        /// <summary>
+        /// MoveFiles is used by checkBox1_CheckedChanged to swap files for the class changes.
+        /// </summary>
+        private void MoveFiles(string[] files, string sourceSuffix, string destinationSuffix)
+        {
+            foreach (string file in files)
+            {
+                File.Move($"Override\\{file}{sourceSuffix}", $"Override\\{file}{destinationSuffix}");
             }
         }
         /// <summary>
@@ -468,20 +443,18 @@ namespace Launcher
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             if (!config) { return; }
+            key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
             if (!checkBox2.Checked)
             {
                 enable();//Enable Class Changes KotOR2
-                key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
                 key.SetValue("JediK2", 0);
-                key.Close();
             }
             else
             {
                 disable();//Disable Class Changes KotOR2
-                key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
                 key.SetValue("JediK2", 1);
-                key.Close();
             }
+            key.Close();
         }
         /// <summary>
         /// checkBox3_CheckedChanged controls the checkbox for the Health Regeneration setting.
@@ -489,20 +462,18 @@ namespace Launcher
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
             if (!config) { return; }
+            key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
             if (!checkBox3.Checked)
             {
                 File.Move("Override\\regeneration.2da.sets", "Override\\regeneration.2da");
-                key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
                 key.SetValue("Health", 0);
-                key.Close();
             }
             else
             {
                 File.Move("Override\\regeneration.2da", "Override\\regeneration.2da.sets");
-                key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
                 key.SetValue("Health", 1);
-                key.Close();
             }
+            key.Close();
         }
         /// <summary>
         /// checkBox4_CheckedChanged controls the checkbox for the Fullscreen settings in the swkotor2.ini file.
