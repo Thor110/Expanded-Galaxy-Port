@@ -24,9 +24,6 @@ namespace Launcher
         public FirstForm()
         {
             InitializeComponent();
-            // Check if the operating system is Windows 11
-            this.AutoScaleMode = AutoScaleMode.Font; // Set the AutoScaleMode property to Font for other operating systems
-            this.AutoScaleDimensions = new SizeF(96, 96);
             comboBox1.Items.Add("KotOR1");
             comboBox1.Items.Add("KotOR2");
             InitializeRegistry();
