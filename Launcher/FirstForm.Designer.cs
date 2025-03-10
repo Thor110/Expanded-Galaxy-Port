@@ -44,6 +44,8 @@
             checkBox6 = new CheckBox();
             checkBox7 = new CheckBox();
             checkBox8 = new CheckBox();
+            checkBox9 = new CheckBox();
+            checkBox10 = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -181,7 +183,7 @@
             checkBox1.BackColor = Color.Transparent;
             checkBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox1.ForeColor = SystemColors.AppWorkspace;
-            checkBox1.Location = new Point(236, 218);
+            checkBox1.Location = new Point(236, 215);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(135, 19);
             checkBox1.TabIndex = 7;
@@ -206,7 +208,7 @@
             checkBox2.BackColor = Color.Transparent;
             checkBox2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox2.ForeColor = SystemColors.AppWorkspace;
-            checkBox2.Location = new Point(236, 218);
+            checkBox2.Location = new Point(236, 215);
             checkBox2.Name = "checkBox2";
             checkBox2.Size = new Size(115, 19);
             checkBox2.TabIndex = 8;
@@ -224,7 +226,7 @@
             checkBox3.CheckState = CheckState.Checked;
             checkBox3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox3.ForeColor = SystemColors.AppWorkspace;
-            checkBox3.Location = new Point(236, 238);
+            checkBox3.Location = new Point(236, 235);
             checkBox3.Name = "checkBox3";
             checkBox3.Size = new Size(142, 19);
             checkBox3.TabIndex = 10;
@@ -242,7 +244,7 @@
             checkBox4.CheckState = CheckState.Checked;
             checkBox4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox4.ForeColor = SystemColors.AppWorkspace;
-            checkBox4.Location = new Point(236, 258);
+            checkBox4.Location = new Point(236, 255);
             checkBox4.Name = "checkBox4";
             checkBox4.Size = new Size(82, 19);
             checkBox4.TabIndex = 11;
@@ -258,7 +260,7 @@
             checkBox5.BackColor = Color.Black;
             checkBox5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox5.ForeColor = SystemColors.AppWorkspace;
-            checkBox5.Location = new Point(236, 278);
+            checkBox5.Location = new Point(236, 275);
             checkBox5.Name = "checkBox5";
             checkBox5.Size = new Size(63, 19);
             checkBox5.TabIndex = 12;
@@ -274,7 +276,7 @@
             checkBox6.BackColor = Color.Black;
             checkBox6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox6.ForeColor = SystemColors.AppWorkspace;
-            checkBox6.Location = new Point(236, 298);
+            checkBox6.Location = new Point(236, 295);
             checkBox6.Name = "checkBox6";
             checkBox6.Size = new Size(129, 19);
             checkBox6.TabIndex = 13;
@@ -290,7 +292,7 @@
             checkBox7.BackColor = Color.Black;
             checkBox7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox7.ForeColor = SystemColors.AppWorkspace;
-            checkBox7.Location = new Point(236, 318);
+            checkBox7.Location = new Point(236, 315);
             checkBox7.Name = "checkBox7";
             checkBox7.Size = new Size(108, 19);
             checkBox7.TabIndex = 14;
@@ -306,7 +308,7 @@
             checkBox8.BackColor = Color.Black;
             checkBox8.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             checkBox8.ForeColor = SystemColors.AppWorkspace;
-            checkBox8.Location = new Point(236, 338);
+            checkBox8.Location = new Point(236, 335);
             checkBox8.Name = "checkBox8";
             checkBox8.Size = new Size(94, 19);
             checkBox8.TabIndex = 15;
@@ -314,6 +316,38 @@
             checkBox8.UseVisualStyleBackColor = false;
             checkBox8.Visible = false;
             checkBox8.CheckedChanged += checkBox8_CheckedChanged;
+            // 
+            // checkBox9
+            // 
+            checkBox9.AccessibleDescription = "Import a save from KotOR1.";
+            checkBox9.AutoSize = true;
+            checkBox9.BackColor = Color.Black;
+            checkBox9.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            checkBox9.ForeColor = SystemColors.AppWorkspace;
+            checkBox9.Location = new Point(236, 355);
+            checkBox9.Name = "checkBox9";
+            checkBox9.Size = new Size(107, 19);
+            checkBox9.TabIndex = 16;
+            checkBox9.Text = "Save Importer";
+            checkBox9.UseVisualStyleBackColor = false;
+            checkBox9.Visible = false;
+            checkBox9.CheckedChanged += checkBox9_CheckedChanged;
+            // 
+            // checkBox10
+            // 
+            checkBox10.AccessibleDescription = "Convert a save from KotOR1.";
+            checkBox10.AutoSize = true;
+            checkBox10.BackColor = Color.Black;
+            checkBox10.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            checkBox10.ForeColor = SystemColors.AppWorkspace;
+            checkBox10.Location = new Point(236, 355);
+            checkBox10.Name = "checkBox10";
+            checkBox10.Size = new Size(113, 19);
+            checkBox10.TabIndex = 17;
+            checkBox10.Text = "Save Converter";
+            checkBox10.UseVisualStyleBackColor = false;
+            checkBox10.Visible = false;
+            checkBox10.CheckedChanged += checkBox10_CheckedChanged;
             // 
             // FirstForm
             // 
@@ -324,6 +358,8 @@
             BackgroundImageLayout = ImageLayout.Zoom;
             CancelButton = button1;
             ClientSize = new Size(600, 560);
+            Controls.Add(checkBox10);
+            Controls.Add(checkBox9);
             Controls.Add(checkBox8);
             Controls.Add(checkBox7);
             Controls.Add(checkBox6);
@@ -369,5 +405,7 @@
         private CheckBox checkBox6;
         private CheckBox checkBox7;
         private CheckBox checkBox8;
+        private CheckBox checkBox9;
+        private CheckBox checkBox10;
     }
 }

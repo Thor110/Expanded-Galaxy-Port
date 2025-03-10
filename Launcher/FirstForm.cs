@@ -12,7 +12,7 @@ namespace Launcher
         public bool jedi = false; // are jedi classes swapped.
         public bool combo; // disables the comboBox until the items have been added and the relevant index is selected.
                            // and disables the button focus until the background music has been played which prevents the button being highlighted on startup.
-        public bool config; // viewing the configuration page.
+        public bool config; // enabled viewing the configuration page, to prevent code executing when the checkboxes are checked on startup or game swap.
         private CancellationTokenSource cts = null!;
         private WaveOutEvent waveOutEvent = null!;
         private CustomButton previouslyFocusedButton = null!;
@@ -24,6 +24,16 @@ namespace Launcher
         public FirstForm()
         {
             InitializeComponent();
+            // Check if the operating system is Windows 11
+            if (Environment.OSVersion.Version.Major == 10 && Environment.OSVersion.Version.Build >= 22000 &&
+                (Environment.OSVersion.Platform == PlatformID.Win32NT && Environment.OSVersion.Version.Minor == 0))
+            {
+                this.AutoScaleMode = AutoScaleMode.Dpi; // Set the AutoScaleMode property to Dpi for Windows 11
+            }
+            else
+            {
+                this.AutoScaleMode = AutoScaleMode.Font; // Set the AutoScaleMode property to Font for other operating systems
+            }
             comboBox1.Items.Add("KotOR1");
             comboBox1.Items.Add("KotOR2");
             InitializeRegistry();
@@ -127,7 +137,7 @@ namespace Launcher
             if (game == 2)
             {
                 PlayBackgroundSound(Properties.Resources.background);
-                if (jedi == true) { checkBox2.Checked = true; }
+                if (jedi == false) { checkBox2.Checked = true; }
                 comboBox1.SelectedIndex = 1;
                 BackgroundImage = Properties.Resources.k2swlauncher1;
             }
@@ -185,7 +195,7 @@ namespace Launcher
         private void setKotOR1()
         {
             game = 1;
-            SwapGameFiles("port","main");
+            SwapGameFiles("port", "main");
             SwapSaveFolders("SavesK1", "SavesK2");
             setReg();
             BackgroundImage = Properties.Resources.k1swlauncher1;
@@ -273,21 +283,7 @@ namespace Launcher
         private void configure_Click(object sender, EventArgs e)
         {
             click_play();
-            if (game == 1) { checkBox1.Visible = true; }
-            if (game == 2) { checkBox2.Visible = true; }
-            button2.Visible = false;
-            button3.Visible = false;
-            button4.Visible = false;
-            button5.Visible = false;
-            comboBox1.Visible = false;
-            button1.Text = "Back";
-            config = true;
-            checkBox3.Visible = true;
-            checkBox4.Visible = true;
-            checkBox5.Visible = true;
-            checkBox6.Visible = true;
-            checkBox7.Visible = true;
-            checkBox8.Visible = true;
+            UpdateUI("Back", true, false);
         }
         /// <summary>
         /// website_Click links to the ModDB page for the project.
@@ -305,21 +301,28 @@ namespace Launcher
             click_play();
             if (!config) { Close(); }
             // button 1 is highlighted for some reason?
-            if (game == 1) { checkBox1.Visible = false; }
-            if (game == 2) { checkBox2.Visible = false; }
-            button2.Visible = true;
-            button3.Visible = true;
-            button4.Visible = true;
-            button5.Visible = true;
-            comboBox1.Visible = true;
-            button1.Text = "Exit";
-            config = false;
-            checkBox3.Visible = false;
-            checkBox4.Visible = false;
-            checkBox5.Visible = false;
-            checkBox6.Visible = false;
-            checkBox7.Visible = false;
-            checkBox8.Visible = false;
+            UpdateUI("Exit", false, true);
+        }
+        /// <summary>
+        /// UpdateUI updates the visibility of the UI elements when opening or closing the configuration page.
+        /// </summary>
+        private void UpdateUI(string button1Text, bool configVisible, bool mainButtonsVisible)
+        {
+            button1.Text = button1Text;
+            button2.Visible = mainButtonsVisible;
+            button3.Visible = mainButtonsVisible;
+            button4.Visible = mainButtonsVisible;
+            button5.Visible = mainButtonsVisible;
+            comboBox1.Visible = mainButtonsVisible;
+            config = configVisible;
+            checkBox3.Visible = configVisible;
+            checkBox4.Visible = configVisible;
+            checkBox5.Visible = configVisible;
+            checkBox6.Visible = configVisible;
+            checkBox7.Visible = configVisible;
+            checkBox8.Visible = configVisible;
+            if (game == 1) { checkBox1.Visible = configVisible; checkBox9.Visible = false; checkBox10.Visible = configVisible; }
+            if (game == 2) { checkBox2.Visible = configVisible; checkBox9.Visible = configVisible; }
         }
         /// <summary>
         /// PlayBackgroundSound is for playing the background music on it's own thread.
@@ -399,35 +402,6 @@ namespace Launcher
             if (game == 2) { ((CustomButton)sender).BackgroundImage = Properties.Resources.k2mousedown; }
         }
         /// <summary>
-        /// checkBox1_CheckedChanged controls the checkbox for the Jedi From The Start Class Settings.
-        /// </summary>
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!config) { return; }
-            key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
-            string[] files = new string[]
-            {
-                "k_pdan_makejedi.ncs",
-                "k_pend_bedmed.ncs",
-                "k_pend_bedsml.ncs",
-                "k_pend_bedtal.ncs",
-                "k_pend_bedtny.ncs"
-            };
-            if (!checkBox1.Checked)
-            {
-                disable();//Disable Class Changes KotOR1
-                MoveFiles(files, "", ".jedi");
-                key.SetValue("JediK1", 0);
-            }
-            else
-            {
-                enable();//Enable Class Changes KotOR1
-                MoveFiles(files, ".jedi", "");
-                key.SetValue("JediK1", 1);
-            }
-            key.Close();
-        }
-        /// <summary>
         /// MoveFiles is used by checkBox1_CheckedChanged to swap files for the class changes.
         /// </summary>
         private void MoveFiles(string[] files, string sourceSuffix, string destinationSuffix)
@@ -438,23 +412,30 @@ namespace Launcher
             }
         }
         /// <summary>
-        /// checkBox2_CheckedChanged controls the checkbox for the Non Jedi Class Settings.
+        /// checkBox1_CheckedChanged controls the checkbox for the Jedi From The Start Class Settings. KotOR1
+        /// </summary>
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!config) { return; }
+            string[] files = new string[]
+            {
+                "k_pdan_makejedi.ncs",
+                "k_pend_bedmed.ncs",
+                "k_pend_bedsml.ncs",
+                "k_pend_bedtal.ncs",
+                "k_pend_bedtny.ncs"
+            };
+            if (checkBox1.Checked) { EnableClassChanges(); MoveFiles(files, ".jedi", ""); }
+            else { DisableClassChanges(); MoveFiles(files, "", ".jedi"); }
+        }
+        /// <summary>
+        /// checkBox2_CheckedChanged controls the checkbox for the Non Jedi Class Settings. KotOR2
         /// </summary>
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             if (!config) { return; }
-            key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
-            if (!checkBox2.Checked)
-            {
-                enable();//Enable Class Changes KotOR2
-                key.SetValue("JediK2", 0);
-            }
-            else
-            {
-                disable();//Disable Class Changes KotOR2
-                key.SetValue("JediK2", 1);
-            }
-            key.Close();
+            if (checkBox2.Checked) { EnableClassChanges(); }
+            else { DisableClassChanges(); }
         }
         /// <summary>
         /// checkBox3_CheckedChanged controls the checkbox for the Health Regeneration setting.
@@ -463,16 +444,9 @@ namespace Launcher
         {
             if (!config) { return; }
             key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
-            if (!checkBox3.Checked)
-            {
-                File.Move("Override\\regeneration.2da.sets", "Override\\regeneration.2da");
-                key.SetValue("Health", 0);
-            }
-            else
-            {
-                File.Move("Override\\regeneration.2da", "Override\\regeneration.2da.sets");
-                key.SetValue("Health", 1);
-            }
+            if (!checkBox3.Checked) { File.Move("Override\\regeneration.2da.sets", "Override\\regeneration.2da"); }
+            else { File.Move("Override\\regeneration.2da", "Override\\regeneration.2da.sets"); }
+            key.SetValue("Health", checkBox3.Checked ? 1 : 0);
             key.Close();
         }
         /// <summary>
@@ -529,124 +503,211 @@ namespace Launcher
             else { MyIni.Write("EnableScreenShot", "0", "Game Options"); }
         }
         /// <summary>
+        /// checkBox9_CheckedChanged opens the save importer.
+        /// </summary>
+        private void checkBox9_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!config) { return; }
+            MessageBox.Show("This feature doesn't work yet!");
+            checkBox10.Checked = false;
+            return;
+            if (checkBox9.Checked == true)
+            {
+                FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+                string initialDirectory = Path.Combine(Directory.GetCurrentDirectory(), "SavesK1\\");
+                if (Directory.Exists(initialDirectory)) { folderBrowserDialog.SelectedPath = initialDirectory; }
+                else { folderBrowserDialog.SelectedPath = Directory.GetCurrentDirectory(); }
+                folderBrowserDialog.Description = "Select a save folder from KotOR1 or the Port";
+                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string folderPath = folderBrowserDialog.SelectedPath;
+                    string filePath = Path.Combine(folderPath, "GLOBALVARS.res");
+                    if (!File.Exists(filePath))
+                    {
+                        checkBox9.Checked = false;
+                        MessageBox.Show("The selected folder is not a valid save folder.");
+                    }
+                    else { ProcessSave(filePath); }
+                }
+                else { checkBox9.Checked = false; }
+            }
+        }
+        /// <summary>
+        /// ProcessSave processes the save file and sets up the relevant files for the save importer.
+        /// </summary>
+        private void ProcessSave(string file)
+        {
+            try
+            {
+                using (FileStream fileStream = new FileStream(file, FileMode.Open))
+                {
+                    BinaryReader binaryReader = new BinaryReader(fileStream);
+                    GFFReader gffReader = new GFFReader(binaryReader);
+
+                    GFFHeader header = gffReader.ReadHeader();
+
+                    MessageBox.Show("GFF Header:");
+                    MessageBox.Show($"Struct Offset: {header.StructOffset}");
+                    MessageBox.Show($"Struct Count: {header.StructCount}");
+                    MessageBox.Show($"Field Offset: {header.FieldOffset}");
+                    MessageBox.Show($"Field Count: {header.FieldCount}");
+                    MessageBox.Show($"Label Offset: {header.LabelOffset}");
+                    MessageBox.Show($"Label Count: {header.LabelCount}");
+                    MessageBox.Show($"Field Data Offset: {header.FieldDataOffset}");
+                    MessageBox.Show($"Field Data Count: {header.FieldDataCount}");
+                    MessageBox.Show($"Field Indices Offset: {header.FieldIndicesOffset}");
+                    MessageBox.Show($"Field Indices Count: {header.FieldIndicesCount}");
+                    MessageBox.Show($"List Indices Offset: {header.ListIndicesOffset}");
+                    MessageBox.Show($"List Indices Count: {header.ListIndicesCount}");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error reading file: " + ex.Message);
+            }
+            checkBox9.Checked = false;
+            // Process the save file here
+            // Change the dialog file here
+            // Replace bytes on the precompiled script here
+            // Add and set a registry option accordingly
+        }
+        /// <summary>
+        /// checkBox10_CheckedChanged opens the save converter for KotOR1.
+        /// </summary>
+        private void checkBox10_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!config) { return; }
+            if (checkBox10.Checked == true)
+            {
+                MessageBox.Show("This feature doesn't work yet!");
+                checkBox10.Checked = false;
+            }
+        }
+        /// <summary>
         /// enable enables the class changes to the executable.
         /// </summary>
-        private void enable()
+        private void EnableClassChanges()
         {
             if (File.Exists("steam_api.dll"))
             {
                 replacements = new List<Tuple<long, byte[]>>()
                 {
-                    Tuple.Create(0x583FF9L, new byte[] { 0xA1, 0xBB }),
-                    Tuple.Create(0x58401BL, new byte[] { 0xA1, 0xBB }),
-                    Tuple.Create(0x583FD5L, new byte[] { 0xA0, 0xBB }),
-                    Tuple.Create(0x58403FL, new byte[] { 0xA0, 0xBB }),
-                    Tuple.Create(0x583FB1L, new byte[] { 0x9F, 0xBB }),
-                    Tuple.Create(0x584063L, new byte[] { 0x9F, 0xBB }),
-                    Tuple.Create(0x4F9EDDL, new byte[] { 0x61, 0x01 }),
-                    Tuple.Create(0x4F9D21L, new byte[] { 0x62, 0x01 }),
-                    Tuple.Create(0x4F9E0CL, new byte[] { 0x63, 0x01 }),
-                    Tuple.Create(0x599D9BL, new byte[] { 0x03, 0x04, 0x05 }),
+                    Tuple.Create(0x583FF9L, new byte[] { 0xA1, 0xBB }),         // StrRef = 32111   = Male Soldier Description
+                    Tuple.Create(0x58401BL, new byte[] { 0xA1, 0xBB }),         // StrRef = 32111   = Female Soldier Description
+                    Tuple.Create(0x583FD5L, new byte[] { 0xA0, 0xBB }),         // StrRef = 32110   = Male Scout Description
+                    Tuple.Create(0x58403FL, new byte[] { 0xA0, 0xBB }),         // StrRef = 32110   = Female Scout Description
+                    Tuple.Create(0x583FB1L, new byte[] { 0x9F, 0xBB }),         // StrRef = 32109   = Male Scoundrel Description
+                    Tuple.Create(0x584063L, new byte[] { 0x9F, 0xBB }),         // StrRef = 32109   = Female Scoundrel Description
+                    Tuple.Create(0x4F9EDDL, new byte[] { 0x61, 0x01 }),         // StrRef = 134     = "Soldier"
+                    Tuple.Create(0x4F9D21L, new byte[] { 0x62, 0x01 }),         // StrRef = 135     = "Scoundrel"
+                    Tuple.Create(0x4F9E0CL, new byte[] { 0x63, 0x01 }),         // StrRef = 133     = "Scout"
+                    Tuple.Create(0x599D9BL, new byte[] { 0x03, 0x04, 0x05 }),   // Class Values
                 };
             }
             else if (File.Exists("DirectX/DSETUP.dll"))
             {
                 MessageBox.Show("Class Changes Not Supported For The LegacyPC Version of the game on Steam currently.");
-                return;
+                return;                                                         // Editing the LegacyPC EXE Results in Error Code 51 On Steam.
             }
             else if (File.Exists("gog.ico") || File.Exists("kwrapper.dll"))
             {
                 replacements = new List<Tuple<long, byte[]>>()
                 {
-                    Tuple.Create(0x58287BL, new byte[] { 0xA1, 0xBB }),
-                    Tuple.Create(0x582859L, new byte[] { 0xA1, 0xBB }),
-                    Tuple.Create(0x582835L, new byte[] { 0xA0, 0xBB }),
-                    Tuple.Create(0x58289FL, new byte[] { 0xA0, 0xBB }),
-                    Tuple.Create(0x582811L, new byte[] { 0x9F, 0xBB }),
-                    Tuple.Create(0x5828C3L, new byte[] { 0x9F, 0xBB }),
-                    Tuple.Create(0x1DE29DL, new byte[] { 0x61, 0x01 }),
-                    Tuple.Create(0x1DE0E1L, new byte[] { 0x62, 0x01 }),
-                    Tuple.Create(0x1DE1CCL, new byte[] { 0x63, 0x01 }),
-                    Tuple.Create(0x58BD74L, new byte[] { 0x03, 0x04, 0x05 }),
+                    Tuple.Create(0x58287BL, new byte[] { 0xA1, 0xBB }),         // StrRef = 32111   = Male Soldier Description
+                    Tuple.Create(0x582859L, new byte[] { 0xA1, 0xBB }),         // StrRef = 32111   = Female Soldier Description
+                    Tuple.Create(0x582835L, new byte[] { 0xA0, 0xBB }),         // StrRef = 32110   = Male Scout Description
+                    Tuple.Create(0x58289FL, new byte[] { 0xA0, 0xBB }),         // StrRef = 32110   = Female Scout Description
+                    Tuple.Create(0x582811L, new byte[] { 0x9F, 0xBB }),         // StrRef = 32109   = Male Scoundrel Description
+                    Tuple.Create(0x5828C3L, new byte[] { 0x9F, 0xBB }),         // StrRef = 32109   = Female Scoundrel Description
+                    Tuple.Create(0x1DE29DL, new byte[] { 0x61, 0x01 }),         // StrRef = 134     = "Soldier"
+                    Tuple.Create(0x1DE0E1L, new byte[] { 0x62, 0x01 }),         // StrRef = 135     = "Scoundrel"
+                    Tuple.Create(0x1DE1CCL, new byte[] { 0x63, 0x01 }),         // StrRef = 133     = "Scout"
+                    Tuple.Create(0x58BD74L, new byte[] { 0x03, 0x04, 0x05 }),   // Class Values
                 };
             }
             else if (File.Exists("swupdate.exe"))
             {
                 replacements = new List<Tuple<long, byte[]>>()
                 {
-                    Tuple.Create(0x42602CL, new byte[] { 0xA1, 0xBB }),
-                    Tuple.Create(0x426034L, new byte[] { 0xA1, 0xBB }),
-                    Tuple.Create(0x426024L, new byte[] { 0xA0, 0xBB }),
-                    Tuple.Create(0x42603CL, new byte[] { 0xA0, 0xBB }),
-                    Tuple.Create(0x42601CL, new byte[] { 0x9F, 0xBB }),
-                    Tuple.Create(0x426044L, new byte[] { 0x9F, 0xBB }),
-                    Tuple.Create(0x3499F6L, new byte[] { 0x61, 0x01 }),
-                    Tuple.Create(0x3498E9L, new byte[] { 0x62, 0x01 }),
-                    Tuple.Create(0x349979L, new byte[] { 0x63, 0x01 }),
-                    Tuple.Create(0x3C3E61L, new byte[] { 0x03, 0x04, 0x05 }),
+                    Tuple.Create(0x42602CL, new byte[] { 0xA1, 0xBB }),         // StrRef = 32111   = Male Soldier Description
+                    Tuple.Create(0x426034L, new byte[] { 0xA1, 0xBB }),         // StrRef = 32111   = Female Soldier Description
+                    Tuple.Create(0x426024L, new byte[] { 0xA0, 0xBB }),         // StrRef = 32110   = Male Scout Description
+                    Tuple.Create(0x42603CL, new byte[] { 0xA0, 0xBB }),         // StrRef = 32110   = Female Scout Description
+                    Tuple.Create(0x42601CL, new byte[] { 0x9F, 0xBB }),         // StrRef = 32109   = Male Scoundrel Description
+                    Tuple.Create(0x426044L, new byte[] { 0x9F, 0xBB }),         // StrRef = 32109   = Female Scoundrel Description
+                    Tuple.Create(0x3499F6L, new byte[] { 0x61, 0x01 }),         // StrRef = 134     = "Soldier"
+                    Tuple.Create(0x3498E9L, new byte[] { 0x62, 0x01 }),         // StrRef = 135     = "Scoundrel"
+                    Tuple.Create(0x349979L, new byte[] { 0x63, 0x01 }),         // StrRef = 133     = "Scout"
+                    Tuple.Create(0x3C3E61L, new byte[] { 0x03, 0x04, 0x05 }),   // Class Values
                 };
             }
             BinaryUtility.ReplaceBytes(replacements, "swkotor2.exe");
+            key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
+            key.SetValue($"JediK{game}", 1);
+            key.Close();
         }
         /// <summary>
         /// disable disables the class changes to the executable.
         /// </summary>
-        private void disable()
+        private void DisableClassChanges()
         {
             if (File.Exists("steam_api.dll"))
             {
                 replacements = new List<Tuple<long, byte[]>>()
                 {
-                    Tuple.Create(0x583FF9L, new byte[] { 0x6F, 0x7D }),
-                    Tuple.Create(0x58401BL, new byte[] { 0x6F, 0x7D }),
-                    Tuple.Create(0x583FD5L, new byte[] { 0x6E, 0x7D }),
-                    Tuple.Create(0x58403FL, new byte[] { 0x6E, 0x7D }),
-                    Tuple.Create(0x583FB1L, new byte[] { 0x6D, 0x7D }),
-                    Tuple.Create(0x584063L, new byte[] { 0x6D, 0x7D }),
-                    Tuple.Create(0x4F9EDDL, new byte[] { 0x86, 0x00 }),
-                    Tuple.Create(0x4F9D21L, new byte[] { 0x87, 0x00 }),
-                    Tuple.Create(0x4F9E0CL, new byte[] { 0x85, 0x00 }),
-                    Tuple.Create(0x599D9BL, new byte[] { 0x00, 0x02, 0x01 }),
+                    Tuple.Create(0x583FF9L, new byte[] { 0x6F, 0x7D }),         // StrRef = 48033 = Male Jedi Guardian Description
+                    Tuple.Create(0x58401BL, new byte[] { 0x6F, 0x7D }),         // StrRef = 48033 = Female Jedi Guardian Description
+                    Tuple.Create(0x583FD5L, new byte[] { 0x6E, 0x7D }),         // StrRef = 48032 = Male Jedi Sentinel Description
+                    Tuple.Create(0x58403FL, new byte[] { 0x6E, 0x7D }),         // StrRef = 48032 = Female Jedi Sentinel Description
+                    Tuple.Create(0x583FB1L, new byte[] { 0x6D, 0x7D }),         // StrRef = 48031 = Male Jedi Consular Description
+                    Tuple.Create(0x584063L, new byte[] { 0x6D, 0x7D }),         // StrRef = 48031 = Female Jedi Consular Description
+                    Tuple.Create(0x4F9EDDL, new byte[] { 0x86, 0x00 }),         // StrRef = 353 = "Jedi Guardian"
+                    Tuple.Create(0x4F9D21L, new byte[] { 0x87, 0x00 }),         // StrRef = 354 = "Jedi Consular"
+                    Tuple.Create(0x4F9E0CL, new byte[] { 0x85, 0x00 }),         // StrRef = 355 = "Jedi Sentinel"
+                    Tuple.Create(0x599D9BL, new byte[] { 0x00, 0x02, 0x01 }),   // Class Values
                 };
             }
             else if (File.Exists("DirectX/DSETUP.dll"))
             {
                 MessageBox.Show("Class Changes Not Supported For The LegacyPC Version of the game on Steam currently.");
-                return;
+                return;                                                         // Editing the LegacyPC EXE Results in Error Code 51 On Steam.
             }
             else if (File.Exists("gog.ico") || File.Exists("kwrapper.dll"))
             {
                 replacements = new List<Tuple<long, byte[]>>()
                 {
-                    Tuple.Create(0x58287BL, new byte[] { 0x6F, 0x7D }),
-                    Tuple.Create(0x582859L, new byte[] { 0x6F, 0x7D }),
-                    Tuple.Create(0x582835L, new byte[] { 0x6E, 0x7D }),
-                    Tuple.Create(0x58289FL, new byte[] { 0x6E, 0x7D }),
-                    Tuple.Create(0x582811L, new byte[] { 0x6D, 0x7D }),
-                    Tuple.Create(0x5828C3L, new byte[] { 0x6D, 0x7D }),
-                    Tuple.Create(0x1DE29DL, new byte[] { 0x86, 0x00 }),
-                    Tuple.Create(0x1DE0E1L, new byte[] { 0x87, 0x00 }),
-                    Tuple.Create(0x1DE1CCL, new byte[] { 0x85, 0x00 }),
-                    Tuple.Create(0x58BD74L, new byte[] { 0x00, 0x02, 0x01 }),
+                    Tuple.Create(0x58287BL, new byte[] { 0x6F, 0x7D }),         // StrRef = 48033 = Male Jedi Guardian Description
+                    Tuple.Create(0x582859L, new byte[] { 0x6F, 0x7D }),         // StrRef = 48033 = Female Jedi Guardian Description
+                    Tuple.Create(0x582835L, new byte[] { 0x6E, 0x7D }),         // StrRef = 48032 = Male Jedi Sentinel Description
+                    Tuple.Create(0x58289FL, new byte[] { 0x6E, 0x7D }),         // StrRef = 48032 = Female Jedi Sentinel Description
+                    Tuple.Create(0x582811L, new byte[] { 0x6D, 0x7D }),         // StrRef = 48031 = Male Jedi Consular Description
+                    Tuple.Create(0x5828C3L, new byte[] { 0x6D, 0x7D }),         // StrRef = 48031 = Female Jedi Consular Description
+                    Tuple.Create(0x1DE29DL, new byte[] { 0x86, 0x00 }),         // StrRef = 353 = "Jedi Guardian"
+                    Tuple.Create(0x1DE0E1L, new byte[] { 0x87, 0x00 }),         // StrRef = 354 = "Jedi Consular"
+                    Tuple.Create(0x1DE1CCL, new byte[] { 0x85, 0x00 }),         // StrRef = 355 = "Jedi Sentinel"
+                    Tuple.Create(0x58BD74L, new byte[] { 0x00, 0x02, 0x01 }),   // Class Values
                 };
             }
             else if (File.Exists("swupdate.exe"))
             {
                 replacements = new List<Tuple<long, byte[]>>()
                 {
-                    Tuple.Create(0x42602CL, new byte[] { 0x6F, 0x7D }),
-                    Tuple.Create(0x426034L, new byte[] { 0x6F, 0x7D }),
-                    Tuple.Create(0x426024L, new byte[] { 0x6E, 0x7D }),
-                    Tuple.Create(0x42603CL, new byte[] { 0x6E, 0x7D }),
-                    Tuple.Create(0x42601CL, new byte[] { 0x6D, 0x7D }),
-                    Tuple.Create(0x426044L, new byte[] { 0x6D, 0x7D }),
-                    Tuple.Create(0x3499F6L, new byte[] { 0x86, 0x00 }),
-                    Tuple.Create(0x3498E9L, new byte[] { 0x87, 0x00 }),
-                    Tuple.Create(0x349979L, new byte[] { 0x85, 0x00 }),
-                    Tuple.Create(0x3C3E61L, new byte[] { 0x00, 0x02, 0x01 }),
+                    Tuple.Create(0x42602CL, new byte[] { 0x6F, 0x7D }),         // StrRef = 48033 = Male Jedi Guardian Description
+                    Tuple.Create(0x426034L, new byte[] { 0x6F, 0x7D }),         // StrRef = 48033 = Female Jedi Guardian Description
+                    Tuple.Create(0x426024L, new byte[] { 0x6E, 0x7D }),         // StrRef = 48032 = Male Jedi Sentinel Description
+                    Tuple.Create(0x42603CL, new byte[] { 0x6E, 0x7D }),         // StrRef = 48032 = Female Jedi Sentinel Description
+                    Tuple.Create(0x42601CL, new byte[] { 0x6D, 0x7D }),         // StrRef = 48031 = Male Jedi Consular Description
+                    Tuple.Create(0x426044L, new byte[] { 0x6D, 0x7D }),         // StrRef = 48031 = Female Jedi Consular Description
+                    Tuple.Create(0x3499F6L, new byte[] { 0x86, 0x00 }),         // StrRef = 353 = "Jedi Guardian"
+                    Tuple.Create(0x3498E9L, new byte[] { 0x87, 0x00 }),         // StrRef = 354 = "Jedi Consular"
+                    Tuple.Create(0x349979L, new byte[] { 0x85, 0x00 }),         // StrRef = 355 = "Jedi Sentinel"
+                    Tuple.Create(0x3C3E61L, new byte[] { 0x00, 0x02, 0x01 }),   // Class Values
                 };
             }
             BinaryUtility.ReplaceBytes(replacements, "swkotor2.exe");
+            key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
+            key.SetValue($"JediK{game}", 0);
+            key.Close();
         }
     }
 }
