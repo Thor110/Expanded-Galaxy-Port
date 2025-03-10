@@ -25,15 +25,8 @@ namespace Launcher
         {
             InitializeComponent();
             // Check if the operating system is Windows 11
-            if (Environment.OSVersion.Version.Major == 10 && Environment.OSVersion.Version.Build >= 22000 &&
-                (Environment.OSVersion.Platform == PlatformID.Win32NT && Environment.OSVersion.Version.Minor == 0))
-            {
-                this.AutoScaleMode = AutoScaleMode.Dpi; // Set the AutoScaleMode property to Dpi for Windows 11
-            }
-            else
-            {
-                this.AutoScaleMode = AutoScaleMode.Font; // Set the AutoScaleMode property to Font for other operating systems
-            }
+            this.AutoScaleMode = AutoScaleMode.Font; // Set the AutoScaleMode property to Font for other operating systems
+            this.AutoScaleDimensions = new SizeF(96, 96);
             comboBox1.Items.Add("KotOR1");
             comboBox1.Items.Add("KotOR2");
             InitializeRegistry();
