@@ -13,6 +13,8 @@ Requires the Main part of the project! [https://github.com/Thor110/Expanded-Gala
 
 This also requires that you own and have a copy of the original game installed.
 
+Note : The installer will hang for a moment before the progress bar begins to move, this is because when it is copying files across from the first game, they don't count towards the state of the progress bar.
+
 In order to install to different versions of the game, please edit the namespaces.ini and put your version to number one, this is a temporary solution until the custom build of HoloPatcher gets recompiled with a new dropdown for the namespaces.ini entries. ( Steam is the default )
 
 Once you have installed the game, go to the installation directory and send a shortcut to your desktop for "launcher.exe" which will allow you to quickly choose between playing KotOR1 & KotOR2.
