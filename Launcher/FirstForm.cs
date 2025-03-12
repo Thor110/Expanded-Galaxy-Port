@@ -23,6 +23,7 @@ namespace Launcher
         private static readonly IniFile MyIni = new IniFile("swkotor2.ini");
         public FirstForm()
         {
+            this.AutoScaleMode = AutoScaleMode.None;
             InitializeComponent();
             comboBox1.Items.Add("KotOR1");
             comboBox1.Items.Add("KotOR2");
