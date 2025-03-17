@@ -23,70 +23,13 @@ namespace Launcher
         private static readonly IniFile MyIni = new IniFile("swkotor2.ini");
         public FirstForm()
         {
-            this.AutoScaleMode = AutoScaleMode.None;
+            this.AutoScaleMode = AutoScaleMode.None; // Fix for Windows 11 Scaling Issues
             InitializeComponent();
             comboBox1.Items.Add("KotOR1");
             comboBox1.Items.Add("KotOR2");
             InitializeRegistry();
             InitializeTooltips();
             InitializeParser();
-        }
-        /// <summary>
-        /// InitializeParser parses the relevant settings from swkotor2.ini
-        /// </summary>
-        /// <remarks>
-        /// Only parses the relevant settings.
-        /// </remarks>
-        private void InitializeParser()
-        {
-            if (!File.Exists("swkotor2.ini"))
-            {
-                MessageBox.Show("Please launch the game once to ensure the swkotor2.ini file is created so that some settings can be configured.");
-                checkBox4.Enabled = false; checkBox5.Enabled = false; checkBox6.Enabled = false; checkBox7.Enabled = false; checkBox8.Enabled = false;
-            }
-            else
-            {
-                // known potential bugs
-                // - not sanitizing result when reading from the .ini which could lead to problems if the user manually
-                // edits the .ini entries to contain anything other than what's expected. IE : 0 or 1!
-                int result;
-                if (!MyIni.KeyExists("Fullscreen", "Display Options")) { MyIni.Write("Fullscreen", "1", "Display Options"); }
-                if (!MyIni.KeyExists("Fullscreen", "Graphics Options")) { MyIni.Write("Fullscreen", "1", "Graphics Options"); }
-                else
-                {
-                    result = Int32.Parse(MyIni.Read("Fullscreen", "Graphics Options"));
-                    if (result == 0) { checkBox4.Checked = false; }
-                    else if (result == 1) { checkBox4.Checked = true; }
-                }
-                if (!MyIni.KeyExists("EnableCheats", "Game Options")) { MyIni.Write("EnableCheats", "0", "Game Options"); }
-                else
-                {
-                    result = Int32.Parse(MyIni.Read("EnableCheats", "Game Options"));
-                    if (result == 0) { checkBox5.Checked = false; }
-                    else if (result == 1) { checkBox5.Checked = true; }
-                }
-                if (!MyIni.KeyExists("Hide InGame GUI", "Game Options")) { MyIni.Write("Hide InGame GUI", "0", "Game Options"); }
-                else
-                {
-                    result = Int32.Parse(MyIni.Read("Hide InGame GUI", "Game Options"));
-                    if (result == 0) { checkBox6.Checked = false; }
-                    else if (result == 1) { checkBox6.Checked = true; }
-                }
-                if (!MyIni.KeyExists("Mini Map", "Game Options")) { MyIni.Write("Mini Map", "1", "Game Options"); }
-                else
-                {
-                    result = Int32.Parse(MyIni.Read("Mini Map", "Game Options"));
-                    if (result == 0) { checkBox7.Checked = true; }
-                    else if (result == 1) { checkBox7.Checked = false; }
-                }
-                if (!MyIni.KeyExists("EnableScreenShot", "Game Options")) { MyIni.Write("EnableScreenShot", "0", "Game Options"); }
-                else
-                {
-                    result = Int32.Parse(MyIni.Read("EnableScreenShot", "Game Options"));
-                    if (result == 0) { checkBox8.Checked = false; }
-                    else if (result == 1) { checkBox8.Checked = true; }
-                }
-            }
         }
         /// <summary>
         /// DefaultRegistrySettings applies the default registry settings.
@@ -168,6 +111,64 @@ namespace Launcher
         /// tooltip_MouseLeave event Handler hides the active tooltip.
         /// </summary>
         void tooltip_MouseLeave(object? sender, EventArgs e) { tooltip.Hide((Control)sender!); }
+        /// <summary>
+        /// InitializeParser parses the relevant settings from swkotor2.ini
+        /// </summary>
+        /// <remarks>
+        /// Only parses the relevant settings.
+        /// </remarks>
+        private void InitializeParser()
+        {
+            if (!File.Exists("swkotor2.ini"))
+            {
+                MessageBox.Show("Please launch the game once to ensure the swkotor2.ini file is created so that some settings can be configured.");
+                checkBox4.Enabled = false; checkBox5.Enabled = false; checkBox6.Enabled = false; checkBox7.Enabled = false; checkBox8.Enabled = false;
+            }
+            else
+            {
+                // known potential bugs
+                // - not sanitizing result when reading from the .ini which could lead to problems if the user manually
+                // edits the .ini entries to contain anything other than what's expected. IE : 0 or 1!
+                int result;
+                if (!MyIni.KeyExists("Fullscreen", "Display Options")) { MyIni.Write("Fullscreen", "1", "Display Options"); }
+                if (!MyIni.KeyExists("Fullscreen", "Graphics Options")) { MyIni.Write("Fullscreen", "1", "Graphics Options"); }
+                else
+                {
+                    result = Int32.Parse(MyIni.Read("Fullscreen", "Graphics Options"));
+                    if (result == 0) { checkBox4.Checked = false; }
+                    else if (result == 1) { checkBox4.Checked = true; }
+                }
+                if (!MyIni.KeyExists("EnableCheats", "Game Options")) { MyIni.Write("EnableCheats", "0", "Game Options"); }
+                else
+                {
+                    result = Int32.Parse(MyIni.Read("EnableCheats", "Game Options"));
+                    if (result == 0) { checkBox5.Checked = false; }
+                    else if (result == 1) { checkBox5.Checked = true; }
+                }
+                if (!MyIni.KeyExists("Hide InGame GUI", "Game Options")) { MyIni.Write("Hide InGame GUI", "0", "Game Options"); }
+                else
+                {
+                    result = Int32.Parse(MyIni.Read("Hide InGame GUI", "Game Options"));
+                    if (result == 0) { checkBox6.Checked = false; }
+                    else if (result == 1) { checkBox6.Checked = true; }
+                }
+                if (!MyIni.KeyExists("Mini Map", "Game Options")) { MyIni.Write("Mini Map", "1", "Game Options"); }
+                else
+                {
+                    result = Int32.Parse(MyIni.Read("Mini Map", "Game Options"));
+                    if (result == 0) { checkBox7.Checked = true; }
+                    else if (result == 1) { checkBox7.Checked = false; }
+                }
+                if (!MyIni.KeyExists("EnableScreenShot", "Game Options")) { MyIni.Write("EnableScreenShot", "0", "Game Options"); }
+                else
+                {
+                    result = Int32.Parse(MyIni.Read("EnableScreenShot", "Game Options"));
+                    if (result == 0) { checkBox8.Checked = false; }
+                    else if (result == 1) { checkBox8.Checked = true; }
+                }
+            }
+            if (!File.Exists("Override\\regeneration2da.sets")) { checkBox3.Checked = false; }
+        }
         /// <summary>
         /// comboBox1_SelectedIndexChanged controls which game is enabled.
         /// </summary>
@@ -435,8 +436,8 @@ namespace Launcher
         {
             if (!config) { return; }
             key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
-            if (!checkBox3.Checked) { File.Move("Override\\regeneration.2da.sets", "Override\\regeneration.2da"); }
-            else { File.Move("Override\\regeneration.2da", "Override\\regeneration.2da.sets"); }
+            if (!checkBox3.Checked) { File.Move("Override\\regeneration2da.sets", "Override\\regeneration.2da"); }
+            else { File.Move("Override\\regeneration.2da", "Override\\regeneration2da.sets"); }
             key.SetValue("Health", checkBox3.Checked ? 1 : 0);
             key.Close();
         }
