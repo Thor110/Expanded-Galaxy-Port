@@ -210,12 +210,16 @@ namespace Launcher
         /// </summary>
         private void SwapGameFiles(string target, string previous)
         {
+            // TODO : Condense this maybe...
             string[] textFromFile = File.ReadAllLines("port-file-list.txt");
+            // 3 : by Adding "Override\\" to each line currently in the file list.
             foreach (string line in textFromFile)
             {
                 File.Move($"Override\\{line}", $"Override\\{line}.{previous}");
                 File.Move($"Override\\{line}.{target}", $"Override\\{line}");
             }
+            // Reminder : The batch script version of the launcher also relies on the file list not having everything in one file.
+            /* // This previous method is technically more efficient.
             //in -> files for previous
             File.Move("Movies\\ObsidianEnt.bik", $"Movies\\ObsidianEnt.bik.{previous}");
             File.Move("dialog.tlk", $"dialog.tlk.{previous}");
@@ -228,7 +232,21 @@ namespace Launcher
             File.Move($"lips\\001EBO_loc.mod.{target}", "lips\\001EBO_loc.mod");
             File.Move($"Modules\\001ebo.mod.{target}", "Modules\\001ebo.mod");
             File.Move($"StreamMusic\\mus_sion.wav.{target}", "StreamMusic\\mus_sion.wav");
-            if (!File.Exists("DirectX/DSETUP.dll"))
+            */ // But it will be less efficient once everything is in one file list.
+            // 1 : these two arrays could be one.
+            // 4 : and adding these to the file list.
+            string[] files = new string[]
+            {
+                "Movies\\ObsidianEnt.bik",
+                "dialog.tlk",
+                "lips\\001EBO_loc.mod",
+                "Modules\\001ebo.mod",
+                "StreamMusic\\mus_sion.wav"
+            };
+            // 2 : resulting in just two calls to the MoveFiles method.
+            MoveFiles(files, "", $".{previous}");
+            MoveFiles(files, $".{target}", "");
+            if (!File.Exists("DirectX/DSETUP.dll")) // This file only exists in the LegacyPC version of the game.
             {
                 File.Move("swkotor2.exe", $"swkotor2.exe.{previous}");
                 File.Move($"swkotor2.exe.{target}", "swkotor2.exe");
@@ -400,7 +418,7 @@ namespace Launcher
         {
             foreach (string file in files)
             {
-                File.Move($"Override\\{file}{sourceSuffix}", $"Override\\{file}{destinationSuffix}");
+                File.Move($"{file}{sourceSuffix}", $"{file}{destinationSuffix}");
             }
         }
         /// <summary>
@@ -411,14 +429,15 @@ namespace Launcher
             if (!config) { return; }
             string[] files = new string[]
             {
-                "k_pdan_makejedi.ncs",
-                "k_pend_bedmed.ncs",
-                "k_pend_bedsml.ncs",
-                "k_pend_bedtal.ncs",
-                "k_pend_bedtny.ncs"
+                "Override\\k_pdan_makejedi.ncs",
+                "Override\\k_pend_bedmed.ncs",
+                "Override\\k_pend_bedsml.ncs",
+                "Override\\k_pend_bedtal.ncs",
+                "Override\\k_pend_bedtny.ncs"
             };
             if (checkBox1.Checked) { EnableClassChanges(); MoveFiles(files, ".jedi", ""); }
             else { DisableClassChanges(); MoveFiles(files, "", ".jedi"); }
+            MessageBox.Show("Using this setting requires starting a new game!"); // Alternatively users could update their save with KSE?
         }
         /// <summary>
         /// checkBox2_CheckedChanged controls the checkbox for the Non Jedi Class Settings. KotOR2
@@ -428,6 +447,7 @@ namespace Launcher
             if (!config) { return; }
             if (checkBox2.Checked) { EnableClassChanges(); }
             else { DisableClassChanges(); }
+            MessageBox.Show("Using this setting requires starting a new game!"); // Alternatively users could update their save with KSE?
         }
         /// <summary>
         /// checkBox3_CheckedChanged controls the checkbox for the Health Regeneration setting.
@@ -557,7 +577,7 @@ namespace Launcher
             {
                 MessageBox.Show("Error reading file: " + ex.Message);
             }
-            checkBox9.Checked = false;
+            checkBox9.Checked = false; // temporarily reset checkbox for testing
             // Process the save file here
             // Change the dialog file here
             // Replace bytes on the precompiled script here
@@ -572,17 +592,17 @@ namespace Launcher
             if (checkBox10.Checked == true)
             {
                 MessageBox.Show("This feature doesn't work yet!");
-                checkBox10.Checked = false;
+                checkBox10.Checked = false; // temporarily reset checkbox for testing
             }
         }
         /// <summary>
-        /// enable enables the class changes to the executable.
+        /// enable enables the class changes to the executable. ( Jedi Classes )
         /// </summary>
         private void EnableClassChanges()
         {
             if (File.Exists("steam_api.dll"))
             {
-                replacements = new List<Tuple<long, byte[]>>()
+                replacements = new List<Tuple<long, byte[]>>()                  // Previous Values
                 {
                     Tuple.Create(0x583FF9L, new byte[] { 0xA1, 0xBB }),         // StrRef = 32111   = Male Soldier Description
                     Tuple.Create(0x58401BL, new byte[] { 0xA1, 0xBB }),         // StrRef = 32111   = Female Soldier Description
@@ -603,7 +623,7 @@ namespace Launcher
             }
             else if (File.Exists("gog.ico") || File.Exists("kwrapper.dll"))
             {
-                replacements = new List<Tuple<long, byte[]>>()
+                replacements = new List<Tuple<long, byte[]>>()                  // Previous Values
                 {
                     Tuple.Create(0x58287BL, new byte[] { 0xA1, 0xBB }),         // StrRef = 32111   = Male Soldier Description
                     Tuple.Create(0x582859L, new byte[] { 0xA1, 0xBB }),         // StrRef = 32111   = Female Soldier Description
@@ -619,7 +639,7 @@ namespace Launcher
             }
             else if (File.Exists("swupdate.exe"))
             {
-                replacements = new List<Tuple<long, byte[]>>()
+                replacements = new List<Tuple<long, byte[]>>()                  // Previous Values
                 {
                     Tuple.Create(0x42602CL, new byte[] { 0xA1, 0xBB }),         // StrRef = 32111   = Male Soldier Description
                     Tuple.Create(0x426034L, new byte[] { 0xA1, 0xBB }),         // StrRef = 32111   = Female Soldier Description
@@ -639,13 +659,13 @@ namespace Launcher
             key.Close();
         }
         /// <summary>
-        /// disable disables the class changes to the executable.
+        /// disable disables the class changes to the executable. ( Non Jedi Classes )
         /// </summary>
         private void DisableClassChanges()
         {
             if (File.Exists("steam_api.dll"))
             {
-                replacements = new List<Tuple<long, byte[]>>()
+                replacements = new List<Tuple<long, byte[]>>()                  // Previous Values
                 {
                     Tuple.Create(0x583FF9L, new byte[] { 0x6F, 0x7D }),         // StrRef = 48033 = Male Jedi Guardian Description
                     Tuple.Create(0x58401BL, new byte[] { 0x6F, 0x7D }),         // StrRef = 48033 = Female Jedi Guardian Description
@@ -666,7 +686,7 @@ namespace Launcher
             }
             else if (File.Exists("gog.ico") || File.Exists("kwrapper.dll"))
             {
-                replacements = new List<Tuple<long, byte[]>>()
+                replacements = new List<Tuple<long, byte[]>>()                  // Previous Values
                 {
                     Tuple.Create(0x58287BL, new byte[] { 0x6F, 0x7D }),         // StrRef = 48033 = Male Jedi Guardian Description
                     Tuple.Create(0x582859L, new byte[] { 0x6F, 0x7D }),         // StrRef = 48033 = Female Jedi Guardian Description
@@ -682,7 +702,7 @@ namespace Launcher
             }
             else if (File.Exists("swupdate.exe"))
             {
-                replacements = new List<Tuple<long, byte[]>>()
+                replacements = new List<Tuple<long, byte[]>>()                  // Previous Values
                 {
                     Tuple.Create(0x42602CL, new byte[] { 0x6F, 0x7D }),         // StrRef = 48033 = Male Jedi Guardian Description
                     Tuple.Create(0x426034L, new byte[] { 0x6F, 0x7D }),         // StrRef = 48033 = Female Jedi Guardian Description
