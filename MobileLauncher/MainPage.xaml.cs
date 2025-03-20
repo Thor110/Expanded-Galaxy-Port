@@ -34,6 +34,12 @@
                 K1Button.BackgroundColor = Colors.Blue;
                 K2Button.BackgroundColor = Colors.Transparent;
                 K2Button.TextColor = Colors.Black;
+                /* // Other button colours?
+                GameBtn.BackgroundColor = Colors.Blue;
+                WebsiteBtn.BackgroundColor = Colors.Blue;
+                DiscordBtn.BackgroundColor = Colors.Blue;
+                ExitBtn.BackgroundColor = Colors.Blue;
+                */ // Other button colours?
             }
             else
             {
@@ -41,6 +47,12 @@
                 K2Button.BackgroundColor = Colors.Green;
                 K1Button.BackgroundColor = Colors.Transparent;
                 K1Button.TextColor = Colors.Black;
+                /* // Other button colours?
+                GameBtn.BackgroundColor = Colors.Green;
+                WebsiteBtn.BackgroundColor = Colors.Green;
+                DiscordBtn.BackgroundColor = Colors.Green;
+                ExitBtn.BackgroundColor = Colors.Green;
+                */ // Other button colours?
             }
             RunMusic();
         }
@@ -52,6 +64,12 @@
             button.BackgroundColor = button == K1Button ? Colors.Blue : Colors.Green;
             otherButton.IsEnabled = true;
             otherButton.BackgroundColor = Colors.Transparent;
+            /* // Other button colours?
+            GameBtn.BackgroundColor = button == K1Button ? Colors.Blue : Colors.Green;
+            WebsiteBtn.BackgroundColor = button == K1Button ? Colors.Blue : Colors.Green;
+            DiscordBtn.BackgroundColor = button == K1Button ? Colors.Blue : Colors.Green;
+            ExitBtn.BackgroundColor = button == K1Button ? Colors.Blue : Colors.Green;
+            */ // Other button colours?
             //SwapGameFiles(button == K1Button ? "port" : "main", button == K1Button ? "main" : "port");
             //SwapSaveFolders(button == K1Button ? "SavesK1" : "SavesK2", button == K1Button ? "SavesK2" : "SavesK1");
             RunMusic();
