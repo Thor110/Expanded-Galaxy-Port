@@ -1,0 +1,11 @@
+#MAXLAYOUT ASCII
+filedependancy M11ab.max
+beginlayout
+   roomcount 2
+      M11ab_09b 22.9509 33.4815 2.24987
+      M11ab_09a 22.8704 23.1951 2.25
+   trackcount 0
+   obstaclecount 0
+   doorhookcount 1
+      M11ab_09a Door_01 0 23.1284 30.784 2.24986 1.0 0.0 0.0 0.0
+donelayout

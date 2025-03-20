@@ -36,7 +36,7 @@ echo Override Install List Generated!
 echo Creating changes.ini files...
 
 type changes\changes-amazon-intro.ini		changes\changes.ini changes\changes-amazon-outro.ini		override.txt > "Expanded Galaxy Port Installer\tslpatchdata\changes-amazon.ini"
-type changes\changes-android-intro.ini		changes\changes.ini changes\changes-android-outro.ini		override.txt > "Expanded Galaxy Port Installer\tslpatchdata\changes-android.ini"
+type changes\changes-android-intro.ini		changes\changes.ini changes\changes-android-ios-outro.ini	override.txt > "Expanded Galaxy Port Installer\tslpatchdata\changes-android.ini"
 type changes\changes-disc-intro.ini			changes\changes.ini changes\changes-disc-outro.ini			override.txt > "Expanded Galaxy Port Installer\tslpatchdata\changes-disc.ini"
 type changes\changes-gog-intro.ini			changes\changes.ini changes\changes-gog-outro.ini			override.txt > "Expanded Galaxy Port Installer\tslpatchdata\changes-gog.ini"
 type changes\changes-legacypc-intro.ini		changes\changes.ini changes\changes-legacypc-outro.ini		override.txt > "Expanded Galaxy Port Installer\tslpatchdata\changes-legacypc.ini"
@@ -45,7 +45,7 @@ type changes\changes-switch-intro.ini		changes\changes.ini changes\changes-switc
 type changes\changes-xbox-intro.ini			changes\changes.ini changes\changes-xbox-outro.ini			override.txt > "Expanded Galaxy Port Installer\tslpatchdata\changes-xbox.ini"
 type changes\changes-macappstore-intro.ini	changes\changes.ini changes\changes-macappstore-outro.ini	override.txt > "Expanded Galaxy Port Installer\tslpatchdata\changes-macappstore.ini"
 type changes\changes-macsteam-intro.ini		changes\changes.ini changes\changes-macsteam-outro.ini		override.txt > "Expanded Galaxy Port Installer\tslpatchdata\changes-macsteam.ini"
-type changes\changes-ios-intro.ini			changes\changes.ini changes\changes-ios-outro.ini			override.txt > "Expanded Galaxy Port Installer\tslpatchdata\changes-ios.ini"
+type changes\changes-ios-intro.ini			changes\changes.ini changes\changes-android-ios-outro.ini	override.txt > "Expanded Galaxy Port Installer\tslpatchdata\changes-ios.ini"
 
 del override.txt
 

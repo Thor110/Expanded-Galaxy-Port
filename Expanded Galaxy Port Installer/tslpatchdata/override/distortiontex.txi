@@ -1,0 +1,7 @@
+proceduretype ringtexdistort
+
+defaultwidth 32
+defaultheight 32
+
+mipmap 0
+filter 1 

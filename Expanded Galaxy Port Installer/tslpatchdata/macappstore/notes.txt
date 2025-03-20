@@ -1,0 +1,5 @@
+MacSteam files "should" be the same as SteamAmazonGoG files, so reference them instead?
+
+minus................. saveload_p.gui which is the same as the disc version...
+
+annoyance
