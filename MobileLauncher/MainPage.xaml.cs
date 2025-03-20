@@ -1,70 +1,106 @@
-﻿using IniParser;
-
-namespace MobileLauncher
+﻿namespace MobileLauncher
 {
     public partial class MainPage : ContentPage
     {
-        //private RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Expanded Galaxy", true)!;
-        public int game = 1; // which game is active.
-        public bool jedi = false; // are jedi classes swapped.
-        public bool combo; // disables the comboBox until the items have been added and the relevant index is selected.
-                           // and disables the button focus until the background music has been played which prevents the button being highlighted on startup.
-        public bool config; // enabled viewing the configuration page, to prevent code executing when the checkboxes are checked on startup or game swap.
-        //private CancellationTokenSource cts = null!;
-        //private WaveOutEvent waveOutEvent = null!;
-        //private CustomButton previouslyFocusedButton = null!;
-        //private List<Tuple<long, byte[]>> replacements = null!;
-        //private ToolTip tooltip = new ToolTip();
-        //private Type[] excludedControlTypes = new Type[] { typeof(PictureBox), typeof(CustomButton) };
-        private static readonly IniFile MyIni = new IniFile("swkotor2.ini");
+        public string documentsPath;
+        public string enablePath;
+        public string disablePath;
+        public string checkPath;
+        public string healthOn = "Health Regeneration: On";
+        public string healthOff = "Health Regeneration: Off";
+        public string overrideDirectory = "Override";
         public MainPage()
         {
             InitializeComponent();
-            //JediSwitch.Toggled += JediSwitch_Toggled!;
+#if ANDROID
+            documentsPath = "/Home/Android/data/com.aspyr.swkotor2/files";
+#elif IOS
+            documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+#else
+            documentsPath = ""; // Never used... just to avoid a warning.
+#endif
+            enablePath = System.IO.Path.Combine(documentsPath, overrideDirectory, "regeneration.2da");
+            disablePath = System.IO.Path.Combine(documentsPath, overrideDirectory, "regeneration2da.sets");
+            checkPath = System.IO.Path.Combine(documentsPath, "dialog.tlk.main");
             HealthSwitch.Toggled += HealthSwitch_Toggled!;
-            /* // PC Launcher Code
-            comboBox1.Items.Add("KotOR1");
-            comboBox1.Items.Add("KotOR2");
-            InitializeRegistry();
-            InitializeTooltips();
-            InitializeParser();
-            */
+            if (!File.Exists(disablePath)) // Parser Equivalent is just health regeneration.
+            {
+                HealthSwitch.IsEnabled = false;
+                HealthLabel.Text = healthOff;
+            }
+            if (!File.Exists(checkPath)) // Registry Equivalent is just which dialog file exists.
+            {
+                K1Button.IsEnabled = false;
+                K1Button.BackgroundColor = Colors.Blue;
+                K2Button.BackgroundColor = Colors.Transparent;
+                K2Button.TextColor = Colors.Black;
+            }
+            else
+            {
+                K2Button.IsEnabled = false;
+                K2Button.BackgroundColor = Colors.Green;
+                K1Button.BackgroundColor = Colors.Transparent;
+                K1Button.TextColor = Colors.Black;
+            }
+            RunMusic();
         }
-        private void K1Button_Clicked(object sender, EventArgs e)
+        private void GameButton_Clicked(object sender, EventArgs e)
         {
-            K1Button.BackgroundColor = Colors.Blue;
-            K2Button.BackgroundColor = Colors.Transparent;
-            game = 1;
+            Button button = (Button)sender;
+            Button otherButton = button == K1Button ? K2Button : K1Button;
+            button.IsEnabled = false;
+            button.BackgroundColor = button == K1Button ? Colors.Blue : Colors.Green;
+            otherButton.IsEnabled = true;
+            otherButton.BackgroundColor = Colors.Transparent;
+            //SwapGameFiles(button == K1Button ? "port" : "main", button == K1Button ? "main" : "port");
+            //SwapSaveFolders(button == K1Button ? "SavesK1" : "SavesK2", button == K1Button ? "SavesK2" : "SavesK1");
+            RunMusic();
         }
-
-        private void K2Button_Clicked(object sender, EventArgs e)
+        private void RunMusic()
         {
-            K1Button.BackgroundColor = Colors.Transparent;
-            K2Button.BackgroundColor = Colors.Green;
-            game = 2;
+            if (K1Button.IsEnabled == true)
+            {
+                //PlaySoundAsync("MobileLauncher.Resources.Audio.k1background.wav");
+            }
+            else
+            {
+                //PlaySoundAsync("MobileLauncher.Resources.Audio.background.wav");
+            }
         }
-        private void JediSwitch_Toggled(object sender, ToggledEventArgs e)
+        private void HealthSwitch_Toggled(object sender, ToggledEventArgs e)
         {
-            /*if (!config) { return; }
+            string sourcePath = e.Value ? enablePath : disablePath;
+            string destinationPath = e.Value ? disablePath : enablePath;
+            string statusText;
+            if (!File.Exists(sourcePath)) { statusText = "ERROR : FILE NOT FOUND"; }
+            else
+            {
+                File.Move(sourcePath, destinationPath);
+                statusText = e.Value ? healthOn : healthOff;
+            }
+            HealthLabel.Text = statusText;
+        }
+        /// <summary>
+        /// SwapGameFiles swaps the game files when switching between games.
+        /// </summary>
+        private void SwapGameFiles(string target, string previous)
+        {
+            string[] textFromFile = File.ReadAllLines(System.IO.Path.Combine(documentsPath, "port-file-list.txt"));
+            foreach (string line in textFromFile)
+            {
+                File.Move(System.IO.Path.Combine(documentsPath, overrideDirectory, $"{line}"), System.IO.Path.Combine(documentsPath, overrideDirectory, $"{line}.{previous}"));
+                File.Move(System.IO.Path.Combine(documentsPath, overrideDirectory, $"{line}.{target}"), System.IO.Path.Combine(documentsPath, overrideDirectory, $"{line}"));
+            }
             string[] files = new string[]
             {
-                "Override\\k_pdan_makejedi.ncs",
-                "Override\\k_pend_bedmed.ncs",
-                "Override\\k_pend_bedsml.ncs",
-                "Override\\k_pend_bedtal.ncs",
-                "Override\\k_pend_bedtny.ncs"
-            };*/
-            //if (e.Value) { JediLabel.Text = "Jedi From The Start: On"; }
-            //else { JediLabel.Text = "Jedi From The Start: Off"; }
-            //jedi = e.Value;
-
-
-            //if (checkBox1.Checked) { EnableClassChanges(); MoveFiles(files, ".jedi", ""); }
-            //else { DisableClassChanges(); MoveFiles(files, "", ".jedi"); }
-            //MessageBox.Show("Using this setting requires starting a new game!"); // Alternatively users could update their save with KSE?
-
-
-
+                "Movies\\ObsidianEnt.bik",
+                "dialog.tlk",
+                "lips\\001EBO_loc.mod",
+                "Modules\\001ebo.mod",
+                "StreamMusic\\mus_sion.wav"
+            };
+            MoveFiles(files, "", $".{previous}");
+            MoveFiles(files, $".{target}", "");
         }
         /// <summary>
         /// MoveFiles is used by checkBox1_CheckedChanged to swap files for the class changes.
@@ -73,153 +109,31 @@ namespace MobileLauncher
         {
             foreach (string file in files)
             {
-                File.Move($"{file}{sourceSuffix}", $"{file}{destinationSuffix}");
-            }
-        }
-        private void HealthSwitch_Toggled(object sender, ToggledEventArgs e)
-        {
-            if (e.Value)
-            {
-                HealthLabel.Text = "Health Regeneration: On";
-                //File.Move("Override\\regeneration.2da", "Override\\regeneration2da.sets");
-            }
-            else
-            {
-                HealthLabel.Text = "Health Regeneration: Off";
-                //File.Move("Override\\regeneration2da.sets", "Override\\regeneration.2da");
+                File.Move(System.IO.Path.Combine(documentsPath, $"{file}{sourceSuffix}"), System.IO.Path.Combine(documentsPath, $"{file}{destinationSuffix}"));
             }
         }
         /// <summary>
-        /// DefaultRegistrySettings applies the default registry settings.
+        /// SwapSaveFolders swaps the save folders when switching between games.
         /// </summary>
-        /// <remarks>
-        /// This is used to setup the default registry settings as well as to reset the registry settings for a fresh installation.
-        /// </remarks>
-        /* // PC Launcher Code
-        private void DefaultRegistrySettings()
+        private void SwapSaveFolders(string target, string previous)
         {
-            File.Delete("fresh.install");
-            key.SetValue("Game", game);
-            key.SetValue("JediK1", Convert.ToInt32(jedi));
-            key.SetValue("JediK2", Convert.ToInt32(jedi));
-            key.SetValue("Health", Convert.ToInt32(true));
+            string saves = System.IO.Path.Combine(documentsPath, "Saves");
+            if (Directory.Exists(saves))
+            {
+                Directory.Move(saves, previous);
+                if (Directory.Exists(target)) { Directory.Move(target, saves); }
+                else { Directory.CreateDirectory(saves); }
+            }
+            else { Directory.CreateDirectory(saves); }
         }
-        */
-        /// <summary>
-        /// InitializeRegistry prepares the registry entries and sets up some of the UI accordingly.
-        /// </summary>
-        /// <remarks>
-        /// The combo boolean is set to true after the registry is initialised in order to prevent it from firing when the selected index is changed on startup.
-        /// </remarks>
-        /* // PC Launcher Code
-        private void InitializeRegistry()
-        {
-            if (key != null)
-            {
-                if (File.Exists("fresh.install")) { DefaultRegistrySettings(); }
-                else
-                {
-                    game = (int)key.GetValue("Game")!;
-                    jedi = Convert.ToBoolean((int)key.GetValue($"JediK{game}")!);
-                }
-            }
-            else
-            {
-                key = Registry.CurrentUser.CreateSubKey(@"Expanded Galaxy");
-                DefaultRegistrySettings();
-            }
-            if (game == 1) { PlayBackgroundSound(Properties.Resources.k1background); if (jedi == true) { checkBox1.Checked = true; } }
-            if (game == 2)
-            {
-                PlayBackgroundSound(Properties.Resources.background);
-                if (jedi == false) { checkBox2.Checked = true; }
-                comboBox1.SelectedIndex = 1;
-                BackgroundImage = Properties.Resources.k2swlauncher1;
-            }
-            if (Convert.ToBoolean((int)key.GetValue("Health")!) == false) { checkBox3.Checked = false; }
-            key.Close();
-            combo = true;
-        }
-        */
         /// <summary>
         /// InitializeParser parses the relevant settings from swkotor2.ini
         /// </summary>
         /// <remarks>
         /// Only parses the relevant settings.
         /// </remarks>
-        /* // PC Launcher Code
-        private void InitializeParser()
-        {
-            if (!File.Exists("swkotor2.ini"))
-            {
-                MessageBox.Show("Please launch the game once to ensure the swkotor2.ini file is created so that some settings can be configured.");
-                checkBox4.Enabled = false; checkBox5.Enabled = false; checkBox6.Enabled = false; checkBox7.Enabled = false; checkBox8.Enabled = false;
-            }
-            else
-            {
-                // known potential bugs
-                // - not sanitizing result when reading from the .ini which could lead to problems if the user manually
-                // edits the .ini entries to contain anything other than what's expected. IE : 0 or 1!
-                int result;
-                if (!MyIni.KeyExists("Fullscreen", "Display Options")) { MyIni.Write("Fullscreen", "1", "Display Options"); }
-                if (!MyIni.KeyExists("Fullscreen", "Graphics Options")) { MyIni.Write("Fullscreen", "1", "Graphics Options"); }
-                else
-                {
-                    result = Int32.Parse(MyIni.Read("Fullscreen", "Graphics Options"));
-                    if (result == 0) { checkBox4.Checked = false; }
-                    else if (result == 1) { checkBox4.Checked = true; }
-                }
-                if (!MyIni.KeyExists("EnableCheats", "Game Options")) { MyIni.Write("EnableCheats", "0", "Game Options"); }
-                else
-                {
-                    result = Int32.Parse(MyIni.Read("EnableCheats", "Game Options"));
-                    if (result == 0) { checkBox5.Checked = false; }
-                    else if (result == 1) { checkBox5.Checked = true; }
-                }
-                if (!MyIni.KeyExists("Hide InGame GUI", "Game Options")) { MyIni.Write("Hide InGame GUI", "0", "Game Options"); }
-                else
-                {
-                    result = Int32.Parse(MyIni.Read("Hide InGame GUI", "Game Options"));
-                    if (result == 0) { checkBox6.Checked = false; }
-                    else if (result == 1) { checkBox6.Checked = true; }
-                }
-                if (!MyIni.KeyExists("Mini Map", "Game Options")) { MyIni.Write("Mini Map", "1", "Game Options"); }
-                else
-                {
-                    result = Int32.Parse(MyIni.Read("Mini Map", "Game Options"));
-                    if (result == 0) { checkBox7.Checked = true; }
-                    else if (result == 1) { checkBox7.Checked = false; }
-                }
-                if (!MyIni.KeyExists("EnableScreenShot", "Game Options")) { MyIni.Write("EnableScreenShot", "0", "Game Options"); }
-                else
-                {
-                    result = Int32.Parse(MyIni.Read("EnableScreenShot", "Game Options"));
-                    if (result == 0) { checkBox8.Checked = false; }
-                    else if (result == 1) { checkBox8.Checked = true; }
-                }
-            }
-            if (!File.Exists("Override\\regeneration2da.sets")) { checkBox3.Checked = false; }
-        }
-        */
         private void GameClicked(object sender, EventArgs e)
         {
-
-            /*
-            var assembly = typeof(IniFile).Assembly;
-            var resources = assembly.GetManifestResourceNames();
-
-            foreach (var resource in resources)
-            {
-                var resourceNameLabel = new Label();
-                resourceNameLabel.Text = string.Join("\n", resources);
-
-                Content = resourceNameLabel;
-            }
-
-            return;
-            */
-
-
             click_play();
 #if ANDROID
             var packageName = "com.aspyr.swkotor2";
@@ -250,11 +164,6 @@ namespace MobileLauncher
             GameBtn.Text = "App not supported";
 #endif
         }
-        private void ConfigureClicked(object sender, EventArgs e)
-        {
-            click_play();
-            UpdateUI("Back", true, false);
-        }
         private void WebsiteClicked(object sender, EventArgs e)
         {
             click_play();
@@ -268,48 +177,14 @@ namespace MobileLauncher
         private void ExitClicked(object sender, EventArgs e)
         {
             click_play();
-            if (!config) { App.Current!.Quit(); }
-            UpdateUI("Exit", false, true);
+            App.Current!.Quit();
         }
         /// <summary>
         /// click_play
         /// </summary>
         private void click_play()
         {
-            //Install-Package Plugin.MediaManager
-            //Uninstall-Package Plugin.MediaManager
-            //var file = await FileSystem.OpenAppPackageFileAsync("MobileLauncher.Resources.Audio.click.wav");
-            //await CrossMediaManager.Current.Play(file);
-            /*
-            var assembly = typeof(IniFile).Assembly;
-            var resourceName = "MobileLauncher.Resources.Audio.click.wav";
-            using var stream = assembly.GetManifestResourceStream(resourceName);
-            await CrossMediaManager.Current.Play(stream);
-            */
-            //PlaySound(await FileSystem.OpenAppPackageFileAsync("MobileLauncher.Resources.Audio.click.wav"));
-        }
-        /// <summary>
-        /// UpdateUI updates the visibility of the UI elements when opening or closing the configuration page.
-        /// </summary>
-        private void UpdateUI(string button1Text, bool configVisible, bool mainButtonsVisible)
-        {
-            /* // PC Launcher Code
-            button1.Text = button1Text;
-            button2.Visible = mainButtonsVisible;
-            button3.Visible = mainButtonsVisible;
-            button4.Visible = mainButtonsVisible;
-            button5.Visible = mainButtonsVisible;
-            comboBox1.Visible = mainButtonsVisible;
-            config = configVisible;
-            checkBox3.Visible = configVisible;
-            checkBox4.Visible = configVisible;
-            checkBox5.Visible = configVisible;
-            checkBox6.Visible = configVisible;
-            checkBox7.Visible = configVisible;
-            checkBox8.Visible = configVisible;
-            if (game == 1) { checkBox1.Visible = configVisible; checkBox9.Visible = false; checkBox10.Visible = configVisible; }
-            if (game == 2) { checkBox2.Visible = configVisible; checkBox9.Visible = configVisible; }
-            */
+            //PlaySoundAsync("MobileLauncher.Resources.Audio.click.wav");
         }
     }
 }
