@@ -1,7 +1,4 @@
-﻿using Microsoft.Win32;
-using IniParser;
-using System.Diagnostics;
-using Microsoft.Maui;
+﻿using IniParser;
 
 namespace MobileLauncher
 {
@@ -16,14 +13,15 @@ namespace MobileLauncher
         //private CancellationTokenSource cts = null!;
         //private WaveOutEvent waveOutEvent = null!;
         //private CustomButton previouslyFocusedButton = null!;
-        //private SemaphoreSlim hoverSemaphore = new SemaphoreSlim(1, 1);
         //private List<Tuple<long, byte[]>> replacements = null!;
         //private ToolTip tooltip = new ToolTip();
         //private Type[] excludedControlTypes = new Type[] { typeof(PictureBox), typeof(CustomButton) };
-        //private static readonly IniFile MyIni = new IniFile("swkotor2.ini");
+        private static readonly IniFile MyIni = new IniFile("swkotor2.ini");
         public MainPage()
         {
             InitializeComponent();
+            //JediSwitch.Toggled += JediSwitch_Toggled!;
+            HealthSwitch.Toggled += HealthSwitch_Toggled!;
             /* // PC Launcher Code
             comboBox1.Items.Add("KotOR1");
             comboBox1.Items.Add("KotOR2");
@@ -31,6 +29,65 @@ namespace MobileLauncher
             InitializeTooltips();
             InitializeParser();
             */
+        }
+        private void K1Button_Clicked(object sender, EventArgs e)
+        {
+            K1Button.BackgroundColor = Colors.Blue;
+            K2Button.BackgroundColor = Colors.Transparent;
+            game = 1;
+        }
+
+        private void K2Button_Clicked(object sender, EventArgs e)
+        {
+            K1Button.BackgroundColor = Colors.Transparent;
+            K2Button.BackgroundColor = Colors.Green;
+            game = 2;
+        }
+        private void JediSwitch_Toggled(object sender, ToggledEventArgs e)
+        {
+            /*if (!config) { return; }
+            string[] files = new string[]
+            {
+                "Override\\k_pdan_makejedi.ncs",
+                "Override\\k_pend_bedmed.ncs",
+                "Override\\k_pend_bedsml.ncs",
+                "Override\\k_pend_bedtal.ncs",
+                "Override\\k_pend_bedtny.ncs"
+            };*/
+            //if (e.Value) { JediLabel.Text = "Jedi From The Start: On"; }
+            //else { JediLabel.Text = "Jedi From The Start: Off"; }
+            //jedi = e.Value;
+
+
+            //if (checkBox1.Checked) { EnableClassChanges(); MoveFiles(files, ".jedi", ""); }
+            //else { DisableClassChanges(); MoveFiles(files, "", ".jedi"); }
+            //MessageBox.Show("Using this setting requires starting a new game!"); // Alternatively users could update their save with KSE?
+
+
+
+        }
+        /// <summary>
+        /// MoveFiles is used by checkBox1_CheckedChanged to swap files for the class changes.
+        /// </summary>
+        private void MoveFiles(string[] files, string sourceSuffix, string destinationSuffix)
+        {
+            foreach (string file in files)
+            {
+                File.Move($"{file}{sourceSuffix}", $"{file}{destinationSuffix}");
+            }
+        }
+        private void HealthSwitch_Toggled(object sender, ToggledEventArgs e)
+        {
+            if (e.Value)
+            {
+                HealthLabel.Text = "Health Regeneration: On";
+                //File.Move("Override\\regeneration.2da", "Override\\regeneration2da.sets");
+            }
+            else
+            {
+                HealthLabel.Text = "Health Regeneration: Off";
+                //File.Move("Override\\regeneration2da.sets", "Override\\regeneration.2da");
+            }
         }
         /// <summary>
         /// DefaultRegistrySettings applies the default registry settings.
@@ -146,6 +203,24 @@ namespace MobileLauncher
         */
         private void GameClicked(object sender, EventArgs e)
         {
+
+            /*
+            var assembly = typeof(IniFile).Assembly;
+            var resources = assembly.GetManifestResourceNames();
+
+            foreach (var resource in resources)
+            {
+                var resourceNameLabel = new Label();
+                resourceNameLabel.Text = string.Join("\n", resources);
+
+                Content = resourceNameLabel;
+            }
+
+            return;
+            */
+
+
+            click_play();
 #if ANDROID
             var packageName = "com.aspyr.swkotor2";
             var androidApp = new Android.Content.Intent(Android.Content.Intent.ActionMain);
@@ -177,24 +252,41 @@ namespace MobileLauncher
         }
         private void ConfigureClicked(object sender, EventArgs e)
         {
-            //click_play();
+            click_play();
             UpdateUI("Back", true, false);
         }
         private void WebsiteClicked(object sender, EventArgs e)
         {
-            //click_play();
+            click_play();
             Launcher.OpenAsync("https://www.moddb.com/mods/kotor-ii-tsl-expanded-galaxy");
         }
         private void DiscordClicked(object sender, EventArgs e)
         {
-            //click_play();
+            click_play();
             Launcher.OpenAsync("https://discord.gg/bkbj8Feu7b");
         }
         private void ExitClicked(object sender, EventArgs e)
         {
-            //click_play();
+            click_play();
             if (!config) { App.Current!.Quit(); }
             UpdateUI("Exit", false, true);
+        }
+        /// <summary>
+        /// click_play
+        /// </summary>
+        private void click_play()
+        {
+            //Install-Package Plugin.MediaManager
+            //Uninstall-Package Plugin.MediaManager
+            //var file = await FileSystem.OpenAppPackageFileAsync("MobileLauncher.Resources.Audio.click.wav");
+            //await CrossMediaManager.Current.Play(file);
+            /*
+            var assembly = typeof(IniFile).Assembly;
+            var resourceName = "MobileLauncher.Resources.Audio.click.wav";
+            using var stream = assembly.GetManifestResourceStream(resourceName);
+            await CrossMediaManager.Current.Play(stream);
+            */
+            //PlaySound(await FileSystem.OpenAppPackageFileAsync("MobileLauncher.Resources.Audio.click.wav"));
         }
         /// <summary>
         /// UpdateUI updates the visibility of the UI elements when opening or closing the configuration page.

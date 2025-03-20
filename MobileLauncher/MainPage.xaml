@@ -19,33 +19,86 @@
                 Clicked="GameClicked"
                 HorizontalOptions="Fill" />
 
+            <VerticalStackLayout HorizontalOptions="Fill">
+                <!--
+                <Grid HorizontalOptions="Fill">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        x:Name="JediLabel"
+                        Text="Jedi From The Start: Off"
+                        VerticalOptions="Center" />
+                    <Switch
+                        x:Name="JediSwitch"
+                        IsToggled="False"
+                        VerticalOptions="Center"
+                        Grid.Column="1" />
+                </Grid>
+            -->
+                <Grid HorizontalOptions="Fill">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        x:Name="HealthLabel"
+                        Text="Health Regeneration: On"
+                        VerticalOptions="Center" />
+                    <Switch
+                        x:Name="HealthSwitch"
+                        IsToggled="True"
+                        VerticalOptions="Center"
+                        Grid.Column="1" />
+                </Grid>
+            </VerticalStackLayout>
+            
+            <!--
             <Button
                 x:Name="ConfigureBtn"
                 Text="Configure" 
-                SemanticProperties.Hint="Launch The Game"
+                SemanticProperties.Hint="Configuration Options"
                 Clicked="ConfigureClicked"
                 HorizontalOptions="Fill" />
-
+            -->
+            
             <Button
                 x:Name="WebsiteBtn"
                 Text="Website" 
-                SemanticProperties.Hint="Launch The Game"
+                SemanticProperties.Hint="Launch The Website"
                 Clicked="WebsiteClicked"
                 HorizontalOptions="Fill" />
 
             <Button
                 x:Name="DiscordBtn"
                 Text="Discord" 
-                SemanticProperties.Hint="Launch The Game"
+                SemanticProperties.Hint="Launch The Discord Server"
                 Clicked="DiscordClicked"
                 HorizontalOptions="Fill" />
 
             <Button
                 x:Name="ExitBtn"
                 Text="Exit" 
-                SemanticProperties.Hint="Launch The Game"
+                SemanticProperties.Hint="Exit The Launcher"
                 Clicked="ExitClicked"
                 HorizontalOptions="Fill" />
+
+            <Grid HorizontalOptions="Fill">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button
+                    x:Name="K1Button"
+                    Text="KotOR1" Clicked="K1Button_Clicked"
+                    Grid.Column="0" />
+                <Button
+                    x:Name="K2Button"
+                    Text="KotOR2" Clicked="K2Button_Clicked"
+                    Grid.Column="1" />
+            </Grid>
+
         </VerticalStackLayout>
     </ScrollView>
 
