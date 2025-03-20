@@ -14,4 +14,9 @@
         HorizontalTextAlignment="Center" />
     </Shell.TitleView>
     
+    <ShellContent
+        Title="MainPage"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+    
 </Shell>
