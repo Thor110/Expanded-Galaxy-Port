@@ -70,8 +70,8 @@
             DiscordBtn.BackgroundColor = button == K1Button ? Colors.Blue : Colors.Green;
             ExitBtn.BackgroundColor = button == K1Button ? Colors.Blue : Colors.Green;
             */ // Other button colours?
-            //SwapGameFiles(button == K1Button ? "port" : "main", button == K1Button ? "main" : "port");
-            //SwapSaveFolders(button == K1Button ? "SavesK1" : "SavesK2", button == K1Button ? "SavesK2" : "SavesK1");
+            SwapGameFiles(button == K1Button ? "port" : "main", button == K1Button ? "main" : "port");
+            SwapSaveFolders(button == K1Button ? "SavesK1" : "SavesK2", button == K1Button ? "SavesK2" : "SavesK1");
             RunMusic();
         }
         private void RunMusic()
@@ -79,12 +79,12 @@
             if (K1Button.IsEnabled == true)
             {
                 //PlaySoundAsync("MobileLauncher.Resources.Audio.background.wav");
-                BackgrounImage.Source = "k2swlauncher1.bmp";
+                BackgroundImage.Source = "k2swlauncher1.bmp";
             }
             else
             {
                 //PlaySoundAsync("MobileLauncher.Resources.Audio.k1background.wav");
-                BackgrounImage.Source = "k1swlauncher1.bmp";
+                BackgroundImage.Source = "k1swlauncher1.bmp";
             }
         }
         private void HealthSwitch_Toggled(object sender, ToggledEventArgs e)
@@ -172,14 +172,15 @@
 #elif IOS
             var packageName = "swkotor2://";
             var url = new Foundation.NSUrl($"{packageName}://");
-            if (Foundation.NSUrl.RequestsOpenAccess(url, out var error))
+            /*if (Foundation.NSUrl.RequestsOpenAccess(url, out var error))
             {
                 Foundation.NSUrl.OpenUrl(url);
             }
             else
             {
                 GameBtn.Text = "App not found";
-            }
+            }*/
+            GameBtn.Text = "iOS not supported";//
 #else
             GameBtn.Text = "App not supported";
 #endif
