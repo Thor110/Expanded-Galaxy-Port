@@ -7,9 +7,11 @@
     Shell.FlyoutBehavior="Disabled"
     Title="MobileLauncher">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-
+    <Shell.TitleView>
+        <Label
+        Text="Expanded Galaxy Project"
+        FontSize="Title"
+        HorizontalTextAlignment="Center" />
+    </Shell.TitleView>
+    
 </Shell>

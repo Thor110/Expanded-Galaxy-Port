@@ -6,9 +6,9 @@
         public string enablePath;
         public string disablePath;
         public string checkPath;
-        public string healthOn = "Health Regeneration: On";
-        public string healthOff = "Health Regeneration: Off";
-        public string overrideDirectory = "Override";
+        public const string healthOn = "Health Regeneration: On";
+        public const string healthOff = "Health Regeneration: Off";
+        public const string overrideDirectory = "Override";
         public MainPage()
         {
             InitializeComponent();
@@ -60,11 +60,13 @@
         {
             if (K1Button.IsEnabled == true)
             {
-                //PlaySoundAsync("MobileLauncher.Resources.Audio.k1background.wav");
+                //PlaySoundAsync("MobileLauncher.Resources.Audio.background.wav");
+                BackgrounImage.Source = "k2swlauncher1.bmp";
             }
             else
             {
-                //PlaySoundAsync("MobileLauncher.Resources.Audio.background.wav");
+                //PlaySoundAsync("MobileLauncher.Resources.Audio.k1background.wav");
+                BackgrounImage.Source = "k1swlauncher1.bmp";
             }
         }
         private void HealthSwitch_Toggled(object sender, ToggledEventArgs e)

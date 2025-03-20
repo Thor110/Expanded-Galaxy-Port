@@ -17,6 +17,7 @@
             Padding="30,0"
             Spacing="25">
             <Image
+                x:Name="BackgrounImage"
                 Source="k1swlauncher1.bmp"
                 HeightRequest="185"
                 Aspect="AspectFit" />
