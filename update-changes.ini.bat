@@ -36,7 +36,7 @@ echo Override Install List Generated!
 echo Creating changes.ini files...
 
 type changes\changes-amazon-intro.ini		changes\changes.ini changes\changes-amazon-outro.ini		override.txt > "Expanded Galaxy Port Installer\tslpatchdata\changes-amazon.ini"
-type changes\cchanges-mobile-intro			changes\changes.ini changes\changes-android-ios-outro.ini	override.txt > "Expanded Galaxy Port Installer\tslpatchdata\changes-android.ini"
+type changes\changes-mobile-intro.ini			changes\changes.ini changes\changes-android-ios-outro.ini	override.txt > "Expanded Galaxy Port Installer\tslpatchdata\changes-android.ini"
 type changes\changes-disc-intro.ini			changes\changes.ini changes\changes-disc-outro.ini			override.txt > "Expanded Galaxy Port Installer\tslpatchdata\changes-disc.ini"
 type changes\changes-gog-intro.ini			changes\changes.ini changes\changes-gog-outro.ini			override.txt > "Expanded Galaxy Port Installer\tslpatchdata\changes-gog.ini"
 type changes\changes-legacypc-intro.ini		changes\changes.ini changes\changes-legacypc-outro.ini		override.txt > "Expanded Galaxy Port Installer\tslpatchdata\changes-legacypc.ini"
