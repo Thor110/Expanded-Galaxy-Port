@@ -1,9 +1,0 @@
-uibit_brdr_map_p.tga
-
-is the same in the following three folders
-
-Z UI Sorting ( from Override )
-XboxGUI ( Deleted as the PC version of this texture is not required )
-AllDiffUI
-
-Use "SharedUI" folder for files that are identical between different versions of the game
