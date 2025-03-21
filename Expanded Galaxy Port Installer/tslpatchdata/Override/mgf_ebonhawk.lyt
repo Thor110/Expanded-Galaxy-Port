@@ -1,9 +1,0 @@
-#MAXLAYOUT ASCII
-filedependancy MGF_ebonhawk.max
-beginlayout
-   roomcount 0
-   trackcount 1
-      MGF_turretcam 0.0 0.0 0.0
-   obstaclecount 0
-   doorhookcount 0
-donelayout

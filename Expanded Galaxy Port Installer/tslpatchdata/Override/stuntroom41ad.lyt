@@ -1,9 +1,0 @@
-#MAXLAYOUT ASCII
-filedependancy StuntRoom41ad.max
-beginlayout
-   roomcount 1
-      StuntRoom41ad 240.0 145.0 36.0
-   trackcount 0
-   obstaclecount 0
-   doorhookcount 0
-donelayout
