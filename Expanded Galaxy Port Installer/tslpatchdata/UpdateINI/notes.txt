@@ -1,1 +1,0 @@
-ini needs altering for the movies list to work properly
