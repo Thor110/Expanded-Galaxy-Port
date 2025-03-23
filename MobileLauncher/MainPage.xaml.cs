@@ -6,7 +6,6 @@ namespace MobileLauncher
     {
         private readonly IAudioManager audioManager;
         private IAudioPlayer? musicPlayer;
-        private IAudioPlayer? soundPlayer;
         public bool swappingFiles;
         public string documentsPath = String.Empty;
         public string disablePath = String.Empty;
@@ -19,7 +18,7 @@ namespace MobileLauncher
         {
             InitializeComponent();
 #if ANDROID
-            documentsPath = "/Home/Android/data/com.aspyr.swkotor2/files";
+            documentsPath = Android.OS.Environment.ExternalStorageDirectory!.AbsolutePath + "/Android/data/com.aspyr.swkotor2/files";
 #elif IOS
             documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 #else
@@ -78,6 +77,19 @@ namespace MobileLauncher
             checkPath = System.IO.Path.Combine(documentsPath, "dialog.tlk.main");
             HealthSwitch.Toggled += HealthSwitch_Toggled!;
 
+
+            /*
+            var directoryInfo = new DirectoryInfo(Android.OS.Environment.ExternalStorageDirectory!.AbsolutePath);
+            if (directoryInfo.Exists)
+            {
+                HealthLabel.Text = "Directory exists";
+                var directories = Directory.GetDirectories(documentsPath);
+                HealthLabel.Text = string.Join(Environment.NewLine, files.Concat(directories));
+            }
+            else
+            {
+                HealthLabel.Text = "Directory does not exist";
+            }*/
             
             try
             {
@@ -90,7 +102,38 @@ namespace MobileLauncher
             catch (Exception ex)
             {
                 // If we get here, an error occurred
-                HealthLabel.Text = $"ERROR : {ex.Message}";
+                string result = $"ERROR : {ex.Message}"
+                    /*
+                    + Environment.NewLine +
+                    "LocalApplicationData Directory: " + Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
+                    + Environment.NewLine +
+                    "Personal Directory: " + Environment.GetFolderPath(Environment.SpecialFolder.Personal)
+                    + Environment.NewLine +
+                    "ApplicationData Directory: " + Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
+                    + Environment.NewLine +
+                    "LocalApplicationData Directory: " + Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
+                    + Environment.NewLine +
+                    "CommonApplicationData Directory: " + Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData)
+                    */
+                    ;
+/*
+#if ANDROID
+                var androidContext = Android.App.Application.Context;
+                result += Environment.NewLine +
+                          "External Storage Directory: " + Android.OS.Environment.ExternalStorageDirectory!.AbsolutePath
+                          + Environment.NewLine +
+                          "External Files Directory: " + androidContext.GetExternalFilesDir(null)!.AbsolutePath
+                          ;/*
+                          foreach (var directory in Directory.GetDirectories(
+                          System.IO.Path.Combine(Android.OS.Environment.ExternalStorageDirectory!.AbsolutePath),"Android"))
+                          {
+                              result += Environment.NewLine + directory;
+                          }*//*
+                          var externalFilesDir = androidContext.GetExternalFilesDir(null);
+                            result += externalFilesDir!.AbsolutePath;
+#endif
+                */
+                HealthLabel.Text = result;
             }
 
 
@@ -226,6 +269,7 @@ namespace MobileLauncher
             else
             {
                 GameBtn.Text = "App not found";
+
             }
 #elif IOS
             var packageName = "swkotor2://";
