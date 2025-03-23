@@ -19,7 +19,7 @@
             <Image
                 x:Name="BackgroundImage"
                 Source="k1swlauncher1.bmp"
-                HeightRequest="185"
+                HeightRequest="256"
                 Aspect="AspectFit" />
             <Button
                 x:Name="GameBtn"
