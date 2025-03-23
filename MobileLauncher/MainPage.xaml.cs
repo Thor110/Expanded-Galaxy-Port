@@ -5,8 +5,8 @@ namespace MobileLauncher
     public partial class MainPage : ContentPage
     {
         public string documentsPath = String.Empty;
-        public string enablePath = String.Empty;
         public string disablePath = String.Empty;
+        public string enablePath = String.Empty;
         public string checkPath = String.Empty;
         public const string healthOn = "Health Regeneration: On";
         public const string healthOff = "Health Regeneration: Off";
@@ -31,12 +31,7 @@ namespace MobileLauncher
             button.BackgroundColor = button == K1Button ? Colors.Blue : Colors.Green;
             otherButton.IsEnabled = true;
             otherButton.BackgroundColor = Colors.Transparent;
-            /* // Other button colours?
-            GameBtn.BackgroundColor = button == K1Button ? Colors.Blue : Colors.Green;
-            WebsiteBtn.BackgroundColor = button == K1Button ? Colors.Blue : Colors.Green;
-            DiscordBtn.BackgroundColor = button == K1Button ? Colors.Blue : Colors.Green;
-            ExitBtn.BackgroundColor = button == K1Button ? Colors.Blue : Colors.Green;
-            */ // Other button colours?
+            //disabled actual file swapping until file access is resolved.
             //SwapGameFiles(button == K1Button ? "port" : "main", button == K1Button ? "main" : "port");
             //SwapSaveFolders(button == K1Button ? "SavesK1" : "SavesK2", button == K1Button ? "SavesK2" : "SavesK1");
             RunMusic();
@@ -44,15 +39,13 @@ namespace MobileLauncher
         private async void RequestAccess()
         {
             var status = await Permissions.RequestAsync<Permissions.StorageRead>();
-            if (status == PermissionStatus.Granted)
+            if (status == PermissionStatus.Granted) // Permission granted, you can access files
             {
-                // Permission granted, you can access files
                 HealthLabel.Text = "FILE ACCESS PERMISSION GRANTED";
                 AccessGranted();
             }
-            else
+            else // Permission denied, display an error message
             {
-                // Permission denied, display an error message
                 HealthLabel.Text = "FILE ACCESS PERMISSION DENIED";
                 K1Button.IsEnabled = false;
                 K2Button.IsEnabled = false;
@@ -62,17 +55,17 @@ namespace MobileLauncher
         }
         private void AccessGranted()
         {
-            enablePath = System.IO.Path.Combine(documentsPath, overrideDirectory, "regeneration.2da"); // disables health regeneration
-            disablePath = System.IO.Path.Combine(documentsPath, overrideDirectory, "regeneration2da.sets"); // enables health regeneration
+            disablePath = System.IO.Path.Combine(documentsPath, overrideDirectory, "regeneration.2da"); // disables health regeneration
+            enablePath = System.IO.Path.Combine(documentsPath, overrideDirectory, "regeneration2da.sets"); // enables health regeneration
             checkPath = System.IO.Path.Combine(documentsPath, "dialog.tlk.main");
             HealthSwitch.Toggled += HealthSwitch_Toggled!;
-            if (File.Exists(enablePath)) // Parser Equivalent is just health regeneration.
+            if (File.Exists(disablePath)) // Parser Equivalent is just health regeneration.
             {
                 HealthSwitch.IsToggled = false;
                 HealthLabel.Text = healthOff;
             }
             // test code
-            if (File.Exists(disablePath)) // Parser Equivalent is just health regeneration.
+            if (File.Exists(enablePath)) // Parser Equivalent is just health regeneration.
             {
                 HealthSwitch.IsToggled = true;
                 HealthLabel.Text = healthOn;
@@ -81,10 +74,10 @@ namespace MobileLauncher
             {
                 HealthSwitch.IsEnabled = false;
                 //HealthLabel.Text = "ERROR : FILE NOT FOUND";
-                HealthLabel.Text = $"ERROR : FILE NOT FOUND :{enablePath}"; // this is happening.
+                HealthLabel.Text = $"ERROR : FILE NOT FOUND :{disablePath}"; // this is happening.
                 //
                 //BlueStacks Total Commander File Manager reports the file is there, but the app can't find it.
-                if (File.Exists(System.IO.Path.Combine("/storage/emulated/0/", disablePath))) // Parser Equivalent is just health regeneration.
+                if (File.Exists(System.IO.Path.Combine("/storage/emulated/0/", enablePath))) // Parser Equivalent is just health regeneration.
                 {
                     HealthSwitch.IsToggled = true;
                     HealthLabel.Text = "verified at /storage/emulated/0/";
@@ -97,12 +90,6 @@ namespace MobileLauncher
                 K1Button.BackgroundColor = Colors.Blue;
                 K2Button.BackgroundColor = Colors.Transparent;
                 K2Button.TextColor = Colors.Black;
-                /* // Other button colours?
-                GameBtn.BackgroundColor = Colors.Blue;
-                WebsiteBtn.BackgroundColor = Colors.Blue;
-                DiscordBtn.BackgroundColor = Colors.Blue;
-                ExitBtn.BackgroundColor = Colors.Blue;
-                */ // Other button colours?
             }
             else
             {
@@ -110,12 +97,6 @@ namespace MobileLauncher
                 K2Button.BackgroundColor = Colors.Green;
                 K1Button.BackgroundColor = Colors.Transparent;
                 K1Button.TextColor = Colors.Black;
-                /* // Other button colours?
-                GameBtn.BackgroundColor = Colors.Green;
-                WebsiteBtn.BackgroundColor = Colors.Green;
-                DiscordBtn.BackgroundColor = Colors.Green;
-                ExitBtn.BackgroundColor = Colors.Green;
-                */ // Other button colours?
             }
             RunMusic();
         }
@@ -134,8 +115,8 @@ namespace MobileLauncher
         }
         private void HealthSwitch_Toggled(object sender, ToggledEventArgs e)
         {
-            string sourcePath = e.Value ? disablePath : enablePath;
-            string destinationPath = e.Value ? enablePath : disablePath;
+            string sourcePath = e.Value ? enablePath : disablePath;
+            string destinationPath = e.Value ? disablePath : enablePath;
             string statusText;
             if (File.Exists(sourcePath)) { statusText = "ERROR : FILE NOT FOUND"; }
             else
@@ -191,12 +172,6 @@ namespace MobileLauncher
             }
             else { Directory.CreateDirectory(saves); }
         }
-        /// <summary>
-        /// InitializeParser parses the relevant settings from swkotor2.ini
-        /// </summary>
-        /// <remarks>
-        /// Only parses the relevant settings.
-        /// </remarks>
         private void GameClicked(object sender, EventArgs e)
         {
             click_play();
@@ -206,7 +181,7 @@ namespace MobileLauncher
             androidApp.AddCategory(Android.Content.Intent.CategoryLauncher);
             androidApp.SetPackage(packageName);
             var activityInfo = androidApp.ResolveActivity(Android.App.Application.Context.PackageManager!);
-            if (activityInfo!= null)
+            if (activityInfo != null)
             {
                 Android.App.Application.Context.StartActivity(androidApp);
             }
@@ -243,6 +218,7 @@ namespace MobileLauncher
         private void ExitClicked(object sender, EventArgs e)
         {
             click_play();
+            Thread.Sleep(100); // slow pause to allow sound to actually play?
             App.Current!.Quit();
         }
         /// <summary>
