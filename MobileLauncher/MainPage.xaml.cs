@@ -1,9 +1,13 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
+﻿using Plugin.Maui.Audio;
 
 namespace MobileLauncher
 {
     public partial class MainPage : ContentPage
     {
+        private readonly IAudioManager audioManager;
+        private IAudioPlayer? musicPlayer;
+        private IAudioPlayer? soundPlayer;
+        public bool swappingFiles;
         public string documentsPath = String.Empty;
         public string disablePath = String.Empty;
         public string enablePath = String.Empty;
@@ -11,7 +15,7 @@ namespace MobileLauncher
         public const string healthOn = "Health Regeneration: On";
         public const string healthOff = "Health Regeneration: Off";
         public const string overrideDirectory = "override";
-        public MainPage()
+        public MainPage(IAudioManager audioManager)
         {
             InitializeComponent();
 #if ANDROID
@@ -21,12 +25,25 @@ namespace MobileLauncher
 #else
             documentsPath = ""; // Never used... just to avoid a warning.
 #endif
+            this.audioManager = audioManager;
             RequestAccess();
+        }
+        private async void PlayAudio(string audioFile, bool isSound)
+        {
+            if(!isSound)
+            {
+                musicPlayer?.Dispose();
+            }
+            musicPlayer = audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync(audioFile));
+            musicPlayer.Play();
         }
         private void GameButton_Clicked(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
-            Button otherButton = button == K1Button ? K2Button : K1Button;
+            if(swappingFiles) { return; } // Prevents multiple clicks.
+            swappingFiles = true;
+            click_play();
+            Microsoft.Maui.Controls.Button button = (Microsoft.Maui.Controls.Button)sender;
+            Microsoft.Maui.Controls.Button otherButton = button == K1Button ? K2Button : K1Button;
             button.IsEnabled = false;
             button.BackgroundColor = button == K1Button ? Colors.Blue : Colors.Green;
             otherButton.IsEnabled = true;
@@ -35,6 +52,7 @@ namespace MobileLauncher
             //SwapGameFiles(button == K1Button ? "port" : "main", button == K1Button ? "main" : "port");
             //SwapSaveFolders(button == K1Button ? "SavesK1" : "SavesK2", button == K1Button ? "SavesK2" : "SavesK1");
             RunMusic();
+            swappingFiles = false;
         }
         private async void RequestAccess()
         {
@@ -59,6 +77,25 @@ namespace MobileLauncher
             enablePath = System.IO.Path.Combine(documentsPath, overrideDirectory, "regeneration2da.sets"); // enables health regeneration
             checkPath = System.IO.Path.Combine(documentsPath, "dialog.tlk.main");
             HealthSwitch.Toggled += HealthSwitch_Toggled!;
+
+            
+            try
+            {
+                using (var stream = File.OpenRead(enablePath))
+                {
+                    // If we get here, the file exists
+                    HealthLabel.Text = "FILE FOUND";
+                }
+            }
+            catch (Exception ex)
+            {
+                // If we get here, an error occurred
+                HealthLabel.Text = $"ERROR : {ex.Message}";
+            }
+
+
+
+            /*
             if (File.Exists(disablePath)) // Parser Equivalent is just health regeneration.
             {
                 HealthSwitch.IsToggled = false;
@@ -82,8 +119,9 @@ namespace MobileLauncher
                     HealthSwitch.IsToggled = true;
                     HealthLabel.Text = "verified at /storage/emulated/0/";
                 }
-            }
+            }*/
             // test code
+            /*
             if (!File.Exists(checkPath)) // Registry Equivalent is just which dialog file exists.
             {
                 K1Button.IsEnabled = false;
@@ -97,19 +135,19 @@ namespace MobileLauncher
                 K2Button.BackgroundColor = Colors.Green;
                 K1Button.BackgroundColor = Colors.Transparent;
                 K1Button.TextColor = Colors.Black;
-            }
+            }*/
             RunMusic();
         }
         private void RunMusic()
         {
             if (K1Button.IsEnabled == true)
             {
-                //PlaySoundAsync("MobileLauncher.Resources.Audio.background.wav");
+                PlayAudio("background.wav", false);
                 BackgroundImage.Source = "k2swlauncher1.png";
             }
             else
             {
-                //PlaySoundAsync("MobileLauncher.Resources.Audio.k1background.wav");
+                PlayAudio("k1background.wav", false);
                 BackgroundImage.Source = "k1swlauncher1.png";
             }
         }
@@ -215,18 +253,15 @@ namespace MobileLauncher
             click_play();
             Launcher.OpenAsync("https://discord.gg/bkbj8Feu7b");
         }
-        private void ExitClicked(object sender, EventArgs e)
+        private async void ExitClicked(object sender, EventArgs e)
         {
             click_play();
-            Thread.Sleep(100); // slow pause to allow sound to actually play?
+            await Task.Delay(100); // slow pause to allow sound to actually play?
             App.Current!.Quit();
         }
         /// <summary>
         /// click_play
         /// </summary>
-        private void click_play()
-        {
-            //PlaySoundAsync("MobileLauncher.Resources.Audio.click.wav");
-        }
+        private void click_play() { PlayAudio("click.wav", true); }
     }
 }

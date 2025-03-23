@@ -103,23 +103,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Audio\background.wav" />
-	  <None Remove="Resources\Audio\click.wav" />
-	  <None Remove="Resources\Audio\hover.WAV" />
-	  <None Remove="Resources\Audio\k1background.wav" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <EmbeddedResource Include="Resources\Audio\background.wav" />
-	  <EmbeddedResource Include="Resources\Audio\click.wav" />
-	  <EmbeddedResource Include="Resources\Audio\hover.WAV" />
-	  <EmbeddedResource Include="Resources\Audio\k1background.wav" />
+	  <AndroidResource Remove="Resources\Audio\**" />
+	  <Compile Remove="Resources\Audio\**" />
+	  <EmbeddedResource Remove="Resources\Audio\**" />
+	  <MauiCss Remove="Resources\Audio\**" />
+	  <MauiXaml Remove="Resources\Audio\**" />
+	  <None Remove="Resources\Audio\**" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.1" />
+		<PackageReference Include="Plugin.Maui.Audio" Version="3.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>
