@@ -211,8 +211,16 @@ namespace Launcher
         private void SwapGameFiles(string target, string previous)
         {
             // TODO : Condense this maybe...
-            string[] textFromFile = File.ReadAllLines("port-file-list.txt");
+            string[] textFromFile;
             // 3 : by Adding "Override\\" to each line currently in the file list.
+            if (File.Exists("swupdate.exe") || File.Exists("DirectX/DSETUP.dll")) // Disc or Steam LegacyPC
+            {
+                textFromFile = File.ReadAllLines("port-file-list-disc.txt");
+            }
+            else
+            {
+                textFromFile = File.ReadAllLines("port-file-list.txt");
+            }
             foreach (string line in textFromFile)
             {
                 File.Move($"Override\\{line}", $"Override\\{line}.{previous}");
