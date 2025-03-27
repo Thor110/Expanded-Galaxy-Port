@@ -548,7 +548,6 @@ modulesave.2da
 feat.2da
 musictable.2da
 movies.2da
-lbl_miscroll_open_f.tga
 pnl_datapad.tga
 pnl_pause_pc.tga
 LDA_dor01.tpc
