@@ -600,7 +600,7 @@ namespace Launcher
         /// </summary>
         private void EnableClassChanges()
         {
-            if (File.Exists("steam_api.dll"))
+            if (File.Exists("steam_api.dll"))                                           // Steam Aspyr
             {
                 replacements = new List<Tuple<long, byte[]>>()                  // Previous Values
                 {
@@ -616,12 +616,7 @@ namespace Launcher
                     Tuple.Create(0x599D9BL, new byte[] { 0x03, 0x04, 0x05 }),   // Class Values
                 };
             }
-            else if (File.Exists("DirectX/DSETUP.dll"))
-            {
-                MessageBox.Show("Class Changes Not Supported For The LegacyPC Version of the game on Steam currently.");
-                return;                                                         // Editing the LegacyPC EXE Results in Error Code 51 On Steam.
-            }
-            else if (File.Exists("gog.ico") || File.Exists("kwrapper.dll"))
+            else if (File.Exists("gog.ico") || File.Exists("kwrapper.dll"))             // GoG Aspyr
             {
                 replacements = new List<Tuple<long, byte[]>>()                  // Previous Values
                 {
@@ -637,7 +632,7 @@ namespace Launcher
                     Tuple.Create(0x58BD74L, new byte[] { 0x03, 0x04, 0x05 }),   // Class Values
                 };
             }
-            else if (File.Exists("swupdate.exe"))
+            else if (File.Exists("swupdate.exe") || File.Exists("DirectX/DSETUP.dll"))  // Disc or Steam LegacyPC
             {
                 replacements = new List<Tuple<long, byte[]>>()                  // Previous Values
                 {
@@ -663,7 +658,7 @@ namespace Launcher
         /// </summary>
         private void DisableClassChanges()
         {
-            if (File.Exists("steam_api.dll"))
+            if (File.Exists("steam_api.dll"))                                           // Steam Aspyr
             {
                 replacements = new List<Tuple<long, byte[]>>()                  // Previous Values
                 {
@@ -679,12 +674,7 @@ namespace Launcher
                     Tuple.Create(0x599D9BL, new byte[] { 0x00, 0x02, 0x01 }),   // Class Values
                 };
             }
-            else if (File.Exists("DirectX/DSETUP.dll"))
-            {
-                MessageBox.Show("Class Changes Not Supported For The LegacyPC Version of the game on Steam currently.");
-                return;                                                         // Editing the LegacyPC EXE Results in Error Code 51 On Steam.
-            }
-            else if (File.Exists("gog.ico") || File.Exists("kwrapper.dll"))
+            else if (File.Exists("gog.ico") || File.Exists("kwrapper.dll"))             // GoG Aspyr
             {
                 replacements = new List<Tuple<long, byte[]>>()                  // Previous Values
                 {
@@ -700,7 +690,7 @@ namespace Launcher
                     Tuple.Create(0x58BD74L, new byte[] { 0x00, 0x02, 0x01 }),   // Class Values
                 };
             }
-            else if (File.Exists("swupdate.exe"))
+            else if (File.Exists("swupdate.exe") || File.Exists("DirectX/DSETUP.dll"))  // Disc or Steam LegacyPC
             {
                 replacements = new List<Tuple<long, byte[]>>()                  // Previous Values
                 {

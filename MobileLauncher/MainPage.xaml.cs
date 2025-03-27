@@ -164,7 +164,6 @@ namespace MobileLauncher
                 }
             }*/
             // test code
-            /*
             if (!File.Exists(checkPath)) // Registry Equivalent is just which dialog file exists.
             {
                 K1Button.IsEnabled = false;
@@ -178,7 +177,7 @@ namespace MobileLauncher
                 K2Button.BackgroundColor = Colors.Green;
                 K1Button.BackgroundColor = Colors.Transparent;
                 K1Button.TextColor = Colors.Black;
-            }*/
+            }
             RunMusic();
         }
         private void RunMusic()
