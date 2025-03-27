@@ -25,6 +25,12 @@ namespace Launcher
         {
             this.AutoScaleMode = AutoScaleMode.None; // Fix for Windows 11 Scaling Issues
             InitializeComponent();
+            // temporary solution to handle brotherhood of shadow users
+            if(File.Exists("brotherhood-readme.rtf"))
+            {
+                MessageBox.Show("The launcher currently isn't built to work with Brotherhood Of Shadow : Solomon's Revenge, please use the launcher.bat for now.");
+                Close();
+            }
             comboBox1.Items.Add("KotOR1");
             comboBox1.Items.Add("KotOR2");
             InitializeRegistry();
@@ -213,7 +219,7 @@ namespace Launcher
             // TODO : Condense this maybe...
             string[] textFromFile;
             // 3 : by Adding "Override\\" to each line currently in the file list.
-            if (File.Exists("swupdate.exe") || File.Exists("DirectX/DSETUP.dll")) // Disc or Steam LegacyPC
+            if (File.Exists("swupdate.exe") || File.Exists("DirectX/DSETUP.dll")) // Disc or Steam LegacyPC or GoG Legacy
             {
                 textFromFile = File.ReadAllLines("port-file-list-disc.txt");
             }
@@ -640,7 +646,7 @@ namespace Launcher
                     Tuple.Create(0x58BD74L, new byte[] { 0x03, 0x04, 0x05 }),   // Class Values
                 };
             }
-            else if (File.Exists("swupdate.exe") || File.Exists("DirectX/DSETUP.dll"))  // Disc or Steam LegacyPC
+            else if (File.Exists("swupdate.exe") || File.Exists("DirectX/DSETUP.dll"))  // Disc or Steam LegacyPC or GoG Legacy
             {
                 replacements = new List<Tuple<long, byte[]>>()                  // Previous Values
                 {
@@ -698,7 +704,7 @@ namespace Launcher
                     Tuple.Create(0x58BD74L, new byte[] { 0x00, 0x02, 0x01 }),   // Class Values
                 };
             }
-            else if (File.Exists("swupdate.exe") || File.Exists("DirectX/DSETUP.dll"))  // Disc or Steam LegacyPC
+            else if (File.Exists("swupdate.exe") || File.Exists("DirectX/DSETUP.dll"))  // Disc or Steam LegacyPC or GoG Legacy
             {
                 replacements = new List<Tuple<long, byte[]>>()                  // Previous Values
                 {
