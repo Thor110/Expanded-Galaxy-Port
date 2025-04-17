@@ -534,24 +534,35 @@ namespace Launcher
         private void checkBox9_CheckedChanged(object sender, EventArgs e)
         {
             if (!config) { return; }
-            MessageBox.Show("This feature doesn't work yet!");
-            checkBox10.Checked = false;
-            return;
+            //MessageBox.Show("This feature doesn't work yet!");
+            //checkBox10.Checked = false;
+            //return;
             if (checkBox9.Checked == true)
             {
                 FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
                 string initialDirectory = Path.Combine(Directory.GetCurrentDirectory(), "SavesK1\\");
                 if (Directory.Exists(initialDirectory)) { folderBrowserDialog.SelectedPath = initialDirectory; }
                 else { folderBrowserDialog.SelectedPath = Directory.GetCurrentDirectory(); }
-                folderBrowserDialog.Description = "Select a save folder from KotOR1 or the Port";
+                folderBrowserDialog.Description = "Select a save folder from KotOR1 or the Expanded Galaxy Port!";
                 if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
                 {
                     string folderPath = folderBrowserDialog.SelectedPath;
-                    string filePath = Path.Combine(folderPath, "GLOBALVARS.res");
+                    string filePath = Path.Combine(folderPath, "GLOBALVARS.res"); //swkotor//saves//savegame//GLOBALVARS.res
                     if (!File.Exists(filePath))
                     {
                         checkBox9.Checked = false;
                         MessageBox.Show("The selected folder is not a valid save folder.");
+                        return;
+                    }
+                    string parentPath = Directory.GetParent(folderPath)!.ToString(); //swkotor//saves
+                    string gamePath = Directory.GetParent(parentPath)!.ToString(); //swkotor
+                    if (File.Exists(Path.Combine(gamePath, "swkotor.exe")) && !File.Exists(Path.Combine(gamePath, "free-roam-exists.txt")))
+                    {
+                        // first game save
+                        // check for end-game free-roam mod
+                        MessageBox.Show("The end-game free-roam mod is required to import a save game from the original game.");
+                        // need to extend the end-game free-roam mod to add a unique variable for when the game is actually complete.
+                        // check for the presence of that variable when processing the save.
                     }
                     else { ProcessSave(filePath); }
                 }
