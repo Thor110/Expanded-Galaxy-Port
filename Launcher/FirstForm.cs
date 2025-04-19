@@ -219,14 +219,7 @@ namespace Launcher
             // TODO : Condense this maybe...
             string[] textFromFile;
             // 3 : by Adding "Override\\" to each line currently in the file list.
-            if (File.Exists("swupdate.exe") || File.Exists("DirectX/DSETUP.dll")) // Disc or Steam LegacyPC or GoG Legacy
-            {
-                textFromFile = File.ReadAllLines("port-file-list-disc.txt");
-            }
-            else
-            {
-                textFromFile = File.ReadAllLines("port-file-list.txt");
-            }
+            textFromFile = File.ReadAllLines("port-file-list.txt");
             foreach (string line in textFromFile)
             {
                 File.Move($"Override\\{line}", $"Override\\{line}.{previous}");
@@ -260,11 +253,8 @@ namespace Launcher
             // 2 : resulting in just two calls to the MoveFiles method.
             MoveFiles(files, "", $".{previous}");
             MoveFiles(files, $".{target}", "");
-            if (!File.Exists("DirectX/DSETUP.dll")) // This file only exists in the LegacyPC version of the game.
-            {
-                File.Move("swkotor2.exe", $"swkotor2.exe.{previous}");
-                File.Move($"swkotor2.exe.{target}", "swkotor2.exe");
-            }
+            File.Move("swkotor2.exe", $"swkotor2.exe.{previous}");
+            File.Move($"swkotor2.exe.{target}", "swkotor2.exe");
         }
         /// <summary>
         /// SwapSaveFolders swaps the save folders when switching between games.
@@ -535,8 +525,8 @@ namespace Launcher
         {
             if (!config) { return; }
             //MessageBox.Show("This feature doesn't work yet!");
-            //checkBox10.Checked = false;
-            //return;
+            checkBox9.Checked = false;
+            return;
             if (checkBox9.Checked == true)
             {
                 FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();

@@ -46,15 +46,7 @@ ren StreamMusic\mus_sion.wav mus_sion.wav.main
 
 ren swkotor2.exe swkotor2.exe.main
 
-if exist swupdate.exe goto :KOTOR1B
-if exist DirectX/DSETUP.dll goto :KOTOR1B
-
-:KOTOR1A
 for /f "delims=|" %%i in (port-file-list.txt) do ren "Override\%%i" "%%i.main"
-goto :KOTOR1C
-:KOTOR1B
-for /f "delims=|" %%i in (port-file-list-disc.txt) do ren "Override\%%i" "%%i.main"
-:KOTOR1C
 
 ren Movies\ObsidianEnt.bik.port ObsidianEnt.bik
 ren dialog.tlk.port dialog.tlk
@@ -64,15 +56,7 @@ ren StreamMusic\mus_sion.wav.port mus_sion.wav
 
 ren swkotor2.exe.port swkotor2.exe
 
-if exist swupdate.exe goto :KOTOR1E
-if exist DirectX/DSETUP.dll goto :KOTOR1E
-
-:KOTOR1D
 for /f "delims=|" %%i in (port-file-list.txt) do ren "Override\%%i.port" "%%i"
-goto :KOTOR1F
-:KOTOR1E
-for /f "delims=|" %%i in (port-file-list-disc.txt) do ren "Override\%%i.port" "%%i"
-:KOTOR1F
 
 echo Launching KotOR1 in KotOR2!
 
@@ -90,15 +74,7 @@ ren StreamMusic\mus_sion.wav mus_sion.wav.port
 
 ren swkotor2.exe swkotor2.exe.port
 
-if exist swupdate.exe goto :KOTOR2B
-if exist DirectX/DSETUP.dll goto :KOTOR2B
-
-:KOTOR2A
 for /f "delims=|" %%i in (port-file-list.txt) do ren "Override\%%i" "%%i.port"
-goto :KOTOR2C
-:KOTOR2B
-for /f "delims=|" %%i in (port-file-list-disc.txt) do ren "Override\%%i" "%%i.port"
-:KOTOR2C
 
 ren Movies\ObsidianEnt.bik.main ObsidianEnt.bik
 ren dialog.tlk.main dialog.tlk
@@ -108,15 +84,7 @@ ren StreamMusic\mus_sion.wav.main mus_sion.wav
 
 ren swkotor2.exe.main swkotor2.exe
 
-if exist swupdate.exe goto :KOTOR2E
-if exist DirectX/DSETUP.dll goto :KOTOR2E
-
-:KOTOR2D
 for /f "delims=|" %%i in (port-file-list.txt) do ren "Override\%%i.main" "%%i"
-goto :KOTOR2F
-:KOTOR2E
-for /f "delims=|" %%i in (port-file-list-disc.txt) do ren "Override\%%i.main" "%%i"
-:KOTOR2F
 
 reg add "HKCU\Expanded Galaxy" /v Game /t REG_DWORD /d 2 /f
 

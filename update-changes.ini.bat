@@ -41,7 +41,7 @@ type changes\changes-mobile-intro.ini		changes\changes.ini changes\changes-andro
 type changes\changes-disc-intro.ini			changes\changes.ini changes\changes-disc-outro.ini			override.txt > "Expanded Galaxy Port Installer\tslpatchdata\changes-disc.ini"
 type changes\changes-gog-intro.ini			changes\changes.ini changes\changes-gog-outro.ini			override.txt > "Expanded Galaxy Port Installer\tslpatchdata\changes-gog.ini"
 type changes\changes-gog-legacy-intro.ini	changes\changes.ini changes\changes-disc-outro.ini			override.txt > "Expanded Galaxy Port Installer\tslpatchdata\changes-gog-legacy.ini"
-type changes\changes-legacypc-intro.ini		changes\changes.ini changes\changes-legacypc-outro.ini		override.txt > "Expanded Galaxy Port Installer\tslpatchdata\changes-legacypc.ini"
+type changes\changes-legacypc-intro.ini		changes\changes.ini changes\changes-disc-outro.ini			override.txt > "Expanded Galaxy Port Installer\tslpatchdata\changes-legacypc.ini"
 type changes\changes-steam-intro.ini		changes\changes.ini changes\changes-steam-outro.ini			override.txt > "Expanded Galaxy Port Installer\tslpatchdata\changes-steam.ini"
 type changes\changes-mobile-intro			changes\changes.ini changes\changes-switch-outro.ini		override.txt > "Expanded Galaxy Port Installer\tslpatchdata\changes-switch.ini"
 type changes\changes-xbox-intro.ini			changes\changes.ini changes\changes-xbox-outro.ini			override.txt > "Expanded Galaxy Port Installer\tslpatchdata\changes-xbox.ini"
