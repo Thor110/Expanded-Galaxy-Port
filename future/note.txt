@@ -1,0 +1,19 @@
+change text highlight to yellow to match the original game?
+
+
+change 001ebo for the port to 001end
+
+removing it from the file swaps which will require editing and recompiling HoloPatcher
+
+this way the port .exe edits can be altered to contain 001end instead of 001ebo
+
+as such there will be less file renaming/swapping
+
+the less the better
+
+
+
+update HoloPatcher/PortInstaller to have another dropdown for the namespaces
+
+
+
