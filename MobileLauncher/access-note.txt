@@ -1,0 +1,9 @@
+1. Use SAF (Storage Access Framework)
+
+Let the user select the directory with a system prompt.
+
+You gain permission to that folder, even if it's within /Android/data.
+
+Tedious to set up but fully supported and reliable.
+
+It's how modern file managers get around the restriction without root.
