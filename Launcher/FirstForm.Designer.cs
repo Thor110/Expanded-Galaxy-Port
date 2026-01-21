@@ -29,9 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirstForm));
+            button1 = new CustomButton();
+            button2 = new CustomButton();
+            button3 = new CustomButton();
+            button4 = new CustomButton();
+            button5 = new CustomButton();
             comboBox1 = new ComboBox();
             checkBox1 = new CheckBox();
-            pictureBox1 = new PictureBox();
             checkBox2 = new CheckBox();
             checkBox3 = new CheckBox();
             checkBox4 = new CheckBox();
@@ -41,8 +45,124 @@
             checkBox8 = new CheckBox();
             checkBox9 = new CheckBox();
             checkBox10 = new CheckBox();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Transparent;
+            button1.FlatAppearance.BorderColor = Color.Black;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button1.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.ForeColor = SystemColors.AppWorkspace;
+            button1.Location = new Point(209, 374);
+            button1.Name = "button1";
+            button1.Size = new Size(182, 43);
+            button1.TabIndex = 0;
+            button1.Text = "Exit";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += close_Click;
+            button1.GotFocus += button_MouseEnter;
+            button1.LostFocus += button_MouseLeave;
+            button1.MouseDown += button_MouseDown;
+            button1.MouseEnter += button_MouseEnter;
+            button1.MouseLeave += button_MouseLeave;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.Transparent;
+            button2.FlatAppearance.BorderColor = Color.Black;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button2.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.ForeColor = SystemColors.AppWorkspace;
+            button2.Location = new Point(209, 332);
+            button2.Name = "button2";
+            button2.Size = new Size(182, 43);
+            button2.TabIndex = 4;
+            button2.Text = "Discord";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += discord_Click;
+            button2.GotFocus += button_MouseEnter;
+            button2.LostFocus += button_MouseLeave;
+            button2.MouseDown += button_MouseDown;
+            button2.MouseEnter += button_MouseEnter;
+            button2.MouseLeave += button_MouseLeave;
+            // 
+            // button3
+            // 
+            button3.BackColor = Color.Transparent;
+            button3.FlatAppearance.BorderColor = Color.Black;
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button3.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button3.ForeColor = SystemColors.AppWorkspace;
+            button3.Location = new Point(209, 290);
+            button3.Name = "button3";
+            button3.Size = new Size(182, 43);
+            button3.TabIndex = 3;
+            button3.Text = "Website";
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += website_Click;
+            button3.GotFocus += button_MouseEnter;
+            button3.LostFocus += button_MouseLeave;
+            button3.MouseDown += button_MouseDown;
+            button3.MouseEnter += button_MouseEnter;
+            button3.MouseLeave += button_MouseLeave;
+            // 
+            // button4
+            // 
+            button4.BackColor = Color.Transparent;
+            button4.FlatAppearance.BorderColor = Color.Black;
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button4.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button4.ForeColor = SystemColors.AppWorkspace;
+            button4.Location = new Point(209, 248);
+            button4.Name = "button4";
+            button4.Size = new Size(182, 43);
+            button4.TabIndex = 2;
+            button4.Text = "Configure";
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += configure_Click;
+            button4.GotFocus += button_MouseEnter;
+            button4.LostFocus += button_MouseLeave;
+            button4.MouseDown += button_MouseDown;
+            button4.MouseEnter += button_MouseEnter;
+            button4.MouseLeave += button_MouseLeave;
+            // 
+            // button5
+            // 
+            button5.BackColor = Color.Transparent;
+            button5.FlatAppearance.BorderColor = Color.Black;
+            button5.FlatAppearance.BorderSize = 0;
+            button5.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button5.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button5.ForeColor = SystemColors.AppWorkspace;
+            button5.Location = new Point(209, 205);
+            button5.Name = "button5";
+            button5.Size = new Size(182, 43);
+            button5.TabIndex = 1;
+            button5.Text = "Game";
+            button5.UseVisualStyleBackColor = false;
+            button5.Click += game_Click;
+            button5.GotFocus += button_MouseEnter;
+            button5.LostFocus += button_MouseLeave;
+            button5.MouseDown += button_MouseDown;
+            button5.MouseEnter += button_MouseEnter;
+            button5.MouseLeave += button_MouseLeave;
             // 
             // comboBox1
             // 
@@ -71,15 +191,6 @@
             checkBox1.UseVisualStyleBackColor = false;
             checkBox1.Visible = false;
             checkBox1.CheckedChanged += checkBox1_CheckedChanged;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = Color.Black;
-            pictureBox1.Location = new Point(209, 205);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(182, 168);
-            pictureBox1.TabIndex = 9;
-            pictureBox1.TabStop = false;
             // 
             // checkBox2
             // 
@@ -229,12 +340,23 @@
             checkBox10.Visible = false;
             checkBox10.CheckedChanged += checkBox10_CheckedChanged;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Black;
+            pictureBox1.Location = new Point(209, 205);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(182, 168);
+            pictureBox1.TabIndex = 9;
+            pictureBox1.TabStop = false;
+            // 
             // FirstForm
             // 
+            AcceptButton = button5;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.k1swlauncher1;
             BackgroundImageLayout = ImageLayout.Zoom;
+            CancelButton = button1;
             ClientSize = new Size(600, 560);
             Controls.Add(checkBox10);
             Controls.Add(checkBox9);
@@ -247,6 +369,11 @@
             Controls.Add(checkBox2);
             Controls.Add(checkBox1);
             Controls.Add(comboBox1);
+            Controls.Add(button1);
+            Controls.Add(button2);
+            Controls.Add(button3);
+            Controls.Add(button4);
+            Controls.Add(button5);
             Controls.Add(pictureBox1);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
@@ -269,7 +396,6 @@
         private CustomButton button3;
         private CustomButton button4;
         private CustomButton button5;
-        private PictureBox pictureBox1;
         private CheckBox checkBox1;
         private CheckBox checkBox2;
         private CheckBox checkBox3;
@@ -280,5 +406,6 @@
         private CheckBox checkBox8;
         private CheckBox checkBox9;
         private CheckBox checkBox10;
+        private PictureBox pictureBox1;
     }
 }
