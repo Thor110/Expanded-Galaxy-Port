@@ -628,10 +628,15 @@ namespace Launcher
                     Tuple.Create(0x4F9EDDL, new byte[] { 0x61, 0x01 }),         // StrRef = 134     = "Soldier"
                     Tuple.Create(0x4F9D21L, new byte[] { 0x62, 0x01 }),         // StrRef = 135     = "Scoundrel"
                     Tuple.Create(0x4F9E0CL, new byte[] { 0x63, 0x01 }),         // StrRef = 133     = "Scout"
-                    Tuple.Create(0x599D9BL, new byte[] { 0x03, 0x04, 0x05 }),   // Class Values
+                    Tuple.Create(0x583F94L, new byte[] { 0x9C }),               // Class Values
+                    Tuple.Create(0x583FB7L, new byte[] { 0x9D }),               // Class Values
+                    Tuple.Create(0x583FDBL, new byte[] { 0x9B }),               // Class Values
+                    Tuple.Create(0x584045L, new byte[] { 0x9C }),               // Class Values
+                    Tuple.Create(0x584021L, new byte[] { 0x9D }),               // Class Values
+                    Tuple.Create(0x583FFEL, new byte[] { 0x9B }),               // Class Values
                 };
             }
-            else if (File.Exists("gog.ico") || File.Exists("kwrapper.dll"))             // GoG Aspyr
+            else if (File.Exists("gog.ico") || File.Exists("kwrapper.dll"))             // GoG or Amazon Aspyr
             {
                 replacements = new List<Tuple<long, byte[]>>()                  // Previous Values
                 {
@@ -644,7 +649,12 @@ namespace Launcher
                     Tuple.Create(0x1DE29DL, new byte[] { 0x61, 0x01 }),         // StrRef = 134     = "Soldier"
                     Tuple.Create(0x1DE0E1L, new byte[] { 0x62, 0x01 }),         // StrRef = 135     = "Scoundrel"
                     Tuple.Create(0x1DE1CCL, new byte[] { 0x63, 0x01 }),         // StrRef = 133     = "Scout"
-                    Tuple.Create(0x58BD74L, new byte[] { 0x03, 0x04, 0x05 }),   // Class Values
+                    Tuple.Create(0x5828A5L, new byte[] { 0x75 }),               // Class Values
+                    Tuple.Create(0x582881L, new byte[] { 0x76 }),               // Class Values
+                    Tuple.Create(0x58285EL, new byte[] { 0x74 }),               // Class Values
+                    Tuple.Create(0x5827F4L, new byte[] { 0x75 }),               // Class Values
+                    Tuple.Create(0x582817L, new byte[] { 0x76 }),               // Class Values
+                    Tuple.Create(0x58283BL, new byte[] { 0x74 }),               // Class Values
                 };
             }
             else if (File.Exists("swupdate.exe") || File.Exists("DirectX/DSETUP.dll"))  // Disc or Steam LegacyPC or GoG Legacy
@@ -660,7 +670,9 @@ namespace Launcher
                     Tuple.Create(0x3499F6L, new byte[] { 0x61, 0x01 }),         // StrRef = 134     = "Soldier"
                     Tuple.Create(0x3498E9L, new byte[] { 0x62, 0x01 }),         // StrRef = 135     = "Scoundrel"
                     Tuple.Create(0x349979L, new byte[] { 0x63, 0x01 }),         // StrRef = 133     = "Scout"
-                    Tuple.Create(0x3C3E61L, new byte[] { 0x03, 0x04, 0x05 }),   // Class Values
+                    Tuple.Create(0x3B3B81L, new byte[] { 0x62 }),               // Class Values
+                    Tuple.Create(0x3B3B87L, new byte[] { 0x63 }),               // Class Values
+                    Tuple.Create(0x3B3B8DL, new byte[] { 0x61 }),               // Class Values
                 };
             }
             BinaryUtility.ReplaceBytes(replacements, "swkotor2.exe");
@@ -686,10 +698,15 @@ namespace Launcher
                     Tuple.Create(0x4F9EDDL, new byte[] { 0x86, 0x00 }),         // StrRef = 353 = "Jedi Guardian"
                     Tuple.Create(0x4F9D21L, new byte[] { 0x87, 0x00 }),         // StrRef = 354 = "Jedi Consular"
                     Tuple.Create(0x4F9E0CL, new byte[] { 0x85, 0x00 }),         // StrRef = 355 = "Jedi Sentinel"
-                    Tuple.Create(0x599D9BL, new byte[] { 0x00, 0x02, 0x01 }),   // Class Values
+                    Tuple.Create(0x583F94L, new byte[] { 0x9A }),               // Class Values
+                    Tuple.Create(0x583FB7L, new byte[] { 0x99 }),               // Class Values
+                    Tuple.Create(0x583FDBL, new byte[] { 0x98 }),               // Class Values
+                    Tuple.Create(0x584045L, new byte[] { 0x9A }),               // Class Values
+                    Tuple.Create(0x584021L, new byte[] { 0x99 }),               // Class Values
+                    Tuple.Create(0x583FFEL, new byte[] { 0x98 }),               // Class Values
                 };
             }
-            else if (File.Exists("gog.ico") || File.Exists("kwrapper.dll"))             // GoG Aspyr
+            else if (File.Exists("gog.ico") || File.Exists("kwrapper.dll"))             // GoG or Amazon Aspyr
             {
                 replacements = new List<Tuple<long, byte[]>>()                  // Previous Values
                 {
@@ -702,7 +719,12 @@ namespace Launcher
                     Tuple.Create(0x1DE29DL, new byte[] { 0x86, 0x00 }),         // StrRef = 353 = "Jedi Guardian"
                     Tuple.Create(0x1DE0E1L, new byte[] { 0x87, 0x00 }),         // StrRef = 354 = "Jedi Consular"
                     Tuple.Create(0x1DE1CCL, new byte[] { 0x85, 0x00 }),         // StrRef = 355 = "Jedi Sentinel"
-                    Tuple.Create(0x58BD74L, new byte[] { 0x00, 0x02, 0x01 }),   // Class Values
+                    Tuple.Create(0x5828A5L, new byte[] { 0x73 }),               // Class Values
+                    Tuple.Create(0x582881L, new byte[] { 0x72 }),               // Class Values
+                    Tuple.Create(0x58285EL, new byte[] { 0x71 }),               // Class Values
+                    Tuple.Create(0x5827F4L, new byte[] { 0x73 }),               // Class Values
+                    Tuple.Create(0x582817L, new byte[] { 0x72 }),               // Class Values
+                    Tuple.Create(0x58283BL, new byte[] { 0x71 }),               // Class Values
                 };
             }
             else if (File.Exists("swupdate.exe") || File.Exists("DirectX/DSETUP.dll"))  // Disc or Steam LegacyPC or GoG Legacy
@@ -718,7 +740,9 @@ namespace Launcher
                     Tuple.Create(0x3499F6L, new byte[] { 0x86, 0x00 }),         // StrRef = 353 = "Jedi Guardian"
                     Tuple.Create(0x3498E9L, new byte[] { 0x87, 0x00 }),         // StrRef = 354 = "Jedi Consular"
                     Tuple.Create(0x349979L, new byte[] { 0x85, 0x00 }),         // StrRef = 355 = "Jedi Sentinel"
-                    Tuple.Create(0x3C3E61L, new byte[] { 0x00, 0x02, 0x01 }),   // Class Values
+                    Tuple.Create(0x3B3B81L, new byte[] { 0x60 }),               // Class Values
+                    Tuple.Create(0x3B3B87L, new byte[] { 0x5F }),               // Class Values
+                    Tuple.Create(0x3B3B8DL, new byte[] { 0x5E }),               // Class Values
                 };
             }
             BinaryUtility.ReplaceBytes(replacements, "swkotor2.exe");
