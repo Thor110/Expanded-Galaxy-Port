@@ -4,15 +4,15 @@ Status: [x] done · [~] ready / in progress · [ ] to do · (NEED: …) = blocke
 
 ## 1. Things that are broken in-game (do first)
 
-- [~] 1.1 Port: 22 models still use 15 old K1 texture names that ship nowhere (black surfaces: Korriban m38aa/m39aa, space skyboxes m12a*/m01aa_07b, Sleheyron m99ab_01a, m02ae_09a, m34aa_08a). Fix = Port-fix-01 zip. (NEED: in-game check of Valley of the Dark Lords / tombs)
-- [ ] 1.2 Hood: k_pebn_remove.ncs + test1.ncs (+ k_pebo_skybox, k_punk_*final) stay live in Port mode. Add to launcher swap list; install them as .hood files; make the swap state-independent.
-- [ ] 1.3 Hood: launcher.bat can't switch BoSSR -> KotOR2 (no ObsidianEnt.bik.port marker in K1 mode). Use a dedicated marker file.
-- [ ] 1.4 Hood: block install unless KotOR1 is the active game (global.jrl + ObsidianEnt.bik go to whichever game is active). Add a Required= check on dialog.tlk.main.
+- [x] 1.1 Port: 22 models still use 15 old K1 texture names that ship nowhere (black surfaces: Korriban m38aa/m39aa, space skyboxes m12a*/m01aa_07b, Sleheyron m99ab_01a, m02ae_09a, m34aa_08a). Committed e018072c. (NEED: in-game check of Valley of the Dark Lords / tombs)
+- [~] 1.2 Hood: k_pebn_remove.ncs + test1.ncs (+ k_pebo_skybox, k_punk_*final) stay live in Port mode. Add to launcher swap list; install them as .hood files; make the swap state-independent.
+- [~] 1.3 Hood: launcher.bat can't switch BoSSR -> KotOR2 (no ObsidianEnt.bik.port marker in K1 mode). Use a dedicated marker file.
+- [~] 1.4 Hood: block install unless KotOR1 is the active game (global.jrl + ObsidianEnt.bik go to whichever game is active). Add a Required= check on dialog.tlk.main.
 - [ ] 1.5 Temple Roof Bastila bug. (NEED: A/B test – rename Hood's Override\k_pebn_remove.ncs and test1.ncs, retry roof; or a description of what she does)
-- [ ] 1.6 Main: a_gas_dmg reads MalachorGas with GetGlobalNumber; it is a Boolean, so the cutscene pause never works. One-word fix + recompile.
-- [ ] 1.7 Main: tutorial.2da MalachorGas row uses StrRef0 ("Yavin"); should be StrRef12.
+- [~] 1.6 Main: a_gas_dmg reads MalachorGas with GetGlobalNumber; it is a Boolean, so the cutscene pause never works. One-word fix + recompile.
+- [~] 1.7 Main: tutorial.2da MalachorGas row uses StrRef0 ("Yavin"); should be StrRef12.
 - [ ] 1.8 Main: override/a_207race.ncs (Telos swoop) hides Tatooine's a_207race in tatm17ae. Repack tatm17ae with the half-done a_m17ae_race fix.
-- [ ] 1.9 Hood: 11 x `2DAMEMORYn=normalhead` are backwards (should be `normalhead=2DAMEMORYn`) – BoS heads never applied.
+- [~] 1.9 Hood: 11 x `2DAMEMORYn=normalhead` are backwards (should be `normalhead=2DAMEMORYn`) – BoS heads never applied.
 
 ## 2. Installer / build problems
 
@@ -68,3 +68,11 @@ Status: [x] done · [~] ready / in progress · [ ] to do · (NEED: …) = blocke
 3. Override 2DAs + installlog.txt from a game with Main+Port+Hood installed (5.1, Hood 2DA fixes)
 4. Saves + Atton dlg (4.x)
 5. GoG/Disc exe when available (3.1)
+
+## Done in fix-02 (Main + Hood zips) - needs an in-game test
+- 1.2-1.4 Hood: 9 clashing scripts + ObsidianEnt.bik moved to tslpatchdata/hood-swap and installed as *.hood; new launcher.bat (state-independent on/off, swaps Saves like launcher.exe); installer requires dialog.tlk.main (KotOR1 active) on PC platforms.
+- 1.6 Main: a_gas_dmg.ncs call changed GetGlobalNumber -> GetGlobalBoolean (1 byte, routine 580 -> 578); source updated.
+- 1.7 Main: MalachorGas tutorial row -> StrRef12 in changes.ini and all 11 generated ini files.
+- 1.9 Hood: normalhead=2DAMEMORY4..12 (11 rows) and heads.2da now processed before appearance.2da so the tokens exist. Check: Sith Twi'lek shares Matilda's head row, Sith advisor shares the Mandalorian head row - intended?
+- Hood update-changes.ini.bat deletes a leftover override.txt first.
+- Open question: Port banter.dlg calls k_hbanter1-11 (vanilla K1 conditionals the Port does not ship) as well as k_hbanterNx.
